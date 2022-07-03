@@ -8,9 +8,10 @@ public class PortalTrigger : MonoBehaviour
     public Portal portal;
     void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player _))
+        if (obj.TryGetComponent(out Rigidbody2D _))
         {
             inPortal = true;
+            portal.itemToTeleport = obj;
             portal.Update_Portal();
             portal.ChangePregrads(!inPortal);
         }
@@ -19,7 +20,7 @@ public class PortalTrigger : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player _))
+        if (obj.TryGetComponent(out Rigidbody2D _))
         {
             inPortal = false;
             portal.Update_Portal();

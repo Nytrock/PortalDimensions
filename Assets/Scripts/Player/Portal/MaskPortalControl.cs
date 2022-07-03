@@ -8,7 +8,7 @@ public class MaskPortalControl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player _))
+        if (obj.TryGetComponent(out Rigidbody2D _))
         {
             portal.Mask.SetActive(true);
             portal.Teleport = true;
@@ -18,7 +18,7 @@ public class MaskPortalControl : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player _))
+        if (obj.TryGetComponent(out Rigidbody2D _))
         {
             portal.Mask.SetActive(false);
             portal.Teleport = false;

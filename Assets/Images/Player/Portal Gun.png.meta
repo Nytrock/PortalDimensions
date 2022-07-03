@@ -140,11 +140,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 955
-        width: 755
-        height: 465
+        y: 960
+        width: 760
+        height: 470
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,10 +162,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 480
-        width: 755
-        height: 465
+        width: 760
+        height: 470
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,10 +183,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 755
-        height: 465
+        width: 760
+        height: 470
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,7 +208,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures:
-    - texture: {fileID: 2800000, guid: ee8cfc5753813a5469577dc8fcd97c52, type: 3}
+    - texture: {instanceID: 0}
       name: _NormalMap
   spritePackingTag: 
   pSDRemoveMatte: 0

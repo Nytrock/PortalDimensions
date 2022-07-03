@@ -57,6 +57,7 @@ MonoBehaviour:
   FirstColor: {r: 0.98039216, g: 0.5411765, b: 0, a: 1}
   SecondColor: {r: 0.003921569, g: 0.5294118, b: 0.99215686, a: 1}
   destroyTime: 10
+  isUsed: 0
 --- !u!95 &5048967434916064823
 Animator:
   serializedVersion: 3

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4598469798072981426}
   - component: {fileID: 4891089840424159581}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mask (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5900242430090383178}
   - component: {fileID: 7190588072274363986}
   - component: {fileID: 1199919830937419193}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4577464764975916928}
   - component: {fileID: 4155140100777848870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6480205309256741111}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Masks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7392894313958425210}
   - component: {fileID: 5598378069826715653}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 6548445833921556369}
   - component: {fileID: 2268573987436631866}
   - component: {fileID: 8744004855511011301}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColliderMasks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 4531318358446224187}
   - component: {fileID: 2913266871421834383}
   - component: {fileID: 751984353816389780}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17376041, y: 0.4921643}
+  m_Offset: {x: 0, y: 0.5131426}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -731,7 +731,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.29, y: 0.9428009}
+  m_Size: {x: 6.29, y: 0.90084434}
   m_EdgeRadius: 0
 --- !u!114 &751984353816389780
 MonoBehaviour:
@@ -757,7 +757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 465540356134590187}
   - component: {fileID: 6867473617160985161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -829,7 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 971947391989011657}
   - component: {fileID: 1248707617507773587}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mask (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,7 +910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7786796461197939181}
   - component: {fileID: 6681017240269353254}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 6893365903693122383}
   - component: {fileID: 8437250121979826751}
   - component: {fileID: 5820634924203604704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -998,7 +998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5977522073328500699}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.17341375, y: 0.17398675, z: -0.03181413}
+  m_LocalPosition: {x: 0, y: 0.17398675, z: -0.03181413}
   m_LocalScale: {x: 0.76646173, y: 0.84568375, z: 0.80047685}
   m_Children:
   - {fileID: 7786796461197939181}
@@ -1096,7 +1096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4173781349787631568}
   - component: {fileID: 6053353004288614753}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1111,7 +1111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6813051787650850868}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.17341375, y: 0.17398675, z: -0.03181413}
+  m_LocalPosition: {x: 0, y: 0.17398675, z: -0.03181413}
   m_LocalScale: {x: 0.76646173, y: 0.84568375, z: 0.80047685}
   m_Children:
   - {fileID: 4577464764975916928}
@@ -1180,7 +1180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7847106513152664241}
   - component: {fileID: 7287539275247857108}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1253,7 +1253,7 @@ GameObject:
   - component: {fileID: 642537509827977105}
   - component: {fileID: 2026803271700192485}
   - component: {fileID: 6440553636446491307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1268,7 +1268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8253786147139215566}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.17341375, y: 0.06898153, z: -0.03260377}
+  m_LocalPosition: {x: 0, y: 0.06898153, z: -0.03260377}
   m_LocalScale: {x: 1.0145847, y: 1.0145844, z: 0.98562485}
   m_Children: []
   m_Father: {fileID: 4929239433554473449}
