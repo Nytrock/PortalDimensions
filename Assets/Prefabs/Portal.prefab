@@ -149,6 +149,7 @@ MonoBehaviour:
   Active: 0
   animator: {fileID: 1199919830937419193}
   Pregrads: []
+  itemToTeleport: {fileID: 0}
 --- !u!60 &1223694256624817599
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.09, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -174,10 +175,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.2478096, y: 0.0015095435}
-      - {x: -2.8934011, y: 0.0015132157}
-      - {x: -2.8934662, y: 0.34656295}
-      - {x: 3.2478342, y: 0.34645104}
+    - - {x: 3.261058, y: 0.0009335391}
+      - {x: -3.0783648, y: 0.0015132157}
+      - {x: -3.0804431, y: 0.34555632}
+      - {x: 3.2610824, y: 0.34645104}
 --- !u!50 &5900242430090383178
 Rigidbody2D:
   serializedVersion: 4

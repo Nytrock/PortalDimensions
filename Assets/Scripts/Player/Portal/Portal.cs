@@ -33,8 +33,24 @@ public class Portal : MonoBehaviour
 
     public void Update_Portal()
     {
-        if (itemToTeleport.TryGetComponent(out Player player))
-            player.InPortal = trigger.inPortal;
+        if (itemToTeleport) {
+            if (itemToTeleport.TryGetComponent(out Player player))
+                player.InPortal = trigger.inPortal;
+        }
+
+        if (Teleport && !trigger.inPortal) {
+            if (Blue.activeSelf)
+                Move_To_Portal(gun.OrangePortal, gun.BluePortal, itemToTeleport);
+            else
+                Move_To_Portal(gun.BluePortal, gun.OrangePortal, itemToTeleport);
+        } else {
+            if (gun.BluePortal.Collider == gun.OrangePortal.Collider) {
+                Collider1.enabled = trigger.inPortal;
+                Collider2.enabled = trigger.inPortal;
+            }
+            Collider.enabled = !trigger.inPortal;
+        }
+
         if (gun.BluePortal.Collider == gun.OrangePortal.Collider)
         {
             if (Blue.activeSelf) {
@@ -45,17 +61,6 @@ public class Portal : MonoBehaviour
                 gun.BluePortal.Collider1.enabled = false;
                 gun.BluePortal.Collider2.enabled = false;
             }
-
-        }
-        if (Teleport && !trigger.inPortal) {
-            if (Blue.activeSelf)
-                Move_To_Portal(gun.OrangePortal, gun.BluePortal, itemToTeleport);
-            else
-                Move_To_Portal(gun.BluePortal, gun.OrangePortal, itemToTeleport);
-        } else {
-            Collider.enabled = !trigger.inPortal;
-            Collider1.enabled = trigger.inPortal;
-            Collider2.enabled = trigger.inPortal;
         }
     }
 
@@ -118,6 +123,7 @@ public class Portal : MonoBehaviour
             case "Up": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y - y); break;
         }
 
+        Enter.Update_Portal();
 
         Exit.trigger.inPortal = true;
         Exit.Teleport = false;
@@ -125,8 +131,6 @@ public class Portal : MonoBehaviour
         Exit.ChangePregrads(false);
         Exit.Mask.SetActive(true);
         Exit.AnimatorPortal();
-        Exit.Collider1.enabled = true;
-        Exit.Collider2.enabled = true;
         float velX = (Mathf.Abs(item.GetComponent<Rigidbody2D>().velocity.x) + 1f) / 10f;
         if (velX < 1.2f)
             velX = 1.2f;
