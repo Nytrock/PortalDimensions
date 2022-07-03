@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationPlayer : MonoBehaviour
 {
     public Animator animator;
-    private List<int> Calm = new List<int> { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4, 5};
+    private List<int> Calm = new List<int> { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4, 5 };
     private int PreviosChoose;
     public ParticleSystem sleepEffect;
     public ParticleSystem Walk1;
@@ -54,7 +54,7 @@ public class AnimationPlayer : MonoBehaviour
     void Update()
     {
         animator.SetBool("IsJump", !player.onGround);
-        animator.SetBool("IsCalm", player.onGround && player.moveVector.x == 0);
+        animator.SetBool("IsCalm", player.onGround && player.moveVector.x == 0 && !player.Shoot);
         animator.SetBool("IsWalk", player.onGround && player.moveVector.x != 0);
     }
 

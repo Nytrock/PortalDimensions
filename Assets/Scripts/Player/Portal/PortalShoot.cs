@@ -18,6 +18,8 @@ public class PortalShoot : MonoBehaviour
     public Color SecondColor;
     public float destroyTime;
 
+    public bool isUsed = false;
+
     void Start()
     {
         StartCoroutine(AddSpeed());
@@ -45,22 +47,21 @@ public class PortalShoot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out PolygonCollider2D polygon) && obj.tag != "Player")
+        if (!isUsed)
         {
-            if (obj.tag == "ForPortal")
-                SpawnPortal(polygon);
-            GetComponent<Animator>().enabled = true;
-        }
-        else if (obj.TryGetComponent(out Portal portal))
-        {
-            Debug.Log(portal);
-            SpawnPortal(portal.Collider);
-            GetComponent<Animator>().enabled = true;
-        }
-        else if(obj.TryGetComponent(out PortalCollider portalCollider))
-        {
-            SpawnPortal(portalCollider.portal.Collider);
-            GetComponent<Animator>().enabled = true;
+            if (obj.TryGetComponent(out PortalCollider portalCollider))
+            {
+                SpawnPortal(portalCollider.portal.Collider);
+                isUsed = true;
+                GetComponent<Animator>().enabled = true;
+            }
+            else if (obj.TryGetComponent(out PolygonCollider2D polygon) && obj.tag != "Player")
+            {
+                if (obj.tag == "ForPortal")
+                    SpawnPortal(polygon);
+                isUsed = true;
+                GetComponent<Animator>().enabled = true;
+            }
         }
     }
 
@@ -84,171 +85,14 @@ public class PortalShoot : MonoBehaviour
         for (int i = 0; i < points.Length; i++)
             points[i] = other.transform.TransformPoint(points[i]);
 
-        bool Flag = true;
-        for (int i=0; i < points.Length - 1; i++)
-        {
-            if (Flag)
-            {
-                foreach (RaycastHit2D item in Physics2D.LinecastAll(points[i], points[i + 1]))
-                {
-                    if (item.collider.tag == "Shoot")
-                    {
-                        if (Right)
-                        {
-                            if (gun.Blue != null)
-                                Destroy(gun.Blue.gameObject);
-                            gun.Blue = portal;
-                        }
-                        else
-                        {
-                            if (gun.Orange != null)
-                                Destroy(gun.Orange.gameObject);
-                            gun.Orange = portal;
-                        }
+        FindSideAndAlign(portal, points, other);
 
-                        portal.transform.position = new Vector2(item.point.x, item.point.y);
-                        float rotat = other.transform.rotation.eulerAngles.z;
-                        switch (i)
-                        {
-                            case 0: rotat += -90f; break;
-                            case 2: rotat += 90f; break;
-                            case 3: rotat += 180f; break;
-                        }
-                        portal.transform.rotation = Quaternion.Euler(0f, 0f, rotat);
-
-                        float Scale = 1f;
-                        if (0 >= rotat && rotat >= -90 || 0 <= rotat && rotat <= 90)
-                            Scale = Math.Abs(rotat / 180f) + .5f;
-                        else if (180 >= rotat && rotat >= 90 || -90 >= rotat && rotat >= -180)
-                            Scale = Math.Abs(180f / rotat) / 2f;
-                        portal.transform.localScale = new Vector2(portal.transform.localScale.x * Scale, portal.transform.localScale.y);
-                        portal.Collider1.transform.localScale = new Vector2(1f / Scale, 1f);
-                        portal.Collider2.transform.localScale = new Vector2(1f / Scale, 1f);
-
-                        portal.Collider = other;
-                        Flag = false;
-                        if (gun.Orange && gun.Blue)
-                        {
-                            if (gun.Orange.Collider == gun.Blue.Collider)
-                            {
-                                Vector2[] Points1 = portal.Blue.GetComponent<PolygonCollider2D>().points;
-                                Vector2[] Points2 = gun.Blue.Blue.GetComponent<PolygonCollider2D>().points;
-                                if (Right)
-                                    Points2 = gun.Orange.Blue.GetComponent<PolygonCollider2D>().points;
-                                for (int j = 0; j < Points1.Length; j++)
-                                    Points1[j] = portal.Blue.transform.TransformPoint(Points1[j]);
-                                for (int j = 0; j < Points2.Length; j++) {
-                                    if (Right)
-                                        Points2[j] = gun.Orange.Blue.transform.TransformPoint(Points2[j]);
-                                    else
-                                        Points2[j] = gun.Blue.Blue.transform.TransformPoint(Points2[j]);
-                                }
-                                var center1 = portal.transform.position;
-
-                                switch (i)
-                                {
-                                    case 0:
-                                        if (Vertical_Check(Points1, Points2[1], Points2[0]))
-                                            Vertical_Portals_Alig(center1, Points1, Points2, portal, 0, 1);
-                                        break;
-                                    case 1:
-                                        if (Horizontal_Check(Points1, Points2[0], Points2[1]))
-                                            Horizontal_Portals_Alig(center1, Points1, Points2, portal, 0, 1);
-                                        break;
-                                    case 2:
-                                        if (Vertical_Check(Points1, Points2[0], Points2[1]))
-                                            Vertical_Portals_Alig(center1, Points1, Points2, portal, 1, 0);
-                                        break;
-                                    case 3:
-                                        if (Horizontal_Check(Points1, Points2[1], Points2[0]))
-                                            Horizontal_Portals_Alig(center1, Points1, Points2, portal, 1, 0);
-                                        break;
-                                }
-                            }
-                        }
-                        Vector2[] portals = portal.Blue.GetComponent<PolygonCollider2D>().points;
-                        for (int j = 0; j < portals.Length; j++)
-                            portals[j] = portal.Blue.transform.TransformPoint(portals[j]);
-                        switch (i)
-                        {
-                            case 0:
-                                Vertical_Alignment(portals[0], portals[1], points[i], points[i + 1], portal);
-                                break;
-                            case 1:
-                                Horizontal_Alignment(portals[1], portals[0], points[i + 1], points[i], portal);
-                                break;
-                            case 2:
-                                Vertical_Alignment(portals[1], portals[0], points[i + 1], points[i], portal);
-                                break;
-                            case 3:
-                                Horizontal_Alignment(portals[0], portals[1], points[i], points[i + 1], portal);
-                                break;
-                        }
-                        if (gun.Orange && gun.Blue)
-                        {
-                            if (gun.Orange.Collider == gun.Blue.Collider)
-                            {
-                                Vector2[] Points1 = portal.Blue.GetComponent<PolygonCollider2D>().points;
-                                Vector2[] Points2 = gun.Blue.Blue.GetComponent<PolygonCollider2D>().points;
-                                if (Right)
-                                    Points2 = gun.Orange.Blue.GetComponent<PolygonCollider2D>().points;
-                                for (int j = 0; j < Points1.Length; j++)
-                                    Points1[j] = portal.Blue.transform.TransformPoint(Points1[j]);
-                                for (int j = 0; j < Points2.Length; j++)
-                                {
-                                    if (Right)
-                                        Points2[j] = gun.Orange.Blue.transform.TransformPoint(Points2[j]);
-                                    else
-                                        Points2[j] = gun.Blue.Blue.transform.TransformPoint(Points2[j]);
-                                }
-                                var center1 = portal.transform.position;
-
-                                switch (i)
-                                {
-                                    case 0:
-                                        if (Vertical_Check(Points1, Points2[1], Points2[0]))
-                                            Destroy_Portal(portal);
-                                        break;
-                                    case 1:
-                                        if (Horizontal_Check(Points1, Points2[0], Points2[1]))
-                                            Destroy_Portal(portal);
-                                        break;
-                                    case 2:
-                                        if (Vertical_Check(Points1, Points2[0], Points2[1]))
-                                            Destroy_Portal(portal);
-                                        break;
-                                    case 3:
-                                        if (Horizontal_Check(Points1, Points2[1], Points2[0]))
-                                            Destroy_Portal(portal);
-                                        break;
-                                }
-                            }
-                        }
-                        float Distance1 = Vector2.Distance(points[i], points[i + 1]);
-                        float Distance2 = Vector2.Distance(portals[0], portals[1]);
-                        if (Distance1 <= Distance2)
-                            Destroy_Portal(portal);
-                        portal.side = i;
-                        break;
-                    }
-                }
-            } else
-            {
-                break;
-            }
-        }
         portal.transform.parent = other.gameObject.transform;
         var main = portal.Particles.main;
         if (Right)
             main.startColor = SecondColor;
         else
             main.startColor = FirstColor;
-        if (Flag)
-        {
-            Destroy_Portal(portal);
-            if (!gun.InWall)
-                Instantiate(this, null);
-        }
         gun.CheckPortals(Right);
     }
 
@@ -284,7 +128,7 @@ public class PortalShoot : MonoBehaviour
                                             center[0].y == side1.y && center[1].y == side2.y;
     }
 
-    void Vertical_Portals_Alig(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
+    void VerticalPortalsAligment(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
     {
         if (center1.y >= Points2[num1].y && center1.y <= Points2[num2].y)
             Destroy_Portal(portal);
@@ -294,7 +138,7 @@ public class PortalShoot : MonoBehaviour
             portal.transform.position = new Vector2(center1.x + (Points2[num2].x - Points1[num1].x) * 1.1f, center1.y + (Points2[num2].y - Points1[num1].y) * 1.1f);
     }
 
-    void Horizontal_Portals_Alig(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
+    void HorizontalPortalsAligment(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
     {
         if (center1.x >= Points2[num2].x && center1.x <= Points2[num1].x)
             Destroy_Portal(portal);
@@ -308,8 +152,174 @@ public class PortalShoot : MonoBehaviour
     {
         Destroy(portal.gameObject);
         if (Right)
-            gun.Blue = null;
+            gun.BluePortal = null;
         else
-            gun.Orange = null;
+            gun.OrangePortal = null;
+    }
+
+    void SetPortalScaleAndRotation(Portal portal, PolygonCollider2D other, int i)
+    {
+        float rotat = other.transform.rotation.eulerAngles.z;
+        switch (i)
+        {
+            case 0: rotat += -90f; break;
+            case 1: rotat += 0f; break;
+            case 2: rotat += 90f; break;
+            case 3: rotat += 180f; break;
+        }
+        portal.transform.rotation = Quaternion.Euler(0f, 0f, rotat);
+
+        float Scale = 1f;
+        if (0 >= rotat && rotat >= -90 || 0 <= rotat && rotat <= 90)
+            Scale = Math.Abs(rotat / 180f) + .5f;
+        else if (180 >= rotat && rotat >= 90 || -90 >= rotat && rotat >= -180)
+            Scale = Math.Abs(180f / rotat) / 2f;
+
+        portal.transform.localScale = new Vector2(portal.transform.localScale.x * Scale, portal.transform.localScale.y);
+        portal.Collider1.transform.localScale = new Vector2(1f / Scale, 1f);
+        portal.Collider2.transform.localScale = new Vector2(1f / Scale, 1f);
+    }
+
+    void FindSideAndAlign(Portal portal, Vector2[] points, PolygonCollider2D other)
+    {
+        this.GetComponent<CircleCollider2D>().radius = 0.35f;
+        for (int i = 0; i < points.Length - 1; i++)
+        {
+            foreach (RaycastHit2D item in Physics2D.LinecastAll(points[i], points[i + 1]))
+            {
+                if (item.collider.tag == "Shoot")
+                {
+                    if (Right)
+                    {
+                        if (gun.BluePortal != null)
+                            Destroy(gun.BluePortal.gameObject);
+                        gun.BluePortal = portal;
+                    }
+                    else
+                    {
+                        if (gun.OrangePortal != null)
+                            Destroy(gun.OrangePortal.gameObject);
+                        gun.OrangePortal = portal;
+                    }
+
+                    portal.transform.position = new Vector2(item.point.x, item.point.y);
+
+                    SetPortalScaleAndRotation(portal, other, i);
+
+                    portal.Collider = other;
+                    if (gun.OrangePortal && gun.BluePortal)
+                    {
+                        if (gun.OrangePortal.Collider == gun.BluePortal.Collider)
+                        {
+                            Vector2[] Points1 = portal.Blue.GetComponent<PolygonCollider2D>().points;
+                            Vector2[] Points2 = gun.BluePortal.Blue.GetComponent<PolygonCollider2D>().points;
+                            if (Right)
+                                Points2 = gun.OrangePortal.Blue.GetComponent<PolygonCollider2D>().points;
+                            for (int j = 0; j < Points1.Length; j++)
+                                Points1[j] = portal.Blue.transform.TransformPoint(Points1[j]);
+                            for (int j = 0; j < Points2.Length; j++)
+                            {
+                                if (Right)
+                                    Points2[j] = gun.OrangePortal.Blue.transform.TransformPoint(Points2[j]);
+                                else
+                                    Points2[j] = gun.BluePortal.Blue.transform.TransformPoint(Points2[j]);
+                            }
+                            var center1 = portal.transform.position;
+
+                            switch (i)
+                            {
+                                case 0:
+                                    if (Vertical_Check(Points1, Points2[1], Points2[0]))
+                                        VerticalPortalsAligment(center1, Points1, Points2, portal, 0, 1);
+                                    break;
+                                case 1:
+                                    if (Horizontal_Check(Points1, Points2[0], Points2[1]))
+                                        HorizontalPortalsAligment(center1, Points1, Points2, portal, 0, 1);
+                                    break;
+                                case 2:
+                                    if (Vertical_Check(Points1, Points2[0], Points2[1]))
+                                        VerticalPortalsAligment(center1, Points1, Points2, portal, 1, 0);
+                                    break;
+                                case 3:
+                                    if (Horizontal_Check(Points1, Points2[1], Points2[0]))
+                                        HorizontalPortalsAligment(center1, Points1, Points2, portal, 1, 0);
+                                    break;
+                            }
+                        }
+                    }
+                    Vector2[] portals = portal.Blue.GetComponent<PolygonCollider2D>().points;
+                    for (int j = 0; j < portals.Length; j++)
+                        portals[j] = portal.Blue.transform.TransformPoint(portals[j]);
+                    switch (i)
+                    {
+                        case 0:
+                            Vertical_Alignment(portals[0], portals[1], points[i], points[i + 1], portal);
+                            break;
+                        case 1:
+                            Horizontal_Alignment(portals[1], portals[0], points[i + 1], points[i], portal);
+                            break;
+                        case 2:
+                            Vertical_Alignment(portals[1], portals[0], points[i + 1], points[i], portal);
+                            break;
+                        case 3:
+                            Horizontal_Alignment(portals[0], portals[1], points[i], points[i + 1], portal);
+                            break;
+                    }
+                    if (gun.OrangePortal && gun.BluePortal)
+                    {
+                        if (gun.OrangePortal.Collider == gun.BluePortal.Collider)
+                        {
+                            Vector2[] Points1 = portal.Blue.GetComponent<PolygonCollider2D>().points;
+                            Vector2[] Points2 = gun.BluePortal.Blue.GetComponent<PolygonCollider2D>().points;
+                            if (Right)
+                                Points2 = gun.OrangePortal.Blue.GetComponent<PolygonCollider2D>().points;
+                            for (int j = 0; j < Points1.Length; j++)
+                                Points1[j] = portal.Blue.transform.TransformPoint(Points1[j]);
+                            for (int j = 0; j < Points2.Length; j++)
+                            {
+                                if (Right)
+                                    Points2[j] = gun.OrangePortal.Blue.transform.TransformPoint(Points2[j]);
+                                else
+                                    Points2[j] = gun.BluePortal.Blue.transform.TransformPoint(Points2[j]);
+                            }
+                            var center1 = portal.transform.position;
+
+                            switch (i)
+                            {
+                                case 0:
+                                    if (Vertical_Check(Points1, Points2[1], Points2[0]))
+                                        Destroy_Portal(portal);
+                                    break;
+                                case 1:
+                                    if (Horizontal_Check(Points1, Points2[0], Points2[1]))
+                                        Destroy_Portal(portal);
+                                    break;
+                                case 2:
+                                    if (Vertical_Check(Points1, Points2[0], Points2[1]))
+                                        Destroy_Portal(portal);
+                                    break;
+                                case 3:
+                                    if (Horizontal_Check(Points1, Points2[1], Points2[0]))
+                                        Destroy_Portal(portal);
+                                    break;
+                            }
+                        }
+                    }
+                    float Distance1 = Vector2.Distance(points[i], points[i + 1]);
+                    float Distance2 = Vector2.Distance(portals[0], portals[1]);
+                    if (Distance1 <= Distance2)
+                        Destroy_Portal(portal);
+                    switch (i)
+                    {
+                        case 0: portal.side = "Left"; break;
+                        case 1: portal.side = "Down"; break;
+                        case 2: portal.side = "Right"; break;
+                        case 3: portal.side = "Up"; break;
+                    }
+                    portal.StartChangingScale();
+                    return;
+                }
+            }
+        }
     }
 }
