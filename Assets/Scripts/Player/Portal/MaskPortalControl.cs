@@ -13,8 +13,6 @@ public class MaskPortalControl : MonoBehaviour
             portal.Mask.SetActive(true);
             portal.Teleport = true;
         }
-        if (obj.gameObject.layer == 3 && obj.tag != "Shoot" && !portal.Pregrads.Contains(obj))
-            portal.Pregrads.Add(obj);
     }
     void OnTriggerExit2D(Collider2D obj)
     {

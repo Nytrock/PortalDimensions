@@ -11,7 +11,7 @@ public class PortalTrigger : MonoBehaviour
         if (obj.TryGetComponent(out Rigidbody2D _))
         {
             inPortal = true;
-            portal.itemToTeleport = obj;
+            portal.gun.itemToTeleport = obj;
             portal.Update_Portal();
             portal.ChangePregrads(!inPortal);
         }

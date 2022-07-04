@@ -27,46 +27,37 @@ public class Portal : MonoBehaviour
     private float TargetScaleParticles;
     private float StepScaleParticles;
 
-    private Vector2 VectorForce;
-    private float ForceIteration;
-    public Collider2D itemToTeleport;
-
     public void Update_Portal()
     {
-        if (itemToTeleport) {
-            if (itemToTeleport.TryGetComponent(out Player player))
+        if (gun.itemToTeleport) {
+            if (gun.itemToTeleport.TryGetComponent(out Player player))
                 player.InPortal = trigger.inPortal;
         }
 
         if (Teleport && !trigger.inPortal) {
             if (Blue.activeSelf)
-                Move_To_Portal(gun.OrangePortal, gun.BluePortal, itemToTeleport);
+                gun.Move_To_Portal(gun.OrangePortal, gun.BluePortal, gun.itemToTeleport);
             else
-                Move_To_Portal(gun.BluePortal, gun.OrangePortal, itemToTeleport);
+                gun.Move_To_Portal(gun.BluePortal, gun.OrangePortal, gun.itemToTeleport);
         } else {
-            if (gun.BluePortal.Collider == gun.OrangePortal.Collider) {
-                Collider1.enabled = trigger.inPortal;
-                Collider2.enabled = trigger.inPortal;
-            }
             Collider.enabled = !trigger.inPortal;
-        }
-
-        if (gun.BluePortal.Collider == gun.OrangePortal.Collider)
-        {
-            if (Blue.activeSelf) {
-                gun.OrangePortal.Collider1.enabled = false;
-                gun.OrangePortal.Collider2.enabled = false;
-            } else
-            {
-                gun.BluePortal.Collider1.enabled = false;
-                gun.BluePortal.Collider2.enabled = false;
-            }
         }
     }
 
     public void AnimatorPortal()
     {
         animator.SetBool("Active", !animator.GetBool("Active"));
+        animator.SetBool("Start", false);
+    }
+
+    public void DestroyPortalAnimation()
+    {
+        animator.SetBool("Death", true);
+    }
+
+    void DestroyPortal()
+    {
+        Destroy(gameObject);
     }
 
     public void ChangePregrads(bool Const)
@@ -103,63 +94,5 @@ public class Portal : MonoBehaviour
 
             yield return new WaitForSeconds(0.0025f);
         }
-    }
-
-    public void Move_To_Portal(Portal Exit, Portal Enter, Collider2D item)
-    {
-        float Force = 110f;
-        ForceIteration = 60f;
-
-        Enter.trigger.inPortal = false;
-        Enter.Teleport = false;
-
-        float x = item.bounds.extents.x;
-        float y = item.bounds.extents.y;
-        switch (Exit.side)
-        {
-            case "Left": item.transform.position = new Vector2(Exit.transform.position.x + x, Exit.transform.position.y); break;
-            case "Down": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y + y); break;
-            case "Right": item.transform.position = new Vector2(Exit.transform.position.x - x, Exit.transform.position.y); break;
-            case "Up": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y - y); break;
-        }
-
-        Enter.Update_Portal();
-
-        Exit.trigger.inPortal = true;
-        Exit.Teleport = false;
-        Exit.Update_Portal();
-        Exit.ChangePregrads(false);
-        Exit.Mask.SetActive(true);
-        Exit.AnimatorPortal();
-        float velX = (Mathf.Abs(item.GetComponent<Rigidbody2D>().velocity.x) + 1f) / 10f;
-        if (velX < 1.2f)
-            velX = 1.2f;
-        float velY = (Mathf.Abs(item.GetComponent<Rigidbody2D>().velocity.y) + 1f) / 10f;
-        if (velY < 1.2f)
-            velY = 1.2f;
-        item.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        switch (Exit.side)
-        {
-            case "Left": VectorForce = new Vector2(-Force * velX, 0); break;
-            case "Down": VectorForce = new Vector2(0, -Force * velY); break;
-            case "Right": VectorForce = new Vector2(Force * velX * 3f, 0); break;
-            case "Up": VectorForce = new Vector2(0, Force * velY); break;
-        }
-        if (item.TryGetComponent(out Player player))
-            player.Animations.From_Portal(Exit.Blue.activeSelf);
-        else
-            item.transform.rotation = Quaternion.Euler(0f, 0f, Exit.transform.rotation.eulerAngles.z);
-        StartCoroutine(GiveForce());
-    }
-
-    IEnumerator GiveForce()
-    {
-        while (ForceIteration > 0)
-        {
-            itemToTeleport.GetComponent<Rigidbody2D>().AddForce(VectorForce / ForceIteration);
-            ForceIteration -= 1f;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-        itemToTeleport = null;
     }
 }
