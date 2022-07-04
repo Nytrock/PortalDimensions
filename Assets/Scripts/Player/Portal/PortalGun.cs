@@ -25,6 +25,7 @@ public class PortalGun : MonoBehaviour
     public float ForceIteration;
     public Vector2 VectorForce;
     public float Force;
+    public Collider2D itemToTeleport;
 
     public GameObject BlueLight;
     public GameObject OrangeLight;
@@ -65,8 +66,12 @@ public class PortalGun : MonoBehaviour
             BluePortal.Particles.Play();
             OrangePortal.trigger.gameObject.SetActive(true);
             BluePortal.trigger.gameObject.SetActive(true);
-            SliceColliders(BluePortal);
-            SliceColliders(OrangePortal);
+            if (BluePortal.Collider != OrangePortal.Collider) {
+                SliceColliders(BluePortal);
+                SliceColliders(OrangePortal);
+            } else {
+                SliceBothColliders();
+            }
             BluePortal.Active = true;
             OrangePortal.Active = true;
         } else
@@ -127,7 +132,6 @@ public class PortalGun : MonoBehaviour
     {
         if (player.Animations.animator.GetBool("IsShoot") && !player.Animations.animator.GetBool("RestartShooting"))
             player.Animations.animator.SetBool("RestartShooting", true);
-
         RightButton = Input.GetMouseButtonDown(1);
         BlueLight.SetActive(false);
         OrangeLight.SetActive(false);
@@ -135,22 +139,30 @@ public class PortalGun : MonoBehaviour
 
         if (RightButton)
         {
-            if (ShootBlue)
+            if (ShootBlue) {
                 ShootBlue.GetComponent<Animator>().enabled = true;
-            ShootBlue = Instantiate(PrefabShoot, null);
-            ShootBlue.Blue.SetActive(true);
-            ShootBlue.gun = this;
-            ShootBlue.Right = RightButton;
+                ShootBlue = null;
+            }
+            if (!InWall) {
+                ShootBlue = Instantiate(PrefabShoot, null);
+                ShootBlue.Blue.SetActive(true);
+                ShootBlue.gun = this;
+                ShootBlue.Right = RightButton;
+            }
             BlueLight.SetActive(true);
         }
         else
         {
-            if (ShootOrange)
+            if (ShootOrange) {
                 ShootOrange.GetComponent<Animator>().enabled = true;
-            ShootOrange = Instantiate(PrefabShoot, null);
-            ShootOrange.Orange.SetActive(true);
-            ShootOrange.gun = this;
-            ShootOrange.Right = RightButton;
+                ShootOrange = null;
+            }
+            if (!InWall) {
+                ShootOrange = Instantiate(PrefabShoot, null);
+                ShootOrange.Orange.SetActive(true);
+                ShootOrange.gun = this;
+                ShootOrange.Right = RightButton;
+            }
             OrangeLight.SetActive(true);
         }
 
@@ -204,10 +216,12 @@ public class PortalGun : MonoBehaviour
             }
         }
 
-        if (RightButton)
-            ShootBlue.transform.rotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z);
-        else
-            ShootOrange.transform.rotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z);
+        if (!InWall) {
+            if (RightButton)
+                ShootBlue.transform.rotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z);
+            else
+                ShootOrange.transform.rotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z);
+        }
     }
 
     public void HeadRotation()
@@ -222,6 +236,8 @@ public class PortalGun : MonoBehaviour
                 Head.rotation = Quaternion.Euler(0f, 0f, 3f);
             else if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 == Mathf.RoundToInt(Hand.rotation.eulerAngles.z) && Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 - offset < -2)
                 Head.rotation = Quaternion.Euler(0f, 0f, -2f);
+            else if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 == 0)
+                Head.rotation = Quaternion.Euler(0f, 0f, 3f);
         }
         else
         {
@@ -230,5 +246,151 @@ public class PortalGun : MonoBehaviour
             else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 == Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 && Mathf.RoundToInt(Head.rotation.eulerAngles.z) > 2)
                 Head.rotation = Quaternion.Euler(0f, 0f, 2f);
         }
+    }
+
+    void SliceBothColliders()
+    {
+        var portalFirst = OrangePortal;
+        var portalSecond = BluePortal;
+
+        Vector2[] points = portalFirst.Collider.points;
+        for (int i = 0; i < points.Length; i++)
+            points[i] = portalFirst.Collider.transform.TransformPoint(points[i]);
+
+        switch (OrangePortal.side) {
+            case "Left":
+                if (portalFirst.transform.position.y < portalSecond.transform.position.y) {
+                    portalFirst = BluePortal;
+                    portalSecond = OrangePortal;
+                }
+                break;
+            case "Down":
+                if (portalFirst.transform.position.x > portalSecond.transform.position.x)
+                {
+                    portalFirst = BluePortal;
+                    portalSecond = OrangePortal;
+                }
+                break;
+            case "Right":
+                if (portalFirst.transform.position.y < portalSecond.transform.position.y) {
+                    portalFirst = BluePortal;
+                    portalSecond = OrangePortal;
+                }
+                break;
+            case "Up":
+                if (portalFirst.transform.position.x > portalSecond.transform.position.x)
+                {
+                    portalFirst = BluePortal;
+                    portalSecond = OrangePortal;
+                }
+                break;
+        }
+
+        Vector2[] firstPortalPoints = portalFirst.GetComponent<PolygonCollider2D>().points;
+        Vector2[] secondPortalPoints = portalFirst.GetComponent<PolygonCollider2D>().points;
+        for (int i = 0; i < firstPortalPoints.Length; i++)
+            firstPortalPoints[i] = portalFirst.transform.TransformPoint(firstPortalPoints[i]);
+        for (int i = 0; i < secondPortalPoints.Length; i++)
+            secondPortalPoints[i] = portalSecond.transform.TransformPoint(secondPortalPoints[i]);
+
+        switch (OrangePortal.side)
+        {
+            case "Left":
+                Set_Collider(portalFirst.Collider1, points[0], firstPortalPoints[1], points[0], points[3], firstPortalPoints[1]);
+                Set_Collider(portalFirst.Collider2, firstPortalPoints[3], secondPortalPoints[2], points[0], points[3], secondPortalPoints[1]);
+                Set_Collider(portalSecond.Collider1, firstPortalPoints[3], secondPortalPoints[2], points[0], points[3], secondPortalPoints[1]);
+                Set_Collider(portalSecond.Collider2, secondPortalPoints[0], points[1], points[0], points[3], points[1]);
+                break;
+            case "Down":
+                Set_Collider(portalFirst.Collider1, firstPortalPoints[1], points[1], points[0], points[1], points[0]);
+                Set_Collider(portalFirst.Collider2, firstPortalPoints[0], secondPortalPoints[1], points[1], points[0], secondPortalPoints[1]);
+                Set_Collider(portalSecond.Collider1, firstPortalPoints[0], secondPortalPoints[1], points[1], points[0], secondPortalPoints[1]);
+                Set_Collider(portalSecond.Collider2, points[2], secondPortalPoints[0], points[1], points[0], secondPortalPoints[0]);
+                break;
+            case "Right":
+                Set_Collider(portalFirst.Collider1, points[3], firstPortalPoints[0], points[3], points[0], firstPortalPoints[0]);
+                Set_Collider(portalFirst.Collider2, firstPortalPoints[1], secondPortalPoints[0], points[3], points[0], secondPortalPoints[0]);
+                Set_Collider(portalSecond.Collider1, firstPortalPoints[1], secondPortalPoints[0], points[3], points[0], secondPortalPoints[0]);
+                Set_Collider(portalSecond.Collider2, secondPortalPoints[1], points[2], points[0], points[3], points[1]);
+                break;
+            case "Up":
+                Set_Collider(portalFirst.Collider1, firstPortalPoints[0], points[0], points[0], points[1], points[0]);
+                Set_Collider(portalFirst.Collider2, firstPortalPoints[1], secondPortalPoints[0], points[0], points[1], secondPortalPoints[0]);
+                Set_Collider(portalSecond.Collider1, firstPortalPoints[1], secondPortalPoints[0], points[0], points[1], secondPortalPoints[0]);
+                Set_Collider(portalSecond.Collider2, points[3], secondPortalPoints[1], points[0], points[1], secondPortalPoints[1]);
+                break;
+        }
+    }
+
+    public void Move_To_Portal(Portal Exit, Portal Enter, Collider2D item)
+    {
+        Enter.trigger.inPortal = false;
+        Enter.Teleport = false;
+
+        float x = item.bounds.extents.x;
+        float y = item.bounds.extents.y;
+        switch (Exit.side)
+        {
+            case "Left": item.transform.position = new Vector2(Exit.transform.position.x + x + 1f, Exit.transform.position.y); break;
+            case "Down": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y + y + 1f); break;
+            case "Right": item.transform.position = new Vector2(Exit.transform.position.x - x - 1f, Exit.transform.position.y); break;
+            case "Up": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y - y - 1f); break;
+        }
+
+        if (BluePortal.Collider != OrangePortal.Collider)
+            Enter.Update_Portal();
+
+        Exit.trigger.inPortal = true;
+        Exit.Teleport = false;
+        if (BluePortal.Collider != OrangePortal.Collider)
+            Exit.Update_Portal();
+        Exit.ChangePregrads(false);
+        Exit.Mask.SetActive(true);
+        Exit.AnimatorPortal();
+
+
+        var rb = item.GetComponent<Rigidbody2D>();
+        float velX = (Mathf.Abs(rb.velocity.x) + 1f) / 10f;
+        if (velX < 1.2f)
+            velX = 1.2f;
+        float velY = (Mathf.Abs(rb.velocity.y) + 1.4f) / 10f;
+        if (velY < 1.2f)
+            velY = 1.2f;
+        float massCompY = rb.mass;
+        if (massCompY > 1)
+            massCompY *= 1.03f;
+        float massCompX = rb.mass;
+        if (massCompX > 1)
+            massCompX *= 0.3f;
+        switch (Exit.side)
+        {
+            case "Left": VectorForce = new Vector2(-Force * velX * massCompX * 2.5f, 0); break;
+            case "Down": break;
+            case "Right": VectorForce = new Vector2(Force * massCompX * velX * 2.5f, 0); break;
+            case "Up":
+                VectorForce = new Vector2(0, Force * massCompY * velY);
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                break;
+        }
+
+
+        if (item.TryGetComponent(out Player player))
+            player.Animations.From_Portal(Exit.Blue.activeSelf);
+        else
+            item.transform.rotation = Quaternion.Euler(0f, 0f, Exit.transform.rotation.eulerAngles.z);
+        ForceIteration = 60f;
+        StartCoroutine(GiveForce());
+    }
+
+    IEnumerator GiveForce()
+    {
+        while (ForceIteration > 0)
+        {
+            itemToTeleport.GetComponent<Rigidbody2D>().AddForce(VectorForce / ForceIteration);
+            ForceIteration -= 1f;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        if (!OrangePortal.trigger.inPortal && !BluePortal.trigger.inPortal)
+            itemToTeleport = null;
     }
 }

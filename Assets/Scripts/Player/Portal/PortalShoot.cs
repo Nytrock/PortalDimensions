@@ -192,13 +192,13 @@ public class PortalShoot : MonoBehaviour
                     if (Right)
                     {
                         if (gun.BluePortal != null)
-                            Destroy(gun.BluePortal.gameObject);
+                            gun.BluePortal.DestroyPortalAnimation();
                         gun.BluePortal = portal;
                     }
                     else
                     {
                         if (gun.OrangePortal != null)
-                            Destroy(gun.OrangePortal.gameObject);
+                            gun.OrangePortal.DestroyPortalAnimation();
                         gun.OrangePortal = portal;
                     }
 
@@ -316,7 +316,7 @@ public class PortalShoot : MonoBehaviour
                         case 2: portal.side = "Right"; break;
                         case 3: portal.side = "Up"; break;
                     }
-                    portal.StartChangingScale();
+                    portal.animator.SetBool("Start", true);
                     return;
                 }
             }
