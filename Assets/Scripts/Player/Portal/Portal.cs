@@ -68,31 +68,4 @@ public class Portal : MonoBehaviour
                 Pregrads[i].enabled = Const;
         }
     }
-
-    public void StartChangingScale()
-    {
-        TargetScalePortal = Blue.transform.localScale.y;
-        Blue.transform.localScale = new Vector2(Blue.transform.localScale.x, 0);
-        Orange.transform.localScale = new Vector2(Orange.transform.localScale.x, 0);
-        StepScalePortal = TargetScalePortal / 100f;
-
-        TargetScaleParticles = Particles.transform.localScale.x;
-        Particles.transform.localScale = new Vector2(0, Particles.transform.localScale.y);
-        StepScaleParticles = TargetScaleParticles / 100f;
-
-        StartCoroutine(IncreaseScale());
-    }
-
-    IEnumerator IncreaseScale()
-    {
-        while (TargetScalePortal > Blue.transform.localScale.y)
-        {
-            Blue.transform.localScale = new Vector2(Blue.transform.localScale.x, Blue.transform.localScale.y + StepScalePortal);
-            Orange.transform.localScale = new Vector2(Orange.transform.localScale.x, Orange.transform.localScale.y + StepScalePortal);
-
-            Particles.transform.localScale = new Vector2(Particles.transform.localScale.x + StepScaleParticles, Particles.transform.localScale.y);
-
-            yield return new WaitForSeconds(0.0025f);
-        }
-    }
 }

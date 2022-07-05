@@ -138,4 +138,12 @@ public class Player : MonoBehaviour
             Animations.FallParticle();
         }
     }
+
+    public void Death()
+    {
+        GetComponent<DeathEffect>().StartDeath(1f, new Color(4f / 256f, 4f / 256f, 221f / 256f));
+        Animations.portalGun.enabled = false;
+        Animations.animator.SetBool("IsDeath", true);
+        enabled = false;
+    }
 }

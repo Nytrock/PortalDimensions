@@ -221,4 +221,10 @@ public class AnimationPlayer : MonoBehaviour
             new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 0.8f), new GradientAlphaKey(0.0f, 1.0f) });
         gradient.color = grad;
     }
+
+    public void RestartLevel()
+    {
+        var manager = GameObject.Find("LevelsManager").GetComponent<LevelMain>();
+        manager.RestartLevel();
+    }
 }
