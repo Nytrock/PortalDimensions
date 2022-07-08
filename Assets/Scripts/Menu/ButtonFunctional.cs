@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using UnityEngine.SceneManagement;
 
 public class ButtonFunctional : MonoBehaviour
 {
@@ -8,12 +8,16 @@ public class ButtonFunctional : MonoBehaviour
     public Choice MainChoice;
     public void StartGame()
     {
-        
+        if (File.Exists(Application.dataPath + "/save/PortalDimensionsSave.txt")) {
+            Debug.Log("Вы уверены?");
+        } else {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void ContinueGame()
     {
-
+        SceneManager.LoadScene(1);
     }
 
     public void Settings()
@@ -23,7 +27,7 @@ public class ButtonFunctional : MonoBehaviour
 
     public void About()
     {
-
+        Debug.Log("About");
     }
 
     public void Exit()
