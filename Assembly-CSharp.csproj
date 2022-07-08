@@ -57,14 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\Portal\PregradsControl.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\LevelMain.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonFunctional.cs" />
     <Compile Include="Assets\Scripts\Player\JumpBonus.cs" />
+    <Compile Include="Assets\Scripts\Save\Save.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\Portal.cs" />
     <Compile Include="Assets\Scripts\Menu\Choice.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalShoot.cs" />
     <Compile Include="Assets\Effect\Common\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalCollider.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundGet.cs" />
+    <Compile Include="Assets\Scripts\Player\DeathTrap.cs" />
+    <Compile Include="Assets\Scripts\Player\DeathEffect.cs" />
     <Compile Include="Assets\Effect\1.BurnTransition\BurningTransitionEffect.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalChecker.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalGun.cs" />
@@ -76,17 +80,37 @@
     <Compile Include="Assets\Scripts\Player\JumpCrystall.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalTrigger.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\Player\DeathEffect.cs" />
-    <Compile Include="Assets\Scripts\Player\DeathTrap.cs" />
-    <Compile Include="Assets\Scripts\Save\Save.cs" />
-    <Compile Include="Assets\Scripts\LevelsSystem\LevelMain.cs" />
+    <Compile Include="Assets\Scripts\Menu\ContinueButton.cs" />
+    <Compile Include="Assets\Scripts\Menu\ButtonLoadScene.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Shaders\StarField.shader" />
     <None Include="Assets\Effect\2.Digital Surface\Digital.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Effect\2.Digital Surface\DigitalDev.shader" />
+    <None Include="Assets\save\PortalDimensionsSave.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Effect\1.BurnTransition\BurningFinal.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Effect\1.BurnTransition\Burning.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

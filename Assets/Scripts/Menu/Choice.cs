@@ -12,9 +12,14 @@ public class Choice : MonoBehaviour
     public List<int> positions;
     public List<Button> Buttons;
 
-    public void Update()
+    void Start()
     {
-        if (Mathf.Abs(NowPosition - TargetPosition) > Step)
+        Step = (Step * Screen.width) / 3840;
+    }
+
+    void Update()
+    {
+        if (Mathf.Abs(NowPosition - TargetPosition) >= Step)
         {
             if (NowPosition < TargetPosition)
                 transform.position = new Vector2(transform.position.x, transform.position.y + Step);
