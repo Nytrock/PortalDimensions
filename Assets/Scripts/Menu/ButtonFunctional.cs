@@ -29,6 +29,11 @@ public class ButtonFunctional : MonoBehaviour
         Debug.Log("About");
     }
 
+    public void Achievements()
+    {
+        Debug.Log("Achievements");
+    }
+
     public void Exit()
     {
         Application.Quit();

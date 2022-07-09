@@ -24,6 +24,12 @@
 			<ru>Продолжить</ru>
 		</Translates>
 	</Key>
+	<Key Name="Достижения">
+		<Translates>
+			<en-us>Achievements</en-us>
+			<ru>Достижения</ru>
+		</Translates>
+	</Key>
 	<Key Name="Настройки">
 		<Translates>
 			<en-us>Settings</en-us>
