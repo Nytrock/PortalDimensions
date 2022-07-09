@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Keys>
+	<Key Name="Язык">
+		<Translates>
+			<en-us>Language</en-us>
+			<ru>Язык</ru>
+		</Translates>
+	</Key>
+	<Key Name="Тип Языка">
+		<Translates>
+			<en-us>English</en-us>
+			<ru>Русский</ru>
+		</Translates>
+	</Key>
+	<Key Name="Новая игра">
+		<Translates>
+			<en-us>New game</en-us>
+			<ru>Новая игра</ru>
+		</Translates>
+	</Key>
+	<Key Name="Продолжить">
+		<Translates>
+			<en-us>Continue</en-us>
+			<ru>Продолжить</ru>
+		</Translates>
+	</Key>
+	<Key Name="Настройки">
+		<Translates>
+			<en-us>Settings</en-us>
+			<ru>Настройки</ru>
+		</Translates>
+	</Key>
+	<Key Name="Создатели">
+		<Translates>
+			<en-us>Сreators</en-us>
+			<ru>Создатели</ru>
+		</Translates>
+	</Key>
+	<Key Name="Выход">
+		<Translates>
+			<en-us>Exit</en-us>
+			<ru>Выход</ru>
+		</Translates>
+	</Key>
+	<Key Name="Назад">
+		<Translates>
+			<en-us>Back</en-us>
+			<ru>Назад</ru>
+		</Translates>
+	</Key>
+	<Key Name="Пауза">
+		<Translates>
+			<en-us>Pause</en-us>
+			<ru>Пауза</ru>
+		</Translates>
+	</Key>
+</Keys>

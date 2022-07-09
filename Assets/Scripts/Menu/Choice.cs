@@ -9,7 +9,7 @@ public class Choice : MonoBehaviour
     public float TargetPosition;
     public int NowId;
     public float Step;
-    public List<int> positions;
+    public List<float> positions;
     public List<Button> Buttons;
 
     void Start()

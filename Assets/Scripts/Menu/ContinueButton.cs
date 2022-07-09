@@ -7,7 +7,7 @@ public class ContinueButton : MonoBehaviour
     public TextMeshProUGUI text;
     void Start()
     {
-        if (File.Exists(Application.dataPath + "/save/PortalDimensionsSave.txt")) {
+        if (GameObject.Find("Save").GetComponent<Save>().SaveFile != null) {
             this.GetComponent<Button>().interactable = true;
             text.color = new Color(26f / 256f, 251f / 256f, 255f / 256f);
         } else {

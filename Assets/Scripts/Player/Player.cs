@@ -145,5 +145,6 @@ public class Player : MonoBehaviour
         Animations.portalGun.enabled = false;
         Animations.animator.SetBool("IsDeath", true);
         enabled = false;
+        GameObject.Find("PanelCanvas").GetComponent<Animator>().SetBool("isDeath", true);
     }
 }

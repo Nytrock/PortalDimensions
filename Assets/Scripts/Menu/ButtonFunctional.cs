@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 public class ButtonFunctional : MonoBehaviour
 {
     public Animator animator;
-    public Choice MainChoice;
     public void StartGame()
     {
-        if (File.Exists(Application.dataPath + "/save/PortalDimensionsSave.txt")) {
+        if (GameObject.Find("Save").GetComponent<Save>().SaveFile != null) {
             Debug.Log("Вы уверены?");
         } else {
             SceneManager.LoadScene(1);
@@ -33,10 +32,5 @@ public class ButtonFunctional : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-    }
-
-    public void ChoiceEnabled()
-    {
-        MainChoice.enabled = !MainChoice.enabled;
     }
 }
