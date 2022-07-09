@@ -14,6 +14,7 @@ public class PortalGun : MonoBehaviour
     public Transform NewPosition;
     public bool RightButton;
     public bool InWall;
+    public static bool menuActive;
     public Transform Shoot_parent;
     public PortalShoot PrefabShoot;
     public PortalShoot ShootOrange;
@@ -32,7 +33,7 @@ public class PortalGun : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !player.InPortal)
+        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !player.InPortal && !menuActive)
         {
             Shoot();
 

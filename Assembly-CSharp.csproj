@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\Portal\PregradsControl.cs" />
+    <Compile Include="Assets\Scripts\Menu\ContinueButton.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelMain.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonFunctional.cs" />
     <Compile Include="Assets\Scripts\Player\JumpBonus.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\Scripts\Player\Portal\PortalChecker.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalGun.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundTrigger.cs" />
+    <Compile Include="Assets\Scripts\Menu\ButtonLoadScene.cs" />
     <Compile Include="Assets\Scripts\Player\AnimationPlayer.cs" />
     <Compile Include="Assets\Effect\Common\PhotoMaker.cs" />
     <Compile Include="Assets\Scripts\Menu\ChoiceButton.cs" />
@@ -80,13 +82,17 @@
     <Compile Include="Assets\Scripts\Player\JumpCrystall.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalTrigger.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\Menu\ContinueButton.cs" />
-    <Compile Include="Assets\Scripts\Menu\ButtonLoadScene.cs" />
+    <Compile Include="Assets\Scripts\Localization\LocalizationManager.cs" />
+    <Compile Include="Assets\Scripts\Localization\LocalizedText.cs" />
+    <Compile Include="Assets\Scripts\Localization\LocalizedDropdown.cs" />
+    <Compile Include="Assets\Scripts\Menu\Settings\LanguageButtons.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\InterfaceButtons.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Resources\Localization.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Shaders\StarField.shader" />
