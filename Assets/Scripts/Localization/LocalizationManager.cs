@@ -34,18 +34,13 @@ public class LocalizationManager : MonoBehaviour
         XmlDocument xmlDocument = new XmlDocument();
         xmlDocument.LoadXml(textFile.text);
 
-        foreach (XmlNode key in xmlDocument["Keys"].ChildNodes)
+        foreach (XmlNode key in xmlDocument["keys"].ChildNodes)
         {
-            string keyStr = key.Attributes["Name"].Value;
+            string keyStr = key.Attributes["name"].Value;
 
             var values = new List<string>();
-            foreach (XmlNode translate in key["Translates"].ChildNodes)
-            {
-                if (translate["id_user"] != null)
-                    values.Add(translate["id_user"].InnerText + "¶" + translate["mood"].InnerText + "¶" + translate["speed"].InnerText + "¶" + translate["text"].InnerText);
-                else
-                    values.Add(translate.InnerText);
-            }
+            foreach (XmlNode translate in key["translates"].ChildNodes)
+                values.Add(translate.InnerText);
             localization[keyStr] = values;
         }
     }

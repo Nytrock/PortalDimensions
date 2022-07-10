@@ -58,13 +58,17 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\Portal\PregradsControl.cs" />
     <Compile Include="Assets\Scripts\Menu\ContinueButton.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\ProfileDialogue.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelMain.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\DialogueInterface.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonFunctional.cs" />
     <Compile Include="Assets\Scripts\Player\JumpBonus.cs" />
     <Compile Include="Assets\Scripts\Save\Save.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\Portal.cs" />
     <Compile Include="Assets\Scripts\Menu\Choice.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalShoot.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\ItemStartDialogue.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalCollider.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundGet.cs" />
     <Compile Include="Assets\Scripts\Player\DeathTrap.cs" />
@@ -84,14 +88,12 @@
     <Compile Include="Assets\Scripts\Localization\LocalizationManager.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedText.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\DialogueManager.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\ItemStartDialogue.cs" />
-    <Compile Include="Assets\Scripts\Interfaces\DialogueInterface.cs" />
-    <Compile Include="Assets\Scripts\Interfaces\ProfileDialogue.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\DialogueChoice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Resources\Dialogues.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Resources\Localization.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />

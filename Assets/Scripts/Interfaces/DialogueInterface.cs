@@ -8,4 +8,8 @@ public interface DialogueInterface
     string name { get; }
     Sprite CalmImage { get; }
     Sprite AngryImage { get; }
+    Sprite AfraidImage { get; }
+    Sprite HappyImage { get; }
+    Sprite ConfusedImage { get; }
+    Sprite TenseImage { get; }
 }
