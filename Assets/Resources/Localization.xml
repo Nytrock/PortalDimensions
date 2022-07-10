@@ -1,101 +1,116 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Keys>
-	<Key Name="Язык">
-		<Translates>
+<keys>
+	<key name="Язык">
+		<translates>
 			<en-us>Language</en-us>
 			<ru>Язык</ru>
-		</Translates>
-	</Key>
-	<Key Name="Тип Языка">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Тип Языка">
+		<translates>
 			<en-us>English</en-us>
 			<ru>Русский</ru>
-		</Translates>
-	</Key>
-	<Key Name="Новая игра">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Новая игра">
+		<translates>
 			<en-us>New game</en-us>
 			<ru>Новая игра</ru>
-		</Translates>
-	</Key>
-	<Key Name="Продолжить">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Продолжить">
+		<translates>
 			<en-us>Continue</en-us>
 			<ru>Продолжить</ru>
-		</Translates>
-	</Key>
-	<Key Name="Достижения">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Достижения">
+		<translates>
 			<en-us>Achievements</en-us>
 			<ru>Достижения</ru>
-		</Translates>
-	</Key>
-	<Key Name="Настройки">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Настройки">
+		<translates>
 			<en-us>Settings</en-us>
 			<ru>Настройки</ru>
-		</Translates>
-	</Key>
-	<Key Name="Создатели">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Создатели">
+		<translates>
 			<en-us>Сreators</en-us>
 			<ru>Создатели</ru>
-		</Translates>
-	</Key>
-	<Key Name="Выход">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Выход">
+		<translates>
 			<en-us>Exit</en-us>
 			<ru>Выход</ru>
-		</Translates>
-	</Key>
-	<Key Name="Отмена">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Отмена">
+		<translates>
 			<en-us>Cancel</en-us>
 			<ru>Отмена</ru>
-		</Translates>
-	</Key>
-	<Key Name="Сохранить">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Сохранить">
+		<translates>
 			<en-us>Save</en-us>
 			<ru>Сохранить</ru>
-		</Translates>
-	</Key>
-	<Key Name="Пауза">
-		<Translates>
+		</translates>
+	</key>
+	<key name="Пауза">
+		<translates>
 			<en-us>Pause</en-us>
 			<ru>Пауза</ru>
-		</Translates>
-	</Key>
-	<Key Name="DialogeTest_1">
-		<Translates>
-			<en-us>
-				<id_user>0</id_user>
-				<mood>Calm</mood>
-				<speed>0.2</speed>
-				<text>Test text for dialogue</text>
-			</en-us>
-			<ru>
-				<id_user>0</id_user>
-				<mood>Calm</mood>
-				<speed>0.2</speed>
-				<text>Тестовый текст для диалога</text>
-			</ru>
-		</Translates>
-	</Key>
-	<Key Name="DialogeTest_2">
-		<Translates>
-			<en-us>
-				<id_user>0</id_user>
-				<mood>Angry</mood>
-				<speed>0.1</speed>
-				<text>Continue of test dialogue</text>
-			</en-us>
-			<ru>
-				<id_user>0</id_user>
-				<mood>Angry</mood>
-				<speed>0.1</speed>
-				<text>Продолжение тестового диалога</text>
-			</ru>
-		</Translates>
-	</Key>
-</Keys>
+		</translates>
+	</key>
+	<key name="Тестовик">
+		<translates>
+			<en-us>Testovik</en-us>
+			<ru>Тестовик</ru>
+		</translates>
+	</key>
+	<key name="Да">
+		<translates>
+			<en-us>Yes</en-us>
+			<ru>Да</ru>
+		</translates>
+	</key>
+	<key name="Нет">
+		<translates>
+			<en-us>No</en-us>
+			<ru>Нет</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_1">
+		<translates>
+			<en-us>Test text for dialogue</en-us>
+			<ru>Тестовый текст для диалога</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_2">
+		<translates>
+			<en-us>Continue of test dialogue</en-us>
+			<ru>Продолжение тестового диалога</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_4">
+		<translates>
+			<en-us>Did you say "yes"?</en-us>
+			<ru>Ты сказал "Да"?</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_5">
+		<translates>
+			<en-us>You said no.</en-us>
+			<ru>Ты сказал нет.</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_6">
+		<translates>
+			<en-us>So you said no!</en-us>
+			<ru>Значит ты сказал нет!</ru>
+		</translates>
+	</key>
+</keys>

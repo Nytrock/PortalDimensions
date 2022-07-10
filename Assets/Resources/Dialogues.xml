@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Keys>
+	<Key Name="DialogeTest_1">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>0.2</speed>
+		<text>Тестовый текст для диалога</text>
+		<next>2</next>
+	</Key>
+	<Key Name="DialogeTest_2">
+		<id_user>0</id_user>
+		<mood>Angry</mood>
+		<speed>0.1</speed>
+		<text>Продолжение тестового диалога</text>
+		<next>3</next>
+	</Key>
+	<Key Name="DialogeTest_3">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>0.1</speed>
+		<choice>
+			<text Next="4">Да</text>
+			<text Next="5">Нет</text>
+		</choice>
+	</Key>
+	<Key Name="DialogeTest_4">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>0.1</speed>
+		<text>Ты сказал "Да"?</text>
+		<choice>
+			<text Next="6">Нет</text>
+		</choice>
+	</Key>
+	<Key Name="DialogeTest_5">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>0.1</speed>
+		<text>Ты сказал нет.</text>
+	</Key>
+	<Key Name="DialogeTest_6">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>0.1</speed>
+		<text>Значит ты сказал нет!</text>
+	</Key>
+</Keys>
