@@ -48,16 +48,54 @@
 			<ru>Выход</ru>
 		</Translates>
 	</Key>
-	<Key Name="Назад">
+	<Key Name="Отмена">
 		<Translates>
-			<en-us>Back</en-us>
-			<ru>Назад</ru>
+			<en-us>Cancel</en-us>
+			<ru>Отмена</ru>
+		</Translates>
+	</Key>
+	<Key Name="Сохранить">
+		<Translates>
+			<en-us>Save</en-us>
+			<ru>Сохранить</ru>
 		</Translates>
 	</Key>
 	<Key Name="Пауза">
 		<Translates>
 			<en-us>Pause</en-us>
 			<ru>Пауза</ru>
+		</Translates>
+	</Key>
+	<Key Name="DialogeTest_1">
+		<Translates>
+			<en-us>
+				<id_user>0</id_user>
+				<mood>Calm</mood>
+				<speed>0.2</speed>
+				<text>Test text for dialogue</text>
+			</en-us>
+			<ru>
+				<id_user>0</id_user>
+				<mood>Calm</mood>
+				<speed>0.2</speed>
+				<text>Тестовый текст для диалога</text>
+			</ru>
+		</Translates>
+	</Key>
+	<Key Name="DialogeTest_2">
+		<Translates>
+			<en-us>
+				<id_user>0</id_user>
+				<mood>Angry</mood>
+				<speed>0.1</speed>
+				<text>Continue of test dialogue</text>
+			</en-us>
+			<ru>
+				<id_user>0</id_user>
+				<mood>Angry</mood>
+				<speed>0.1</speed>
+				<text>Продолжение тестового диалога</text>
+			</ru>
 		</Translates>
 	</Key>
 </Keys>

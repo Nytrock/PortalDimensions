@@ -147,4 +147,12 @@ public class Player : MonoBehaviour
         enabled = false;
         GameObject.Find("PanelCanvas").GetComponent<Animator>().SetBool("isDeath", true);
     }
+
+    public void Dialogue()
+    {
+        Animations.portalGun.enabled = false;
+        moveVector = new Vector2(0, 0);
+        rb.velocity = new Vector2(0, 0);
+        this.enabled = false;
+    }
 }

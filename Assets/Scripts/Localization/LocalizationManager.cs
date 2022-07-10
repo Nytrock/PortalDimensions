@@ -40,7 +40,12 @@ public class LocalizationManager : MonoBehaviour
 
             var values = new List<string>();
             foreach (XmlNode translate in key["Translates"].ChildNodes)
-                values.Add(translate.InnerText);
+            {
+                if (translate["id_user"] != null)
+                    values.Add(translate["id_user"].InnerText + "¶" + translate["mood"].InnerText + "¶" + translate["speed"].InnerText + "¶" + translate["text"].InnerText);
+                else
+                    values.Add(translate.InnerText);
+            }
             localization[keyStr] = values;
         }
     }
