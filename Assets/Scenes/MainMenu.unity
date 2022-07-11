@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 84c8cc38dc3577b43b9fdd0f403d768c, type: 2}
+  sharedProfile: {fileID: 0}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -1287,8 +1287,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 582379669}
-        m_TargetAssemblyTypeName: LanguageButtons, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: NextLanguage
         m_Mode: 1
         m_Arguments:
@@ -1494,9 +1494,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 711258262}
-        m_TargetAssemblyTypeName: ButtonFunctional, Assembly-CSharp
-        m_MethodName: Settings
+      - m_Target: {fileID: 1958044356}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: CheckChanges
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2531,7 +2531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2064598786}
-  save: {fileID: 1199938459}
+  choice: {fileID: 868273448}
 --- !u!114 &292453679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3869,7 +3869,6 @@ GameObject:
   - component: {fileID: 582379668}
   - component: {fileID: 582379667}
   - component: {fileID: 582379670}
-  - component: {fileID: 582379669}
   m_Layer: 7
   m_Name: NameLanguage
   m_TagString: Untagged
@@ -3993,21 +3992,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582379665}
   m_CullTransparentMesh: 1
---- !u!114 &582379669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582379665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc89dc87f8a30443b505725b3fffb82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  localization: {fileID: 79656920}
-  PreviousButton: {fileID: 1175330871}
-  NextButton: {fileID: 1605760695}
 --- !u!114 &582379670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5806,6 +5790,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 711258262}
+        m_TargetAssemblyTypeName: ButtonFunctional, Assembly-CSharp
+        m_MethodName: Settings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &879261628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7392,8 +7388,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 582379669}
-        m_TargetAssemblyTypeName: LanguageButtons, Assembly-CSharp
+      - m_Target: {fileID: 1958044356}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: PreviousLanguage
         m_Mode: 1
         m_Arguments:
@@ -7753,8 +7749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoRestart: 0
   SaveFile: {fileID: 4900000, guid: 19a0e207f1b81034481b23e5b178a264, type: 3}
-  WayToSavefile: /save/PortalDimensionsSave.txt
   localizationManager: {fileID: 79656920}
+  DialogueProfiles: []
 --- !u!4 &1199938460
 Transform:
   m_ObjectHideFlags: 0
@@ -9298,8 +9294,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 582379669}
-        m_TargetAssemblyTypeName: LanguageButtons, Assembly-CSharp
+      - m_Target: {fileID: 1958044356}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: NextLanguage
         m_Mode: 1
         m_Arguments:
@@ -9629,7 +9625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 84c8cc38dc3577b43b9fdd0f403d768c, type: 2}
+  sharedProfile: {fileID: 0}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -11144,6 +11140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1958044355}
+  - component: {fileID: 1958044356}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -11174,6 +11171,24 @@ RectTransform:
   m_AnchoredPosition: {x: -11.4, y: -454}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1958044356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958044354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc89dc87f8a30443b505725b3fffb82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSettingsChange: 0
+  canvas: {fileID: 711258262}
+  localization: {fileID: 79656920}
+  originallyLanguage: 0
+  PreviousButton: {fileID: 1175330871}
+  NextButton: {fileID: 1605760695}
 --- !u!1 &1959881638
 GameObject:
   m_ObjectHideFlags: 0
@@ -11853,8 +11868,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 582379669}
-        m_TargetAssemblyTypeName: LanguageButtons, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: PreviousLanguage
         m_Mode: 1
         m_Arguments:

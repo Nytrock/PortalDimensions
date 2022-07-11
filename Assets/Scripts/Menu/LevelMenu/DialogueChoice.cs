@@ -5,6 +5,7 @@ public class DialogueChoice : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     public int NextPanel;
     public DialogueManager dialogueManager;
+    public int id;
 
     public void ChangePanel()
     {
@@ -14,6 +15,8 @@ public class DialogueChoice : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData eventData)
     {
         DialogueManager.isButton = true;
+        var choice = dialogueManager.choiceArrow;
+        choice.GetPosition(id);
     }
 
     public void OnPointerExit(PointerEventData eventData)
