@@ -28,11 +28,11 @@ public class Choice : MonoBehaviour
             NowPosition = transform.position.y;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Buttons.Count - 1 > 0)
             GetPosition(Mathf.Max(NowId - 1, 0));
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && Buttons.Count - 1 > NowId)
             GetPosition(Mathf.Min(NowId + 1, positions.Count - 1));
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter))
             Buttons[NowId].onClick.Invoke();
     }
     public void GetPosition(int id)

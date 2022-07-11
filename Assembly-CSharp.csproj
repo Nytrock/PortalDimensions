@@ -83,12 +83,12 @@
     <Compile Include="Assets\Scripts\Menu\ChoiceButton.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\JumpCrystall.cs" />
-    <Compile Include="Assets\Scripts\Menu\Settings\LanguageButtons.cs" />
+    <Compile Include="Assets\Scripts\Menu\Settings\SettingsManager.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\DialogueChoice.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalTrigger.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizationManager.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedText.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\DialogueChoice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
