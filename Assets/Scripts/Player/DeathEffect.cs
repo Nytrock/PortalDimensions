@@ -19,9 +19,6 @@ public class DeathEffect : MonoBehaviour {
             dissolveAmount = Mathf.Clamp(dissolveAmount + dissolveSpeed * Time.deltaTime, 0, 1.1f);
             material.SetFloat("_DissolveAmount", dissolveAmount);
         }
-
-        if (Input.GetKeyDown(KeyCode.T))
-            isDeath = true;
     }
 
     public void StartDeath(float dissolveSpeed, Color dissolveColor) {

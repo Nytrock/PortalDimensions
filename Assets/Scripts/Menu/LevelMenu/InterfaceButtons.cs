@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class InterfaceButtons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -23,7 +24,6 @@ public class InterfaceButtons : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void RestartButton()
     {
-        // Вообще не готово
-        canvas.SetBool("isDeath", !canvas.GetBool("isDeath"));
+        canvas.SetBool("isDeath", false);
     }
 }

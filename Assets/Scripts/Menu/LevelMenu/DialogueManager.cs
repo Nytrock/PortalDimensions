@@ -23,7 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     public Choice choiceArrow;
 
-    public Animator canvas;
+    public Animator panelsController;
     private int numPanel = 1;
     public Save save;
 
@@ -54,7 +54,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !isButton && canvas.GetBool("isDialogue"))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !isButton && panelsController.GetBool("isDialogue"))
         {
             if (isTextShow) {
                 StopAllCoroutines();
@@ -64,6 +64,8 @@ public class DialogueManager : MonoBehaviour
                     button.Key.SetActive(true);
                     button.Value.SetActive(true);
                 }
+                if (JustChoice.activeSelf || TextWithChoice.activeSelf)
+                    choiceArrow.gameObject.SetActive(true);
                 isTextShow = false;
             } else if (!isAnimation && !JustChoice.activeSelf && !TextWithChoice.activeSelf) {
                 ContinueDialogue();
@@ -82,75 +84,16 @@ public class DialogueManager : MonoBehaviour
         var information = dialogues[dialogeKey + "_" + numPanel];
         speedShowingText = float.Parse(information["speed"], CultureInfo.InvariantCulture.NumberFormat);
 
-        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
-        Name.GetComponent<LocalizedText>().Localize(profile.name);
-
-        switch (information["mood"]) {
-            case "Calm": ProfileImage.sprite = profile.CalmImage; break;
-            case "Angry": ProfileImage.sprite = profile.AngryImage; break;
-            case "Afraid": ProfileImage.sprite = profile.AfraidImage; break;
-            case "Happy": ProfileImage.sprite = profile.HappyImage; break;
-            case "Confused": ProfileImage.sprite = profile.ConfusedImage; break;
-            case "Tense": ProfileImage.sprite = profile.TenseImage; break;
-        }
+        SetProfileInformation(information);
 
         if (choices.ContainsKey(dialogeKey + "_" + numPanel) && information.ContainsKey("text")) {
-            TextWithChoice.SetActive(true);
-
-            MainText = TextWithChoice.GetComponentInChildren<TextMeshProUGUI>();
-            NeedText = LocalizationManager.GetTranslate(dialogeKey + "_" + numPanel);
-
-            var choiceInformation = choices[dialogeKey + "_" + numPanel];
-            int num = 0;
-            foreach (var variant in choiceInformation)
-            {
-                var visualbuttonChoice = Instantiate(VisualChoiceButtonPrefab, TextWithChoice.GetComponentInChildren<VerticalLayoutGroup>().transform);
-                visualbuttonChoice.GetComponentInChildren<TextMeshProUGUI>().text = LocalizationManager.GetTranslate(variant.Key);
-                visualbuttonChoice.SetActive(false);
-
-                var workingbuttonChoice = Instantiate(WorkingChoiceButtonPrefab, TextWithChoiceContainer.transform);
-                workingbuttonChoice.GetComponent<DialogueChoice>().NextPanel = int.Parse(variant.Value);
-                workingbuttonChoice.GetComponent<DialogueChoice>().dialogueManager = this;
-                workingbuttonChoice.GetComponent<DialogueChoice>().id = num;
-                workingbuttonChoice.SetActive(false);
-
-                choiceArrow.Buttons.Add(workingbuttonChoice.GetComponent<Button>());
-                choiceArrow.transform.position = new Vector2(choiceArrow.transform.position.x, choiceArrow.positions[1]);
-                choiceArrow.TargetPosition = choiceArrow.positions[1];
-                choiceArrow.NowPosition = choiceArrow.positions[1];
-
-                viewChoices[visualbuttonChoice] = workingbuttonChoice;
-                num += 1;
-            }
+            SetTextPanel(TextWithChoice);
+            SetChoicePanel(TextWithChoice, TextWithChoice.GetComponentInChildren<VerticalLayoutGroup>().transform, TextWithChoiceContainer.transform, 1);
         } else if (choices.ContainsKey(dialogeKey + "_" + numPanel)) {
-            JustChoice.SetActive(true);
-
-            var choiceInformation = choices[dialogeKey + "_" + numPanel];
-            int num = 0;
-            foreach (var variant in choiceInformation) {
-                var visualbuttonChoice = Instantiate(VisualChoiceButtonPrefab, JustChoice.transform);
-                visualbuttonChoice.GetComponentInChildren<TextMeshProUGUI>().text = LocalizationManager.GetTranslate(variant.Key);
-                visualbuttonChoice.SetActive(false);
-
-                var workingbuttonChoice = Instantiate(WorkingChoiceButtonPrefab, JustChoiceContainer.transform);
-                workingbuttonChoice.GetComponent<DialogueChoice>().NextPanel = int.Parse(variant.Value);
-                workingbuttonChoice.GetComponent<DialogueChoice>().dialogueManager = this;
-                workingbuttonChoice.GetComponent<DialogueChoice>().id = num;
-                workingbuttonChoice.SetActive(false);
-
-                choiceArrow.Buttons.Add(workingbuttonChoice.GetComponent<Button>());
-                choiceArrow.transform.position = new Vector2(choiceArrow.transform.position.x, choiceArrow.positions[0]);
-                choiceArrow.TargetPosition = choiceArrow.positions[0];
-                choiceArrow.NowPosition = choiceArrow.positions[0];
-
-                viewChoices[visualbuttonChoice] = workingbuttonChoice;
-                num += 1;
-            }
+            SetChoicePanel(JustChoice, JustChoice.transform, JustChoiceContainer.transform, 0);
         } else {
             JustText.SetActive(true);
-
-            MainText = JustText.GetComponentInChildren<TextMeshProUGUI>();
-            NeedText = LocalizationManager.GetTranslate(dialogeKey + "_" + numPanel);
+            SetTextPanel(JustText);
             if (information.ContainsKey("next"))
                 numPanel = int.Parse(information["next"]);
             else
@@ -158,14 +101,14 @@ public class DialogueManager : MonoBehaviour
         }
 
         GameObject.Find("Player").GetComponent<Player>().Dialogue();
-        canvas.SetBool("isDialogue", true);
+        panelsController.SetBool("isDialogue", true);
         isAnimation = true;
     }
 
     public void ContinueDialogue()
     {
         if (numPanel == -1) {
-            canvas.SetBool("isDialogue", false);
+            panelsController.SetBool("isDialogue", false);
             var player = GameObject.Find("Player").GetComponent<Player>();
             player.enabled = true;
             player.Animations.portalGun.enabled = true;
@@ -178,45 +121,10 @@ public class DialogueManager : MonoBehaviour
         var information = dialogues[dialogeKey + "_" + numPanel];
         speedShowingText = float.Parse(information["speed"], CultureInfo.InvariantCulture.NumberFormat);
 
-        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
-        Name.GetComponent<LocalizedText>().Localize(profile.name);
+        SetProfileInformation(information);
 
-        switch (information["mood"]) {
-            case "Calm": ProfileImage.sprite = profile.CalmImage; break;
-            case "Angry": ProfileImage.sprite = profile.AngryImage; break;
-            case "Afraid": ProfileImage.sprite = profile.AfraidImage; break;
-            case "Happy": ProfileImage.sprite = profile.HappyImage; break;
-            case "Confused": ProfileImage.sprite = profile.ConfusedImage; break;
-            case "Tense": ProfileImage.sprite = profile.TenseImage; break;
-        }
-
-        if (JustChoice.activeSelf) {
-            isButton = false;
-            viewChoices.Clear();
-            choiceArrow.Buttons.Clear();
-            for (int i = 0; i < JustChoice.transform.childCount; i++) {
-                Transform child = JustChoice.transform.GetChild(i);
-                Destroy(child.gameObject);
-            }
-            for (int i = 0; i < JustChoiceContainer.transform.childCount; i++) {
-                Transform child = JustChoiceContainer.transform.GetChild(i);
-                Destroy(child.gameObject);
-            }
-        }
-
-        if (TextWithChoice.activeSelf) {
-            isButton = false;
-            viewChoices.Clear();
-            choiceArrow.Buttons.Clear();
-            for (int i = 0; i < TextWithChoice.GetComponentInChildren<VerticalLayoutGroup>().transform.childCount; i++) {
-                Transform child = TextWithChoice.GetComponentInChildren<VerticalLayoutGroup>().transform.GetChild(i);
-                Destroy(child.gameObject);
-            }
-            for (int i = 0; i < TextWithChoiceContainer.transform.childCount; i++) {
-                Transform child = TextWithChoiceContainer.transform.GetChild(i);
-                Destroy(child.gameObject);
-            }
-        }
+        ClearPreviousChoices(JustChoice, JustChoiceContainer);
+        ClearPreviousChoices(TextWithChoice, TextWithChoiceContainer);
 
         SetNotActive();
         if (MainText != null) {
@@ -225,62 +133,14 @@ public class DialogueManager : MonoBehaviour
         }
 
         if (choices.ContainsKey(dialogeKey + "_" + numPanel) && information.ContainsKey("text")) {
-            TextWithChoice.SetActive(true);
-
-            MainText = TextWithChoice.GetComponentInChildren<TextMeshProUGUI>();
-            NeedText = LocalizationManager.GetTranslate(dialogeKey + "_" + numPanel);
-
-            var choiceInformation = choices[dialogeKey + "_" + numPanel];
-            int num = 0;
-            foreach (var variant in choiceInformation)
-            {
-                var visualbuttonChoice = Instantiate(VisualChoiceButtonPrefab, TextWithChoice.GetComponentInChildren<VerticalLayoutGroup>().transform);
-                visualbuttonChoice.GetComponentInChildren<TextMeshProUGUI>().text = LocalizationManager.GetTranslate(variant.Key);
-                visualbuttonChoice.SetActive(false);
-
-                var workingbuttonChoice = Instantiate(WorkingChoiceButtonPrefab, TextWithChoiceContainer.transform);
-                workingbuttonChoice.GetComponent<DialogueChoice>().NextPanel = int.Parse(variant.Value);
-                workingbuttonChoice.GetComponent<DialogueChoice>().dialogueManager = this;
-                workingbuttonChoice.GetComponent<DialogueChoice>().id = num;
-                workingbuttonChoice.SetActive(false);
-
-                choiceArrow.Buttons.Add(workingbuttonChoice.GetComponent<Button>());
-                choiceArrow.transform.position = new Vector2(choiceArrow.transform.position.x, choiceArrow.positions[1]);
-                choiceArrow.TargetPosition = choiceArrow.positions[1];
-                choiceArrow.NowPosition = choiceArrow.positions[1];
-
-                viewChoices[visualbuttonChoice] = workingbuttonChoice;
-                num += 1;
-            }
+            SetTextPanel(TextWithChoice);
+            SetChoicePanel(TextWithChoice, TextWithChoice.GetComponentInChildren<VerticalLayoutGroup>().transform, TextWithChoiceContainer.transform, 1);
             MainText.text = "";
         } else if (choices.ContainsKey(dialogeKey + "_" + numPanel)) {
-            JustChoice.SetActive(true);
-            var choiceInformation = choices[dialogeKey + "_" + numPanel];
-            int num = 0;
-            foreach (var variant in choiceInformation) {
-                var visualbuttonChoice = Instantiate(VisualChoiceButtonPrefab, JustChoice.transform);
-                visualbuttonChoice.GetComponentInChildren<TextMeshProUGUI>().text = LocalizationManager.GetTranslate(variant.Key);
-                visualbuttonChoice.SetActive(false);
-
-                var workingbuttonChoice = Instantiate(WorkingChoiceButtonPrefab, JustChoiceContainer.transform);
-                workingbuttonChoice.GetComponent<DialogueChoice>().NextPanel = int.Parse(variant.Value);
-                workingbuttonChoice.GetComponent<DialogueChoice>().dialogueManager = this;
-                workingbuttonChoice.SetActive(false);
-                workingbuttonChoice.GetComponent<DialogueChoice>().id = num;
-                workingbuttonChoice.GetComponent<Button>().targetGraphic = visualbuttonChoice.GetComponent<Image>();
-
-                choiceArrow.Buttons.Add(workingbuttonChoice.GetComponent<Button>());
-                choiceArrow.transform.position = new Vector2(choiceArrow.transform.position.x, choiceArrow.positions[0]);
-                choiceArrow.TargetPosition = choiceArrow.positions[0];
-                choiceArrow.NowPosition = choiceArrow.positions[0];
-
-                viewChoices[visualbuttonChoice] = workingbuttonChoice;
-                num += 1;
-            }
+            SetChoicePanel(JustChoice, JustChoice.transform, JustChoiceContainer.transform, 0);
         } else {
             JustText.SetActive(true);
-            MainText = JustText.GetComponentInChildren<TextMeshProUGUI>();
-            NeedText = LocalizationManager.GetTranslate(dialogeKey + "_" + numPanel);
+            SetTextPanel(JustText);
             MainText.text = "";
             if (information.ContainsKey("next"))
                 numPanel = int.Parse(information["next"]);
@@ -368,5 +228,73 @@ public class DialogueManager : MonoBehaviour
     {
         numPanel = newNum;
         ContinueDialogue();
+    }
+
+    private void SetProfileInformation(Dictionary<string, string> information)
+    {
+        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
+        Name.GetComponent<LocalizedText>().Localize(profile.name);
+
+        switch (information["mood"])
+        {
+            case "Calm": ProfileImage.sprite = profile.CalmImage; break;
+            case "Angry": ProfileImage.sprite = profile.AngryImage; break;
+            case "Afraid": ProfileImage.sprite = profile.AfraidImage; break;
+            case "Happy": ProfileImage.sprite = profile.HappyImage; break;
+            case "Confused": ProfileImage.sprite = profile.ConfusedImage; break;
+            case "Tense": ProfileImage.sprite = profile.TenseImage; break;
+        }
+    }
+
+    private void ClearPreviousChoices(GameObject MainContainer, GameObject SecondContainer)
+    {
+        if (MainContainer.activeSelf) {
+            isButton = false;
+            viewChoices.Clear();
+            choiceArrow.Buttons.Clear();
+            for (int i = 0; i < MainContainer.transform.childCount; i++) {
+                Transform child = MainContainer.transform.GetChild(i);
+                Destroy(child.gameObject);
+            }
+            for (int i = 0; i < SecondContainer.transform.childCount; i++) {
+                Transform child = SecondContainer.transform.GetChild(i);
+                Destroy(child.gameObject);
+            }
+        }
+    }
+
+    private void SetChoicePanel(GameObject MainPanel, Transform VisualButtonsContainers, Transform WorkingButtonsContainers, int StartNum)
+    {
+        MainPanel.SetActive(true);
+
+        var choiceInformation = choices[dialogeKey + "_" + numPanel];
+        int num = StartNum;
+
+        choiceArrow.transform.position = new Vector2(choiceArrow.transform.position.x, choiceArrow.positions[num]);
+        choiceArrow.TargetPosition = choiceArrow.positions[num];
+        choiceArrow.NowPosition = choiceArrow.positions[num];
+
+        foreach (var variant in choiceInformation)
+        {
+            var visualbuttonChoice = Instantiate(VisualChoiceButtonPrefab, VisualButtonsContainers);
+            visualbuttonChoice.GetComponentInChildren<TextMeshProUGUI>().text = LocalizationManager.GetTranslate(variant.Key);
+            visualbuttonChoice.SetActive(false);
+
+            var workingbuttonChoice = Instantiate(WorkingChoiceButtonPrefab, WorkingButtonsContainers);
+            workingbuttonChoice.GetComponent<DialogueChoice>().NextPanel = int.Parse(variant.Value);
+            workingbuttonChoice.GetComponent<DialogueChoice>().dialogueManager = this;
+            workingbuttonChoice.GetComponent<DialogueChoice>().id = num;
+            workingbuttonChoice.SetActive(false);
+
+            choiceArrow.Buttons.Add(workingbuttonChoice.GetComponent<Button>());
+
+            viewChoices[visualbuttonChoice] = workingbuttonChoice;
+            num += 1;
+        }
+    }
+
+    private void SetTextPanel(GameObject container) {
+        MainText = container.GetComponentInChildren<TextMeshProUGUI>();
+        NeedText = LocalizationManager.GetTranslate(dialogeKey + "_" + numPanel);
     }
 }
