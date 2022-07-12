@@ -224,7 +224,7 @@ public class AnimationPlayer : MonoBehaviour
 
     public void RestartLevel()
     {
-        var manager = GameObject.Find("LevelsManager").GetComponent<LevelMain>();
+        var manager = GameObject.Find("LevelsManager").GetComponent<LevelManager>();
         manager.RestartLevel();
     }
 }

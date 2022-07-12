@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProfileDialogue : ScriptableObject, DialogueInterface
 {
     public int id => _id;
-    public string name => _name;
+    public new string name => _name;
     public Sprite CalmImage => _calm;
     public Sprite AngryImage => _angry;
     public Sprite AfraidImage => _afraid;

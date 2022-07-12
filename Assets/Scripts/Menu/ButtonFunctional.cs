@@ -7,16 +7,12 @@ public class ButtonFunctional : MonoBehaviour
     public Animator animator;
     public void StartGame()
     {
-        if (GameObject.Find("Save").GetComponent<Save>().SaveFile != null) {
-            Debug.Log("Вы уверены?");
-        } else {
-            SceneManager.LoadScene(1);
-        }
+        SceneManager.LoadScene(1);
     }
 
-    public void ContinueGame()
+    public void Statistics()
     {
-        SceneManager.LoadScene(1);
+        Debug.Log("Statistic");
     }
 
     public void Settings()

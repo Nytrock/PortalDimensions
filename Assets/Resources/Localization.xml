@@ -83,6 +83,12 @@
 			<ru>Нет</ru>
 		</translates>
 	</key>
+	<key name="Авторестарт">
+		<translates>
+			<en-us>Autorestart</en-us>
+			<ru>Авторестарт</ru>
+		</translates>
+	</key>
 	<key name="DialogeTest_1">
 		<translates>
 			<en-us>Test text for dialogue</en-us>
@@ -97,8 +103,8 @@
 	</key>
 	<key name="DialogeTest_4">
 		<translates>
-			<en-us>Did you say "yes"?</en-us>
-			<ru>Ты сказал "Да"?</ru>
+			<en-us>Did you say &#34;yes&#34;?</en-us>
+			<ru>Ты сказал &#34;Да&#34;?</ru>
 		</translates>
 	</key>
 	<key name="DialogeTest_5">

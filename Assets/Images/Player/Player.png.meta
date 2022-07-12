@@ -496,8 +496,8 @@ TextureImporter:
       name: Player_15
       rect:
         serializedVersion: 2
-        x: 3926
-        y: 64
+        x: 3921
+        y: 47
         width: 258
         height: 631
       alignment: 0
@@ -517,8 +517,8 @@ TextureImporter:
       name: Player_16
       rect:
         serializedVersion: 2
-        x: 4301
-        y: 64
+        x: 4321
+        y: 47
         width: 258
         height: 631
       alignment: 0
@@ -544,7 +544,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures:
-    - texture: {fileID: 2800000, guid: dfc4495f832dcc240aa86210923f6d2e, type: 3}
+    - texture: {instanceID: 0}
       name: _NormalMap
   spritePackingTag: 
   pSDRemoveMatte: 0
