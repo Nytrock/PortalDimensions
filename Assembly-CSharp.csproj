@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Player\DeathEffect.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedDropdown.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalChecker.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalGun.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\InterfaceButtons.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundTrigger.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="Assets\Scripts\Localization\LocalizationManager.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedText.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\CanvasManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -115,6 +115,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Shaders\GlitchShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
