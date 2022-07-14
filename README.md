@@ -5,12 +5,12 @@ source code (if you ever feel like it) below.
 
 # Social media and support
 - [YouTube (Russian channel)](https://www.youtube.com/channel/UC-hf-Ao9DYHTqHR0jKuyWqg)
-- [YouTube (English channel)] - https://www.youtube.com/channel/UC89MsReZbGoIqExrLadwDXA </br>
-- [Vkontakte community] - https://vk.com/public213638597 </br>
-- [Vkontakte page]- https://vk.com/nytrock </br>
-- [DonationAlerts] - https://www.donationalerts.com/r/nytrock </br>
-- [Twitter] - https://twitter.com/Nytr0ck </br>
-- [Twitch](ttps://www.twitch.tv/nytrock
+- [YouTube (English channel)](https://www.youtube.com/channel/UC89MsReZbGoIqExrLadwDXA)
+- [Vkontakte group](https://vk.com/public213638597)
+- [Vkontakte page](https://vk.com/nytrock)
+- [DonationAlerts](https://www.donationalerts.com/r/nytrock)
+- [Twitter](https://twitter.com/Nytr0ck)
+- [Twitch](https://www.twitch.tv/nytrock)
 
 
 # Run source code on local machine
