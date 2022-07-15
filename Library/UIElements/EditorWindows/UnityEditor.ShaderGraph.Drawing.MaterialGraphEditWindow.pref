@@ -21,7 +21,7 @@ MonoBehaviour:
   - __PanelContainer__rootVisualContainer__a1afa939abb72cb41965ae27ae6709f1__MaterialGraphView__UnityEditor.Experimental.GraphView.GraphView+PersistedSelection
   m_Values:
   - '{"position":{"x":429.0,"y":132.0,"z":0.0},"scale":{"x":0.39316534996032717,"y":0.39316534996032717,"z":1.0}}'
-  - '{"m_Version":3,"m_SelectedElementsArray":[]}'
+  - '{"m_Version":0,"m_SelectedElementsArray":[]}'
   - '{}'
   - '{}'
   - '{}'

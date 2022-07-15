@@ -47,6 +47,12 @@
 			<ru>Выход</ru>
 		</translates>
 	</key>
+	<key name="Счётчик fps">
+		<translates>
+			<en-us>Fps counter</en-us>
+			<ru>Счётчик fps</ru>
+		</translates>
+	</key>
 	<key name="Отмена">
 		<translates>
 			<en-us>Cancel</en-us>
@@ -87,6 +93,36 @@
 		<translates>
 			<en-us>Autorestart</en-us>
 			<ru>Авторестарт</ru>
+		</translates>
+	</key>
+	<key name="Вы проиграли!">
+		<translates>
+			<en-us>You lose!</en-us>
+			<ru>Вы проиграли!</ru>
+		</translates>
+	</key>
+	<key name="↻Повтор">
+		<translates>
+			<en-us>↻Restart</en-us>
+			<ru>↻Повтор</ru>
+		</translates>
+	</key>
+	<key name="Причина смерти:">
+		<translates>
+			<en-us>Cause of death:</en-us>
+			<ru>Причина смерти:</ru>
+		</translates>
+	</key>
+	<key name="Меню">
+		<translates>
+			<en-us>Menu</en-us>
+			<ru>Меню</ru>
+		</translates>
+	</key>
+	<key name="тупость">
+		<translates>
+			<en-us>stupidity</en-us>
+			<ru>тупость</ru>
 		</translates>
 	</key>
 	<key name="DialogeTest_1">

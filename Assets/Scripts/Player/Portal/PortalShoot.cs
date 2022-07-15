@@ -182,7 +182,7 @@ public class PortalShoot : MonoBehaviour
 
     void FindSideAndAlign(Portal portal, Vector2[] points, PolygonCollider2D other)
     {
-        this.GetComponent<CircleCollider2D>().radius = 0.35f;
+        this.GetComponent<CircleCollider2D>().radius = 0.4f;
         for (int i = 0; i < points.Length - 1; i++)
         {
             foreach (RaycastHit2D item in Physics2D.LinecastAll(points[i], points[i + 1]))

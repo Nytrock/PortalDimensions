@@ -15,16 +15,27 @@ public class SettingsManager : MonoBehaviour
     [Header("Настройки авторестарта")]
     public Toggle autoManager;
     public bool Autorestart;
-    public bool originallyAuto;
-    public bool isAutoChange;
+    private bool originallyAuto;
+    private bool isAutoChange;
+
+    [Header("Настройки счётчика fps")]
+    public Toggle fpsManager;
+    public FpsCounter fpsCounter;
+    public bool fpsShowing;
+    private bool originallyFps;
+    private bool isFpsChange;
 
     public void Start()
     {
         NextButton.interactable = !(LocalizationManager.SelectedLanguage + 1 >= Save.NumberLanguages);
         PreviousButton.interactable = !(LocalizationManager.SelectedLanguage - 1 < 0);
         originallyLanguage = LocalizationManager.SelectedLanguage;
+
         originallyAuto = autoManager.isOn;
         Autorestart = originallyAuto;
+
+        originallyFps = fpsManager.isOn;
+        fpsShowing = originallyFps;
     }
     public void NextLanguage()
     {
@@ -47,10 +58,16 @@ public class SettingsManager : MonoBehaviour
         Autorestart = !Autorestart;
         isAutoChange = Autorestart != originallyAuto;
     }
+    public void ChangeFps()
+    {
+        fpsShowing = !fpsShowing;
+        isFpsChange = fpsShowing !=  originallyFps;
+        fpsCounter.ChangeWorking(fpsShowing);
+    }
 
     public void CheckChanges()
     {
-        if (isLanguageChange || isAutoChange) {
+        if (isLanguageChange || isAutoChange || isFpsChange) {
             Debug.Log("Вы уверены?");
         } else {
             canvas.animator.SetBool("Settings", !canvas.animator.GetBool("Settings"));

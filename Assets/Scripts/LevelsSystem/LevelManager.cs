@@ -22,4 +22,9 @@ public class LevelManager: MonoBehaviour
         yield return new WaitForSeconds(1.3f);
         RestartScene();
     }
+
+    public void Exit()
+    {
+        SceneManager.LoadScene(2);
+    }
 }

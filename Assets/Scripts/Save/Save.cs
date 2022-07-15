@@ -11,6 +11,7 @@ public class Save : MonoBehaviour
     public const string WayToSavefile = "/save/PortalDimensionsSave.txt";
     public LocalizationManager localizationManager;
     public SettingsManager settingsnManager;
+    public FpsCounter fpsCounter;
 
     [Header("Профили для диалогов")]
     public List<ProfileDialogue> DialogueProfiles;
@@ -20,6 +21,7 @@ public class Save : MonoBehaviour
     {
         public int languageId;
         public bool AutoRestart;
+        public bool FpsShowing;
     }
 
     public void Awake()
@@ -32,6 +34,7 @@ public class Save : MonoBehaviour
         SettingsSave settings = new SettingsSave();
         settings.languageId = LocalizationManager.SelectedLanguage;
         settings.AutoRestart = settingsnManager.Autorestart;
+        settings.FpsShowing = settingsnManager.fpsShowing;
         FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Create);
         BinaryFormatter form = new BinaryFormatter();
         form.Serialize(stream, settings);
@@ -53,8 +56,11 @@ public class Save : MonoBehaviour
         try {
             SettingsSave settings = (SettingsSave)form.Deserialize(stream);
             localizationManager.SetLanguage(settings.languageId);
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-            settingsnManager.autoManager.isOn = settings.AutoRestart;
+            if (SceneManager.GetActiveScene().buildIndex == 0) {
+                settingsnManager.autoManager.isOn = settings.AutoRestart;
+                settingsnManager.fpsManager.isOn = settings.FpsShowing;
+            }
+            fpsCounter.ChangeWorking(settings.FpsShowing);
         } finally {
             stream.Close();
         }
