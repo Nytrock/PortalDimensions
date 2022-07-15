@@ -11,23 +11,28 @@ public class Choice : MonoBehaviour
     public float Step;
     public List<float> positions;
     public List<Button> Buttons;
+    public int speed;
 
     void Start()
     {
         Step = (Step * Screen.width) / 3840;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        if (Mathf.Abs(NowPosition - TargetPosition) >= Step)
-        {
-            if (NowPosition < TargetPosition)
-                transform.position = new Vector2(transform.position.x, transform.position.y + Step);
-            else
-                transform.position = new Vector2(transform.position.x, transform.position.y - Step);
-            NowPosition = transform.position.y;
+        for (int i = 0; i < speed; i++) {
+            if (Mathf.Abs(NowPosition - TargetPosition) >= Step) {
+                if (NowPosition < TargetPosition)
+                    transform.position = new Vector2(transform.position.x, transform.position.y + Step);
+                else
+                    transform.position = new Vector2(transform.position.x, transform.position.y - Step);
+                NowPosition = transform.position.y;
+            }
         }
+    }
 
+    private void Update()
+    {
         if (Input.GetKeyDown(KeyCode.UpArrow) && Buttons.Count - 1 > 0)
             GetPosition(Mathf.Max(NowId - 1, 0));
         if (Input.GetKeyDown(KeyCode.DownArrow) && Buttons.Count - 1 > NowId)
