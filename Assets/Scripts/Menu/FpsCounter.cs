@@ -8,7 +8,7 @@ public class FpsCounter : MonoBehaviour
     private float timer;
     [SerializeField] private float _hudRefreshRate = 1f;
 
-    private void Start()
+    private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
         if (!isWorking)

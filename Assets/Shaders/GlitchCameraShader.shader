@@ -12,6 +12,7 @@ Shader "Custom/Glitchy Footage Shader"{
 		_BlockGlitchEnabled("Block Glitch", Float) = 1.0
 		_ShakeGlitchEnabled("Shake Glitch", Float) = 1.0
 		_ScanlineGlitchEnabled("Scanline Glitch", Float) = 1.0
+		_UnscaledTime("Unscaled Time", Float) = 0
 	}
 	SubShader
 	{
@@ -60,6 +61,7 @@ Shader "Custom/Glitchy Footage Shader"{
 			uniform float _ScanlineGlitchEnabled;
 			uniform float _ShakeGlitchEnabled;
 			uniform fixed _RGBShiftIntensity;
+			uniform float _UnscaledTime;
 
 			float random(float2 c) {
 				return frac(sin(dot(c.xy, float2(12.9898, 78.233))) * 43758.5453);
@@ -75,8 +77,8 @@ Shader "Custom/Glitchy Footage Shader"{
 				fixed strength = 0.;
 				fixed2 shake = fixed2(0., 0.);
 				if (_ShakeGlitchEnabled == 1.) {
-					 strength = smoothstep(_GlitchInterval * _GlitchRate, _GlitchInterval, _GlitchInterval - mod(_Time.y, _GlitchInterval));
-					 shake = fixed2(strength * 8.0 + 0.5, strength * 8.0 + 0.5)* fixed2(random(fixed2(_Time.xy)) * 1.5 - 1.0, random(fixed2(_Time.y * 1.5, _Time.y * 2.0)) * 1.5 - 1.0) / fixed2(_ResHorizontal, _ResVertical);
+					 strength = smoothstep(_GlitchInterval * _GlitchRate, _GlitchInterval, _GlitchInterval - mod(1 / _UnscaledTime, _GlitchInterval));
+					 shake = fixed2(strength * 8.0 + 0.5, strength * 8.0 + 0.5)* fixed2(random(fixed2(_UnscaledTime, 1 / _UnscaledTime)) * 1.5 - 1.0, random(fixed2(1 / _UnscaledTime * 1.5, 1 / _UnscaledTime * 2.0)) * 1.5 - 1.0) / fixed2(_ResHorizontal, _ResVertical);
 				}
 
 
@@ -84,20 +86,20 @@ Shader "Custom/Glitchy Footage Shader"{
 				fixed rgbWave = 0.;
 				if (_ScanlineGlitchEnabled == 1.) {
 					rgbWave = (
-						snoise(float2( y * 0.01, _Time.y * 400.0)) * (2.0 + strength * 32.0) //Time.x was just _Time in original
-						* snoise(float2( y * 0.02, _Time.y * 200.0)) * (1.0 + strength * 4.0) //Time.x was just _Time in original
-						+ step(0.9995, sin(y * 0.005 + _Time.y * 1.6)) * 12.0
-						+ step(0.9999, sin(y * 0.005 + _Time.y * 2.0)) * -18.0
+						snoise(float2( y * 0.01, 1 / _UnscaledTime * 400.0)) * (2.0 + strength * 32.0) //Time.x was just _Time in original
+						* snoise(float2( y * 0.02, 1 / _UnscaledTime * 200.0)) * (1.0 + strength * 4.0) //Time.x was just _Time in original
+						+ step(0.9995, sin(y * 0.005 + 1 / _UnscaledTime * 1.6)) * 12.0
+						+ step(0.9999, sin(y * 0.005 + 1 / _UnscaledTime * 2.0)) * -18.0
 						) / _ResHorizontal;
 				}
-				fixed rgbDiff = (6.0 + sin(_Time.y * 500.0 + i.uv.y * 40.0) * (20.0 * strength + 1.0)) / _ResHorizontal;
+				fixed rgbDiff = (6.0 + sin(1 / _UnscaledTime * 500.0 + i.uv.y * 40.0) * (20.0 * strength + 1.0)) / _ResHorizontal;
 				rgbDiff = rgbDiff * _RGBShiftIntensity;
 				fixed rgbUvX = i.uv.x + rgbWave;
 				
 				fixed g = tex2D(_MainTex, float2(rgbUvX, i.uv.y) + shake).g;
 				fixed2 rb = tex2D(_MainTex, float2(rgbUvX + rgbDiff, i.uv.y) + shake).rb;//r and b channels get shifted by rgbDiff amount
 				
-				fixed whiteNoise = (random(i.uv + mod(_Time.y, 10.0)) * 2.0 - 1.0) * (0.15 + strength * 0.15);
+				fixed whiteNoise = (random(i.uv + mod(1 / _UnscaledTime, 10.0)) * 2.0 - 1.0) * (0.15 + strength * 0.15);
 
 				fixed bnMask = 0.;
 				fixed bnMask2 = 0.;
@@ -105,7 +107,7 @@ Shader "Custom/Glitchy Footage Shader"{
 				fixed4 blockNoise2 = fixed4(0., 0., 0., 0.);
 
 				if (_BlockGlitchEnabled == 1.) {
-					fixed bnTime = floor(_Time.y * 20.0) * 200.0;
+					fixed bnTime = floor(1 / _UnscaledTime * 20.0) * 200.0;
 					float noiseX = step((snoise(float3(0.0, i.uv.x * 3.0, bnTime)) + 1.0) / 2.0, 0.12 + strength * 0.3);
 					float noiseY = step((snoise(float3(0.0, i.uv.y * 3.0, bnTime)) + 1.0) / 2.0, 0.12 + strength * 0.3);
 					bnMask = noiseX * noiseY;
@@ -115,7 +117,7 @@ Shader "Custom/Glitchy Footage Shader"{
 					half bnB = tex2D(_MainTex, float2(bnUvX - rgbDiff, i.uv.y)).b * bnMask;
 					blockNoise = fixed4(bnR, bnG, bnB, 1.0);
 
-					float bnTime2 = floor(_Time * 25.0) * 300.0;
+					float bnTime2 = floor(fixed4(_UnscaledTime, 1 / _UnscaledTime, _UnscaledTime, 1 / _UnscaledTime) * 25.0) * 300.0;
 					float noiseX2 = step((snoise(float3(0.0, i.uv.x * 2.0, bnTime2)) + 1.0) / 2.0, 0.12 + strength * 0.5);
 					float noiseY2 = step((snoise(float3(0.0, i.uv.y * 8.0, bnTime2)) + 1.0) / 2.0, 0.12 + strength * 0.3);
 					bnMask2 = noiseX2 * noiseY2;

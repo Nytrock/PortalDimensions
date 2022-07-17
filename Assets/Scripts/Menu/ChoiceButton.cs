@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ChoiceButton : MonoBehaviour,
-    IPointerEnterHandler
+public class ChoiceButton : MonoBehaviour, IPointerEnterHandler
 {
     public Choice choice;
     public int id;
+    public bool pauseActive;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        choice.GetPosition(id);
+        if (pauseActive)
+            choice.GetPosition(id);
     }
 }

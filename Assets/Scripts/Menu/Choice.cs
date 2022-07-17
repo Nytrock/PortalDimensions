@@ -20,6 +20,23 @@ public class Choice : MonoBehaviour
 
     private void FixedUpdate()
     {
+        MakeStep();
+    }
+
+    private void Update()
+    {
+        if (!CanvasManager.isGamePaused) {
+            CheckButtons();
+        }
+    }
+    public void GetPosition(int id)
+    {
+        NowId = id;
+        TargetPosition = positions[id];
+    }
+
+    public void MakeStep()
+    {
         for (int i = 0; i < speed; i++) {
             if (Mathf.Abs(NowPosition - TargetPosition) >= Step) {
                 if (NowPosition < TargetPosition)
@@ -31,18 +48,47 @@ public class Choice : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void CheckButtons()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && Buttons.Count - 1 > 0)
             GetPosition(Mathf.Max(NowId - 1, 0));
         if (Input.GetKeyDown(KeyCode.DownArrow) && Buttons.Count - 1 > NowId)
             GetPosition(Mathf.Min(NowId + 1, positions.Count - 1));
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             Buttons[NowId].onClick.Invoke();
     }
-    public void GetPosition(int id)
+
+    public void StartPauseWorking()
     {
-        NowId = id;
-        TargetPosition = positions[id];
+        foreach (Button button in Buttons)
+            button.GetComponent<ChoiceButton>().pauseActive = true;
+        StartCoroutine(FixedUpdatePause());
+        StartCoroutine(UpdatePause());
+    }
+
+    public void StopPauseWorking()
+    {
+        foreach (Button button in Buttons)
+            button.GetComponent<ChoiceButton>().pauseActive = false;
+        StopCoroutine(FixedUpdatePause());
+        StopCoroutine(UpdatePause());
+    }
+
+    IEnumerator FixedUpdatePause()
+    {
+        while (true)
+        {
+            MakeStep();
+            yield return new WaitForSecondsRealtime(0.02f);
+        }
+    }
+
+    IEnumerator UpdatePause()
+    {
+        while (true)
+        {
+            CheckButtons();
+            yield return new WaitForSecondsRealtime(Time.deltaTime);
+        }
     }
 }
