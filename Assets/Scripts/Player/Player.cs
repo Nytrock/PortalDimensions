@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     public List<Sprite> LeftSprites;
     public List<Sprite> RightSprites;
 
+    public Material material;
+
 
     void Start()
     {
@@ -41,8 +43,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Walk();
-        Jump();
+        if (!CanvasManager.isGamePaused) {
+            Walk();
+            Jump();
+        }
     }
 
     void Walk()

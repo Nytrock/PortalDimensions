@@ -33,7 +33,7 @@ public class PortalGun : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !player.InPortal && !menuActive)
+        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !player.InPortal && !menuActive && !CanvasManager.isGamePaused)
         {
             Shoot();
 
