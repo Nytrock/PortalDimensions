@@ -70,8 +70,7 @@ public class Choice : MonoBehaviour
     {
         foreach (Button button in Buttons)
             button.GetComponent<ChoiceButton>().pauseActive = false;
-        StopCoroutine(FixedUpdatePause());
-        StopCoroutine(UpdatePause());
+        StopAllCoroutines();
     }
 
     IEnumerator FixedUpdatePause()
@@ -79,7 +78,7 @@ public class Choice : MonoBehaviour
         while (true)
         {
             MakeStep();
-            yield return new WaitForSecondsRealtime(0.02f);
+            yield return new WaitForSecondsRealtime(Time.fixedDeltaTime);
         }
     }
 

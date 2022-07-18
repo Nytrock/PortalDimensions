@@ -12286,7 +12286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc89dc87f8a30443b505725b3fffb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 711258262}
+  canvas: {fileID: 711258260}
   localization: {fileID: 79656920}
   originallyLanguage: 0
   PreviousButton: {fileID: 1175330871}
@@ -12297,6 +12297,8 @@ MonoBehaviour:
   fpsManager: {fileID: 19548788}
   fpsCounter: {fileID: 5789978}
   fpsShowing: 0
+  originallyFps: 0
+  isFpsChange: 0
 --- !u!1 &1959881638
 GameObject:
   m_ObjectHideFlags: 0

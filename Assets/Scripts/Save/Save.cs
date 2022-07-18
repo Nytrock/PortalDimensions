@@ -45,7 +45,6 @@ public class Save : MonoBehaviour
     {
         if (File.Exists(Application.dataPath + WayToSavefile)) {
             LoadSettings();
-
         }
     }
 
@@ -56,7 +55,7 @@ public class Save : MonoBehaviour
         try {
             SettingsSave settings = (SettingsSave)form.Deserialize(stream);
             localizationManager.SetLanguage(settings.languageId);
-            if (SceneManager.GetActiveScene().buildIndex == 0) {
+            if (settingsnManager) {
                 settingsnManager.autoManager.isOn = settings.AutoRestart;
                 settingsnManager.fpsManager.isOn = settings.FpsShowing;
             }

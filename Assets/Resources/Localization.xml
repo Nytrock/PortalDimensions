@@ -11,10 +11,10 @@
 			<ru>Русский</ru>
 		</translates>
 	</key>
-	<key name="Новая игра">
+	<key name="Статистика">
 		<translates>
-			<en-us>New game</en-us>
-			<ru>Новая игра</ru>
+			<en-us>Statistics</en-us>
+			<ru>Статистика</ru>
 		</translates>
 	</key>
 	<key name="Продолжить">
@@ -65,10 +65,16 @@
 			<ru>Сохранить</ru>
 		</translates>
 	</key>
-	<key name="Пауза">
+	<key name="Выйти из игры">
 		<translates>
-			<en-us>Pause</en-us>
-			<ru>Пауза</ru>
+			<en-us>Exit the game</en-us>
+			<ru>Выйти из игры</ru>
+		</translates>
+	</key>
+	<key name="Выйти в меню">
+		<translates>
+			<en-us>Exit to menu</en-us>
+			<ru>Выйти в меню</ru>
 		</translates>
 	</key>
 	<key name="Тестовик">

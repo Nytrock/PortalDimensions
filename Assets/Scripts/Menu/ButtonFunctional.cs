@@ -17,7 +17,7 @@ public class ButtonFunctional : MonoBehaviour
 
     public void Settings()
     {
-        animator.SetBool("Settings", !animator.GetBool("Settings"));
+        animator.SetBool("isSettings", !animator.GetBool("isSettings"));
     }
 
     public void About()
