@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
-    public ButtonFunctional canvas;
+    public Animator canvas;
 
     [Header("Настройки локализации")]
     public LocalizationManager localization;
@@ -22,8 +22,8 @@ public class SettingsManager : MonoBehaviour
     public Toggle fpsManager;
     public FpsCounter fpsCounter;
     public bool fpsShowing;
-    private bool originallyFps;
-    private bool isFpsChange;
+    public bool originallyFps;
+    public bool isFpsChange;
 
     public void Start()
     {
@@ -36,6 +36,7 @@ public class SettingsManager : MonoBehaviour
 
         originallyFps = fpsManager.isOn;
         fpsShowing = originallyFps;
+        isFpsChange = false;
     }
     public void NextLanguage()
     {
@@ -70,7 +71,7 @@ public class SettingsManager : MonoBehaviour
         if (isLanguageChange || isAutoChange || isFpsChange) {
             Debug.Log("Вы уверены?");
         } else {
-            canvas.animator.SetBool("Settings", !canvas.animator.GetBool("Settings"));
+            canvas.SetBool("isSettings", !canvas.GetBool("isSettings"));
         }
     }
 }

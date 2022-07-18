@@ -7,6 +7,26 @@ public class CanvasManager : MonoBehaviour
     public static bool isGamePaused;
     public LevelManager levelManager;
     public Choice choice;
+    public SettingsManager settingsManager;
+
+    private float choiceYCoordinate;
+
+    public void Start()
+    {
+        choiceYCoordinate = choice.transform.localPosition.y;
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            var canvas = GetComponent<Animator>();
+            if (canvas.GetBool("isSettings"))
+                settingsManager.CheckChanges();
+            else
+                canvas.SetBool("isPause", !canvas.GetBool("isPause"));
+        }
+    }
+
     public void ReloadScene()
     {
         levelManager.RestartScene();
@@ -22,5 +42,12 @@ public class CanvasManager : MonoBehaviour
         Time.timeScale = 1;
         isGamePaused = false;
         choice.StopPauseWorking();
+    }
+
+    public void SetChoicePosition()
+    {
+        choice.transform.localPosition = new Vector2(choice.transform.localPosition.x, choiceYCoordinate);
+        choice.GetPosition(0);
+        choice.NowPosition = choice.positions[0];
     }
 }

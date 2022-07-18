@@ -23,16 +23,18 @@ public class PauseButtons : MonoBehaviour
 
     public void Settings()
     {
-        Debug.Log("Settings");
+        canvas.SetBool("isSettings", !canvas.GetBool("isSettings"));
     }
 
     public void ExitToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(2);
     }
 
     public void Exit()
     {
+        Time.timeScale = 1;
         Application.Quit();
     }
 }
