@@ -10,11 +10,11 @@ public class SettingsManager : MonoBehaviour
     public int originallyLanguage;
     public Button PreviousButton;
     public Button NextButton;
-    public bool isLanguageChange;
+    private bool isLanguageChange;
 
     [Header("Настройки авторестарта")]
     public Toggle autoManager;
-    public bool Autorestart;
+    public bool autorestart;
     private bool originallyAuto;
     private bool isAutoChange;
 
@@ -22,8 +22,14 @@ public class SettingsManager : MonoBehaviour
     public Toggle fpsManager;
     public FpsCounter fpsCounter;
     public bool fpsShowing;
-    public bool originallyFps;
-    public bool isFpsChange;
+    private bool originallyFps;
+    private bool isFpsChange;
+
+    [Header("Настройки подтверждения выхода")]
+    public Toggle confirmManager;
+    public bool confirm;
+    private bool originallyConfirm;
+    private bool isConfirmChange;
 
     public void Start()
     {
@@ -32,7 +38,11 @@ public class SettingsManager : MonoBehaviour
         originallyLanguage = LocalizationManager.SelectedLanguage;
 
         originallyAuto = autoManager.isOn;
-        Autorestart = originallyAuto;
+        autorestart = originallyAuto;
+
+        originallyConfirm = confirmManager.isOn;
+        confirm = originallyConfirm;
+        isConfirmChange = false;
 
         originallyFps = fpsManager.isOn;
         fpsShowing = originallyFps;
@@ -56,8 +66,14 @@ public class SettingsManager : MonoBehaviour
 
     public void ChangeAutorestart()
     {
-        Autorestart = !Autorestart;
-        isAutoChange = Autorestart != originallyAuto;
+        autorestart = !autorestart;
+        isAutoChange = autorestart != originallyAuto;
+    }
+
+    public void ChangeConfirmNeed()
+    {
+        confirm = !confirm;
+        isConfirmChange = confirm != originallyConfirm;
     }
     public void ChangeFps()
     {
@@ -68,10 +84,33 @@ public class SettingsManager : MonoBehaviour
 
     public void CheckChanges()
     {
-        if (isLanguageChange || isAutoChange || isFpsChange) {
-            Debug.Log("Вы уверены?");
+        if (isLanguageChange || isAutoChange || isFpsChange || isConfirmChange) {
+            canvas.SetBool("isConfirm", true);
         } else {
             canvas.SetBool("isSettings", !canvas.GetBool("isSettings"));
         }
+    }
+    public void ConfirmCancel(bool value)
+    {
+        if (value)
+            ReturnToNormal();
+        canvas.SetBool("isConfirm", false);
+    }
+
+    private void ReturnToNormal()
+    {
+        localization.SetLanguage(originallyLanguage);
+        NextButton.interactable = !(LocalizationManager.SelectedLanguage + 1 >= Save.NumberLanguages);
+        PreviousButton.interactable = !(LocalizationManager.SelectedLanguage - 1 < 0);
+        isLanguageChange = false;
+
+        fpsManager.isOn = originallyFps;
+        fpsCounter.ChangeWorking(originallyFps);
+
+        autoManager.isOn = originallyAuto;
+
+        confirmManager.isOn = originallyConfirm;
+
+        canvas.SetBool("isSettings", false);
     }
 }

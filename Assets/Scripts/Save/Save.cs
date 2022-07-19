@@ -22,6 +22,7 @@ public class Save : MonoBehaviour
         public int languageId;
         public bool AutoRestart;
         public bool FpsShowing;
+        public bool ConfimToExitActive;
     }
 
     public void Awake()
@@ -33,8 +34,9 @@ public class Save : MonoBehaviour
     {
         SettingsSave settings = new SettingsSave();
         settings.languageId = LocalizationManager.SelectedLanguage;
-        settings.AutoRestart = settingsnManager.Autorestart;
+        settings.AutoRestart = settingsnManager.autorestart;
         settings.FpsShowing = settingsnManager.fpsShowing;
+        settings.ConfimToExitActive = settingsnManager.confirm;
         FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Create);
         BinaryFormatter form = new BinaryFormatter();
         form.Serialize(stream, settings);
@@ -58,6 +60,7 @@ public class Save : MonoBehaviour
             if (settingsnManager) {
                 settingsnManager.autoManager.isOn = settings.AutoRestart;
                 settingsnManager.fpsManager.isOn = settings.FpsShowing;
+                settingsnManager.confirmManager.isOn = settings.ConfimToExitActive;
             }
             fpsCounter.ChangeWorking(settings.FpsShowing);
         } finally {
@@ -73,6 +76,22 @@ public class Save : MonoBehaviour
         {
             SettingsSave settings = (SettingsSave)form.Deserialize(stream);
             var result = settings.AutoRestart;
+            return result;
+        }
+        finally
+        {
+            stream.Close();
+        }
+    }
+
+    public static bool GetConfirmNeed()
+    {
+        FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Open);
+        BinaryFormatter form = new BinaryFormatter();
+        try
+        {
+            SettingsSave settings = (SettingsSave)form.Deserialize(stream);
+            var result = settings.ConfimToExitActive;
             return result;
         }
         finally

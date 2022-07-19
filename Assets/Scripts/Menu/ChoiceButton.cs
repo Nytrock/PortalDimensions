@@ -10,6 +10,6 @@ public class ChoiceButton : MonoBehaviour, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (pauseActive)
-            choice.GetPosition(id);
+            choice.SetPosition(id);
     }
 }
