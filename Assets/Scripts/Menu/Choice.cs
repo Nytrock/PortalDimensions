@@ -29,7 +29,7 @@ public class Choice : MonoBehaviour
             CheckButtons();
         }
     }
-    public void GetPosition(int id)
+    public void SetPosition(int id)
     {
         NowId = id;
         TargetPosition = positions[id];
@@ -51,9 +51,9 @@ public class Choice : MonoBehaviour
     public void CheckButtons()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && Buttons.Count - 1 > 0)
-            GetPosition(Mathf.Max(NowId - 1, 0));
+            SetPosition(Mathf.Max(NowId - 1, 0));
         if (Input.GetKeyDown(KeyCode.DownArrow) && Buttons.Count - 1 > NowId)
-            GetPosition(Mathf.Min(NowId + 1, positions.Count - 1));
+            SetPosition(Mathf.Min(NowId + 1, positions.Count - 1));
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             Buttons[NowId].onClick.Invoke();
     }

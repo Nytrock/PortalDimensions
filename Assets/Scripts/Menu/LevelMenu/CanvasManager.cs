@@ -47,7 +47,7 @@ public class CanvasManager : MonoBehaviour
     public void SetChoicePosition()
     {
         choice.transform.localPosition = new Vector2(choice.transform.localPosition.x, choiceYCoordinate);
-        choice.GetPosition(0);
+        choice.SetPosition(0);
         choice.NowPosition = choice.positions[0];
     }
 }

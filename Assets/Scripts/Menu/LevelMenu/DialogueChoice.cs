@@ -16,7 +16,7 @@ public class DialogueChoice : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         DialogueManager.isButton = true;
         var choice = dialogueManager.choiceArrow;
-        choice.GetPosition(id);
+        choice.SetPosition(id);
     }
 
     public void OnPointerExit(PointerEventData eventData)
