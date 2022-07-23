@@ -8386,7 +8386,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1199938459}
         m_TargetAssemblyTypeName: Save, Assembly-CSharp
-        m_MethodName: SaveSettings
+        m_MethodName: SaveAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10846,11 +10846,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969cc93745f0d444f87980a9f44eadd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaveFile: {fileID: 4900000, guid: 19a0e207f1b81034481b23e5b178a264, type: 3}
   localizationManager: {fileID: 79656920}
   settingsnManager: {fileID: 1958044356}
   fpsCounter: {fileID: 5789978}
   DialogueProfiles: []
+  ExistingChoiceIdList: 
 --- !u!4 &1199938460
 Transform:
   m_ObjectHideFlags: 0

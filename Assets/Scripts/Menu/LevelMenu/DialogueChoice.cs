@@ -6,10 +6,16 @@ public class DialogueChoice : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public int NextPanel;
     public DialogueManager dialogueManager;
     public int id;
+    public int doId = -1;
+    public int existingId = -1;
 
     public void ChangePanel()
     {
         dialogueManager.ChangePanel(NextPanel);
+        if (doId > -1)
+            dialogueManager.choiceManager.DoSomethingFromId(doId);
+        if (existingId > -1)
+            dialogueManager.save.SetChoiceExisting(existingId, false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
