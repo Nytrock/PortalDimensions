@@ -6,7 +6,9 @@ using UnityEngine;
 public class ProfileDialogue : ScriptableObject, DialogueInterface
 {
     public int id => _id;
-    public new string name => _name;
+    public string name => _name;
+    public Color profileColor => _color;
+    public bool isRobot => _robot;
     public Sprite CalmImage => _calm;
     public Sprite AngryImage => _angry;
     public Sprite AfraidImage => _afraid;
@@ -16,6 +18,8 @@ public class ProfileDialogue : ScriptableObject, DialogueInterface
 
     [SerializeField] private int _id;
     [SerializeField] private string _name;
+    [SerializeField] private Color _color;
+    [SerializeField] private bool _robot;
     [SerializeField] private Sprite _calm;
     [SerializeField] private Sprite _angry;
     [SerializeField] private Sprite _afraid;

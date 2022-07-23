@@ -41,6 +41,12 @@
 			<ru>Создатели</ru>
 		</translates>
 	</key>
+	<key name="Выход">
+		<translates>
+			<en-us>Exit</en-us>
+			<ru>Выход</ru>
+		</translates>
+	</key>
 	<key name="Вы уверены?">
 		<translates>
 			<en-us>Are you sure?</en-us>

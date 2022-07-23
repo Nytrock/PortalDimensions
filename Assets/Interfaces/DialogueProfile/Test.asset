@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: "\u0422\u0435\u0441\u0442\u043E\u0432\u0438\u043A"
+  _color: {r: 0, g: 1, b: 1, a: 1}
+  _robot: 0
   _calm: {fileID: 2912297781628502651, guid: 1024adf3639b6e04eb52355a6c34c4f1, type: 3}
   _angry: {fileID: 5285808030655182707, guid: 1024adf3639b6e04eb52355a6c34c4f1, type: 3}
+  _afraid: {fileID: 0}
+  _happy: {fileID: 0}
+  _confused: {fileID: 0}
+  _tense: {fileID: 0}

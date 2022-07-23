@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     private GameObject JustChoiceContainer;
 
     public Choice choiceArrow;
+    public DialogueChoiceManager choiceManager;
 
     public Animator panelsController;
     private int numPanel = 1;
@@ -43,7 +44,7 @@ public class DialogueManager : MonoBehaviour
     private Dictionary<GameObject, GameObject> viewChoices;
 
     private static Dictionary<string, Dictionary<string, string>> dialogues;
-    private static Dictionary<string, Dictionary<string, string>> choices;
+    private static Dictionary<string, Dictionary<string, Dictionary<string, string>>> choices;
     private void Awake()
     {
         if (dialogues == null)
@@ -115,6 +116,7 @@ public class DialogueManager : MonoBehaviour
             viewChoices.Clear();
             choiceArrow.Buttons.Clear();
             numPanel = 1;
+            save.SaveAll();
             return;
         }
 
@@ -191,14 +193,14 @@ public class DialogueManager : MonoBehaviour
     private void LoadDialogues()
     {
         dialogues = new Dictionary<string, Dictionary<string, string>>();
-        choices = new Dictionary<string, Dictionary<string, string>>();
+        choices = new Dictionary<string, Dictionary<string, Dictionary<string, string>>>();
         viewChoices = new Dictionary<GameObject, GameObject>();
         XmlDocument xmlDocument = new XmlDocument();
         xmlDocument.LoadXml(textFile.text);
 
-        foreach (XmlNode key in xmlDocument["Keys"].ChildNodes)
+        foreach (XmlNode key in xmlDocument["keys"].ChildNodes)
         {
-            string keyStr = key.Attributes["Name"].Value;
+            string keyStr = key.Attributes["name"].Value;
 
             var values = new Dictionary<string, string>();
             foreach (XmlNode value in key.ChildNodes) {
@@ -206,9 +208,19 @@ public class DialogueManager : MonoBehaviour
                     values[value.Name] = value.InnerText;
                 } else {
                     var choiceKey = keyStr;
-                    var choiceValues = new Dictionary<string, string>();
+                    var choiceValues = new Dictionary<string, Dictionary<string, string>>();
                     foreach (XmlNode choice in value.ChildNodes)
-                        choiceValues[choice.InnerText] = choice.Attributes["Next"].Value;
+                    {
+                        var choice_information = new Dictionary<string, string>();
+                        choice_information["next"] = choice.Attributes["next"].Value;
+                        if (choice.Attributes["required"] != null)
+                            choice_information["required"] = "true";
+                        if (choice.Attributes["do_id"] != null)
+                            choice_information["do_id"] = choice.Attributes["do_id"].Value;
+                        if (choice.Attributes["existing_id"] != null)
+                            choice_information["existing_id"] = choice.Attributes["existing_id"].Value;
+                        choiceValues[choice.InnerText] = choice_information;
+                    }
                     choices[choiceKey] = choiceValues;
                 }
             }
@@ -234,6 +246,8 @@ public class DialogueManager : MonoBehaviour
     {
         var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
         Name.GetComponent<LocalizedText>().Localize(profile.name);
+
+        ProfileImage.color = profile.profileColor;
 
         switch (information["mood"])
         {
@@ -274,16 +288,44 @@ public class DialogueManager : MonoBehaviour
         choiceArrow.TargetPosition = choiceArrow.positions[num];
         choiceArrow.NowPosition = choiceArrow.positions[num];
 
-        foreach (var variant in choiceInformation)
-        {
+        var updatedChoiceInformation = new Dictionary<string, Dictionary<string, string>>();
+        var lastKey = "";
+        KeyValuePair<string, Dictionary<string, string>> main = new KeyValuePair<string, Dictionary<string, string>>();
+        foreach (var variant in choiceInformation){ 
+            if (variant.Value.ContainsKey("required")) {
+                main = variant;
+            } else {
+                bool existing = true;
+                if (variant.Value.ContainsKey("existing_id")) {
+                    existing = save.GetChoiceExisting(int.Parse(variant.Value["existing_id"]));
+                }
+                if (updatedChoiceInformation.Count < 4 && existing) {
+                    updatedChoiceInformation[variant.Key] = variant.Value;
+                    lastKey = variant.Key;
+                }
+            }
+        }
+        if (main.Key != null) {
+            if (updatedChoiceInformation.Count == 4)
+                updatedChoiceInformation.Remove(lastKey);
+            updatedChoiceInformation[main.Key] = main.Value;
+        }
+
+
+        foreach (var variant in updatedChoiceInformation) {
             var visualbuttonChoice = Instantiate(VisualChoiceButtonPrefab, VisualButtonsContainers);
             visualbuttonChoice.GetComponentInChildren<TextMeshProUGUI>().text = LocalizationManager.GetTranslate(variant.Key);
             visualbuttonChoice.SetActive(false);
 
             var workingbuttonChoice = Instantiate(WorkingChoiceButtonPrefab, WorkingButtonsContainers);
-            workingbuttonChoice.GetComponent<DialogueChoice>().NextPanel = int.Parse(variant.Value);
-            workingbuttonChoice.GetComponent<DialogueChoice>().dialogueManager = this;
-            workingbuttonChoice.GetComponent<DialogueChoice>().id = num;
+            var dialogueChoice = workingbuttonChoice.GetComponent<DialogueChoice>();
+            dialogueChoice.NextPanel = int.Parse(variant.Value["next"]);
+            dialogueChoice.dialogueManager = this;
+            dialogueChoice.id = num;
+            if (variant.Value.ContainsKey("do_id"))
+                dialogueChoice.doId = int.Parse(variant.Value["do_id"]);
+            if(variant.Value.ContainsKey("existing_id"))
+                dialogueChoice.existingId = int.Parse(variant.Value["existing_id"]);
             workingbuttonChoice.SetActive(false);
 
             choiceArrow.Buttons.Add(workingbuttonChoice.GetComponent<Button>());

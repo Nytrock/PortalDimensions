@@ -1,47 +1,40 @@
-
-<Keys>
-	<Key Name="DialogeTest_1">
+<keys>
+	<key name="DialogeTest_1">
 		<id_user>0</id_user>
 		<mood>Calm</mood>
-		<speed>0.2</speed>
-		<text>Тестовый текст для диалога</text>
+		<speed>0.1</speed>
+		<text>Приветствую в новой тестовой системе. Ответьте на простой вопрос.</text>
 		<next>2</next>
-	</Key>
-	<Key Name="DialogeTest_2">
+	</key>
+	<key name="DialogeTest_2">
 		<id_user>0</id_user>
 		<mood>Angry</mood>
 		<speed>0.1</speed>
-		<text>Продолжение тестового диалога</text>
+		<text>Иначе будете уничтожены.</text>
 		<next>3</next>
-	</Key>
-	<Key Name="DialogeTest_3">
+	</key>
+	<key name="DialogeTest_3">
 		<id_user>0</id_user>
 		<mood>Calm</mood>
 		<speed>0.1</speed>
 		<choice>
-			<text Next="4">Да</text>
-			<text Next="5">Нет</text>
+			<text next="5" existing_id="0">Хорошо</text>
+			<text next="5" existing_id="1">Окей</text>
+			<text next="5" existing_id="2" do_id="1">Без проблем</text>
+			<text next="5" do_id="0">Ну давай</text>
+			<text next="4" required="true">Нет, спасибо</text>
 		</choice>
-	</Key>
-	<Key Name="DialogeTest_4">
+	</key>
+	<key name="DialogeTest_4">
 		<id_user>0</id_user>
 		<mood>Calm</mood>
 		<speed>0.1</speed>
-		<text>Ты сказал "Да"?</text>
-		<choice>
-			<text Next="6">Нет</text>
-		</choice>
-	</Key>
-	<Key Name="DialogeTest_5">
+		<text>Вот и хорошо.</text>
+	</key>
+	<key name="DialogeTest_5">
 		<id_user>0</id_user>
 		<mood>Calm</mood>
 		<speed>0.1</speed>
-		<text>Ты сказал нет.</text>
-	</Key>
-	<Key Name="DialogeTest_6">
-		<id_user>0</id_user>
-		<mood>Calm</mood>
-		<speed>0.1</speed>
-		<text>Значит ты сказал нет!</text>
-	</Key>
-</Keys>
+		<text>Ты сказал нет. Я бы предложил тебе почаще оборачиваться на улице.</text>
+	</key>
+</keys>
