@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d7b0ea278e26e47b51f65fee512dc5, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  _id: 1
+  _name: "\u0410\u043B\u044C\u0431\u0435\u0440\u0442"
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _robot: 0
+  _calm: {fileID: -2311659948842064771, guid: 768b6829856511a4bab6169dfa06f0c7, type: 3}
+  _angry: {fileID: 7364682651488144517, guid: 768b6829856511a4bab6169dfa06f0c7, type: 3}
+  _afraid: {fileID: -6287787046888575383, guid: 768b6829856511a4bab6169dfa06f0c7, type: 3}
+  _happy: {fileID: -1182821291677670348, guid: 768b6829856511a4bab6169dfa06f0c7, type: 3}
+  _confused: {fileID: -4709456396536258026, guid: 768b6829856511a4bab6169dfa06f0c7, type: 3}
+  _tense: {fileID: -4529042392078601758, guid: 768b6829856511a4bab6169dfa06f0c7, type: 3}

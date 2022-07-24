@@ -12,12 +12,14 @@ public class Save : MonoBehaviour
     public LocalizationManager localizationManager;
     public SettingsManager settingsnManager;
     public FpsCounter fpsCounter;
+    public DialogueChoiceManager dialogueChoiceManager;
 
     [Header("Профили для диалогов")]
     public List<ProfileDialogue> DialogueProfiles;
 
     [Header("Списки для вариантов выбора диалогов")]
     [SerializeField] private List<bool> ExistingChoiceIdList;
+    [SerializeField] private List<bool> DoChoiceIdList;
 
     [System.Serializable]
     private class SettingsSave
@@ -30,7 +32,8 @@ public class Save : MonoBehaviour
     [System.Serializable]
     private class DialoguesSave
     {
-        public string existingChoices;
+        public List<bool> existingChoices;
+        public List<bool> doingChoices;
     }
 
 
@@ -48,8 +51,8 @@ public class Save : MonoBehaviour
         settings.ConfimToExitActive = settingsnManager.confirm;
 
         DialoguesSave dialogues = new DialoguesSave();
-        var massive = String.Join(",", ExistingChoiceIdList);
-        dialogues.existingChoices = massive;
+        dialogues.existingChoices = ExistingChoiceIdList;
+        dialogues.doingChoices = DoChoiceIdList;
 
         FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Open);
         BinaryFormatter form = new BinaryFormatter();
@@ -75,7 +78,14 @@ public class Save : MonoBehaviour
                 fpsCounter.ChangeWorking(settings.FpsShowing);
 
                 DialoguesSave dialogues = (DialoguesSave)form.Deserialize(stream);
-                ExistingChoiceIdList = dialogues.existingChoices.Split(',').Select(bool.Parse).ToList();
+                ExistingChoiceIdList = dialogues.existingChoices;
+                DoChoiceIdList = dialogues.doingChoices;
+                if (dialogueChoiceManager){
+                    for (int i = 0; i < DoChoiceIdList.Count; i++) {
+                        if (DoChoiceIdList[i])
+                            dialogueChoiceManager.DoSomethingFromId(i);
+                    }
+                }
             } catch {
                 stream.Close();
             } finally {
@@ -121,6 +131,10 @@ public class Save : MonoBehaviour
     public void SetChoiceExisting(int id, bool newValue)
     {
         ExistingChoiceIdList[id] = newValue;
+    }
 
+    public void SetChoiceDoing(int id, bool newValue)
+    {
+        DoChoiceIdList[id] = newValue;
     }
 }

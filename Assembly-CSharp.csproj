@@ -61,7 +61,7 @@
     <Compile Include="Assets\Scripts\Player\Portal\PregradsControl.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ProfileDialogue.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelManager.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\DialogueInterface.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonFunctional.cs" />
     <Compile Include="Assets\Scripts\Player\JumpBonus.cs" />
@@ -69,12 +69,13 @@
     <Compile Include="Assets\Scripts\Player\Portal\Portal.cs" />
     <Compile Include="Assets\Scripts\Menu\Choice.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalShoot.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\ItemStartDialogue.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\ItemStartDialogue.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalCollider.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundGet.cs" />
     <Compile Include="Assets\Scripts\Player\DeathTrap.cs" />
     <Compile Include="Assets\Scripts\Player\DeathEffect.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedDropdown.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueChoiceManager.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalChecker.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalGun.cs" />
@@ -86,14 +87,14 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\JumpCrystall.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\SettingsManager.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\DialogueChoice.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueChoice.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalTrigger.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizationManager.cs" />
     <Compile Include="Assets\Scripts\Menu\ShaderUpdate.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedText.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\PauseButtons.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\DialogueChoiceManager.cs" />
+    <Compile Include="Assets\Scripts\Localization\LocalizedDialogueText.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
