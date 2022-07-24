@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
 
     public string NeedText;
     private float speedShowingText = 1f;
-    private bool isTextShow;
+    public bool isTextShow;
     private bool isAnimation;
     public static bool isButton;
     private string dialogeKey;
@@ -68,6 +68,7 @@ public class DialogueManager : MonoBehaviour
                 if (JustChoice.activeSelf || TextWithChoice.activeSelf)
                     choiceArrow.gameObject.SetActive(true);
                 isTextShow = false;
+                CheckRobotAtEnd();
             } else if (!isAnimation && !JustChoice.activeSelf && !TextWithChoice.activeSelf) {
                 ContinueDialogue();
             }
@@ -84,8 +85,9 @@ public class DialogueManager : MonoBehaviour
         numPanel = 1;
         var information = dialogues[dialogeKey + "_" + numPanel];
         speedShowingText = float.Parse(information["speed"], CultureInfo.InvariantCulture.NumberFormat);
+        speedShowingText = 1 / (10 * speedShowingText) / 1.5f;
 
-        SetProfileInformation(information);
+        SetProfileInformation(information, false);
 
         if (choices.ContainsKey(dialogeKey + "_" + numPanel) && information.ContainsKey("text")) {
             SetTextPanel(TextWithChoice);
@@ -95,10 +97,6 @@ public class DialogueManager : MonoBehaviour
         } else {
             JustText.SetActive(true);
             SetTextPanel(JustText);
-            if (information.ContainsKey("next"))
-                numPanel = int.Parse(information["next"]);
-            else
-                numPanel = -1;
         }
 
         GameObject.Find("Player").GetComponent<Player>().Dialogue();
@@ -108,6 +106,10 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueDialogue()
     {
+        var information = dialogues[dialogeKey + "_" + numPanel];
+        if (JustText.activeSelf)
+            numPanel = int.Parse(information["next"]);
+
         if (numPanel == -1) {
             panelsController.SetBool("isDialogue", false);
             var player = GameObject.Find("Player").GetComponent<Player>();
@@ -118,12 +120,14 @@ public class DialogueManager : MonoBehaviour
             numPanel = 1;
             save.SaveAll();
             return;
+        } else {
+            information = dialogues[dialogeKey + "_" + numPanel];
         }
 
-        var information = dialogues[dialogeKey + "_" + numPanel];
         speedShowingText = float.Parse(information["speed"], CultureInfo.InvariantCulture.NumberFormat);
+        speedShowingText = 1 / (10 * speedShowingText) / 1.5f;
 
-        SetProfileInformation(information);
+        SetProfileInformation(information, true);
 
         ClearPreviousChoices(JustChoice, JustChoiceContainer);
         ClearPreviousChoices(TextWithChoice, TextWithChoiceContainer);
@@ -144,10 +148,6 @@ public class DialogueManager : MonoBehaviour
             JustText.SetActive(true);
             SetTextPanel(JustText);
             MainText.text = "";
-            if (information.ContainsKey("next"))
-                numPanel = int.Parse(information["next"]);
-            else
-                numPanel = -1;
         }
         StartShowText();
     }
@@ -157,6 +157,36 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(ShowingText());
         isTextShow = true;
         isAnimation = false;
+
+        var information = dialogues[dialogeKey + "_" + numPanel];
+        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
+        if (profile.isRobot) {
+            var animator = ProfileImage.GetComponent<Animator>();
+            animator.enabled = true;
+            animator.SetFloat("Speed", 1 / (speedShowingText * 10) / 1.5f);
+
+            SetAllStatesFalse(animator);
+
+            switch (information["mood"]) {
+                case "Calm": animator.SetBool("isCalm", true); break;
+                case "Angry": animator.SetBool("isAngry", true); break;
+                case "Afraid": animator.SetBool("isAfraid", true); break;
+                case "Happy": animator.SetBool("isHappy", true); break;
+                case "Confused": animator.SetBool("isConfused", true); break;
+                case "Tense": animator.SetBool("isTense", true); break;
+            }
+        }
+    }
+
+    public void ChangeMainText()
+    {
+        if (MainText.text.Length < NeedText.Length){
+            MainText.text = NeedText.Substring(0, MainText.text.Length);
+        } else {
+            MainText.text = NeedText;
+            StopAllCoroutines();
+            isTextShow = false;
+        }
     }
 
     IEnumerator ShowingText()
@@ -180,6 +210,8 @@ public class DialogueManager : MonoBehaviour
                 yield return new WaitForSeconds(speedShowingText * 2);
             }
         }
+
+        CheckRobotAtEnd();
         isTextShow = false;
     }
 
@@ -242,15 +274,14 @@ public class DialogueManager : MonoBehaviour
         ContinueDialogue();
     }
 
-    private void SetProfileInformation(Dictionary<string, string> information)
+    private void SetProfileInformation(Dictionary<string, string> information, bool isContinue)
     {
         var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
         Name.GetComponent<LocalizedText>().Localize(profile.name);
 
         ProfileImage.color = profile.profileColor;
 
-        switch (information["mood"])
-        {
+        switch(information["mood"]) {
             case "Calm": ProfileImage.sprite = profile.CalmImage; break;
             case "Angry": ProfileImage.sprite = profile.AngryImage; break;
             case "Afraid": ProfileImage.sprite = profile.AfraidImage; break;
@@ -337,6 +368,42 @@ public class DialogueManager : MonoBehaviour
 
     private void SetTextPanel(GameObject container) {
         MainText = container.GetComponentInChildren<TextMeshProUGUI>();
+        MainText.GetComponent<LocalizedDialogueText>().key = dialogeKey + "_" + numPanel;
         NeedText = LocalizationManager.GetTranslate(dialogeKey + "_" + numPanel);
+    }
+
+    private void SetAllStatesFalse(Animator animator) {
+        animator.SetBool("isCalm", false);
+        animator.SetBool("isAngry", false);
+        animator.SetBool("isAfraid", false);
+        animator.SetBool("isHappy", false);
+        animator.SetBool("isConfused", false);
+        animator.SetBool("isTense", false);
+    }
+
+    private void SetImageAfterAnimation(Dictionary<string, string> information)
+    {
+        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
+
+        switch (information["mood"]) {
+            case "Calm": ProfileImage.sprite = profile.CalmImage; break;
+            case "Angry": ProfileImage.sprite = profile.AngryImage; break;
+            case "Afraid": ProfileImage.sprite = profile.AfraidImage; break;
+            case "Happy": ProfileImage.sprite = profile.HappyImage; break;
+            case "Confused": ProfileImage.sprite = profile.ConfusedImage; break;
+            case "Tense": ProfileImage.sprite = profile.TenseImage; break;
+        }
+    }
+
+    private void CheckRobotAtEnd()
+    {
+        var information = dialogues[dialogeKey + "_" + numPanel];
+        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
+        if (profile.isRobot)
+        {
+            SetAllStatesFalse(ProfileImage.GetComponent<Animator>());
+            ProfileImage.GetComponent<Animator>().enabled = false;
+            SetImageAfterAnimation(information);
+        }
     }
 }

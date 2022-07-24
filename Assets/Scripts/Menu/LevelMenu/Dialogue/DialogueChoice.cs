@@ -12,8 +12,10 @@ public class DialogueChoice : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void ChangePanel()
     {
         dialogueManager.ChangePanel(NextPanel);
-        if (doId > -1)
+        if (doId > -1) {
             dialogueManager.choiceManager.DoSomethingFromId(doId);
+            dialogueManager.save.SetChoiceDoing(doId, true);
+        }
         if (existingId > -1)
             dialogueManager.save.SetChoiceExisting(existingId, false);
     }

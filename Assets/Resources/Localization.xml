@@ -47,54 +47,6 @@
 			<ru>Выход</ru>
 		</translates>
 	</key>
-	<key name="Вы уверены?">
-		<translates>
-			<en-us>Are you sure?</en-us>
-			<ru>Вы уверены?</ru>
-		</translates>
-	</key>
-	<key name="Все изменения будут утеряны">
-		<translates>
-			<en-us>All changes will be lost</en-us>
-			<ru>Все изменения будут утеряны</ru>
-		</translates>
-	</key>
-	<key name="Все изменения будут утеряны">
-		<translates>
-			<en-us>All changes will be lost</en-us>
-			<ru>Все изменения будут утеряны</ru>
-		</translates>
-	</key>
-	<key name="Нет ❌">
-		<translates>
-			<en-us>No ❌</en-us>
-			<ru>Нет ❌</ru>
-		</translates>
-	</key>
-	<key name="Да ✓">
-		<translates>
-			<en-us>Yes ✓</en-us>
-			<ru>Да ✓</ru>
-		</translates>
-	</key>
-	<key name="Играть">
-		<translates>
-			<en-us>Play</en-us>
-			<ru>Играть</ru>
-		</translates>
-	</key>
-	<key name="Прогресс прохождения уровня сбросится">
-		<translates>
-			<en-us>Level progress will disappear</en-us>
-			<ru>Прогресс прохождения уровня сбросится</ru>
-		</translates>
-	</key>
-	<key name="Подтверждение выхода">
-		<translates>
-			<en-us>Exit confirmation</en-us>
-			<ru>Подтверждение выхода</ru>
-		</translates>
-	</key>
 	<key name="Счётчик fps">
 		<translates>
 			<en-us>Fps counter</en-us>
@@ -125,10 +77,10 @@
 			<ru>Выйти в меню</ru>
 		</translates>
 	</key>
-	<key name="Тестовик">
+	<key name="ИИ">
 		<translates>
-			<en-us>Testovik</en-us>
-			<ru>Тестовик</ru>
+			<en-us>AI</en-us>
+			<ru>ИИ</ru>
 		</translates>
 	</key>
 	<key name="Да">
@@ -138,6 +90,18 @@
 		</translates>
 	</key>
 	<key name="Нет">
+		<translates>
+			<en-us>No</en-us>
+			<ru>Нет</ru>
+		</translates>
+	</key>
+	<key name="Yes">
+		<translates>
+			<en-us>Yes</en-us>
+			<ru>Да</ru>
+		</translates>
+	</key>
+	<key name="No">
 		<translates>
 			<en-us>No</en-us>
 			<ru>Нет</ru>
@@ -181,32 +145,26 @@
 	</key>
 	<key name="DialogeTest_1">
 		<translates>
-			<en-us>Test text for dialogue</en-us>
-			<ru>Тестовый текст для диалога</ru>
+			<en-us>Welcome to the new test system. Answer a simple question.</en-us>
+			<ru>Приветствую в новой тестовой системе. Ответьте на простой вопрос.</ru>
 		</translates>
 	</key>
 	<key name="DialogeTest_2">
 		<translates>
-			<en-us>Continue of test dialogue</en-us>
-			<ru>Продолжение тестового диалога</ru>
+			<en-us>Otherwise, you will be destroyed.</en-us>
+			<ru>Иначе будете уничтожены.</ru>
 		</translates>
 	</key>
 	<key name="DialogeTest_4">
 		<translates>
-			<en-us>Did you say &#34;yes&#34;?</en-us>
-			<ru>Ты сказал &#34;Да&#34;?</ru>
+			<en-us>That's good.</en-us>
+			<ru>Вот и хорошо.</ru>
 		</translates>
 	</key>
 	<key name="DialogeTest_5">
 		<translates>
-			<en-us>You said no.</en-us>
-			<ru>Ты сказал нет.</ru>
-		</translates>
-	</key>
-	<key name="DialogeTest_6">
-		<translates>
-			<en-us>So you said no!</en-us>
-			<ru>Значит ты сказал нет!</ru>
+			<en-us>You said no. I would suggest that you turn around more often on the street.</en-us>
+			<ru>Ты сказал нет. Я бы предложил тебе почаще оборачиваться на улице.</ru>
 		</translates>
 	</key>
 </keys>

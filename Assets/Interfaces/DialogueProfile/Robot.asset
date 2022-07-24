@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d7b0ea278e26e47b51f65fee512dc5, type: 3}
+  m_Name: Robot
+  m_EditorClassIdentifier: 
+  _id: 0
+  _name: "\u0418\u0418"
+  _color: {r: 0, g: 0.9843137, b: 1, a: 1}
+  _robot: 1
+  _calm: {fileID: 17426746270384133, guid: f5fcdeaf0b34da74a8da4133732c7f34, type: 3}
+  _angry: {fileID: 5332947737335612695, guid: f5fcdeaf0b34da74a8da4133732c7f34, type: 3}
+  _afraid: {fileID: -5713122161831522535, guid: f5fcdeaf0b34da74a8da4133732c7f34, type: 3}
+  _happy: {fileID: 704897558614422922, guid: f5fcdeaf0b34da74a8da4133732c7f34, type: 3}
+  _confused: {fileID: -7930363469129267341, guid: f5fcdeaf0b34da74a8da4133732c7f34, type: 3}
+  _tense: {fileID: 5905603752547928858, guid: f5fcdeaf0b34da74a8da4133732c7f34, type: 3}
