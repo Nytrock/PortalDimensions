@@ -47,22 +47,22 @@ public class PortalShoot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D obj)
     {
-        if (!isUsed)
-        {
-            if (obj.TryGetComponent(out PortalCollider portalCollider))
-            {
+        if (gun.InWall) {
+            isUsed = true;
+            GetComponent<Animator>().enabled = true;
+        } else  if (!isUsed && !(obj.tag == "Player")) {
+            if (obj.TryGetComponent(out PortalCollider portalCollider)) {
                 SpawnPortal(portalCollider.portal.Collider);
                 isUsed = true;
                 GetComponent<Animator>().enabled = true;
-            }
-            else if (obj.TryGetComponent(out PolygonCollider2D polygon) && obj.tag != "Player")
-            {
+            } else if (obj.TryGetComponent(out PolygonCollider2D polygon) && obj.tag != "Player") {
                 if (obj.tag == "ForPortal")
                     SpawnPortal(polygon);
                 isUsed = true;
                 GetComponent<Animator>().enabled = true;
             }
         }
+
     }
 
     public void Destroy_Shoot()

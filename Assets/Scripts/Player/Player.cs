@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Player : MonoBehaviour
 {
     public AnimationPlayer Animations;
@@ -31,8 +29,10 @@ public class Player : MonoBehaviour
     public List<SpriteRenderer> ChangingObj;
     public List<Sprite> LeftSprites;
     public List<Sprite> RightSprites;
-
-    public Material material;
+    [Header("Бинды кнопок")]
+    public KeyCode walkLeftKey;
+    public KeyCode walkRightKey;
+    public KeyCode jumpKey;
 
 
     void Start()
@@ -51,7 +51,12 @@ public class Player : MonoBehaviour
 
     void Walk()
     {
-        moveVector.x = Input.GetAxis("Horizontal") * RealSpeed;
+        var move = 0f;
+        if (Input.GetKey(walkLeftKey) && moveVector.x <= 0)
+            move = -1;
+        else if (Input.GetKey(walkRightKey) && moveVector.x >= 0)
+            move = 1;
+        moveVector.x = move * RealSpeed;
         rb.velocity = new Vector2(moveVector.x, rb.velocity.y);
         if ((Right && moveVector.x < 0 || !Right && moveVector.x > 0))
             if (Shoot)
@@ -81,9 +86,9 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(jumpKey))
             Jumping = false;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(jumpKey))
             Jumping = true;
 
         if (jumpIteration > 0)
@@ -96,17 +101,15 @@ public class Player : MonoBehaviour
 
         if (Jumping && (onGround || CrystallJump || DoubleJump || TripleJump))
         {
-            if (onGround)
-            {
+            if (onGround) {
                 jumpForce = NormalForce;
                 jumpIteration = 10;
-            } else if (CrystallJump)
-            {
+            } else if (CrystallJump) {
                 float Const = 1.3f;
                 if (rb.velocity.y > 1f)
                     Const = rb.velocity.y * 1.1f;
                 else if (rb.velocity.y < -1f)
-                    Const = 1 + (rb.velocity.y / 50f);
+                    Const = 1f + (rb.velocity.y / 50f);
                 jumpForce = CrystallForce / Const;
                 if (BoostCrystallJump)
                     jumpForce = BoostCrystallForce / Const;
@@ -122,8 +125,7 @@ public class Player : MonoBehaviour
                 jumpIteration = 60;
                 if (DoubleJump)
                     DoubleJump = false;
-                if (TripleJump)
-                {
+                if (TripleJump) {
                     TripleJump = false;
                     DoubleJump = true;
                 }

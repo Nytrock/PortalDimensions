@@ -40,10 +40,10 @@ public class Choice : MonoBehaviour
         for (int i = 0; i < speed; i++) {
             if (Mathf.Abs(NowPosition - TargetPosition) >= Step) {
                 if (NowPosition < TargetPosition)
-                    transform.position = new Vector2(transform.position.x, transform.position.y + Step);
+                    transform.localPosition = new Vector2(transform.localPosition.x, transform.localPosition.y + Step);
                 else
-                    transform.position = new Vector2(transform.position.x, transform.position.y - Step);
-                NowPosition = transform.position.y;
+                    transform.localPosition = new Vector2(transform.localPosition.x, transform.localPosition.y - Step);
+                NowPosition = transform.localPosition.y;
             }
         }
     }
