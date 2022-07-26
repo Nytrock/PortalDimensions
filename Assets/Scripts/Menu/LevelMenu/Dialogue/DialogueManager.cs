@@ -87,7 +87,7 @@ public class DialogueManager : MonoBehaviour
         speedShowingText = float.Parse(information["speed"], CultureInfo.InvariantCulture.NumberFormat);
         speedShowingText = 1 / (10 * speedShowingText) / 1.5f;
 
-        SetProfileInformation(information, false);
+        SetProfileInformation(information);
 
         if (choices.ContainsKey(dialogeKey + "_" + numPanel) && information.ContainsKey("text")) {
             SetTextPanel(TextWithChoice);
@@ -127,7 +127,7 @@ public class DialogueManager : MonoBehaviour
         speedShowingText = float.Parse(information["speed"], CultureInfo.InvariantCulture.NumberFormat);
         speedShowingText = 1 / (10 * speedShowingText) / 1.5f;
 
-        SetProfileInformation(information, true);
+        SetProfileInformation(information);
 
         ClearPreviousChoices(JustChoice, JustChoiceContainer);
         ClearPreviousChoices(TextWithChoice, TextWithChoiceContainer);
@@ -162,19 +162,7 @@ public class DialogueManager : MonoBehaviour
         var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
         if (profile.isRobot) {
             var animator = ProfileImage.GetComponent<Animator>();
-            animator.enabled = true;
             animator.SetFloat("Speed", 1 / (speedShowingText * 10) / 1.5f);
-
-            SetAllStatesFalse(animator);
-
-            switch (information["mood"]) {
-                case "Calm": animator.SetBool("isCalm", true); break;
-                case "Angry": animator.SetBool("isAngry", true); break;
-                case "Afraid": animator.SetBool("isAfraid", true); break;
-                case "Happy": animator.SetBool("isHappy", true); break;
-                case "Confused": animator.SetBool("isConfused", true); break;
-                case "Tense": animator.SetBool("isTense", true); break;
-            }
         }
     }
 
@@ -274,21 +262,39 @@ public class DialogueManager : MonoBehaviour
         ContinueDialogue();
     }
 
-    private void SetProfileInformation(Dictionary<string, string> information, bool isContinue)
+    private void SetProfileInformation(Dictionary<string, string> information)
     {
         var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
         Name.GetComponent<LocalizedText>().Localize(profile.name);
 
         ProfileImage.color = profile.profileColor;
 
-        switch(information["mood"]) {
-            case "Calm": ProfileImage.sprite = profile.CalmImage; break;
-            case "Angry": ProfileImage.sprite = profile.AngryImage; break;
-            case "Afraid": ProfileImage.sprite = profile.AfraidImage; break;
-            case "Happy": ProfileImage.sprite = profile.HappyImage; break;
-            case "Confused": ProfileImage.sprite = profile.ConfusedImage; break;
-            case "Tense": ProfileImage.sprite = profile.TenseImage; break;
+        if (profile.isRobot) {
+            var animator = ProfileImage.GetComponent<Animator>();
+            animator.enabled = true;
+            animator.SetFloat("Speed", 0);
+
+            SetAllStatesFalse(animator);
+
+            switch (information["mood"]) {
+                case "Calm": animator.SetBool("isCalm", true); break;
+                case "Angry": animator.SetBool("isAngry", true); break;
+                case "Afraid": animator.SetBool("isAfraid", true); break;
+                case "Happy": animator.SetBool("isHappy", true); break;
+                case "Confused": animator.SetBool("isConfused", true); break;
+                case "Tense": animator.SetBool("isTense", true); break;
+            }
+        } else {
+            switch (information["mood"]) {
+                case "Calm": ProfileImage.sprite = profile.CalmImage; break;
+                case "Angry": ProfileImage.sprite = profile.AngryImage; break;
+                case "Afraid": ProfileImage.sprite = profile.AfraidImage; break;
+                case "Happy": ProfileImage.sprite = profile.HappyImage; break;
+                case "Confused": ProfileImage.sprite = profile.ConfusedImage; break;
+                case "Tense": ProfileImage.sprite = profile.TenseImage; break;
+            }
         }
+        
     }
 
     private void ClearPreviousChoices(GameObject MainContainer, GameObject SecondContainer)
@@ -315,7 +321,7 @@ public class DialogueManager : MonoBehaviour
         var choiceInformation = choices[dialogeKey + "_" + numPanel];
         int num = StartNum;
 
-        choiceArrow.transform.position = new Vector2(choiceArrow.transform.position.x, choiceArrow.positions[num]);
+        choiceArrow.transform.localPosition = new Vector2(choiceArrow.transform.localPosition.x, choiceArrow.positions[num]);
         choiceArrow.TargetPosition = choiceArrow.positions[num];
         choiceArrow.NowPosition = choiceArrow.positions[num];
 
