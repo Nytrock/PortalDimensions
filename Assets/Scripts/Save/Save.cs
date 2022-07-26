@@ -10,7 +10,7 @@ public class Save : MonoBehaviour
     public const int NumberLanguages = 2;
     public const string WayToSavefile = "/save/PortalDimensionsSave.pd";
     public LocalizationManager localizationManager;
-    public SettingsManager settingsnManager;
+    public GameSettingsManager settingsnManager;
     public FpsCounter fpsCounter;
     public DialogueChoiceManager dialogueChoiceManager;
 

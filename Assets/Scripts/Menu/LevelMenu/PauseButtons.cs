@@ -9,7 +9,7 @@ public class PauseButtons : MonoBehaviour
     public Choice choice;
     public GameObject messageSettings;
     public GameObject messageExit;
-    public SettingsManager settings;
+    public GameSettingsManager settings;
 
     public Button Yes;
     public Button No;

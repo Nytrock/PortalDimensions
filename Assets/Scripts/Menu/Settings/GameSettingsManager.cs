@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsManager : MonoBehaviour
+public class GameSettingsManager : MonoBehaviour
 {
     public Animator canvas;
 
@@ -87,7 +87,7 @@ public class SettingsManager : MonoBehaviour
         if (isLanguageChange || isAutoChange || isFpsChange || isConfirmChange) {
             canvas.SetBool("isConfirm", true);
         } else {
-            canvas.SetBool("isSettings", !canvas.GetBool("isSettings"));
+            canvas.SetBool("isSettingsGame", !canvas.GetBool("isSettingsGame"));
         }
     }
     public void ConfirmCancel(bool value)

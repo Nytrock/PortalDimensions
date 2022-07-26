@@ -7,7 +7,7 @@ public class CanvasManager : MonoBehaviour
     public static bool isGamePaused;
     public LevelManager levelManager;
     public Choice choice;
-    public SettingsManager settingsManager;
+    public GameSettingsManager settingsManager;
 
     private float choiceYCoordinate;
 
