@@ -25,8 +25,6 @@ public class Choice : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            Debug.Log(transform.localPosition.y);
         if (!CanvasManager.isGamePaused) {
             CheckButtons();
         }

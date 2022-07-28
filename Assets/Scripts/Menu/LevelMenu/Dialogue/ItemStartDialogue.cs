@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class ItemStartDialogue : MonoBehaviour
 {
@@ -6,11 +7,21 @@ public class ItemStartDialogue : MonoBehaviour
     public bool InstantStart;
     public DialogueManager dialogueManager;
 
-    public void Update()
+    private KeyCode startKey;
+
+    private void Start()
+    {
+        startKey = Save.save.dialogueStartKey;
+        GetComponentInChildren<LocalizedText>().Localize();
+        AddKeyToText();
+        LocalizationManager.OnLanguageChange += AddKeyToText;
+    }
+
+    private void Update()
     {
         if (!InstantStart) {
-            if (Input.GetKeyDown(KeyCode.E) && this.GetComponent<Animator>().GetBool("isActive") && !CanvasManager.isGamePaused) {
-                this.GetComponent<Animator>().SetBool("isActive", false);
+            if (Input.GetKeyDown(startKey) && GetComponent<Animator>().GetBool("isActive") && !CanvasManager.isGamePaused) {
+                GetComponent<Animator>().SetBool("isActive", false);
                 dialogueManager.SetKey(KeyToDialogue);
                 dialogueManager.StartDialogue();
             }
@@ -24,9 +35,9 @@ public class ItemStartDialogue : MonoBehaviour
             if (InstantStart) {
                 dialogueManager.SetKey(KeyToDialogue);
                 dialogueManager.StartDialogue();
-            }
-            else
+            } else {
                 StartAnimation();
+            }
         }
     }
 
@@ -42,5 +53,10 @@ public class ItemStartDialogue : MonoBehaviour
     public void StartAnimation()
     {
         this.GetComponent<Animator>().SetBool("isActive", true);
+    }
+
+    private void AddKeyToText()
+    {
+        GetComponentInChildren<TextMeshProUGUI>().text += "(" + startKey.ToString() + ")";
     }
 }
