@@ -20,7 +20,7 @@
 		<choice>
 			<text next="4" existing_id="0">Хорошо</text>
 			<text next="4" existing_id="1">Окей</text>
-			<text next="4" existing_id="2" do_id="1">Без проблем</text>
+			<text next="4" existing_id="2" do_id="1">Нет проблем</text>
 			<text next="4" do_id="0">Ну давай</text>
 			<text next="5" required="true">Нет, спасибо</text>
 		</choice>

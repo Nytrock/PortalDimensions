@@ -17,10 +17,10 @@
 			<ru>Статистика</ru>
 		</translates>
 	</key>
-	<key name="Продолжить">
+	<key name="Играть">
 		<translates>
-			<en-us>Continue</en-us>
-			<ru>Продолжить</ru>
+			<en-us>Play</en-us>
+			<ru>Играть</ru>
 		</translates>
 	</key>
 	<key name="Достижения">
@@ -53,16 +53,22 @@
 			<ru>Счётчик fps</ru>
 		</translates>
 	</key>
+	<key name="Подтверждение выхода">
+		<translates>
+			<en-us>Exit confirmation</en-us>
+			<ru>Подтверждение выхода</ru>
+		</translates>
+	</key>
 	<key name="Отмена">
 		<translates>
 			<en-us>Cancel</en-us>
 			<ru>Отмена</ru>
 		</translates>
 	</key>
-	<key name="Сохранить">
+	<key name="Ок">
 		<translates>
-			<en-us>Save</en-us>
-			<ru>Сохранить</ru>
+			<en-us>Confirm</en-us>
+			<ru>Ок</ru>
 		</translates>
 	</key>
 	<key name="Выйти из игры">
@@ -77,34 +83,52 @@
 			<ru>Выйти в меню</ru>
 		</translates>
 	</key>
+	<key name="Геймплей">
+		<translates>
+			<en-us>Gameplay</en-us>
+			<ru>Геймплей</ru>
+		</translates>
+	</key>
+	<key name="Управление">
+		<translates>
+			<en-us>Controls</en-us>
+			<ru>Управление</ru>
+		</translates>
+	</key>
+	<key name="Видео">
+		<translates>
+			<en-us>Video</en-us>
+			<ru>Видео</ru>
+		</translates>
+	</key>
+	<key name="Аудио">
+		<translates>
+			<en-us>Audio</en-us>
+			<ru>Аудио</ru>
+		</translates>
+	</key>
+	<key name="По умолчанию">
+		<translates>
+			<en-us>Reset defaults</en-us>
+			<ru>По умолчанию</ru>
+		</translates>
+	</key>
 	<key name="ИИ">
 		<translates>
 			<en-us>AI</en-us>
 			<ru>ИИ</ru>
 		</translates>
 	</key>
-	<key name="Да">
+	<key name="Альберт">
 		<translates>
-			<en-us>Yes</en-us>
-			<ru>Да</ru>
+			<en-us>Albert</en-us>
+			<ru>Альберт</ru>
 		</translates>
 	</key>
-	<key name="Нет">
+	<key name="💬Начать диалог">
 		<translates>
-			<en-us>No</en-us>
-			<ru>Нет</ru>
-		</translates>
-	</key>
-	<key name="Yes">
-		<translates>
-			<en-us>Yes</en-us>
-			<ru>Да</ru>
-		</translates>
-	</key>
-	<key name="No">
-		<translates>
-			<en-us>No</en-us>
-			<ru>Нет</ru>
+			<en-us>💬Start dialogue</en-us>
+			<ru>💬Начать диалог</ru>
 		</translates>
 	</key>
 	<key name="Авторестарт">
@@ -143,6 +167,36 @@
 			<ru>тупость</ru>
 		</translates>
 	</key>
+	<key name="Хорошо">
+		<translates>
+			<en-us>Alright</en-us>
+			<ru>Хорошо</ru>
+		</translates>
+	</key>
+	<key name="Окей">
+		<translates>
+			<en-us>Okay</en-us>
+			<ru>Окей</ru>
+		</translates>
+	</key>
+	<key name="Нет проблем">
+		<translates>
+			<en-us>No problem</en-us>
+			<ru>Нет проблем</ru>
+		</translates>
+	</key>
+	<key name="Ну давай">
+		<translates>
+			<en-us>Come on</en-us>
+			<ru>Ну давай</ru>
+		</translates>
+	</key>
+	<key name="Нет, спасибо">
+		<translates>
+			<en-us>No, thanks</en-us>
+			<ru>Нет, спасибо</ru>
+		</translates>
+	</key>
 	<key name="DialogeTest_1">
 		<translates>
 			<en-us>Welcome to the new test system. Answer a simple question.</en-us>
@@ -157,7 +211,7 @@
 	</key>
 	<key name="DialogeTest_4">
 		<translates>
-			<en-us>That's good.</en-us>
+			<en-us>That&#39;s good.</en-us>
 			<ru>Вот и хорошо.</ru>
 		</translates>
 	</key>

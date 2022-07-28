@@ -29,12 +29,14 @@ public class ButtonFunctional : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        if (!animator.GetBool("isSettings"))
+            SceneManager.LoadScene(1);
     }
 
     public void Statistics()
     {
-        Debug.Log("Statistic");
+        if (!animator.GetBool("isSettings"))
+            Debug.Log("Statistic");
     }
 
     public void Settings()
@@ -64,16 +66,19 @@ public class ButtonFunctional : MonoBehaviour
 
     public void About()
     {
-        Debug.Log("About");
+        if (!animator.GetBool("isSettings"))
+            Debug.Log("About");
     }
 
     public void Achievements()
     {
-        Debug.Log("Achievements");
+        if (!animator.GetBool("isSettings"))
+            Debug.Log("Achievements");
     }
 
     public void Exit()
     {
-        Application.Quit();
+        if (!animator.GetBool("isSettings"))
+            Application.Quit();
     }
 }

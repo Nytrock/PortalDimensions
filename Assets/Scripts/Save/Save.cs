@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class Save : MonoBehaviour
 {
+    public static Save save;
+
     public const int NumberLanguages = 2;
     public const string WayToSavefile = "/save/PortalDimensionsSave.pd";
     public LocalizationManager localizationManager;
@@ -20,6 +22,15 @@ public class Save : MonoBehaviour
     [Header("Списки для вариантов выбора диалогов")]
     [SerializeField] private List<bool> ExistingChoiceIdList;
     [SerializeField] private List<bool> DoChoiceIdList;
+
+    [Header("Бинды кнопок")]
+    public KeyCode leftKey;
+    public KeyCode rightKey;
+    public KeyCode jumpKey;
+    public KeyCode portalGunLeftKey;
+    public KeyCode portalGunRightKey;
+    public KeyCode dialogueStartKey;
+    public KeyCode fastRestartKey;
 
     [System.Serializable]
     private class SettingsSave
@@ -39,7 +50,9 @@ public class Save : MonoBehaviour
 
     public void Awake()
     {
+        save = this;
         Load();
+        dialogueStartKey = KeyCode.E;
     }
 
     public void SaveAll()

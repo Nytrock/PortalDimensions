@@ -351,7 +351,8 @@ public class DialogueManager : MonoBehaviour
 
         foreach (var variant in updatedChoiceInformation) {
             var visualbuttonChoice = Instantiate(VisualChoiceButtonPrefab, VisualButtonsContainers);
-            visualbuttonChoice.GetComponentInChildren<TextMeshProUGUI>().text = LocalizationManager.GetTranslate(variant.Key);
+            visualbuttonChoice.GetComponentInChildren<TextMeshProUGUI>().text = variant.Key;
+            visualbuttonChoice.GetComponentInChildren<LocalizedText>().Localize();
             visualbuttonChoice.SetActive(false);
 
             var workingbuttonChoice = Instantiate(WorkingChoiceButtonPrefab, WorkingButtonsContainers);
