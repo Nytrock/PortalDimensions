@@ -31,9 +31,19 @@ public class PortalGun : MonoBehaviour
     public GameObject BlueLight;
     public GameObject OrangeLight;
 
-    void Update()
+    [Header("Бинды кнопок")]
+    private KeyCode leftPortalKey;
+    private KeyCode rightPortalKey;
+
+    private void Start()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !player.InPortal && !menuActive && !CanvasManager.isGamePaused)
+        leftPortalKey = Save.save.portalGunLeftKey;
+        rightPortalKey = Save.save.portalGunRightKey;
+    }
+    
+    private void Update()
+    {
+        if ((Input.GetKeyDown(leftPortalKey) || Input.GetKeyDown(rightPortalKey)) && !player.InPortal && !menuActive && !CanvasManager.isGamePaused)
         {
             Shoot();
 
@@ -133,7 +143,7 @@ public class PortalGun : MonoBehaviour
     {
         if (player.Animations.animator.GetBool("IsShoot") && !player.Animations.animator.GetBool("RestartShooting"))
             player.Animations.animator.SetBool("RestartShooting", true);
-        RightButton = Input.GetMouseButtonDown(1);
+        RightButton = Input.GetKeyDown(rightPortalKey);
         BlueLight.SetActive(false);
         OrangeLight.SetActive(false);
 

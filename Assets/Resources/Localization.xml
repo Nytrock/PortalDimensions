@@ -83,6 +83,30 @@
 			<ru>Выйти в меню</ru>
 		</translates>
 	</key>
+	<key name="Все изменения будут утеряны">
+		<translates>
+			<en-us>All changes will be lost</en-us>
+			<ru>Все изменения будут утеряны</ru>
+		</translates>
+	</key>
+	<key name="Нет ❌">
+		<translates>
+			<en-us>No ❌</en-us>
+			<ru>Нет ❌</ru>
+		</translates>
+	</key>
+	<key name="Да ✓">
+		<translates>
+			<en-us>Yes ✓</en-us>
+			<ru>Да ✓</ru>
+		</translates>
+	</key>
+	<key name="Вы уверены?">
+		<translates>
+			<en-us>Are you sure?</en-us>
+			<ru>Вы уверены?</ru>
+		</translates>
+	</key>
 	<key name="Геймплей">
 		<translates>
 			<en-us>Gameplay</en-us>
@@ -111,6 +135,48 @@
 		<translates>
 			<en-us>Reset defaults</en-us>
 			<ru>По умолчанию</ru>
+		</translates>
+	</key>
+	<key name="Налево">
+		<translates>
+			<en-us>Left</en-us>
+			<ru>Налево</ru>
+		</translates>
+	</key>
+	<key name="Направо">
+		<translates>
+			<en-us>Right</en-us>
+			<ru>Направо</ru>
+		</translates>
+	</key>
+	<key name="Выстрел1">
+		<translates>
+			<en-us>Shoot1</en-us>
+			<ru>Выстрел1</ru>
+		</translates>
+	</key>
+	<key name="Выстрел2">
+		<translates>
+			<en-us>Shoot2</en-us>
+			<ru>Выстрел2</ru>
+		</translates>
+	</key>
+	<key name="Прыжок">
+		<translates>
+			<en-us>Jump</en-us>
+			<ru>Прыжок</ru>
+		</translates>
+	</key>
+	<key name="Рестарт">
+		<translates>
+			<en-us>Restart</en-us>
+			<ru>Рестарт</ru>
+		</translates>
+	</key>
+	<key name="Действие">
+		<translates>
+			<en-us>Action</en-us>
+			<ru>Действие</ru>
 		</translates>
 	</key>
 	<key name="ИИ">

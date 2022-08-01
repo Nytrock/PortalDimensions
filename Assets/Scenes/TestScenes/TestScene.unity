@@ -12687,9 +12687,6 @@ MonoBehaviour:
   - {fileID: 7365574002475698461, guid: 1d17c848a4160e74082ac11bdc63613f, type: 3}
   - {fileID: -5319882733741912588, guid: 1d17c848a4160e74082ac11bdc63613f, type: 3}
   - {fileID: 0}
-  walkLeftKey: 97
-  walkRightKey: 100
-  jumpKey: 32
 --- !u!114 &215366469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45231,6 +45228,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1854712537}
+  defaultLanguage: 0
+  defaultAuto: 0
+  defaultFps: 0
+  defaultConfirm: 0
   localization: {fileID: 1469275787}
   originallyLanguage: 0
   PreviousButton: {fileID: 11423549}
@@ -52463,6 +52464,7 @@ MonoBehaviour:
   - -34
   Buttons: []
   speed: 14
+  working: 1
 --- !u!1 &1408451355
 GameObject:
   m_ObjectHideFlags: 0
@@ -73638,7 +73640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localizationManager: {fileID: 1469275787}
-  settingsnManager: {fileID: 1268614335}
+  gameSettingsManager: {fileID: 0}
+  controllSettingsManager: {fileID: 0}
   fpsCounter: {fileID: 497522394}
   dialogueChoiceManager: {fileID: 1044033395}
   DialogueProfiles:
@@ -73646,6 +73649,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 51e95e8d1cbff5545a0784f6e9a54fc7, type: 2}
   ExistingChoiceIdList: 010101
   DoChoiceIdList: 0000
+  leftKey: 0
+  rightKey: 0
+  jumpKey: 0
+  portalGunLeftKey: 0
+  portalGunRightKey: 0
+  dialogueStartKey: 0
+  fastRestartKey: 0
 --- !u!4 &1798989171
 Transform:
   m_ObjectHideFlags: 0
@@ -76005,6 +76015,7 @@ MonoBehaviour:
   - {fileID: 748439308}
   - {fileID: 48512598}
   speed: 23
+  working: 0
 --- !u!114 &1908239158
 MonoBehaviour:
   m_ObjectHideFlags: 0

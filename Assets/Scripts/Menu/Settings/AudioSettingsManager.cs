@@ -1,11 +1,118 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class AudioSettingsManager : MonoBehaviour
 {
     public Animator canvas;
 
+    [Header("Дефолтные значения")]
+    [SerializeField] private float musicDefault;
+    [SerializeField] private float effectsDefault;
+    [SerializeField] private float uiDefault;
+
+    [Header("Микшеры звуков")]
+    public AudioMixerGroup musicMixer;
+    public AudioMixerGroup effectsMixer;
+    public AudioMixerGroup uiMixer;
+
+    [Header("Слайдеры настройки")]
+    public Slider musicSlider;
+    public Slider effectsSlider;
+    public Slider uiSlider;
+
+    [Header("Музыка")]
+    private float originallMusic;
+    private bool isMusicChange;
+
+    [Header("Эффекты")]
+    private float originallEffects;
+    private bool isEffectsChange;
+
+    [Header("Интерфейс")]
+    private float originallUi;
+    private bool isUiChange;
+
+    private void Start()
+    {
+        ChangeMusic(musicSlider.value);
+        ChangeEffect(effectsSlider.value);
+        ChangeUI(uiSlider.value);
+        SetNewOriginall();
+        SetChangesFalse();
+    }
+
     public void CheckChanges()
     {
-        canvas.SetBool("isSettingsAudio", !canvas.GetBool("isSettingsAudio"));
+        if (isEffectsChange || isMusicChange || isUiChange) {
+            canvas.GetComponent<ButtonFunctional>().SetConfirmPanel("AudioSettings");
+        } else {
+            canvas.SetBool("isSettingsAudio", !canvas.GetBool("isSettingsAudio"));
+        }
+    }
+
+    public void ConfirmCancel(bool value)
+    {
+        if (value)
+            ReturnToNormal();
+        canvas.SetBool("isConfirm", false);
+    }
+
+    public void ChangeMusic(float volume)
+    {
+        musicMixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, volume));
+        isMusicChange = volume != originallMusic;
+    }
+
+    public void ChangeEffect(float volume)
+    {
+        musicMixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, volume));
+        isEffectsChange = volume != originallEffects;
+    }
+
+    public void ChangeUI(float volume)
+    {
+        musicMixer.audioMixer.SetFloat("UIVolume", Mathf.Lerp(-80, 0, volume));
+        isUiChange = volume != originallUi;
+    }
+
+    public void SetNewOriginall()
+    {
+        originallMusic = musicSlider.value;
+        originallEffects = effectsSlider.value;
+        originallUi = uiSlider.value;
+    }
+
+    public void SetChangesFalse()
+    {
+        isEffectsChange = false;
+        isMusicChange = false;
+        isUiChange = false;
+    }
+
+    public void SetDefaults()
+    {
+        musicSlider.value = musicDefault;
+        ChangeMusic(musicDefault);
+
+        effectsSlider.value = effectsDefault;
+        ChangeEffect(effectsDefault);
+
+        uiSlider.value = uiDefault;
+        ChangeUI(uiDefault);
+    }
+
+    public void ReturnToNormal()
+    {
+        musicSlider.value = originallMusic;
+        ChangeMusic(musicDefault);
+
+        effectsSlider.value = originallEffects;
+        ChangeEffect(effectsDefault);
+
+        uiSlider.value = originallUi;
+        ChangeUI(uiDefault);
+
+        canvas.SetBool("isSettingsAudio", false);
     }
 }
