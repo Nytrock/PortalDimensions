@@ -4,9 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager: MonoBehaviour
 {
+    private KeyCode restartButton;
+
+    private void Start()
+    {
+        restartButton = Save.save.fastRestartKey;
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(restartButton))
             RestartScene();
     }
 

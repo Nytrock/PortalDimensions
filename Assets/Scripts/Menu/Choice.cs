@@ -12,6 +12,7 @@ public class Choice : MonoBehaviour
     public List<float> positions;
     public List<Button> Buttons;
     public int speed;
+    public bool working;
 
     void Start()
     {
@@ -54,7 +55,7 @@ public class Choice : MonoBehaviour
             SetPosition(Mathf.Max(NowId - 1, 0));
         if (Input.GetKeyDown(KeyCode.DownArrow) && Buttons.Count - 1 > NowId)
             SetPosition(Mathf.Min(NowId + 1, positions.Count - 1));
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) && working)
             Buttons[NowId].onClick.Invoke();
     }
 

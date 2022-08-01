@@ -9,7 +9,7 @@ public class ChoiceButton : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (pauseActive)
+        if (pauseActive && choice.working)
             choice.SetPosition(id);
     }
 }

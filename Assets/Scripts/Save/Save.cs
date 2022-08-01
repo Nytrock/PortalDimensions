@@ -12,7 +12,9 @@ public class Save : MonoBehaviour
     public const int NumberLanguages = 2;
     public const string WayToSavefile = "/save/PortalDimensionsSave.pd";
     public LocalizationManager localizationManager;
-    public GameSettingsManager settingsnManager;
+    public GameSettingsManager gameSettingsManager;
+    public ControllSettingsManager controllSettingsManager;
+    public AudioSettingsManager audioSettingsManager;
     public FpsCounter fpsCounter;
     public DialogueChoiceManager dialogueChoiceManager;
 
@@ -39,6 +41,16 @@ public class Save : MonoBehaviour
         public bool AutoRestart;
         public bool FpsShowing;
         public bool ConfimToExitActive;
+        public int keyLeft;
+        public int keyRight;
+        public int keyJump;
+        public int keyLeftPortal;
+        public int keyRightPortal;
+        public int keyDialogue;
+        public int keyRestart;
+        public float volumeMusic;
+        public float volumeEffects;
+        public float volumeUI;
     }
     [System.Serializable]
     private class DialoguesSave
@@ -52,16 +64,27 @@ public class Save : MonoBehaviour
     {
         save = this;
         Load();
-        dialogueStartKey = KeyCode.E;
     }
 
     public void SaveAll()
     {
         SettingsSave settings = new SettingsSave();
         settings.languageId = LocalizationManager.SelectedLanguage;
-        settings.AutoRestart = settingsnManager.autorestart;
-        settings.FpsShowing = settingsnManager.fpsShowing;
-        settings.ConfimToExitActive = settingsnManager.confirm;
+        settings.AutoRestart = gameSettingsManager.autorestart;
+        settings.FpsShowing = gameSettingsManager.fpsShowing;
+        settings.ConfimToExitActive = gameSettingsManager.confirm;
+
+        Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
+        settings.keyLeft = Array.IndexOf(allKeyTypes, leftKey);
+        settings.keyRight = Array.IndexOf(allKeyTypes, rightKey);
+        settings.keyJump = Array.IndexOf(allKeyTypes, jumpKey);
+        settings.keyLeftPortal = Array.IndexOf(allKeyTypes, portalGunLeftKey);
+        settings.keyRightPortal = Array.IndexOf(allKeyTypes, portalGunRightKey);
+        settings.keyDialogue = Array.IndexOf(allKeyTypes, dialogueStartKey);
+        settings.keyRestart = Array.IndexOf(allKeyTypes, fastRestartKey);
+        settings.volumeMusic = audioSettingsManager.musicSlider.value;
+        settings.volumeEffects = audioSettingsManager.effectsSlider.value;
+        settings.volumeUI = audioSettingsManager.uiSlider.value;
 
         DialoguesSave dialogues = new DialoguesSave();
         dialogues.existingChoices = ExistingChoiceIdList;
@@ -83,12 +106,34 @@ public class Save : MonoBehaviour
             try {
                 SettingsSave settings = (SettingsSave)form.Deserialize(stream);
                 localizationManager.SetLanguage(settings.languageId);
-                if (settingsnManager) {
-                    settingsnManager.autoManager.isOn = settings.AutoRestart;
-                    settingsnManager.fpsManager.isOn = settings.FpsShowing;
-                    settingsnManager.confirmManager.isOn = settings.ConfimToExitActive;
+                if (gameSettingsManager) {
+                    gameSettingsManager.autoManager.isOn = settings.AutoRestart;
+                    gameSettingsManager.fpsManager.isOn = settings.FpsShowing;
+                    gameSettingsManager.confirmManager.isOn = settings.ConfimToExitActive;
                 }
                 fpsCounter.ChangeWorking(settings.FpsShowing);
+
+                Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
+                if ((KeyCode)allKeyTypes.GetValue(settings.keyLeft) != KeyCode.None)
+                    leftKey = (KeyCode)allKeyTypes.GetValue(settings.keyLeft);
+                if ((KeyCode)allKeyTypes.GetValue(settings.keyRight) != KeyCode.None)
+                    rightKey = (KeyCode)allKeyTypes.GetValue(settings.keyRight);
+                if ((KeyCode)allKeyTypes.GetValue(settings.keyJump) != KeyCode.None)
+                    jumpKey = (KeyCode)allKeyTypes.GetValue(settings.keyJump);
+                if ((KeyCode)allKeyTypes.GetValue(settings.keyLeftPortal) != KeyCode.None)
+                    portalGunLeftKey = (KeyCode)allKeyTypes.GetValue(settings.keyLeftPortal);
+                if ((KeyCode)allKeyTypes.GetValue(settings.keyRightPortal) != KeyCode.None)
+                    portalGunRightKey = (KeyCode)allKeyTypes.GetValue(settings.keyRightPortal);
+                if ((KeyCode)allKeyTypes.GetValue(settings.keyDialogue) != KeyCode.None)
+                    dialogueStartKey = (KeyCode)allKeyTypes.GetValue(settings.keyDialogue);
+                if ((KeyCode)allKeyTypes.GetValue(settings.keyRestart) != KeyCode.None)
+                    fastRestartKey = (KeyCode)allKeyTypes.GetValue(settings.keyRestart);
+                
+                if (audioSettingsManager) {
+                    audioSettingsManager.musicSlider.value = settings.volumeMusic;
+                    audioSettingsManager.effectsSlider.value = settings.volumeEffects;
+                    audioSettingsManager.uiSlider.value = settings.volumeUI;
+                }
 
                 DialoguesSave dialogues = (DialoguesSave)form.Deserialize(stream);
                 ExistingChoiceIdList = dialogues.existingChoices;

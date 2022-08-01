@@ -30,15 +30,19 @@ public class Player : MonoBehaviour
     public List<Sprite> LeftSprites;
     public List<Sprite> RightSprites;
     [Header("Бинды кнопок")]
-    public KeyCode walkLeftKey;
-    public KeyCode walkRightKey;
-    public KeyCode jumpKey;
+    private KeyCode walkLeftKey;
+    private KeyCode walkRightKey;
+    private KeyCode jumpKey;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         cl = GetComponent<Collider2D>();
+
+        walkLeftKey = Save.save.leftKey;
+        walkRightKey = Save.save.rightKey;
+        jumpKey = Save.save.jumpKey;
     }
 
     void Update()

@@ -5,6 +5,12 @@ public class GameSettingsManager : MonoBehaviour
 {
     public Animator canvas;
 
+    [Header("Дефолтные настройки")]
+    [SerializeField] private int defaultLanguage;
+    [SerializeField] private bool defaultAuto;
+    [SerializeField] private bool defaultFps;
+    [SerializeField] private bool defaultConfirm;
+
     [Header("Настройки локализации")]
     public LocalizationManager localization;
     public int originallyLanguage;
@@ -35,18 +41,13 @@ public class GameSettingsManager : MonoBehaviour
     {
         NextButton.interactable = !(LocalizationManager.SelectedLanguage + 1 >= Save.NumberLanguages);
         PreviousButton.interactable = !(LocalizationManager.SelectedLanguage - 1 < 0);
-        originallyLanguage = LocalizationManager.SelectedLanguage;
 
-        originallyAuto = autoManager.isOn;
+        SetNewOriginall();
+        SetChangesFalse();
+
         autorestart = originallyAuto;
-
-        originallyConfirm = confirmManager.isOn;
         confirm = originallyConfirm;
-        isConfirmChange = false;
-
-        originallyFps = fpsManager.isOn;
         fpsShowing = originallyFps;
-        isFpsChange = false;
     }
     public void NextLanguage()
     {
@@ -85,7 +86,7 @@ public class GameSettingsManager : MonoBehaviour
     public void CheckChanges()
     {
         if (isLanguageChange || isAutoChange || isFpsChange || isConfirmChange) {
-            canvas.SetBool("isConfirm", true);
+            canvas.GetComponent<ButtonFunctional>().SetConfirmPanel("GameSettings");
         } else {
             canvas.SetBool("isSettingsGame", !canvas.GetBool("isSettingsGame"));
         }
@@ -102,7 +103,7 @@ public class GameSettingsManager : MonoBehaviour
         localization.SetLanguage(originallyLanguage);
         NextButton.interactable = !(LocalizationManager.SelectedLanguage + 1 >= Save.NumberLanguages);
         PreviousButton.interactable = !(LocalizationManager.SelectedLanguage - 1 < 0);
-        isLanguageChange = false;
+        isLanguageChange = isAutoChange = isFpsChange = isConfirmChange = false;
 
         fpsManager.isOn = originallyFps;
         fpsCounter.ChangeWorking(originallyFps);
@@ -111,6 +112,42 @@ public class GameSettingsManager : MonoBehaviour
 
         confirmManager.isOn = originallyConfirm;
 
-        canvas.SetBool("isSettings", false);
+        canvas.SetBool("isSettingsGame", false);
+    }
+
+    public void SetNewOriginall()
+    {
+        originallyAuto = autoManager.isOn;
+        originallyConfirm = confirmManager.isOn;
+        originallyFps = fpsManager.isOn;
+        originallyLanguage = LocalizationManager.SelectedLanguage;
+    }
+
+    public void SetChangesFalse()
+    {
+        isAutoChange = false;
+        isConfirmChange = false;
+        isFpsChange = false;
+    }
+
+    public void SetDefaults()
+    {
+        localization.SetLanguage(defaultLanguage);
+        PreviousButton.interactable = !(defaultLanguage - 1 < 0);
+        NextButton.interactable = defaultLanguage + 1 < LocalizationManager.numLanguages;
+        isLanguageChange = originallyLanguage != LocalizationManager.SelectedLanguage;
+
+        autorestart = defaultAuto;
+        autoManager.isOn = defaultAuto;
+        isAutoChange = autorestart != originallyAuto;
+
+        confirm = defaultConfirm;
+        confirmManager.isOn = defaultConfirm;
+        isConfirmChange = confirm != originallyConfirm;
+
+        fpsShowing = defaultFps;
+        isFpsChange = fpsShowing != originallyFps;
+        fpsManager.isOn = defaultFps;
+        fpsCounter.ChangeWorking(fpsShowing);
     }
 }

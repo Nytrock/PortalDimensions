@@ -10,6 +10,8 @@ public class LocalizationManager : MonoBehaviour
     public static event LanguageChangeHandler OnLanguageChange;
     public delegate void LanguageChangeHandler();
 
+    public static int numLanguages;
+
     private static Dictionary<string, List<string>> localization;
 
     [SerializeField]
@@ -41,6 +43,7 @@ public class LocalizationManager : MonoBehaviour
             var values = new List<string>();
             foreach (XmlNode translate in key["translates"].ChildNodes)
                 values.Add(translate.InnerText);
+            numLanguages = values.Count;
             localization[keyStr] = values;
         }
     }

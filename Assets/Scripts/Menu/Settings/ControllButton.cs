@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
+using System.Collections;
 
 public class ControllButton : MonoBehaviour
 {
@@ -17,10 +17,15 @@ public class ControllButton : MonoBehaviour
 
     private float leftArrowPos;
     private float smallBlurPos;
-    void Start()
+
+    public void Awake()
     {
         leftArrowPos = leftArrow.localPosition.x;
         smallBlurPos = smallBlur.transform.localPosition.x;
+    }
+    public void SetText(string keyText)
+    {
+        text.text = keyText;
         UpdateLeftArrowAndBlur();    
     }
 
@@ -34,51 +39,41 @@ public class ControllButton : MonoBehaviour
         leftArrow.gameObject.SetActive(false);
         rightArrow.gameObject.SetActive(false);
 
-        int leght = text.text.Length;
+        StartCoroutine(SetLeftArrow());
 
-        if (text.text == "RightAlt" || text.text == "LeftAlt")
-            leftArrow.localPosition = new Vector2(leftArrowPos - 16f * (leght - 1), leftArrow.localPosition.y);
-        else if (text.text == "KeypadMultiply")
-            leftArrow.localPosition = new Vector2(leftArrowPos - 10f * (leght - 1), leftArrow.localPosition.y);
-        else if (text.text == "KeypadPlus")
-            leftArrow.localPosition = new Vector2(leftArrowPos - 14.5f * (leght - 1), leftArrow.localPosition.y);
-        else if (leght < 5 || text.text == "PageUp" || text.text == "SysReq")
-            leftArrow.localPosition = new Vector2(leftArrowPos - 20f * (leght - 1), leftArrow.localPosition.y);
-        else if (leght == 6 || text.text == "Minus" || text.text == "LeftShift" || text.text == "Backslash" || text.text == "Semicolon")
-            leftArrow.localPosition = new Vector2(leftArrowPos - 17f * (leght - 1), leftArrow.localPosition.y);
-        else if (leght == 7)
-            leftArrow.localPosition = new Vector2(leftArrowPos - 18f * (leght - 1), leftArrow.localPosition.y);
-        else if (leght < 10)
-            leftArrow.localPosition = new Vector2(leftArrowPos - 19f * (leght - 1), leftArrow.localPosition.y);
-        else if (leght == 11)
-            leftArrow.localPosition = new Vector2(leftArrowPos - 13f * (leght - 1), leftArrow.localPosition.y);
-        else
-            leftArrow.localPosition = new Vector2(leftArrowPos - 12f * (leght - 1), leftArrow.localPosition.y);
+        SetBlur(text.text.Length);
+    }
 
+    private void SetBlur(int leght) {
         smallBlur.transform.localPosition = new Vector2(smallBlurPos, smallBlur.transform.localPosition.y);
-        switch (leght) {
-            case 2:
-                smallBlur.transform.localPosition = new Vector2(smallBlurPos - 12f, smallBlur.transform.localPosition.y);
-                break;
-        }
-
         hugeBlur.color = new Color(1f, 1f, 1f, 0);
         bigBlur.color = new Color(1f, 1f, 1f, 0);
         smallBlur.color = new Color(1f, 1f, 1f, 0);
         mediumBlur.color = new Color(1f, 1f, 1f, 0);
 
+        if (leght == 2) {
+            smallBlur.transform.localPosition = new Vector2(smallBlurPos - 12f, smallBlur.transform.localPosition.y);
+        }
+
         if (leght <= 2) {
             smallBlur.color = new Color(1f, 1f, 1f, 1);
             GetComponent<Button>().targetGraphic = smallBlur;
-        } else if (leght <= 4) {
+        }  else if (leght <= 4) {
             mediumBlur.color = new Color(1f, 1f, 1f, 1);
             GetComponent<Button>().targetGraphic = mediumBlur;
-        } else if (leght >= 7){
-            hugeBlur.color = new Color(1f, 1f, 1f, 1);
-            GetComponent<Button>().targetGraphic = hugeBlur;
-        } else {
+        } else if (leght <= 6) {
             bigBlur.color = new Color(1f, 1f, 1f, 1);
             GetComponent<Button>().targetGraphic = bigBlur;
+        } else {
+            hugeBlur.color = new Color(1f, 1f, 1f, 1);
+            GetComponent<Button>().targetGraphic = hugeBlur;
         }
+    }
+
+    IEnumerator SetLeftArrow()
+    {
+        yield return new WaitForSeconds(0.0001f);
+        float percent = text.fontSize / text.fontSizeMax;
+        leftArrow.localPosition = new Vector2(leftArrowPos - text.preferredWidth * percent + 22f, leftArrow.localPosition.y);
     }
 }
