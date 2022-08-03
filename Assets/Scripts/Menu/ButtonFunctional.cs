@@ -55,21 +55,25 @@ public class ButtonFunctional : MonoBehaviour
     public void GameSettings()
     {
         animator.SetBool("isSettingsGame", !animator.GetBool("isSettingsGame"));
+        settingsChoice.working = !animator.GetBool("isSettingsGame");
     }
 
     public void ControllSettings()
     {
         animator.SetBool("isSettingsControll", !animator.GetBool("isSettingsControll"));
+        settingsChoice.working = !animator.GetBool("isSettingsControll");
     }
 
     public void VideoSettings()
     {
         animator.SetBool("isSettingsVideo", !animator.GetBool("isSettingsVideo"));
+        settingsChoice.working = !animator.GetBool("isSettingsVideo");
     }
 
     public void AudioSettings()
     {
         animator.SetBool("isSettingsAudio", !animator.GetBool("isSettingsAudio"));
+        settingsChoice.working = !animator.GetBool("isSettingsAudio");
     }
 
     public void About()

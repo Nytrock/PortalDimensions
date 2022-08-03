@@ -65,13 +65,11 @@ public class ControllSettingsManager : MonoBehaviour
     }
     public void CheckChanges()
     {
-        if (isLeftChanged || isRightChanged || isJumpChanged || isLeftPortalChanged || isRightPortalChanged || isDialogueChanged || isRestartChanged)
-        {
-            canvas.GetComponent<ButtonFunctional>().SetConfirmPanel("ControllSettings");
-        }
-        else
-        {
-            canvas.SetBool("isSettingsControll", !canvas.GetBool("isSettingsControll"));
+        var buttonFunc = canvas.GetComponent<ButtonFunctional>();
+        if (isLeftChanged || isRightChanged || isJumpChanged || isLeftPortalChanged || isRightPortalChanged || isDialogueChanged || isRestartChanged) {
+            buttonFunc.SetConfirmPanel("ControllSettings");
+        } else {
+            buttonFunc.ControllSettings();
         }
     }
 

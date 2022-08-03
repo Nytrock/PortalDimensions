@@ -179,6 +179,54 @@
 			<ru>Действие</ru>
 		</translates>
 	</key>
+	<key name="Fullscreen">
+		<translates>
+			<en-us>Fullscreen</en-us>
+			<ru>Фуллскрин</ru>
+		</translates>
+	</key>
+	<key name="Windowed">
+		<translates>
+			<en-us>Windowed</en-us>
+			<ru>Оконный</ru>
+		</translates>
+	</key>
+	<key name="Borderless">
+		<translates>
+			<en-us>Borderless</en-us>
+			<ru>Расширенный</ru>
+		</translates>
+	</key>
+	<key name="Музыка">
+		<translates>
+			<en-us>Music</en-us>
+			<ru>Музыка</ru>
+		</translates>
+	</key>
+	<key name="Эффекты">
+		<translates>
+			<en-us>Effects</en-us>
+			<ru>Эффекты</ru>
+		</translates>
+	</key>
+	<key name="Интерфейс">
+		<translates>
+			<en-us>Interface</en-us>
+			<ru>Интерфейс</ru>
+		</translates>
+	</key>
+	<key name="Разрешение">
+		<translates>
+			<en-us>Resolution</en-us>
+			<ru>Разрешение</ru>
+		</translates>
+	</key>
+	<key name="Режим экрана">
+		<translates>
+			<en-us>Screen mode</en-us>
+			<ru>Режим экрана</ru>
+		</translates>
+	</key>
 	<key name="ИИ">
 		<translates>
 			<en-us>AI</en-us>

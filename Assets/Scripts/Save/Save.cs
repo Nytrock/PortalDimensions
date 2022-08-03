@@ -15,6 +15,7 @@ public class Save : MonoBehaviour
     public GameSettingsManager gameSettingsManager;
     public ControllSettingsManager controllSettingsManager;
     public AudioSettingsManager audioSettingsManager;
+    public VideoSettingsManager videoSettingsManager;
     public FpsCounter fpsCounter;
     public DialogueChoiceManager dialogueChoiceManager;
 
@@ -38,6 +39,7 @@ public class Save : MonoBehaviour
     private class SettingsSave
     {
         public int languageId;
+        public int cursorId;
         public bool AutoRestart;
         public bool FpsShowing;
         public bool ConfimToExitActive;
@@ -51,6 +53,8 @@ public class Save : MonoBehaviour
         public float volumeMusic;
         public float volumeEffects;
         public float volumeUI;
+        public int screenResolutionId;
+        public int screenModId;
     }
     [System.Serializable]
     private class DialoguesSave
@@ -70,6 +74,7 @@ public class Save : MonoBehaviour
     {
         SettingsSave settings = new SettingsSave();
         settings.languageId = LocalizationManager.SelectedLanguage;
+        settings.cursorId = gameSettingsManager.cursorId;
         settings.AutoRestart = gameSettingsManager.autorestart;
         settings.FpsShowing = gameSettingsManager.fpsShowing;
         settings.ConfimToExitActive = gameSettingsManager.confirm;
@@ -85,12 +90,17 @@ public class Save : MonoBehaviour
         settings.volumeMusic = audioSettingsManager.musicSlider.value;
         settings.volumeEffects = audioSettingsManager.effectsSlider.value;
         settings.volumeUI = audioSettingsManager.uiSlider.value;
+        settings.screenResolutionId = videoSettingsManager.resolutionId;
+        settings.screenModId = videoSettingsManager.modId;
 
         DialoguesSave dialogues = new DialoguesSave();
         dialogues.existingChoices = ExistingChoiceIdList;
         dialogues.doingChoices = DoChoiceIdList;
 
-        FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Open);
+        if (!Directory.Exists(Application.dataPath + "/save"))
+            Directory.CreateDirectory(Application.dataPath + "/save");
+
+        FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Create);
         BinaryFormatter form = new BinaryFormatter();
         form.Serialize(stream, settings);
         form.Serialize(stream, dialogues);
@@ -108,6 +118,7 @@ public class Save : MonoBehaviour
                 localizationManager.SetLanguage(settings.languageId);
                 if (gameSettingsManager) {
                     gameSettingsManager.autoManager.isOn = settings.AutoRestart;
+                    gameSettingsManager.cursorId = settings.cursorId;
                     gameSettingsManager.fpsManager.isOn = settings.FpsShowing;
                     gameSettingsManager.confirmManager.isOn = settings.ConfimToExitActive;
                 }
@@ -135,6 +146,11 @@ public class Save : MonoBehaviour
                     audioSettingsManager.uiSlider.value = settings.volumeUI;
                 }
 
+                if (videoSettingsManager) {
+                    videoSettingsManager.resolutionId = settings.screenResolutionId;
+                    videoSettingsManager.modId = settings.screenModId;
+                }
+
                 DialoguesSave dialogues = (DialoguesSave)form.Deserialize(stream);
                 ExistingChoiceIdList = dialogues.existingChoices;
                 DoChoiceIdList = dialogues.doingChoices;
@@ -150,6 +166,9 @@ public class Save : MonoBehaviour
                 stream.Close();
             }
         } else {
+            if (!Directory.Exists(Application.dataPath + "/save"))
+                Directory.CreateDirectory(Application.dataPath + "/save");
+
             FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Create);
             stream.Close();
         }

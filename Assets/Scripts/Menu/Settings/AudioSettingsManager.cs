@@ -44,10 +44,11 @@ public class AudioSettingsManager : MonoBehaviour
 
     public void CheckChanges()
     {
+        var buttonFunc = canvas.GetComponent<ButtonFunctional>();
         if (isEffectsChange || isMusicChange || isUiChange) {
-            canvas.GetComponent<ButtonFunctional>().SetConfirmPanel("AudioSettings");
+            buttonFunc.SetConfirmPanel("AudioSettings");
         } else {
-            canvas.SetBool("isSettingsAudio", !canvas.GetBool("isSettingsAudio"));
+            buttonFunc.AudioSettings();
         }
     }
 
