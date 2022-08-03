@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class GameSettingsManager : MonoBehaviour
 
     [Header("Дефолтные настройки")]
     [SerializeField] private int defaultLanguage;
+    [SerializeField] private int defaultCursor;
     [SerializeField] private bool defaultAuto;
     [SerializeField] private bool defaultFps;
     [SerializeField] private bool defaultConfirm;
@@ -14,9 +16,14 @@ public class GameSettingsManager : MonoBehaviour
     [Header("Настройки локализации")]
     public LocalizationManager localization;
     public int originallyLanguage;
-    public Button PreviousButton;
-    public Button NextButton;
     private bool isLanguageChange;
+
+    [Header("Настройки курсора")]
+    public List<Texture2D> cursorsTextures;
+    public RawImage cursorImage;
+    public int cursorId;
+    private bool isCursorChange;
+    private int originalCursor;
 
     [Header("Настройки авторестарта")]
     public Toggle autoManager;
@@ -39,9 +46,7 @@ public class GameSettingsManager : MonoBehaviour
 
     public void Start()
     {
-        NextButton.interactable = !(LocalizationManager.SelectedLanguage + 1 >= Save.NumberLanguages);
-        PreviousButton.interactable = !(LocalizationManager.SelectedLanguage - 1 < 0);
-
+        ChangeCursorTexture();
         SetNewOriginall();
         SetChangesFalse();
 
@@ -51,18 +56,20 @@ public class GameSettingsManager : MonoBehaviour
     }
     public void NextLanguage()
     {
-        localization.SetLanguage(LocalizationManager.SelectedLanguage + 1);
-        NextButton.interactable = !(LocalizationManager.SelectedLanguage + 1 >= Save.NumberLanguages);
-        PreviousButton.interactable = true;
-        isLanguageChange = originallyLanguage != LocalizationManager.SelectedLanguage;
+        int newId = 0;
+        if (LocalizationManager.SelectedLanguage + 1 < Save.NumberLanguages)
+            newId = LocalizationManager.SelectedLanguage + 1;
+        localization.SetLanguage(newId);
+        isLanguageChange = originallyLanguage != newId;
     }
 
     public void PreviousLanguage()
     {
-        localization.SetLanguage(LocalizationManager.SelectedLanguage - 1);
-        PreviousButton.interactable = !(LocalizationManager.SelectedLanguage - 1 < 0);
-        NextButton.interactable = true;
-        isLanguageChange = originallyLanguage != LocalizationManager.SelectedLanguage;
+        int newId = Save.NumberLanguages - 1;
+        if (LocalizationManager.SelectedLanguage - 1 >= 0)
+            newId = LocalizationManager.SelectedLanguage - 1;
+        localization.SetLanguage(newId);
+        isLanguageChange = originallyLanguage != newId;
     }
 
     public void ChangeAutorestart()
@@ -83,12 +90,39 @@ public class GameSettingsManager : MonoBehaviour
         fpsCounter.ChangeWorking(fpsShowing);
     }
 
+    public void NextCursor()
+    {
+        if (cursorId + 1 < cursorsTextures.Count)
+            cursorId += 1;
+        else
+            cursorId = 0;
+        ChangeCursorTexture();
+    }
+
+    public void PreviousCursor()
+    {
+        if (cursorId - 1 >= 0)
+            cursorId -= 1;
+        else
+            cursorId = cursorsTextures.Count - 1;
+        ChangeCursorTexture();
+    }
+
+    private void ChangeCursorTexture()
+    {
+        CursorSeeker.cursorSeeker.cursorId = cursorId;
+        Cursor.SetCursor(cursorsTextures[cursorId], Vector2.zero, CursorMode.Auto);
+        isCursorChange = cursorId != originalCursor;
+        cursorImage.texture = cursorsTextures[cursorId];
+    }
+
     public void CheckChanges()
     {
-        if (isLanguageChange || isAutoChange || isFpsChange || isConfirmChange) {
-            canvas.GetComponent<ButtonFunctional>().SetConfirmPanel("GameSettings");
+        var buttonFunc = canvas.GetComponent<ButtonFunctional>();
+        if (isLanguageChange || isAutoChange || isFpsChange || isConfirmChange || isCursorChange) {
+            buttonFunc.SetConfirmPanel("GameSettings");
         } else {
-            canvas.SetBool("isSettingsGame", !canvas.GetBool("isSettingsGame"));
+            buttonFunc.GameSettings();
         }
     }
     public void ConfirmCancel(bool value)
@@ -100,10 +134,12 @@ public class GameSettingsManager : MonoBehaviour
 
     private void ReturnToNormal()
     {
+        SetChangesFalse();
+
         localization.SetLanguage(originallyLanguage);
-        NextButton.interactable = !(LocalizationManager.SelectedLanguage + 1 >= Save.NumberLanguages);
-        PreviousButton.interactable = !(LocalizationManager.SelectedLanguage - 1 < 0);
-        isLanguageChange = isAutoChange = isFpsChange = isConfirmChange = false;
+
+        cursorId = originalCursor;
+        ChangeCursorTexture();
 
         fpsManager.isOn = originallyFps;
         fpsCounter.ChangeWorking(originallyFps);
@@ -121,6 +157,7 @@ public class GameSettingsManager : MonoBehaviour
         originallyConfirm = confirmManager.isOn;
         originallyFps = fpsManager.isOn;
         originallyLanguage = LocalizationManager.SelectedLanguage;
+        originalCursor = cursorId;
     }
 
     public void SetChangesFalse()
@@ -128,14 +165,16 @@ public class GameSettingsManager : MonoBehaviour
         isAutoChange = false;
         isConfirmChange = false;
         isFpsChange = false;
+        isCursorChange = false;
     }
 
     public void SetDefaults()
     {
         localization.SetLanguage(defaultLanguage);
-        PreviousButton.interactable = !(defaultLanguage - 1 < 0);
-        NextButton.interactable = defaultLanguage + 1 < LocalizationManager.numLanguages;
         isLanguageChange = originallyLanguage != LocalizationManager.SelectedLanguage;
+
+        cursorId = defaultCursor;
+        ChangeCursorTexture();
 
         autorestart = defaultAuto;
         autoManager.isOn = defaultAuto;

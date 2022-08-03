@@ -14,11 +14,6 @@ public class Choice : MonoBehaviour
     public int speed;
     public bool working;
 
-    void Start()
-    {
-        Step = (Step * Screen.width) / 3840;
-    }
-
     private void FixedUpdate()
     {
         MakeStep();
@@ -57,6 +52,9 @@ public class Choice : MonoBehaviour
             SetPosition(Mathf.Min(NowId + 1, positions.Count - 1));
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) && working)
             Buttons[NowId].onClick.Invoke();
+
+        if (Input.GetKeyDown(KeyCode.A))
+            Debug.Log(transform.localPosition.y);
     }
 
     public void StartPauseWorking()
