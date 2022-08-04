@@ -21,7 +21,7 @@ public class Choice : MonoBehaviour
 
     private void Update()
     {
-        if (!CanvasManager.isGamePaused) {
+        if (!CanvasManager.isGamePaused && working) {
             CheckButtons();
         }
     }
@@ -50,11 +50,8 @@ public class Choice : MonoBehaviour
             SetPosition(Mathf.Max(NowId - 1, 0));
         if (Input.GetKeyDown(KeyCode.DownArrow) && Buttons.Count - 1 > NowId)
             SetPosition(Mathf.Min(NowId + 1, positions.Count - 1));
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) && working)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             Buttons[NowId].onClick.Invoke();
-
-        if (Input.GetKeyDown(KeyCode.A))
-            Debug.Log(transform.localPosition.y);
     }
 
     public void StartPauseWorking()

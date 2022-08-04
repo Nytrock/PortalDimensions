@@ -113,7 +113,5 @@ public class AudioSettingsManager : MonoBehaviour
 
         uiSlider.value = originallUi;
         ChangeUI(uiDefault);
-
-        canvas.SetBool("isSettingsAudio", false);
     }
 }

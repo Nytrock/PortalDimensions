@@ -31,26 +31,26 @@ public class ControllSettingsManager : MonoBehaviour
     public ControllButton restartButton;
 
     [Header("Кнопка влево")]
-    private KeyCode leftOriginall;
-    private bool isLeftChanged;
+    public KeyCode leftOriginall;
+    public bool isLeftChanged;
     [Header("Кнопка вправо")]
-    private KeyCode rightOriginall;
-    private bool isRightChanged;
+    public KeyCode rightOriginall;
+    public bool isRightChanged;
     [Header("Кнопка прыжка")]
-    private KeyCode jumpOriginall;
-    private bool isJumpChanged;
+    public KeyCode jumpOriginall;
+    public bool isJumpChanged;
     [Header("Кнопка левого портала")]
-    private KeyCode leftPortalOriginall;
-    private bool isLeftPortalChanged;
+    public KeyCode leftPortalOriginall;
+    public bool isLeftPortalChanged;
     [Header("Кнопка правого портала")]
-    private KeyCode rightPortalOriginall;
-    private bool isRightPortalChanged;
+    public KeyCode rightPortalOriginall;
+    public bool isRightPortalChanged;
     [Header("Кнопка диалога")]
-    private KeyCode dialogueOriginall;
-    private bool isDialogueChanged;
+    public KeyCode dialogueOriginall;
+    public bool isDialogueChanged;
     [Header("Кнопка рестарта")]
-    private KeyCode restartOriginall;
-    private bool isRestartChanged;
+    public KeyCode restartOriginall;
+    public bool isRestartChanged;
 
     private void Start()
     {
@@ -187,10 +187,6 @@ public class ControllSettingsManager : MonoBehaviour
         portalRightButton.SetText(Save.save.portalGunRightKey.ToString());
         dialogueButton.SetText(Save.save.dialogueStartKey.ToString());
         restartButton.SetText(Save.save.fastRestartKey.ToString());
-
-        isLeftChanged = isRightChanged = isJumpChanged = isLeftPortalChanged = isRightPortalChanged = isDialogueChanged = isRestartChanged = false;
-
-        canvas.SetBool("isSettingsControll", false);
     }
 
     private void SetInteractable(bool value)

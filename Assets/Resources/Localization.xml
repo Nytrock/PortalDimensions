@@ -137,6 +137,12 @@
 			<ru>По умолчанию</ru>
 		</translates>
 	</key>
+	<key name="Курсор">
+		<translates>
+			<en-us>Cursor</en-us>
+			<ru>Курсор</ru>
+		</translates>
+	</key>
 	<key name="Налево">
 		<translates>
 			<en-us>Left</en-us>
@@ -182,7 +188,7 @@
 	<key name="Fullscreen">
 		<translates>
 			<en-us>Fullscreen</en-us>
-			<ru>Фуллскрин</ru>
+			<ru>Полноэкранный</ru>
 		</translates>
 	</key>
 	<key name="Windowed">
