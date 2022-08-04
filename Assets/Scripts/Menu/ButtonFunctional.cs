@@ -103,19 +103,19 @@ public class ButtonFunctional : MonoBehaviour
 
         switch (typeOfConfirm) {
             case "GameSettings":
-                Yes.onClick.AddListener(delegate { gameSettings.ConfirmCancel(true); gameSettings.SetChangesFalse(); });
+                Yes.onClick.AddListener(delegate { gameSettings.ConfirmCancel(true); gameSettings.SetChangesFalse(); GameSettings(); });
                 No.onClick.AddListener(delegate { gameSettings.ConfirmCancel(false); });
                 break;
             case "ControllSettings":
-                Yes.onClick.AddListener(delegate { controllSettings.ConfirmCancel(true); controllSettings.SetChangesFalse(); });
+                Yes.onClick.AddListener(delegate { controllSettings.ConfirmCancel(true); controllSettings.SetChangesFalse(); ControllSettings(); });
                 No.onClick.AddListener(delegate { controllSettings.ConfirmCancel(false); }); 
                 break;
             case "VideoSettings":
-                Yes.onClick.AddListener(delegate { videoSettings.ConfirmCancel(true); videoSettings.SetChangesFalse(); });
+                Yes.onClick.AddListener(delegate { videoSettings.ConfirmCancel(true); videoSettings.SetChangesFalse(); VideoSettings(); });
                 No.onClick.AddListener(delegate { videoSettings.ConfirmCancel(false); });
                 break;
             case "AudioSettings":
-                Yes.onClick.AddListener(delegate { audioSettings.ConfirmCancel(true); audioSettings.SetChangesFalse(); });
+                Yes.onClick.AddListener(delegate { audioSettings.ConfirmCancel(true); audioSettings.SetChangesFalse(); AudioSettings(); });
                 No.onClick.AddListener(delegate { audioSettings.ConfirmCancel(false); });
                 break;
         }

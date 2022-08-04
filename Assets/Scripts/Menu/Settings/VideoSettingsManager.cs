@@ -61,8 +61,6 @@ public class VideoSettingsManager : MonoBehaviour
         SetResolutionScreen();
 
         modId = originallMod;
-
-        canvas.SetBool("isSettingsVideo", false);
     }
 
     public void NextResolution()
