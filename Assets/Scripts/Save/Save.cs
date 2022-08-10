@@ -43,6 +43,7 @@ public class Save : MonoBehaviour
         public bool AutoRestart;
         public bool FpsShowing;
         public bool ConfimToExitActive;
+        public bool shaderOn;
         public int keyLeft;
         public int keyRight;
         public int keyJump;
@@ -75,9 +76,10 @@ public class Save : MonoBehaviour
         SettingsSave settings = new SettingsSave();
         settings.languageId = LocalizationManager.SelectedLanguage;
         settings.cursorId = gameSettingsManager.cursorId;
-        settings.AutoRestart = gameSettingsManager.autorestart;
-        settings.FpsShowing = gameSettingsManager.fpsShowing;
-        settings.ConfimToExitActive = gameSettingsManager.confirm;
+        settings.AutoRestart = gameSettingsManager.autoManager.isOn;
+        settings.FpsShowing = gameSettingsManager.fpsManager.isOn;
+        settings.ConfimToExitActive = gameSettingsManager.confirmManager.isOn;
+        settings.shaderOn = gameSettingsManager.glitchManager.isOn;
 
         Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
         settings.keyLeft = Array.IndexOf(allKeyTypes, leftKey);
@@ -121,8 +123,8 @@ public class Save : MonoBehaviour
                     gameSettingsManager.cursorId = settings.cursorId;
                     gameSettingsManager.fpsManager.isOn = settings.FpsShowing;
                     gameSettingsManager.confirmManager.isOn = settings.ConfimToExitActive;
+                    gameSettingsManager.glitchManager.isOn = settings.shaderOn;
                 }
-                fpsCounter.ChangeWorking(settings.FpsShowing);
 
                 Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
                 if ((KeyCode)allKeyTypes.GetValue(settings.keyLeft) != KeyCode.None)

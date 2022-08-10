@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\LevelsSystem\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\DialogueInterface.cs" />
+    <Compile Include="Assets\Scripts\GunGet.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonFunctional.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\ControllSettingsManager.cs" />
     <Compile Include="Assets\Scripts\Player\JumpBonus.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\ItemStartDialogue.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\ControllButton.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalCollider.cs" />
+    <Compile Include="Assets\Scripts\Save\CursorSeeker.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundGet.cs" />
     <Compile Include="Assets\Scripts\Player\DeathTrap.cs" />
     <Compile Include="Assets\Scripts\Player\DeathEffect.cs" />
@@ -100,7 +102,6 @@
     <Compile Include="Assets\Scripts\Localization\LocalizedText.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\PauseButtons.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\Save\CursorSeeker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -119,9 +120,9 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\Shaders\GlitchCameraShaderNoBlend.shader" />
+    <None Include="Assets\Shaders\NoGlitchShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Shaders\GlitchCameraShader.shader" />
+    <None Include="Assets\Shaders\GlitchShader.shader" />
     <None Include="Assets\Shaders\noiseSimplex.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
