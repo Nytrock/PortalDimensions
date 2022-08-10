@@ -95,16 +95,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(jumpKey))
             Jumping = true;
 
-        if (jumpIteration > 0)
-        {
+        if (jumpIteration > 0) {
             if (!onGround)
                 Jumping = false;
             rb.AddForce(Vector2.up * jumpForce / jumpIteration);
             jumpIteration -= 1;
         }
-
-        if (Jumping && (onGround || CrystallJump || DoubleJump || TripleJump))
-        {
+        if (Jumping && (onGround || CrystallJump || DoubleJump || TripleJump)) {
             if (onGround) {
                 jumpForce = NormalForce;
                 jumpIteration = 10;

@@ -233,6 +233,18 @@
 			<ru>Режим экрана</ru>
 		</translates>
 	</key>
+	<key name="Сбросить прогресс">
+		<translates>
+			<en-us>Reset progress</en-us>
+			<ru>Сбросить прогресс</ru>
+		</translates>
+	</key>
+	<key name="Глючный шейдер">
+		<translates>
+			<en-us>Glitch shader</en-us>
+			<ru>Глючный шейдер</ru>
+		</translates>
+	</key>
 	<key name="ИИ">
 		<translates>
 			<en-us>AI</en-us>

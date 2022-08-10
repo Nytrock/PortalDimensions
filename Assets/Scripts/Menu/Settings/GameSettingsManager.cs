@@ -18,6 +18,7 @@ public class GameSettingsManager : MonoBehaviour
     [SerializeField] private bool defaultAuto;
     [SerializeField] private bool defaultFps;
     [SerializeField] private bool defaultConfirm;
+    [SerializeField] private bool defaultGlitch;
 
     [Header("Вкладка подробнее")]
     [SerializeField] private Transform moreAutoVisual;
@@ -29,14 +30,18 @@ public class GameSettingsManager : MonoBehaviour
     [SerializeField] private Transform moreExitVisual;
     [SerializeField] private Transform moreExitButton;
     [SerializeField] private TextMeshProUGUI moreExitText;
+    [SerializeField] private Transform moreShaderVisual;
+    [SerializeField] private Transform moreShaderButton;
+    [SerializeField] private TextMeshProUGUI moreShaderText;
 
     private float moreAutoVisualPos;
     private float moreFpsVisualPos;
     private float moreExitVisualPos;
+    private float moreShaderVisualPos;
 
     [Header("Настройки локализации")]
     public LocalizationManager localization;
-    public int originallyLanguage;
+    private int originallyLanguage;
     private bool isLanguageChange;
 
     [Header("Настройки курсора")]
@@ -48,34 +53,45 @@ public class GameSettingsManager : MonoBehaviour
 
     [Header("Настройки авторестарта")]
     public Toggle autoManager;
-    public bool autorestart;
+    private bool autorestart;
     private bool originallyAuto;
     private bool isAutoChange;
 
     [Header("Настройки счётчика fps")]
     public Toggle fpsManager;
     public FpsCounter fpsCounter;
-    public bool fpsShowing;
+    private bool fpsShowing;
     private bool originallyFps;
     private bool isFpsChange;
 
     [Header("Настройки подтверждения выхода")]
     public Toggle confirmManager;
-    public bool confirm;
+    private bool confirm;
     private bool originallyConfirm;
     private bool isConfirmChange;
+
+    [Header("Настройки подтверждения выхода")]
+    public Toggle glitchManager;
+    public Material glitchMaterial;
+    public Material noGlitchMaterial;
+    public Image quad;
+    private bool glitch;
+    private bool originallyGlitch;
+    private bool isGlitchChange;
 
     public void Start()
     {
         ChangeCursorTexture();
+        SetShaderActive();
         SetNewOriginall();
         SetChangesFalse();
         SetMorePositionsValues();
-        SetMoreButtonsPosition(true);
+        SetMoreButtonsPosition();
 
         autorestart = originallyAuto;
         confirm = originallyConfirm;
         fpsShowing = originallyFps;
+        glitch = originallyGlitch;
     }
     public void NextLanguage()
     {
@@ -84,7 +100,7 @@ public class GameSettingsManager : MonoBehaviour
             newId = LocalizationManager.SelectedLanguage + 1;
         localization.SetLanguage(newId);
         isLanguageChange = originallyLanguage != newId;
-        SetMoreButtonsPosition(false);
+        SetMoreButtonsPosition();
     }
 
     public void PreviousLanguage()
@@ -94,7 +110,7 @@ public class GameSettingsManager : MonoBehaviour
             newId = LocalizationManager.SelectedLanguage - 1;
         localization.SetLanguage(newId);
         isLanguageChange = originallyLanguage != newId;
-        SetMoreButtonsPosition(false);
+        SetMoreButtonsPosition();
     }
 
     public void ChangeAutorestart()
@@ -111,7 +127,7 @@ public class GameSettingsManager : MonoBehaviour
     public void ChangeFps()
     {
         fpsShowing = !fpsShowing;
-        isFpsChange = fpsShowing !=  originallyFps;
+        isFpsChange = fpsShowing != originallyFps;
         fpsCounter.ChangeWorking(fpsShowing);
     }
 
@@ -133,6 +149,13 @@ public class GameSettingsManager : MonoBehaviour
         ChangeCursorTexture();
     }
 
+    public void ChangeGlitch()
+    {
+        glitch = !glitch;
+        isGlitchChange = originallyGlitch != glitch;
+        SetShaderActive();
+    }
+
     private void ChangeCursorTexture()
     {
         CursorSeeker.cursorSeeker.cursorId = cursorId;
@@ -141,10 +164,18 @@ public class GameSettingsManager : MonoBehaviour
         cursorImage.texture = cursorsTextures[cursorId];
     }
 
+    private void SetShaderActive()
+    {
+        if (glitch)
+            quad.material = glitchMaterial;
+        else
+            quad.material = noGlitchMaterial;
+    }
+
     public void CheckChanges()
     {
         var buttonFunc = canvas.GetComponent<ButtonFunctional>();
-        if (isLanguageChange || isAutoChange || isFpsChange || isConfirmChange || isCursorChange) {
+        if (isLanguageChange || isAutoChange || isFpsChange || isConfirmChange || isCursorChange || isGlitchChange) {
             buttonFunc.SetConfirmPanel("GameSettings");
         } else {
             buttonFunc.GameSettings();
@@ -172,6 +203,9 @@ public class GameSettingsManager : MonoBehaviour
         autoManager.isOn = originallyAuto;
 
         confirmManager.isOn = originallyConfirm;
+
+        glitchManager.isOn = originallyGlitch;
+        SetShaderActive();
     }
 
     public void SetNewOriginall()
@@ -181,6 +215,7 @@ public class GameSettingsManager : MonoBehaviour
         originallyFps = fpsManager.isOn;
         originallyLanguage = LocalizationManager.SelectedLanguage;
         originalCursor = cursorId;
+        originallyGlitch = glitchManager.isOn;
     }
 
     public void SetChangesFalse()
@@ -189,6 +224,7 @@ public class GameSettingsManager : MonoBehaviour
         isConfirmChange = false;
         isFpsChange = false;
         isCursorChange = false;
+        isGlitchChange = false;
     }
 
     public void SetDefaults()
@@ -199,18 +235,10 @@ public class GameSettingsManager : MonoBehaviour
         cursorId = defaultCursor;
         ChangeCursorTexture();
 
-        autorestart = defaultAuto;
         autoManager.isOn = defaultAuto;
-        isAutoChange = autorestart != originallyAuto;
-
-        confirm = defaultConfirm;
         confirmManager.isOn = defaultConfirm;
-        isConfirmChange = confirm != originallyConfirm;
-
-        fpsShowing = defaultFps;
-        isFpsChange = fpsShowing != originallyFps;
         fpsManager.isOn = defaultFps;
-        fpsCounter.ChangeWorking(fpsShowing);
+        glitchManager.isOn = defaultGlitch;
     }
 
     private void SetMorePositionsValues()
@@ -218,24 +246,30 @@ public class GameSettingsManager : MonoBehaviour
         moreAutoVisualPos = moreAutoVisual.localPosition.x;
         moreFpsVisualPos = moreFpsVisual.localPosition.x;
         moreExitVisualPos = moreExitVisual.localPosition.x;
+        moreShaderVisualPos = moreShaderVisual.localPosition.x;
     }
 
-    private void SetMoreButtonsPosition(bool start)
+    private void SetMoreButtonsPosition()
     {
-        float addingValue = 0;
-        if (start)
-            addingValue = 0.12f;
         moreAutoVisual.localPosition = new Vector2(moreAutoVisualPos + moreAutoText.preferredWidth, moreAutoVisual.localPosition.y);
         moreFpsVisual.localPosition = new Vector2(moreFpsVisualPos + moreFpsText.preferredWidth, moreFpsVisual.localPosition.y);
         moreExitVisual.localPosition = new Vector2(moreExitVisualPos + moreExitText.preferredWidth, moreExitVisual.localPosition.y);
-        moreAutoButton.position = new Vector2(moreAutoVisual.position.x, moreAutoVisual.position.y + addingValue);
-        moreFpsButton.position = new Vector3(moreFpsVisual.position.x, moreFpsVisual.position.y + addingValue);
-        moreExitButton.position = new Vector3(moreExitVisual.position.x, moreExitVisual.position.y + addingValue);
+        moreShaderVisual.localPosition = new Vector2(moreShaderVisualPos + moreShaderText.preferredWidth, moreShaderVisual.localPosition.y);
+        StartCoroutine(SetButtonMoreGlobalPositions());
     }
 
     public void SetScrollBar(float value)
     {
         cursorScrollBar.value = value;
         visualScrollBar.value = value;
+    }
+
+    IEnumerator SetButtonMoreGlobalPositions()
+    {
+        yield return new WaitForSeconds(0.01f);
+        moreAutoButton.position = new Vector2(moreAutoVisual.position.x, moreAutoVisual.position.y);
+        moreFpsButton.position = new Vector3(moreFpsVisual.position.x, moreFpsVisual.position.y);
+        moreExitButton.position = new Vector3(moreExitVisual.position.x, moreExitVisual.position.y);
+        moreShaderButton.position = new Vector3(moreShaderVisual.position.x, moreShaderVisual.position.y);
     }
 }
