@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationPlayer : MonoBehaviour
 {
-    public Animator animator;
+    private Animator animator;
     private List<int> Calm = new List<int> { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4, 5 };
     private int PreviosChoose;
     public ParticleSystem sleepEffect;
@@ -48,6 +48,7 @@ public class AnimationPlayer : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         animator.Play("Calm-1");
     }
 
@@ -178,8 +179,7 @@ public class AnimationPlayer : MonoBehaviour
 
         if (player.DoubleJump || player.TripleJump)
             PowerParticle.Play();
-        else
-        {
+        else {
             PowerParticle.Stop();
             main.startColor = Color.white;
         }
@@ -188,21 +188,17 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetBool("DoublePower", player.DoubleJump);
         animator.SetBool("StartPower", main.startColor.color == Color.white);
 
-        if (main.startColor.color == SecondColor && player.TripleJump)
-        {
+        if (main.startColor.color == SecondColor && player.TripleJump) {
             FirstPowerColor = DoubleGradient.colorKeys[0].color;
             SecondPowerColor = DoubleGradient.colorKeys[1].color;
             AddFirstPowerColor = (TripleGradient.colorKeys[0].color - DoubleGradient.colorKeys[0].color) / 15f;
             AddSecondPowerColor = (TripleGradient.colorKeys[1].color - DoubleGradient.colorKeys[1].color) / 15f;
-        }
-        else if (main.startColor.color == FirstColor && player.DoubleJump)
-        {
+        } else if (main.startColor.color == FirstColor && player.DoubleJump) {
             FirstPowerColor = TripleGradient.colorKeys[0].color;
             SecondPowerColor = TripleGradient.colorKeys[1].color;
             AddFirstPowerColor = (DoubleGradient.colorKeys[0].color - TripleGradient.colorKeys[0].color) / 15f;
             AddSecondPowerColor = (DoubleGradient.colorKeys[1].color - TripleGradient.colorKeys[1].color) / 15f;
-        } else if (main.startColor.color == Color.white)
-        {
+        } else if (main.startColor.color == Color.white) {
             var gradient = PowerParticle.colorOverLifetime;
             if (player.DoubleJump)
                 gradient.color = DoubleGradient;
@@ -226,5 +222,24 @@ public class AnimationPlayer : MonoBehaviour
     {
         var manager = GameObject.Find("LevelsManager").GetComponent<LevelManager>();
         manager.RestartLevel();
+    }
+
+    public void StartShooting()
+    {
+        if (animator.GetBool("IsShoot") && !animator.GetBool("RestartShooting"))
+            animator.SetBool("RestartShooting", true);
+        animator.SetBool("IsShoot", true);
+        animator.SetFloat("Speed", 1);
+    }
+
+    public void ReverseWalk()
+    {
+        animator.SetFloat("Speed", -1);
+    }
+
+    public void Death()
+    {
+        portalGun.enabled = false;
+        animator.SetBool("IsDeath", true);
     }
 }

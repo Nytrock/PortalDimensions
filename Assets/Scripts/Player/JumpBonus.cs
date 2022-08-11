@@ -9,29 +9,22 @@ public class JumpBonus : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Player player))
-        {
-            if (TripleJump && !player.TripleJump)
-            {
-                player.TripleJump = true;
-                player.DoubleJump = false;
-                GetComponent<Animator>().SetBool("Death", true);
-            }
-            else if (!player.DoubleJump && !player.TripleJump)
-            {
-                player.DoubleJump = true;
-                GetComponent<Animator>().SetBool("Death", true);
-            }
-            player.Animations.UpdateJumpBonus();
-        }
+            player.AddToJumpBonusesLists(this, false);
     }
 
-    void SetStable()
+    public void OnTriggerExit2D(Collider2D obj)
+    {
+        if (obj.TryGetComponent(out Player player))
+            player.AddToJumpBonusesLists(this, true);
+    }
+
+    public void SetStable()
     {
         bool choose = Stable[Random.Range(0, Stable.Count)];
         GetComponent<Animator>().SetBool("Stable", choose);
     }
 
-    void Death()
+    public void Death()
     {
         Destroy(gameObject);
     }

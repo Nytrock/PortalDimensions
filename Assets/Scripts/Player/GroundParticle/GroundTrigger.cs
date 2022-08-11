@@ -1,12 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GroundTrigger : MonoBehaviour
 {
-    public Player player;
+    private Player player;
     public List<Collider2D> NowColliders;
 
+    private void Start()
+    {
+        player = GetComponentInParent<Player>();
+    }
     public void Update()
     {
         if (NowColliders.Count == 0)

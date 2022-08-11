@@ -2,29 +2,30 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
-    public AnimationPlayer Animations;
-    public Rigidbody2D rb;
-    public Collider2D cl;
+    public AnimationPlayer animations;
+    private Rigidbody2D rb;
     public float RealSpeed;
-    public Transform Skin;
-    public GroundTrigger trigger;
+    private Transform skin;
     public bool Shoot;
     public bool Right;
     public bool InPortal;
     public Vector2 moveVector;
+
+    private bool Jumping;
     [Header("Прыжок")]
-    public bool Jumping;
     public bool onGround;
-    public int jumpIteration = 0;
-    public float jumpForce;
+    private int jumpIteration = 0;
+    private float jumpForce;
     public float NormalForce;
     public float CrystallForce;
     public float BoostCrystallForce;
-    public bool CrystallJump;
-    public bool BoostCrystallJump;
+    private bool CrystallJump;
+    private bool BoostCrystallJump;
     public bool DoubleJump;
     public bool TripleJump;
-    public JumpCrystall jumpCrystall;
+    private List<JumpCrystall> jumpCrystalls;
+    private List<JumpBonus> bonusDoubleJumps;
+    private List<JumpBonus> bonusTripleJumps;
     [Header("Смена внешнего вида при повороте")]
     public List<SpriteRenderer> ChangingObj;
     public List<Sprite> LeftSprites;
@@ -38,7 +39,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        cl = GetComponent<Collider2D>();
+        animations = GetComponentInChildren<AnimationPlayer>();
+        skin = animations.transform;
 
         walkLeftKey = Save.save.leftKey;
         walkRightKey = Save.save.rightKey;
@@ -62,29 +64,24 @@ public class Player : MonoBehaviour
             move = 1;
         moveVector.x = move * RealSpeed;
         rb.velocity = new Vector2(moveVector.x, rb.velocity.y);
-        if ((Right && moveVector.x < 0 || !Right && moveVector.x > 0))
+        if ((Right && moveVector.x < 0 || !Right && moveVector.x > 0)) {
             if (Shoot)
-                Animations.animator.SetFloat("Speed", -1);
+                animations.ReverseWalk();
             else
                 Flip();
+        }
     }
 
     public void Flip()
     {
-        Skin.localScale = new Vector2(Skin.localScale.x * -1, Skin.localScale.y);
+        skin.localScale = new Vector2(skin.localScale.x * -1, skin.localScale.y);
         Right = !Right;
-        if (Right)
-        {
+        if (Right){
             for (int i=0; i < ChangingObj.Count; i++)
-            {
                 ChangingObj[i].sprite = RightSprites[i];
-            }
-        } else
-        {
+        } else {
             for (int i = 0; i < ChangingObj.Count; i++)
-            {
                 ChangingObj[i].sprite = LeftSprites[i];
-            }
         }
     }
 
@@ -98,67 +95,118 @@ public class Player : MonoBehaviour
         if (jumpIteration > 0) {
             if (!onGround)
                 Jumping = false;
-            rb.AddForce(Vector2.up * jumpForce / jumpIteration);
+            rb.AddForce(Vector2.up * jumpForce / jumpIteration, ForceMode2D.Impulse);
             jumpIteration -= 1;
         }
+
         if (Jumping && (onGround || CrystallJump || DoubleJump || TripleJump)) {
             if (onGround) {
                 jumpForce = NormalForce;
                 jumpIteration = 10;
             } else if (CrystallJump) {
-                float Const = 1.3f;
-                if (rb.velocity.y > 1f)
-                    Const = rb.velocity.y * 1.1f;
-                else if (rb.velocity.y < -1f)
-                    Const = 1f + (rb.velocity.y / 50f);
-                jumpForce = CrystallForce / Const;
+                float value = CalculateJumpForce();
+                jumpForce = CrystallForce / value;
                 if (BoostCrystallJump)
-                    jumpForce = BoostCrystallForce / Const;
+                    jumpForce = BoostCrystallForce / value;
                 jumpIteration = 60;
-                jumpCrystall.Active(true);
+                jumpCrystalls[0].Active(true);
             }  else if (DoubleJump || TripleJump) {
-                float Const = 1.3f;
-                if (rb.velocity.y > 1f)
-                    Const = rb.velocity.y * 1.1f;
-                else if (rb.velocity.y < -1f)
-                    Const = 1 + (rb.velocity.y / 50f);
-                jumpForce = CrystallForce / Const;
+                float value = CalculateJumpForce();
+                jumpForce = CrystallForce / value;
                 jumpIteration = 60;
-                if (DoubleJump)
+                if (DoubleJump) {
                     DoubleJump = false;
-                if (TripleJump) {
+                } else if (TripleJump) {
                     TripleJump = false;
                     DoubleJump = true;
                 }
-                Animations.UpdateJumpBonus();
+                animations.UpdateJumpBonus();
+                CheckJumpBonuses();
             }
         }
     }
 
     public void Update_Ground(GroundGet ground)
     {
-        Animations.colorGroundParticle = ground.color;
-        if (rb.velocity.y < -14f && onGround)
-        {
-            var main = Animations.Fall.main;
+        animations.colorGroundParticle = ground.color;
+        if (rb.velocity.y < -14f && onGround) {
+            var main = animations.Fall.main;
             main.maxParticles = (int)(20 * (rb.velocity.y * -1 - 14f) / 1.5f);
-            Animations.FallParticle();
+            animations.FallParticle();
         }
     }
 
     public void Death()
     {
         GetComponent<DeathEffect>().StartDeath(1f, new Color(4f / 256f, 4f / 256f, 221f / 256f));
-        Animations.portalGun.enabled = false;
-        Animations.animator.SetBool("IsDeath", true);
+        animations.Death();
         enabled = false;
     }
 
     public void Dialogue()
     {
-        Animations.portalGun.enabled = false;
+        animations.portalGun.enabled = false;
         moveVector = new Vector2(0, 0);
         rb.velocity = new Vector2(0, 0);
-        this.enabled = false;
+        enabled = false;
+    }
+
+    private float CalculateJumpForce()
+    {
+        float value = 1.3f;
+        if (rb.velocity.y > 1f)
+            value = rb.velocity.y * 1.1f;
+        else if (rb.velocity.y < -1f)
+            value = 1 + (rb.velocity.y / 50f);
+        return value;
+    }
+
+    public void CheckCrystallList(JumpCrystall crystall, bool removing)
+    {
+        if (removing)
+            jumpCrystalls.Remove(crystall);
+        else
+            jumpCrystalls.Add(crystall);
+
+        if (jumpCrystalls.Count != 0) {
+            CrystallJump = true;
+            BoostCrystallJump = jumpCrystalls[0].BoostJump;
+        } else {
+            CrystallJump = false;
+            BoostCrystallJump = false;
+        }
+    }
+
+    public void AddToJumpBonusesLists(JumpBonus bonus, bool removing)
+    {
+        if (bonus.TripleJump) {
+            if (removing)
+                bonusTripleJumps.Remove(bonus);
+            else
+                bonusTripleJumps.Add(bonus);
+        } else {
+            if (removing)
+                bonusDoubleJumps.Remove(bonus);
+            else
+                bonusDoubleJumps.Add(bonus);
+        }
+
+        CheckJumpBonuses();
+    }
+
+    private void CheckJumpBonuses()
+    {
+        if (bonusTripleJumps.Count > 0 && !TripleJump) {
+            TripleJump = true;
+            DoubleJump = false;
+            bonusTripleJumps[0].GetComponent<Animator>().SetBool("Death", true);
+            bonusTripleJumps.RemoveAt(0);
+            animations.UpdateJumpBonus();
+        } else if (bonusDoubleJumps.Count > 0 && !DoubleJump && !TripleJump) {
+            DoubleJump = true;
+            bonusDoubleJumps[0].GetComponent<Animator>().SetBool("Death", true);
+            bonusDoubleJumps.RemoveAt(0);
+            animations.UpdateJumpBonus();
+        }
     }
 }

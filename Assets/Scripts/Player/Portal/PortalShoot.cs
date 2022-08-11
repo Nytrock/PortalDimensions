@@ -47,10 +47,10 @@ public class PortalShoot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D obj)
     {
-        if (gun.InWall) {
+        if (gun.RightButton == Blue.activeSelf && gun.InWall) {
             isUsed = true;
             GetComponent<Animator>().enabled = true;
-        } else  if (!isUsed && !(obj.tag == "Player")) {
+        } else if (!isUsed && !(obj.tag == "Player")) {
             if (obj.TryGetComponent(out PortalCollider portalCollider)) {
                 SpawnPortal(portalCollider.portal.Collider);
                 isUsed = true;

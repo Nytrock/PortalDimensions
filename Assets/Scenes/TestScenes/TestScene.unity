@@ -12533,9 +12533,8 @@ MonoBehaviour:
   ShootBlue: {fileID: 0}
   OrangePortal: {fileID: 0}
   BluePortal: {fileID: 0}
-  ForceIteration: 0
-  VectorForce: {x: 0, y: 0}
-  Force: 127
+  ForceIteration: 60
+  Force: 2.15
   itemToTeleport: {fileID: 0}
   BlueLight: {fileID: 334629444}
   OrangeLight: {fileID: 1115747805}
@@ -12725,28 +12724,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c9162bdb5aed1469d4aa872875f482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animations: {fileID: 1804483145}
-  rb: {fileID: 215366465}
-  cl: {fileID: 0}
+  animations: {fileID: 1804483145}
   RealSpeed: 3.4
-  Skin: {fileID: 1804483144}
-  trigger: {fileID: 271348136}
   Shoot: 0
   Right: 1
   InPortal: 0
   moveVector: {x: 0, y: 0}
-  Jumping: 0
   onGround: 0
-  jumpIteration: 0
-  jumpForce: 0
-  NormalForce: 70
-  CrystallForce: 115
-  BoostCrystallForce: 130
-  CrystallJump: 0
-  BoostCrystallJump: 0
+  NormalForce: 1.4
+  CrystallForce: 2.3
+  BoostCrystallForce: 2.6
   DoubleJump: 0
   TripleJump: 0
-  jumpCrystall: {fileID: 0}
   ChangingObj:
   - {fileID: 1329556078}
   - {fileID: 920135300}
@@ -13621,7 +13610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c655d2d02c180cd49bc723e2405ecf50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 215366468}
   NowColliders: []
 --- !u!61 &271348137
 BoxCollider2D:
@@ -16569,7 +16557,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395065151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.35, y: 12.62, z: 0}
+  m_LocalPosition: {x: 4.11, y: 8.05, z: 0}
   m_LocalScale: {x: 0.31032386, y: 0.31032386, z: 0.31032386}
   m_Children:
   - {fileID: 1109936456}
@@ -16606,7 +16594,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoostJump: 1
-  animator: {fileID: 395065152}
 --- !u!1 &395386537
 GameObject:
   m_ObjectHideFlags: 0
@@ -18535,7 +18522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506633901}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.89, y: -6.98, z: 0}
+  m_LocalPosition: {x: -9.33, y: -11.99, z: 0}
   m_LocalScale: {x: 2.8611188, y: 3.6742728, z: 1}
   m_Children:
   - {fileID: 1827048180}
@@ -36654,7 +36641,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoostJump: 0
-  animator: {fileID: 1001785169}
 --- !u!58 &1001785168
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -36749,7 +36735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001785166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.79, y: 12.82, z: 0}
+  m_LocalPosition: {x: 6.03, y: 8.5, z: 0}
   m_LocalScale: {x: 0.31032386, y: 0.31032386, z: 0.31032386}
   m_Children:
   - {fileID: 1316558872}
@@ -44685,7 +44671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192763928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.78, y: 11.04, z: 0}
+  m_LocalPosition: {x: 11.860001, y: 7.33, z: 0}
   m_LocalScale: {x: 0.31032386, y: 0.31032386, z: 0.31032386}
   m_Children:
   - {fileID: 850596632}
@@ -46125,6 +46111,7 @@ MonoBehaviour:
   defaultAuto: 0
   defaultFps: 0
   defaultConfirm: 0
+  defaultGlitch: 0
   moreAutoVisual: {fileID: 0}
   moreAutoButton: {fileID: 0}
   moreAutoText: {fileID: 0}
@@ -46134,18 +46121,21 @@ MonoBehaviour:
   moreExitVisual: {fileID: 0}
   moreExitButton: {fileID: 0}
   moreExitText: {fileID: 0}
+  moreShaderVisual: {fileID: 0}
+  moreShaderButton: {fileID: 0}
+  moreShaderText: {fileID: 0}
   localization: {fileID: 1469275787}
-  originallyLanguage: 0
   cursorsTextures: []
   cursorImage: {fileID: 0}
   cursorId: 0
   autoManager: {fileID: 172424030}
-  autorestart: 0
   fpsManager: {fileID: 441601022}
   fpsCounter: {fileID: 497522394}
-  fpsShowing: 0
   confirmManager: {fileID: 313456306}
-  confirm: 0
+  glitchManager: {fileID: 0}
+  glitchMaterial: {fileID: 0}
+  noGlitchMaterial: {fileID: 0}
+  quad: {fileID: 0}
 --- !u!1 &1271208405
 GameObject:
   m_ObjectHideFlags: 0
@@ -54144,7 +54134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427507257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.35, y: 10.57, z: 0}
+  m_LocalPosition: {x: 7.38, y: 6.79, z: 0}
   m_LocalScale: {x: 0.31032386, y: 0.31032386, z: 0.31032386}
   m_Children:
   - {fileID: 906608620}
@@ -54983,7 +54973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1490519497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55084,7 +55074,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490519496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.37, y: -5.1, z: 0}
+  m_LocalPosition: {x: 4.2, y: 6.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 600764857}
@@ -74893,7 +74883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f296d700d68f7724890c7db67272c5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1804483143}
   sleepEffect: {fileID: 620253336}
   Walk1: {fileID: 1046066597}
   Walk2: {fileID: 1516862506}

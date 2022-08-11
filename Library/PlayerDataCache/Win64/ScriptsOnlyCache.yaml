@@ -60,7 +60,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
-    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -985,7 +984,7 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
-      Hash: 3751ac3e04c2586f53933a85008166d9
+      Hash: 2496feb2fb9e151dd870205a7bb19571
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ButtonFunctional
@@ -2047,7 +2046,7 @@ ScriptsOnlyBuild:
     className: CinemachineTrackedDolly
   - hash:
       serializedVersion: 2
-      Hash: e9db63be64fa1f8a35b3733622f4778c
+      Hash: 91fff7c25ff935f1efbb503652b4e365
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameSettingsManager
