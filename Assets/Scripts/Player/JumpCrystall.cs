@@ -1,31 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class JumpCrystall : MonoBehaviour
 {
     public bool BoostJump;
-    public Animator animator;
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Player player))
-        {
-            if (!player.CrystallJump)
-            {
-                player.CrystallJump = true;
-                player.BoostCrystallJump = BoostJump;
-                player.jumpCrystall = this;
-            }
-        }
+            player.CheckCrystallList(this, true);
     }
     void OnTriggerExit2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Player player))
-        {
-            player.CrystallJump = false;
-            player.BoostCrystallJump = false;
-            player.jumpCrystall = null;
-        }
+            player.CheckCrystallList(this, false);
     }
 
     public void Active(bool act)

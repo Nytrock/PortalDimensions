@@ -48553,7 +48553,6 @@ MonoBehaviour:
   moreShaderButton: {fileID: 1789302195}
   moreShaderText: {fileID: 422131635}
   localization: {fileID: 79656920}
-  originallyLanguage: 0
   cursorsTextures:
   - {fileID: 2800000, guid: 8496099d7f6f73d4eb88f7eabb20580f, type: 3}
   - {fileID: 2800000, guid: 0c0500dd6324fa2498c20e1925346c4f, type: 3}
@@ -48564,17 +48563,13 @@ MonoBehaviour:
   cursorImage: {fileID: 1424719443}
   cursorId: 0
   autoManager: {fileID: 1064993058}
-  autorestart: 0
   fpsManager: {fileID: 480579205}
   fpsCounter: {fileID: 5789978}
-  fpsShowing: 0
   confirmManager: {fileID: 278068438}
-  confirm: 0
   glitchManager: {fileID: 679564266}
   glitchMaterial: {fileID: 2100000, guid: 37f479f2dbd81f14980d6c8e62094187, type: 2}
   noGlitchMaterial: {fileID: 2100000, guid: 6d293acfe12ae8445b9a025867b23cab, type: 2}
   quad: {fileID: 597853861}
-  glitch: 0
 --- !u!1 &1822117815
 GameObject:
   m_ObjectHideFlags: 0

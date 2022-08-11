@@ -24,7 +24,7 @@ public class PortalGun : MonoBehaviour
     public Portal BluePortal;
 
     public float ForceIteration;
-    public Vector2 VectorForce;
+    private Vector2 VectorForce;
     public float Force;
     public Collider2D itemToTeleport;
 
@@ -51,10 +51,9 @@ public class PortalGun : MonoBehaviour
 
             HeadRotation();
 
-            player.Animations.animator.SetBool("IsShoot", true);
             transform.parent = NewPosition;
             player.Shoot = true;
-            player.Animations.animator.SetFloat("Speed", 1);
+            player.animations.StartShooting();
         }
     }
     void Barrier(float num)
@@ -141,15 +140,11 @@ public class PortalGun : MonoBehaviour
 
     public void Shoot()
     {
-        if (player.Animations.animator.GetBool("IsShoot") && !player.Animations.animator.GetBool("RestartShooting"))
-            player.Animations.animator.SetBool("RestartShooting", true);
         RightButton = Input.GetKeyDown(rightPortalKey);
         BlueLight.SetActive(false);
         OrangeLight.SetActive(false);
 
-
-        if (RightButton)
-        {
+        if (RightButton) {
             if (ShootBlue) {
                 ShootBlue.GetComponent<Animator>().enabled = true;
                 ShootBlue = null;
@@ -161,9 +156,7 @@ public class PortalGun : MonoBehaviour
                 ShootBlue.Right = RightButton;
             }
             BlueLight.SetActive(true);
-        }
-        else
-        {
+        } else {
             if (ShootOrange) {
                 ShootOrange.GetComponent<Animator>().enabled = true;
                 ShootOrange = null;
@@ -177,10 +170,8 @@ public class PortalGun : MonoBehaviour
             OrangeLight.SetActive(true);
         }
 
-        if (ShootOrange && ShootBlue)
-        {
-            if (ShootOrange.Speed == ShootBlue.Speed)
-            {
+        if (ShootOrange && ShootBlue) {
+            if (ShootOrange.Speed == ShootBlue.Speed) {
                 if (RightButton)
                     ShootBlue.GetComponent<Animator>().enabled = true;
                 else
@@ -338,16 +329,6 @@ public class PortalGun : MonoBehaviour
         Enter.trigger.inPortal = false;
         Enter.Teleport = false;
 
-        float x = item.bounds.extents.x;
-        float y = item.bounds.extents.y;
-        switch (Exit.side)
-        {
-            case "Left": item.transform.position = new Vector2(Exit.transform.position.x + x + 1f, Exit.transform.position.y); break;
-            case "Down": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y + y + 1f); break;
-            case "Right": item.transform.position = new Vector2(Exit.transform.position.x - x - 1f, Exit.transform.position.y); break;
-            case "Up": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y - y - 1f); break;
-        }
-
         if (BluePortal.Collider != OrangePortal.Collider)
             Enter.Update_Portal();
 
@@ -359,25 +340,43 @@ public class PortalGun : MonoBehaviour
         Exit.Mask.SetActive(true);
         Exit.AnimatorPortal();
 
+        float x = item.bounds.extents.x;
+        float y = item.bounds.extents.y;
+        float yAdd = 0f;
+        if (item.TryGetComponent(out Player _))
+            yAdd = 0.5f;
+        switch (Exit.side)
+        {
+            case "Left": item.transform.position = new Vector2(Exit.transform.position.x + x + 1f, Exit.transform.position.y + yAdd); break;
+            case "Down": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y + y + 1f); break;
+            case "Right": item.transform.position = new Vector2(Exit.transform.position.x - x - 1f, Exit.transform.position.y + yAdd); break;
+            case "Up": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y - y - 1f); break;
+        }
 
         var rb = item.GetComponent<Rigidbody2D>();
-        float velX = (Mathf.Abs(rb.velocity.x) + 1f) / 10f;
-        if (velX < 1.2f)
-            velX = 1.2f;
         float velY = (Mathf.Abs(rb.velocity.y) + 1.4f) / 10f;
-        if (velY < 1.2f)
-            velY = 1.2f;
+        if (velY < 1.3f)
+            velY = 1.3f;
         float massCompY = rb.mass;
         if (massCompY > 1)
             massCompY *= 1.03f;
         float massCompX = rb.mass;
         if (massCompX > 1)
             massCompX *= 0.3f;
+        float horizontalForceMultiply = 1f;
+        if (item.TryGetComponent(out Player _))
+            horizontalForceMultiply = 15f;
         switch (Exit.side)
         {
-            case "Left": VectorForce = new Vector2(-Force * velX * massCompX * 2.5f, 0); break;
+            case "Left": 
+                VectorForce = new Vector2(-Force * Mathf.Max(velY, 1.6f) * 0.8f * massCompX * 2.5f * horizontalForceMultiply, 0);
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                break;
             case "Down": break;
-            case "Right": VectorForce = new Vector2(Force * massCompX * velX * 2.5f, 0); break;
+            case "Right": 
+                VectorForce = new Vector2(Force * massCompX * Mathf.Max(velY, 1.6f) * 0.8f * 2.5f * horizontalForceMultiply, 0);
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                break;
             case "Up":
                 VectorForce = new Vector2(0, Force * massCompY * velY);
                 rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -386,19 +385,19 @@ public class PortalGun : MonoBehaviour
 
 
         if (item.TryGetComponent(out Player player))
-            player.Animations.From_Portal(Exit.Blue.activeSelf);
+            player.animations.From_Portal(Exit.Blue.activeSelf);
         else
             item.transform.rotation = Quaternion.Euler(0f, 0f, Exit.transform.rotation.eulerAngles.z);
-        ForceIteration = 60f;
+        ForceIteration = 1f;
         StartCoroutine(GiveForce());
     }
 
     IEnumerator GiveForce()
     {
-        while (ForceIteration > 0)
+        while (ForceIteration < 60)
         {
-            itemToTeleport.GetComponent<Rigidbody2D>().AddForce(VectorForce / ForceIteration);
-            ForceIteration -= 1f;
+            itemToTeleport.GetComponent<Rigidbody2D>().AddForce(VectorForce / ForceIteration, ForceMode2D.Impulse);
+            ForceIteration += 1f;
             yield return new WaitForSeconds(Time.deltaTime);
         }
         if (!OrangePortal.trigger.inPortal && !BluePortal.trigger.inPortal)

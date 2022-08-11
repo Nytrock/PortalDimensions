@@ -114,7 +114,7 @@ public class DialogueManager : MonoBehaviour
             panelsController.SetBool("isDialogue", false);
             var player = GameObject.Find("Player").GetComponent<Player>();
             player.enabled = true;
-            player.Animations.portalGun.enabled = true;
+            player.animations.portalGun.enabled = true;
             viewChoices.Clear();
             choiceArrow.Buttons.Clear();
             numPanel = 1;
