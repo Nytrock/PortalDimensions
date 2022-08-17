@@ -1,29 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
     public static bool isGamePaused;
     public LevelManager levelManager;
-    public Choice choice;
-    public GameSettingsManager settingsManager;
+
+    [Header("Взаимодействие с выбором")]
+    public Choice mainChoice;
+    public Choice settingsChoice;
+    public GameObject settingsPanel;
+    public GameObject mainPanel;
+    public Scrollbar gameSettingsSlider;
 
     private float choiceYCoordinate;
+    private Animator animator;
 
     public void Start()
     {
-        choiceYCoordinate = choice.transform.localPosition.y;
+        animator = GetComponent<Animator>();
+        choiceYCoordinate = mainChoice.transform.localPosition.y;
+        mainPanel.SetActive(animator.GetBool("isPause"));
+        settingsPanel.SetActive(animator.GetBool("isSettings"));
     }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            var canvas = GetComponent<Animator>();
-            if (canvas.GetBool("isSettings"))
-                settingsManager.CheckChanges();
+            if (animator.GetBool("isConfirm"))
+                SetConfirm();
+            else if (animator.GetBool("isSettings"))
+                Settings();
             else
-                canvas.SetBool("isPause", !canvas.GetBool("isPause"));
+                SetPause();
         }
     }
 
@@ -35,19 +44,84 @@ public class CanvasManager : MonoBehaviour
     {
         Time.timeScale = 0;
         isGamePaused = true;
-        choice.StartPauseWorking();
+        mainChoice.StartPauseWorking();
+        settingsChoice.StartPauseWorking();
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
         isGamePaused = false;
-        choice.StopPauseWorking();
+        mainChoice.StopPauseWorking();
+        settingsChoice.StopPauseWorking();
     }
 
     public void SetChoicePosition()
     {
-        choice.transform.localPosition = new Vector2(choice.transform.localPosition.x, choiceYCoordinate);
-        choice.SetPosition(0);
-        choice.NowPosition = choice.positions[0];
+        mainChoice.transform.localPosition = new Vector2(mainChoice.transform.localPosition.x, choiceYCoordinate);
+        mainChoice.SetPosition(0);
+        mainChoice.NowPosition = mainChoice.positions[0];
+    }
+
+    public void Settings()
+    {
+        animator.SetBool("isSettings", !animator.GetBool("isSettings"));
+        mainChoice.working = !animator.GetBool("isSettings");
+        mainPanel.SetActive(!animator.GetBool("isSettings"));
+    }
+
+    public void SetActiveSettingsChoice()
+    {
+        settingsChoice.working = animator.GetBool("isSettings");
+        settingsPanel.SetActive(animator.GetBool("isSettings"));
+    }
+
+    public void SetConfirm()
+    {
+        animator.SetBool("isConfirm", !animator.GetBool("isConfirm"));
+    }
+
+    public void SetPause()
+    {
+        animator.SetBool("isPause", !animator.GetBool("isPause"));
+        mainPanel.SetActive(animator.GetBool("isPause"));
+    }
+    public void Restart()
+    {
+        animator.SetBool("isDeath", animator.GetBool("isDeath"));
+    }
+
+    public void GameSettings()
+    {
+        animator.SetBool("isSettingsGame", !animator.GetBool("isSettingsGame"));
+        settingsChoice.working = !animator.GetBool("isSettingsGame");
+        settingsPanel.SetActive(!animator.GetBool("isSettingsGame"));
+        if (animator.GetBool("isSettingsGame"))
+            gameSettingsSlider.value = 1;
+    }
+
+    public void SetValue()
+    {
+        gameSettingsSlider.value = 1;
+    }
+
+    public void ControllSettings()
+    {
+        animator.SetBool("isSettingsControll", !animator.GetBool("isSettingsControll"));
+        settingsChoice.working = !animator.GetBool("isSettingsControll");
+        settingsPanel.SetActive(!animator.GetBool("isSettingsControll"));
+    }
+
+    public void VideoSettings()
+    {
+        animator.SetBool("isSettingsVideo", !animator.GetBool("isSettingsVideo"));
+        settingsChoice.working = !animator.GetBool("isSettingsVideo");
+        settingsPanel.SetActive(!animator.GetBool("isSettingsVideo"));
+    }
+
+    public void AudioSettings()
+    {
+        animator.SetBool("isSettingsAudio", !animator.GetBool("isSettingsAudio"));
+        settingsChoice.working = !animator.GetBool("isSettingsAudio");
+        settingsPanel.SetActive(!animator.GetBool("isSettingsAudio"));
     }
 }

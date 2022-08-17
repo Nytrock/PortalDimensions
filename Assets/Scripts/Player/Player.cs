@@ -23,9 +23,9 @@ public class Player : MonoBehaviour
     private bool BoostCrystallJump;
     public bool DoubleJump;
     public bool TripleJump;
-    private List<JumpCrystall> jumpCrystalls;
-    private List<JumpBonus> bonusDoubleJumps;
-    private List<JumpBonus> bonusTripleJumps;
+    private List<JumpCrystall> jumpCrystalls = new List<JumpCrystall>();
+    private List<JumpBonus> bonusDoubleJumps = new List<JumpBonus>();
+    private List<JumpBonus> bonusTripleJumps = new List<JumpBonus>();
     [Header("Смена внешнего вида при повороте")]
     public List<SpriteRenderer> ChangingObj;
     public List<Sprite> LeftSprites;
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         if (jumpIteration > 0) {
             if (!onGround)
                 Jumping = false;
-            rb.AddForce(Vector2.up * jumpForce / jumpIteration, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpIteration -= 1;
         }
 
@@ -103,17 +103,18 @@ public class Player : MonoBehaviour
             if (onGround) {
                 jumpForce = NormalForce;
                 jumpIteration = 10;
+                rb.AddForce(Vector2.up * jumpForce * 1.2f, ForceMode2D.Impulse);
             } else if (CrystallJump) {
                 float value = CalculateJumpForce();
                 jumpForce = CrystallForce / value;
                 if (BoostCrystallJump)
                     jumpForce = BoostCrystallForce / value;
-                jumpIteration = 60;
+                jumpIteration = 10;
                 jumpCrystalls[0].Active(true);
             }  else if (DoubleJump || TripleJump) {
                 float value = CalculateJumpForce();
                 jumpForce = CrystallForce / value;
-                jumpIteration = 60;
+                jumpIteration = 10;
                 if (DoubleJump) {
                     DoubleJump = false;
                 } else if (TripleJump) {
@@ -153,11 +154,11 @@ public class Player : MonoBehaviour
 
     private float CalculateJumpForce()
     {
-        float value = 1.3f;
+        float value = 1.4f;
         if (rb.velocity.y > 1f)
-            value = rb.velocity.y * 1.1f;
+            value = rb.velocity.y * 1.15f;
         else if (rb.velocity.y < -1f)
-            value = 1 + (rb.velocity.y / 50f);
+            value = 1 + (rb.velocity.y / 40f);
         return value;
     }
 

@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 public class PauseButtons : MonoBehaviour
 {
-    public Animator canvas;
-    public Choice choice;
+    public CanvasManager canvas;
     public GameObject messageSettings;
     public GameObject messageExit;
     public GameSettingsManager settings;
+    public Choice mainChoice;
+    public Choice settingsChoice;
 
     public Button Yes;
     public Button No;
 
     public void ContinueGame()
     {
-        canvas.SetBool("isPause", false);
+        canvas.SetPause();
     }
 
     public void Achievements()
@@ -29,20 +30,6 @@ public class PauseButtons : MonoBehaviour
         Debug.Log("Statistic");
     }
 
-    public void Settings()
-    {
-        Yes.onClick.RemoveAllListeners();
-        Yes.onClick.AddListener(delegate { settings.ConfirmCancel(true); });
-
-        No.onClick.RemoveAllListeners();
-        No.onClick.AddListener(delegate { settings.ConfirmCancel(false); });
-
-        messageSettings.SetActive(true);
-        messageExit.SetActive(false);
-
-        canvas.SetBool("isSettings", !canvas.GetBool("isSettings"));
-    }
-
     public void ExitToMenuConfirm()
     {
         if (Save.GetConfirmNeed()) {
@@ -50,12 +37,12 @@ public class PauseButtons : MonoBehaviour
             Yes.onClick.AddListener(ExitToMenu);
 
             No.onClick.RemoveAllListeners();
-            No.onClick.AddListener(CloseConfirm);
+            No.onClick.AddListener(canvas.SetConfirm);
 
             messageSettings.SetActive(false);
             messageExit.SetActive(true);
 
-            canvas.SetBool("isConfirm", true);
+            canvas.SetConfirm();
         } else {
             ExitToMenu();
         }
@@ -68,12 +55,12 @@ public class PauseButtons : MonoBehaviour
             Yes.onClick.AddListener(Exit);
 
             No.onClick.RemoveAllListeners();
-            No.onClick.AddListener(CloseConfirm);
+            No.onClick.AddListener(canvas.SetConfirm);
 
             messageSettings.SetActive(false);
             messageExit.SetActive(true);
 
-            canvas.SetBool("isConfirm", true);
+            canvas.SetConfirm();
         } else {
             Exit();
         }
@@ -89,10 +76,5 @@ public class PauseButtons : MonoBehaviour
     {
         Time.timeScale = 1;
         Application.Quit();
-    }
-
-    public void CloseConfirm()
-    {
-        canvas.SetBool("isConfirm", false);
     }
 }

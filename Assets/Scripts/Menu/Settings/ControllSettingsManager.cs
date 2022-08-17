@@ -115,36 +115,43 @@ public class ControllSettingsManager : MonoBehaviour
             switch (keyName)
             {
                 case "Left":
+                    CheckNewKey(Save.save.leftKey);
                     leftButton.SetText(newKey.ToString());
                     Save.save.leftKey = newKey;
                     isLeftChanged = leftOriginall != newKey;
                     break;
                 case "Right":
+                    CheckNewKey(Save.save.rightKey);
                     rightButton.SetText(newKey.ToString());
                     Save.save.rightKey = newKey;
                     isRightChanged = rightOriginall != newKey;
                     break;
                 case "Jump":
+                    CheckNewKey(Save.save.jumpKey);
                     jumpButton.SetText(newKey.ToString());
                     Save.save.jumpKey = newKey;
                     isJumpChanged = jumpOriginall != newKey;
                     break;
                 case "LeftPortal":
+                    CheckNewKey(Save.save.portalGunLeftKey);
                     portalLeftButton.SetText(newKey.ToString());
                     Save.save.portalGunLeftKey = newKey;
                     isLeftPortalChanged = leftPortalOriginall != newKey;
                     break;
                 case "RightPortal":
+                    CheckNewKey(Save.save.portalGunRightKey);
                     portalRightButton.SetText(newKey.ToString());
                     Save.save.portalGunRightKey = newKey;
                     isRightPortalChanged = rightPortalOriginall != newKey;
                     break;
                 case "Dialogue":
+                    CheckNewKey(Save.save.dialogueStartKey);
                     dialogueButton.SetText(newKey.ToString());
                     Save.save.dialogueStartKey = newKey;
                     isDialogueChanged = dialogueOriginall != newKey;
                     break;
                 case "Restart":
+                    CheckNewKey(Save.save.fastRestartKey);
                     restartButton.SetText(newKey.ToString());
                     Save.save.fastRestartKey = newKey;
                     isRestartChanged = restartOriginall != newKey;
@@ -205,6 +212,39 @@ public class ControllSettingsManager : MonoBehaviour
             dialogueButton.GetComponent<Button>().interactable = value;
         if (changingButton != restartButton)
             restartButton.GetComponent<Button>().interactable = value;
+    }
+
+    private void CheckNewKey(KeyCode changingKey)
+    {
+        if (newKey == Save.save.leftKey) {
+            leftButton.SetText(changingKey.ToString());
+            Save.save.leftKey = changingKey;
+            isLeftChanged = leftOriginall != changingKey;
+        } else if (newKey == Save.save.rightKey) {
+            rightButton.SetText(changingKey.ToString());
+            Save.save.rightKey = changingKey;
+            isRightChanged = rightOriginall != changingKey;
+        } else if (newKey == Save.save.jumpKey) {
+            jumpButton.SetText(changingKey.ToString());
+            Save.save.jumpKey = changingKey;
+            isJumpChanged = jumpOriginall != changingKey;
+        } else if (newKey == Save.save.portalGunLeftKey) {
+            portalLeftButton.SetText(changingKey.ToString());
+            Save.save.portalGunLeftKey = changingKey;
+            isLeftPortalChanged = leftPortalOriginall != changingKey;
+        } else if (newKey == Save.save.portalGunRightKey) {
+            portalRightButton.SetText(changingKey.ToString());
+            Save.save.portalGunRightKey = changingKey;
+            isRightPortalChanged = rightPortalOriginall != changingKey;
+        } else if (newKey == Save.save.dialogueStartKey) {
+            dialogueButton.SetText(changingKey.ToString());
+            Save.save.dialogueStartKey = changingKey;
+            isDialogueChanged = dialogueOriginall != changingKey;
+        } else if (newKey == Save.save.fastRestartKey) {
+            restartButton.SetText(changingKey.ToString());
+            Save.save.fastRestartKey = changingKey;
+            isRestartChanged = restartOriginall != changingKey;
+        }
     }
 
     public void SetNewOriginall()

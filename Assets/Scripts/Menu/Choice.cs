@@ -58,6 +58,7 @@ public class Choice : MonoBehaviour
     {
         foreach (Button button in Buttons)
             button.GetComponent<ChoiceButton>().pauseActive = true;
+        working = true;
         StartCoroutine(FixedUpdatePause());
         StartCoroutine(UpdatePause());
     }
@@ -66,6 +67,7 @@ public class Choice : MonoBehaviour
     {
         foreach (Button button in Buttons)
             button.GetComponent<ChoiceButton>().pauseActive = false;
+        working = false;
         StopAllCoroutines();
     }
 

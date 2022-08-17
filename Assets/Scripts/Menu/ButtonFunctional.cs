@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ButtonFunctional : MonoBehaviour
 {
@@ -26,7 +27,11 @@ public class ButtonFunctional : MonoBehaviour
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (animator.GetBool("isSettingsGame"))
+            if (animator.GetBool("isGameReset"))
+                gameSettings.SetResetAnimation();
+            else if (animator.GetBool("isMore"))
+                gameSettings.SetMoreAnimation();
+            else if (animator.GetBool("isSettingsGame"))
                 gameSettings.CheckChanges();
             else if (animator.GetBool("isSettingsControll"))
                 controllSettings.CheckChanges();
@@ -52,9 +57,6 @@ public class ButtonFunctional : MonoBehaviour
     {
         animator.SetBool("isSettings", !animator.GetBool("isSettings"));
 
-        mainChoice.working = !animator.GetBool("isSettings");
-        settingsChoice.working = animator.GetBool("isSettings");
-
         mainPanel.SetActive(!animator.GetBool("isSettings"));
         settingsPanel.SetActive(animator.GetBool("isSettings"));
 
@@ -64,6 +66,16 @@ public class ButtonFunctional : MonoBehaviour
             settingsChoice.transform.localPosition = new Vector2(settingsChoice.transform.localPosition.x, settingsChoice.positions[0]);
             settingsChoice.NowId = 0;
         }
+    }
+
+    public void SettingsWorking()
+    {
+        settingsChoice.working = animator.GetBool("isSettings");
+    }
+
+    public void MainWorking()
+    {
+        mainChoice.working = !animator.GetBool("isSettings");
     }
 
     public void GameSettings()

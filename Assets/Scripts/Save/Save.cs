@@ -67,6 +67,7 @@ public class Save : MonoBehaviour
 
     public void Awake()
     {
+        Application.targetFrameRate = 60;
         save = this;
         Load();
     }
@@ -215,5 +216,38 @@ public class Save : MonoBehaviour
     public void SetChoiceDoing(int id, bool newValue)
     {
         DoChoiceIdList[id] = newValue;
+    }
+
+    public void ResetGame()
+    {
+        SettingsSave settings = new SettingsSave();
+        settings.languageId = LocalizationManager.SelectedLanguage;
+        settings.cursorId = gameSettingsManager.cursorId;
+        settings.AutoRestart = gameSettingsManager.autoManager.isOn;
+        settings.FpsShowing = gameSettingsManager.fpsManager.isOn;
+        settings.ConfimToExitActive = gameSettingsManager.confirmManager.isOn;
+        settings.shaderOn = gameSettingsManager.glitchManager.isOn;
+
+        Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
+        settings.keyLeft = Array.IndexOf(allKeyTypes, leftKey);
+        settings.keyRight = Array.IndexOf(allKeyTypes, rightKey);
+        settings.keyJump = Array.IndexOf(allKeyTypes, jumpKey);
+        settings.keyLeftPortal = Array.IndexOf(allKeyTypes, portalGunLeftKey);
+        settings.keyRightPortal = Array.IndexOf(allKeyTypes, portalGunRightKey);
+        settings.keyDialogue = Array.IndexOf(allKeyTypes, dialogueStartKey);
+        settings.keyRestart = Array.IndexOf(allKeyTypes, fastRestartKey);
+        settings.volumeMusic = audioSettingsManager.musicSlider.value;
+        settings.volumeEffects = audioSettingsManager.effectsSlider.value;
+        settings.volumeUI = audioSettingsManager.uiSlider.value;
+        settings.screenResolutionId = videoSettingsManager.resolutionId;
+        settings.screenModId = videoSettingsManager.modId;
+
+        if (!Directory.Exists(Application.dataPath + "/save"))
+            Directory.CreateDirectory(Application.dataPath + "/save");
+
+        FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Create);
+        BinaryFormatter form = new BinaryFormatter();
+        form.Serialize(stream, settings);
+        stream.Close();
     }
 }

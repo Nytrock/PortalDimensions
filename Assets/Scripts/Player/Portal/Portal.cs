@@ -19,13 +19,22 @@ public class Portal : MonoBehaviour
     public PortalTrigger trigger;
     public bool Teleport;
     public bool Active;
-    public Animator animator;
+    private Animator animator;
     public List<Collider2D> Pregrads;
 
-    private float TargetScalePortal;
-    private float StepScalePortal;
-    private float TargetScaleParticles;
-    private float StepScaleParticles;
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        animator.SetBool("Start", true);
+    }
+
+    public void SetPortal(bool right, PortalGun newGun)
+    {
+        Mask.SetActive(false);
+        Orange.SetActive(!right);
+        Blue.SetActive(right);
+        gun = newGun;
+    }
 
     public void Update_Portal()
     {

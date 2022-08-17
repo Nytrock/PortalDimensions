@@ -177,9 +177,9 @@ public class AnimationPlayer : MonoBehaviour
 
         var main = PowerParticle.main;
 
-        if (player.DoubleJump || player.TripleJump)
+        if (player.DoubleJump || player.TripleJump) {
             PowerParticle.Play();
-        else {
+        } else {
             PowerParticle.Stop();
             main.startColor = Color.white;
         }
@@ -205,6 +205,13 @@ public class AnimationPlayer : MonoBehaviour
             else if (player.TripleJump)
                 gradient.color = TripleGradient;
         }
+
+        if (player.DoubleJump)
+            main.startColor = SecondColor;
+        else if (player.TripleJump)
+            main.startColor = FirstColor;
+        else
+            main.startColor = Color.white;
     }
 
     public void ChangePowerGradient()

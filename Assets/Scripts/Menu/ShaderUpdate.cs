@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ShaderUpdate : MonoBehaviour
 {
-    public Image image;
+    public RawImage image;
 
     void Update()
     {
