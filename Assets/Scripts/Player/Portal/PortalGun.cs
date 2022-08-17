@@ -28,6 +28,8 @@ public class PortalGun : MonoBehaviour
     public float Force;
     public Collider2D itemToTeleport;
 
+    private bool cooldown;
+
     public GameObject BlueLight;
     public GameObject OrangeLight;
 
@@ -154,6 +156,7 @@ public class PortalGun : MonoBehaviour
                 ShootBlue.Blue.SetActive(true);
                 ShootBlue.gun = this;
                 ShootBlue.Right = RightButton;
+                ShootBlue.isUsed = cooldown;
             }
             BlueLight.SetActive(true);
         } else {
@@ -166,6 +169,7 @@ public class PortalGun : MonoBehaviour
                 ShootOrange.Orange.SetActive(true);
                 ShootOrange.gun = this;
                 ShootOrange.Right = RightButton;
+                ShootOrange.isUsed = cooldown;
             }
             OrangeLight.SetActive(true);
         }
@@ -178,13 +182,19 @@ public class PortalGun : MonoBehaviour
                     ShootOrange.GetComponent<Animator>().enabled = true;
             }
         }
+
+        cooldown = true;
+        StartCoroutine(CooldownTime());
     }
 
     public void HandRotation()
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Hand.position;
         rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
+        float off = offset + 15;
+        if (player.Right)
+            off = offset - 15;
+        Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
 
         if (player.Right)
         {
@@ -193,7 +203,8 @@ public class PortalGun : MonoBehaviour
                 if ((rotateZ <= -90 && rotateZ < 0) || (rotateZ >= 90 && rotateZ > 0))
                 {
                     player.Flip();
-                    Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
+                    off = offset + 15;
+                    Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
                     if (-90 <= rotateZ && rotateZ <= 90)
                         Barrier(90);
                 }
@@ -208,7 +219,8 @@ public class PortalGun : MonoBehaviour
                 if ((rotateZ >= -90 && rotateZ < 0) || (rotateZ <= 90 && rotateZ > 0))
                 {
                     player.Flip();
-                    Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + offset);
+                    off = offset - 15;
+                    Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
                     if (-90 >= rotateZ || rotateZ >= 90)
                         Barrier(90);
                 }
@@ -229,20 +241,18 @@ public class PortalGun : MonoBehaviour
     public void HeadRotation()
     {
         float off = offset;
-        if (player.Right)
+        if (player.Right) {
             off = -off;
+        }
         Head.rotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z + off);
-        if (player.Right)
-        {
+        if (player.Right) {
             if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 + offset == Mathf.RoundToInt(Hand.rotation.eulerAngles.z) && Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 > 3)
                 Head.rotation = Quaternion.Euler(0f, 0f, 3f);
             else if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 == Mathf.RoundToInt(Hand.rotation.eulerAngles.z) && Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 - offset < -2)
                 Head.rotation = Quaternion.Euler(0f, 0f, -2f);
             else if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 == 0)
                 Head.rotation = Quaternion.Euler(0f, 0f, 3f);
-        }
-        else
-        {
+        } else {
             if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) - offset == Mathf.RoundToInt(Hand.rotation.eulerAngles.z) && offset - Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 > 3)
                 Head.rotation = Quaternion.Euler(0f, 0f, -3f);
             else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 == Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 && Mathf.RoundToInt(Head.rotation.eulerAngles.z) > 2)
@@ -402,5 +412,11 @@ public class PortalGun : MonoBehaviour
         }
         if (!OrangePortal.trigger.inPortal && !BluePortal.trigger.inPortal)
             itemToTeleport = null;
+    }
+
+    IEnumerator CooldownTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        cooldown = false;
     }
 }

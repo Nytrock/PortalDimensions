@@ -12,12 +12,12 @@ public class JumpCrystall : MonoBehaviour
     void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Player player))
-            player.CheckCrystallList(this, true);
+            player.CheckCrystallList(this, false);
     }
     void OnTriggerExit2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Player player))
-            player.CheckCrystallList(this, false);
+            player.CheckCrystallList(this, true);
     }
 
     public void Active(bool act)

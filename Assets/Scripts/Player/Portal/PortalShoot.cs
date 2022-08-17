@@ -51,18 +51,22 @@ public class PortalShoot : MonoBehaviour
             isUsed = true;
             GetComponent<Animator>().enabled = true;
         } else if (!isUsed && !(obj.tag == "Player")) {
-            if (obj.TryGetComponent(out PortalCollider portalCollider)) {
+            if (obj.TryGetComponent(out PortalCollider portalCollider))
+            {
                 SpawnPortal(portalCollider.portal.Collider);
                 isUsed = true;
                 GetComponent<Animator>().enabled = true;
-            } else if (obj.TryGetComponent(out PolygonCollider2D polygon) && obj.tag != "Player") {
+            }
+            else if (obj.TryGetComponent(out PolygonCollider2D polygon) && obj.tag != "Player")
+            {
                 if (obj.tag == "ForPortal")
                     SpawnPortal(polygon);
                 isUsed = true;
                 GetComponent<Animator>().enabled = true;
             }
+        } else if (isUsed && !(obj.tag == "Player")) {
+            GetComponent<Animator>().enabled = true;
         }
-
     }
 
     public void Destroy_Shoot()
@@ -73,11 +77,7 @@ public class PortalShoot : MonoBehaviour
     public void SpawnPortal(PolygonCollider2D other)
     {
         var portal = Instantiate(portalPrefab, null);
-        if (Right)
-            portal.Blue.SetActive(true);
-        else
-            portal.Orange.SetActive(true);
-        portal.gun = gun;
+        portal.SetPortal(Right, gun);
 
         Vector2[] points = other.points;
         Array.Resize(ref points, points.Length + 1);
@@ -316,7 +316,6 @@ public class PortalShoot : MonoBehaviour
                         case 2: portal.side = "Right"; break;
                         case 3: portal.side = "Up"; break;
                     }
-                    portal.animator.SetBool("Start", true);
                     return;
                 }
             }

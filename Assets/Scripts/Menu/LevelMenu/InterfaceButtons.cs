@@ -16,14 +16,4 @@ public class InterfaceButtons : MonoBehaviour, IPointerEnterHandler, IPointerExi
         DialogueManager.isButton = false;
         PortalGun.menuActive = false;
     }
-
-    public void PauseButton()
-    {
-        canvas.SetBool("isPause", !canvas.GetBool("isPause"));
-    }
-
-    public void RestartButton()
-    {
-        canvas.SetBool("isDeath", false);
-    }
 }

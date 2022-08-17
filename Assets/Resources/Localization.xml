@@ -245,6 +245,60 @@
 			<ru>Глючный шейдер</ru>
 		</translates>
 	</key>
+	<key name="Ясно">
+		<translates>
+			<en-us>Okay</en-us>
+			<ru>Ясно</ru>
+		</translates>
+	</key>
+	<key name="AutorestartMoreHeader">
+		<translates>
+			<en-us>Autorestart</en-us>
+			<ru>Авторестарт</ru>
+		</translates>
+	</key>
+	<key name="AutorestartMoreText">
+		<translates>
+			<en-us>When turned on after the death of a character, he will instantly respawn, the death panel will not appear.</en-us>
+			<ru>При включении после смерти персонажа он мгновенно возродится, панель смерти не появится.</ru>
+		</translates>
+	</key>
+	<key name="FpsMoreHeader">
+		<translates>
+			<en-us>Fps counter</en-us>
+			<ru>Счётчик fps</ru>
+		</translates>
+	</key>
+	<key name="FpsMoreText">
+		<translates>
+			<en-us>Displaying the fps counter in the game.</en-us>
+			<ru>Отображение счётчика fps в игре.</ru>
+		</translates>
+	</key>
+	<key name="ExitConfirmationMoreHeader">
+		<translates>
+			<en-us>Exit confirmation</en-us>
+			<ru>Подтверждение выхода</ru>
+		</translates>
+	</key>
+	<key name="ExitConfirmationMoreText">
+		<translates>
+			<en-us>When you try to exit the level to the menu or to the desktop, a confirmation panel will appear.</en-us>
+			<ru>При попытке выхода из уровня в меню или на рабочий стол будет появляться панель подтверждения.</ru>
+		</translates>
+	</key>
+	<key name="ShaderMoreHeader">
+		<translates>
+			<en-us>Glitch shader</en-us>
+			<ru>Глючный шейдер</ru>
+		</translates>
+	</key>
+	<key name="ShaderMoreText">
+		<translates>
+			<en-us>The work of a buggy effect in the menu and not only in it (turn it off if you have a weak PC).</en-us>
+			<ru>Работа глючного эффекта в меню и не только в нём (выключите, если у вас слабый пк).</ru>
+		</translates>
+	</key>
 	<key name="ИИ">
 		<translates>
 			<en-us>AI</en-us>

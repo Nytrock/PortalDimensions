@@ -70,28 +70,50 @@ public class GameSettingsManager : MonoBehaviour
     private bool originallyConfirm;
     private bool isConfirmChange;
 
-    [Header("Настройки подтверждения выхода")]
+    [Header("Настройки шейдера")]
     public Toggle glitchManager;
     public Material glitchMaterial;
     public Material noGlitchMaterial;
-    public Image quad;
+    public List<RawImage> quads;
     private bool glitch;
     private bool originallyGlitch;
     private bool isGlitchChange;
 
+    [Header("Настройки сброса прогресса")]
+    public TextMeshProUGUI headerText;
+    public TextMeshProUGUI sentenceText;
+    public List<string> sentences;
+    public List<string> headers;
+    public List<Image> buttonBlurs;
+    public Button buttonReset;
+    public GameObject startingResetVisual;
+    public GameObject startingResetWorking;
+    public GameObject endingResetVisual;
+    public GameObject endingResetWorking;
+    private int resetId;
+
+    [Header("Настройки подробной информации")]
+    public string toggleName;
+    public TextMeshProUGUI moreHeader;
+    public TextMeshProUGUI moreText;
+    public Toggle moreToggle;
+
+
     public void Start()
     {
-        ChangeCursorTexture();
-        SetShaderActive();
         SetNewOriginall();
-        SetChangesFalse();
-        SetMorePositionsValues();
-        SetMoreButtonsPosition();
 
         autorestart = originallyAuto;
         confirm = originallyConfirm;
         fpsShowing = originallyFps;
         glitch = originallyGlitch;
+
+        SetResetBlur();
+        ChangeCursorTexture();
+        SetShaderActive();
+        SetChangesFalse();
+        SetMorePositionsValues();
+        SetMoreButtonsPosition();
     }
     public void NextLanguage()
     {
@@ -100,6 +122,7 @@ public class GameSettingsManager : MonoBehaviour
             newId = LocalizationManager.SelectedLanguage + 1;
         localization.SetLanguage(newId);
         isLanguageChange = originallyLanguage != newId;
+        SetResetBlur();
         SetMoreButtonsPosition();
     }
 
@@ -110,6 +133,7 @@ public class GameSettingsManager : MonoBehaviour
             newId = LocalizationManager.SelectedLanguage - 1;
         localization.SetLanguage(newId);
         isLanguageChange = originallyLanguage != newId;
+        SetResetBlur();
         SetMoreButtonsPosition();
     }
 
@@ -166,10 +190,13 @@ public class GameSettingsManager : MonoBehaviour
 
     private void SetShaderActive()
     {
-        if (glitch)
-            quad.material = glitchMaterial;
-        else
-            quad.material = noGlitchMaterial;
+        if (glitch) {
+            foreach (RawImage quad in quads)
+                quad.material = glitchMaterial;
+        } else {
+            foreach (RawImage quad in quads)
+                quad.material = noGlitchMaterial;
+        }
     }
 
     public void CheckChanges()
@@ -271,5 +298,77 @@ public class GameSettingsManager : MonoBehaviour
         moreFpsButton.position = new Vector3(moreFpsVisual.position.x, moreFpsVisual.position.y);
         moreExitButton.position = new Vector3(moreExitVisual.position.x, moreExitVisual.position.y);
         moreShaderButton.position = new Vector3(moreShaderVisual.position.x, moreShaderVisual.position.y);
+    }
+
+    public void StartReset()
+    {
+        resetId = 0;
+        headerText.text = LocalizationManager.GetTranslate(headers[resetId]);
+        sentenceText.text = LocalizationManager.GetTranslate(sentences[resetId]);
+        SetResetAnimation();
+
+        startingResetVisual.SetActive(true);
+        startingResetWorking.SetActive(true);
+        endingResetWorking.SetActive(false);
+        endingResetVisual.SetActive(false);
+    }
+
+    public void ContinueReset()
+    {
+        resetId += 1;
+        headerText.text = LocalizationManager.GetTranslate(headers[resetId]);
+        sentenceText.text = LocalizationManager.GetTranslate(sentences[resetId]);
+
+        if (resetId == sentences.Count - 1) {
+            startingResetVisual.SetActive(false);
+            startingResetWorking.SetActive(false);
+            endingResetWorking.SetActive(true);
+            endingResetVisual.SetActive(true);
+            Save.save.ResetGame();
+        }
+    }
+
+    public void SetResetAnimation()
+    {
+        canvas.SetBool("isGameReset", !canvas.GetBool("isGameReset"));
+    }
+    public void SetMoreAnimation()
+    {
+        canvas.SetBool("isMore", !canvas.GetBool("isMore"));
+        toggleName = "";
+    }
+
+    public void StartMore(string toggle)
+    {
+        SetMoreAnimation();
+        switch (toggle)
+        {
+            case "Autorestart": moreToggle.isOn = autoManager.isOn; break;
+            case "Fps": moreToggle.isOn = fpsManager.isOn; break;
+            case "ExitConfirmation": moreToggle.isOn = confirmManager.isOn; break;
+            case "Shader": moreToggle.isOn = glitchManager.isOn; break;
+        }
+        toggleName = toggle;
+        moreHeader.text = LocalizationManager.GetTranslate(toggle + "MoreHeader");
+        moreText.text = LocalizationManager.GetTranslate(toggle + "MoreText");
+    }
+
+    public void ChangeToggleInMore()
+    {
+        switch (toggleName)
+        {
+            case "Autorestart": autoManager.isOn = moreToggle.isOn; break;
+            case "Fps": fpsManager.isOn = moreToggle.isOn; break;
+            case "ExitConfirmation": confirmManager.isOn = moreToggle.isOn; break;
+            case "Shader": glitchManager.isOn = moreToggle.isOn; break;
+        }
+    }
+
+    private void SetResetBlur()
+    {
+        foreach (Image blur in buttonBlurs)
+            blur.color = new Color(1f, 1f, 1f, 0);
+        buttonBlurs[LocalizationManager.SelectedLanguage].color = new Color(1f, 1f, 1f, 240f / 256f);
+        buttonReset.targetGraphic = buttonBlurs[LocalizationManager.SelectedLanguage];
     }
 }
