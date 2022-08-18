@@ -55,7 +55,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !isButton && panelsController.GetBool("isDialogue") && !CanvasManager.isGamePaused)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !isButton && panelsController.GetBool("isDialogue") && !ButtonFunctional.isGamePaused)
         {
             if (isTextShow) {
                 StopAllCoroutines();

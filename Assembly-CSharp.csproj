@@ -83,7 +83,6 @@
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueChoiceManager.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalChecker.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedDialogueText.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalGun.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\InterfaceButtons.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\AudioSettingsManager.cs" />
@@ -100,7 +99,7 @@
     <Compile Include="Assets\Scripts\Localization\LocalizationManager.cs" />
     <Compile Include="Assets\Scripts\Menu\ShaderUpdate.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedText.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\PauseButtons.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\ConfirmButtons.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DeathEffect : MonoBehaviour {
 
@@ -18,6 +16,10 @@ public class DeathEffect : MonoBehaviour {
         if (isDeath) {
             dissolveAmount = Mathf.Clamp(dissolveAmount + dissolveSpeed * Time.deltaTime, 0, 1.1f);
             material.SetFloat("_DissolveAmount", dissolveAmount);
+            if (dissolveAmount == 1.1f) {
+                GetComponent<Rigidbody2D>().drag = 1000;
+                isDeath = false;
+            }
         }
     }
 

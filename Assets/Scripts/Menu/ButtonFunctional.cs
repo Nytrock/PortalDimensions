@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class ButtonFunctional : MonoBehaviour
 {
-    public Animator animator;
+    public static bool isGamePaused;
+    private Animator animator;
 
     [Header("Взаимодействие с выбором")]
     public Choice settingsChoice;
@@ -24,7 +24,13 @@ public class ButtonFunctional : MonoBehaviour
     public Button Yes;
     public Button No;
 
-    public void Update()
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        Time.timeScale = 1;
+    }
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (animator.GetBool("isGameReset"))
@@ -41,6 +47,8 @@ public class ButtonFunctional : MonoBehaviour
                 audioSettings.CheckChanges();
             else if (animator.GetBool("isSettings"))
                 Settings();
+            else if (isGamePaused)
+                ResumeGame();
         }
     }
     public void StartGame()
@@ -120,7 +128,13 @@ public class ButtonFunctional : MonoBehaviour
 
     public void Exit()
     {
+        Time.timeScale = 1;
         Application.Quit();
+    }
+    public void ExitToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(2);
     }
 
     public void SetConfirmPanel(string typeOfConfirm)
@@ -148,5 +162,43 @@ public class ButtonFunctional : MonoBehaviour
                 No.onClick.AddListener(delegate { audioSettings.ConfirmCancel(false); });
                 break;
         }
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        isGamePaused = true;
+        mainChoice.StartPauseWorking();
+        settingsChoice.StartPauseWorking();
+        animator.SetBool("isPause", true);
+        mainPanel.SetActive(true);
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        isGamePaused = false;
+        mainChoice.StopPauseWorking();
+        settingsChoice.StopPauseWorking();
+        animator.SetBool("isPause", false);
+        mainPanel.SetActive(false);
+    }
+    public void SetChoicePosition()
+    {
+        mainChoice.transform.localPosition = new Vector2(mainChoice.transform.localPosition.x, mainChoice.positions[0]);
+        mainChoice.SetPosition(0);
+        mainChoice.NowPosition = mainChoice.positions[0];
+    }
+
+    public void SetConfirm()
+    {
+        animator.SetBool("isConfirm", !animator.GetBool("isConfirm"));
+    }
+    public void SetActiveSettingsChoice()
+    {
+        settingsChoice.working = animator.GetBool("isSettings");
+        settingsPanel.SetActive(animator.GetBool("isSettings"));
+    }
+    public void SetValue()
+    {
+        gameSettingsSlider.value = 1;
     }
 }
