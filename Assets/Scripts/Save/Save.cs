@@ -155,8 +155,10 @@ public class Save : MonoBehaviour
                 }
 
                 DialoguesSave dialogues = (DialoguesSave)form.Deserialize(stream);
-                ExistingChoiceIdList = dialogues.existingChoices;
-                DoChoiceIdList = dialogues.doingChoices;
+                if (dialogues.existingChoices.Count != 0)
+                    ExistingChoiceIdList = dialogues.existingChoices;
+                if (dialogues.doingChoices.Count != 0)
+                    DoChoiceIdList = dialogues.doingChoices;
                 if (dialogueChoiceManager){
                     for (int i = 0; i < DoChoiceIdList.Count; i++) {
                         if (DoChoiceIdList[i])

@@ -45,7 +45,7 @@ public class PortalGun : MonoBehaviour
     
     private void Update()
     {
-        if ((Input.GetKeyDown(leftPortalKey) || Input.GetKeyDown(rightPortalKey)) && !player.InPortal && !menuActive && !CanvasManager.isGamePaused)
+        if ((Input.GetKeyDown(leftPortalKey) || Input.GetKeyDown(rightPortalKey)) && !player.InPortal && !menuActive && !ButtonFunctional.isGamePaused)
         {
             Shoot();
 

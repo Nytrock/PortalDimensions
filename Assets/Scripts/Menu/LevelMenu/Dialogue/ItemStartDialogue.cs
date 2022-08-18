@@ -20,7 +20,7 @@ public class ItemStartDialogue : MonoBehaviour
     private void Update()
     {
         if (!InstantStart) {
-            if (Input.GetKeyDown(startKey) && GetComponent<Animator>().GetBool("isActive") && !CanvasManager.isGamePaused) {
+            if (Input.GetKeyDown(startKey) && GetComponent<Animator>().GetBool("isActive") && !ButtonFunctional.isGamePaused) {
                 GetComponent<Animator>().SetBool("isActive", false);
                 dialogueManager.SetKey(KeyToDialogue);
                 dialogueManager.StartDialogue();

@@ -16633,81 +16633,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556354635}
   m_CullTransparentMesh: 1
---- !u!1 &558386454
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 558386455}
-  - component: {fileID: 558386457}
-  - component: {fileID: 558386456}
-  m_Layer: 5
-  m_Name: SaveBlur (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &558386455
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558386454}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 8337.6}
-  m_LocalScale: {x: 0.26767004, y: 0.26767004, z: 0.26767004}
-  m_Children: []
-  m_Father: {fileID: 827911202}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130.00003, y: 290.99988}
-  m_SizeDelta: {x: 413.01, y: 90}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &558386456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558386454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8ce56bb66e916504796f8006eab7a3fb, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &558386457
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558386454}
-  m_CullTransparentMesh: 1
 --- !u!1 &565633829
 GameObject:
   m_ObjectHideFlags: 0
@@ -18792,8 +18717,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1854978813}
   m_HandleRect: {fileID: 1854978812}
   m_Direction: 2
-  m_Value: 0.9999958
-  m_Size: 0.8077633
+  m_Value: 0.99999624
+  m_Size: 0.8077632
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22447,7 +22372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fab309664f01e4ca917489dc81b530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 711258260}
   settingsChoice: {fileID: 1570339129}
   mainChoice: {fileID: 868273448}
   settingsPanel: {fileID: 166918125}
@@ -25024,7 +24948,6 @@ RectTransform:
   - {fileID: 177135590}
   - {fileID: 267851160}
   - {fileID: 396751421}
-  - {fileID: 558386455}
   m_Father: {fileID: 151238907}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38414,7 +38337,6 @@ GameObject:
   - component: {fileID: 1279800710}
   - component: {fileID: 1279800713}
   - component: {fileID: 1279800712}
-  - component: {fileID: 1279800711}
   m_Layer: 7
   m_Name: Button (3)
   m_TagString: Untagged
@@ -38442,62 +38364,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 83.05, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1279800711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279800709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1279800712}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 711258262}
-        m_TargetAssemblyTypeName: ButtonFunctional, Assembly-CSharp
-        m_MethodName: Settings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1279800712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43986,8 +43852,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1476652724}
   m_HandleRect: {fileID: 0}
   m_Direction: 2
-  m_Value: 0.99997747
-  m_Size: 0.8077631
+  m_Value: 0.9999808
+  m_Size: 0.8077634
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -54563,16 +54429,13 @@ MonoBehaviour:
   headerText: {fileID: 112477008}
   sentenceText: {fileID: 663558675}
   sentences:
-  - "\u0412\u0435\u0441\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u0431\u0443\u0434\u0435\u0442
-    \u0443\u0442\u0435\u0440\u044F\u043D"
-  - "\u0412\u0415\u0421\u042C \u041F\u0420\u041E\u0413\u0420\u0415\u0421\u0421 \u0411\u0423\u0414\u0415\u0422
-    \u0423\u0422\u0415\u0420\u042F\u041D"
-  - "\u0412\u0435\u0441\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441 \u0431\u044B\u043B
-    \u0441\u0431\u0440\u043E\u0448\u0435\u043D"
+  - All progress will be lost
+  - ALL PROGRESS WILL BE LOST
+  - All progress has been reset
   headers:
-  - "\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B?"
-  - "\u041F\u0440\u0430\u0432\u0434\u0430?"
-  - "\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u044E!"
+  - Are you sure?
+  - Truth?
+  - Congratulations!
   buttonBlurs:
   - {fileID: 619777965}
   - {fileID: 1587273780}

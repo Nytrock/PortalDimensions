@@ -21,7 +21,7 @@ public class Choice : MonoBehaviour
 
     private void Update()
     {
-        if (!CanvasManager.isGamePaused && working) {
+        if (!ButtonFunctional.isGamePaused && working) {
             CheckButtons();
         }
     }

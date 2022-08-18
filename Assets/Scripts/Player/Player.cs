@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (!CanvasManager.isGamePaused) {
+        if (!ButtonFunctional.isGamePaused) {
             Walk();
             Jump();
         }

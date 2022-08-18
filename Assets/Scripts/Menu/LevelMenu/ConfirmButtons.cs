@@ -3,38 +3,20 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PauseButtons : MonoBehaviour
+public class ConfirmButtons : MonoBehaviour
 {
-    public CanvasManager canvas;
+    public ButtonFunctional canvas;
     public GameObject messageSettings;
     public GameObject messageExit;
-    public GameSettingsManager settings;
-    public Choice mainChoice;
-    public Choice settingsChoice;
 
     public Button Yes;
     public Button No;
-
-    public void ContinueGame()
-    {
-        canvas.SetPause();
-    }
-
-    public void Achievements()
-    {
-        Debug.Log("Achievements");
-    }
-
-    public void Statistics()
-    {
-        Debug.Log("Statistic");
-    }
 
     public void ExitToMenuConfirm()
     {
         if (Save.GetConfirmNeed()) {
             Yes.onClick.RemoveAllListeners();
-            Yes.onClick.AddListener(ExitToMenu);
+            Yes.onClick.AddListener(canvas.ExitToMenu);
 
             No.onClick.RemoveAllListeners();
             No.onClick.AddListener(canvas.SetConfirm);
@@ -44,7 +26,7 @@ public class PauseButtons : MonoBehaviour
 
             canvas.SetConfirm();
         } else {
-            ExitToMenu();
+            canvas.ExitToMenu();
         }
     }
 
@@ -52,7 +34,7 @@ public class PauseButtons : MonoBehaviour
     {
         if (Save.GetConfirmNeed()) {
             Yes.onClick.RemoveAllListeners();
-            Yes.onClick.AddListener(Exit);
+            Yes.onClick.AddListener(canvas.Exit);
 
             No.onClick.RemoveAllListeners();
             No.onClick.AddListener(canvas.SetConfirm);
@@ -62,19 +44,7 @@ public class PauseButtons : MonoBehaviour
 
             canvas.SetConfirm();
         } else {
-            Exit();
+            canvas.Exit();
         }
-    }
-
-    public void ExitToMenu()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(2);
-    }
-
-    public void Exit()
-    {
-        Time.timeScale = 1;
-        Application.Quit();
     }
 }
