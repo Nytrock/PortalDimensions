@@ -39,8 +39,8 @@ public class PortalGun : MonoBehaviour
 
     private void Start()
     {
-        leftPortalKey = Save.save.portalGunLeftKey;
-        rightPortalKey = Save.save.portalGunRightKey;
+        SetControll();
+        ControllSettingsManager.OnButtonChange += SetControll;
     }
     
     private void Update()
@@ -418,5 +418,11 @@ public class PortalGun : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         cooldown = false;
+    }
+
+    private void SetControll() 
+    {
+        leftPortalKey = Save.save.portalGunLeftKey;
+        rightPortalKey = Save.save.portalGunRightKey;
     }
 }

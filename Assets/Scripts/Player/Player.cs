@@ -42,9 +42,8 @@ public class Player : MonoBehaviour
         animations = GetComponentInChildren<AnimationPlayer>();
         skin = animations.transform;
 
-        walkLeftKey = Save.save.leftKey;
-        walkRightKey = Save.save.rightKey;
-        jumpKey = Save.save.jumpKey;
+        SetControll();
+        ControllSettingsManager.OnButtonChange += SetControll;
     }
 
     void Update()
@@ -209,5 +208,12 @@ public class Player : MonoBehaviour
             bonusDoubleJumps.RemoveAt(0);
             animations.UpdateJumpBonus();
         }
+    }
+
+    private void SetControll()
+    {
+        walkLeftKey = Save.save.leftKey;
+        walkRightKey = Save.save.rightKey;
+        jumpKey = Save.save.jumpKey;
     }
 }

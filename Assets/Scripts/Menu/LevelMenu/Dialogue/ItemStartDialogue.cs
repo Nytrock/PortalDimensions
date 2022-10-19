@@ -11,7 +11,9 @@ public class ItemStartDialogue : MonoBehaviour
 
     private void Start()
     {
-        startKey = Save.save.dialogueStartKey;
+        SetControll();
+        ControllSettingsManager.OnButtonChange += SetControll;
+
         GetComponentInChildren<LocalizedText>().Localize();
         AddKeyToText();
         LocalizationManager.OnLanguageChange += AddKeyToText;
@@ -58,5 +60,10 @@ public class ItemStartDialogue : MonoBehaviour
     private void AddKeyToText()
     {
         GetComponentInChildren<TextMeshProUGUI>().text += "(" + startKey.ToString() + ")";
+    }
+
+    private void SetControll()
+    {
+        startKey = Save.save.dialogueStartKey;
     }
 }

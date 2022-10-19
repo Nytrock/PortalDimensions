@@ -294,10 +294,13 @@ public class GameSettingsManager : MonoBehaviour
     IEnumerator SetButtonMoreGlobalPositions()
     {
         yield return new WaitForSeconds(0.01f);
-        moreAutoButton.position = new Vector2(moreAutoVisual.position.x, moreAutoVisual.position.y);
-        moreFpsButton.position = new Vector3(moreFpsVisual.position.x, moreFpsVisual.position.y);
-        moreExitButton.position = new Vector3(moreExitVisual.position.x, moreExitVisual.position.y);
-        moreShaderButton.position = new Vector3(moreShaderVisual.position.x, moreShaderVisual.position.y);
+        var offset = 0f;
+        if (Save.save.dialogueChoiceManager != null)
+            offset = 0.15f;
+        moreAutoButton.position = new Vector2(moreAutoVisual.position.x - offset, moreAutoVisual.position.y + offset);
+        moreFpsButton.position = new Vector3(moreFpsVisual.position.x - offset, moreFpsVisual.position.y + offset);
+        moreExitButton.position = new Vector3(moreExitVisual.position.x - offset, moreExitVisual.position.y + offset);
+        moreShaderButton.position = new Vector3(moreShaderVisual.position.x - offset, moreShaderVisual.position.y + offset);
     }
 
     public void StartReset()
@@ -366,9 +369,11 @@ public class GameSettingsManager : MonoBehaviour
 
     private void SetResetBlur()
     {
-        foreach (Image blur in buttonBlurs)
-            blur.color = new Color(1f, 1f, 1f, 0);
-        buttonBlurs[LocalizationManager.SelectedLanguage].color = new Color(1f, 1f, 1f, 240f / 256f);
-        buttonReset.targetGraphic = buttonBlurs[LocalizationManager.SelectedLanguage];
+        if (Save.save.dialogueChoiceManager == null) {
+            foreach (Image blur in buttonBlurs)
+                blur.color = new Color(1f, 1f, 1f, 0);
+            buttonBlurs[LocalizationManager.SelectedLanguage].color = new Color(1f, 1f, 1f, 240f / 256f);
+            buttonReset.targetGraphic = buttonBlurs[LocalizationManager.SelectedLanguage];
+        }
     }
 }

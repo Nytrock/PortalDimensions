@@ -84,7 +84,8 @@ public class Choice : MonoBehaviour
     {
         while (true)
         {
-            CheckButtons();
+            if (working)
+                CheckButtons();
             yield return new WaitForSecondsRealtime(Time.deltaTime);
         }
     }

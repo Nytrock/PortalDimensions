@@ -25,6 +25,7 @@ public class DeathEffect : MonoBehaviour {
 
     public void StartDeath(float dissolveSpeed, Color dissolveColor) {
         isDeath = true;
+        ButtonFunctional.pauseEnable = false;
         material.SetColor("_DissolveColor", dissolveColor);
         this.dissolveSpeed = dissolveSpeed;
     }

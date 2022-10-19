@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class ButtonFunctional : MonoBehaviour
 {
     public static bool isGamePaused;
+    public static bool pauseEnable;
     private Animator animator;
 
     [Header("Взаимодействие с выбором")]
@@ -23,16 +24,22 @@ public class ButtonFunctional : MonoBehaviour
     [Header("Меню подтверждения")]
     public Button Yes;
     public Button No;
+    public GameObject exitText;
+    public GameObject settingsText;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         Time.timeScale = 1;
+        pauseEnable = true;
+
+        exitText.SetActive(false);
+        settingsText.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseEnable) {
             if (animator.GetBool("isGameReset"))
                 gameSettings.SetResetAnimation();
             else if (animator.GetBool("isMore"))
@@ -47,6 +54,8 @@ public class ButtonFunctional : MonoBehaviour
                 audioSettings.CheckChanges();
             else if (animator.GetBool("isSettings"))
                 Settings();
+            else if (!isGamePaused && Save.save.dialogueChoiceManager != null)
+                PauseGame();
             else if (isGamePaused)
                 ResumeGame();
         }
@@ -64,11 +73,15 @@ public class ButtonFunctional : MonoBehaviour
     public void Settings()
     {
         animator.SetBool("isSettings", !animator.GetBool("isSettings"));
+        bool settingsActive = animator.GetBool("isSettings");
 
-        mainPanel.SetActive(!animator.GetBool("isSettings"));
-        settingsPanel.SetActive(animator.GetBool("isSettings"));
+        mainPanel.SetActive(!settingsActive);
+        settingsPanel.SetActive(settingsActive);
 
-        if (animator.GetBool("isSettings")) {
+        exitText.SetActive(!settingsActive);
+        settingsText.SetActive(settingsActive);
+
+        if (settingsActive) {
             settingsChoice.TargetPosition = settingsChoice.positions[0];
             settingsChoice.NowPosition = settingsChoice.positions[0];
             settingsChoice.transform.localPosition = new Vector2(settingsChoice.transform.localPosition.x, settingsChoice.positions[0]);
