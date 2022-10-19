@@ -8,7 +8,8 @@ public class LevelManager: MonoBehaviour
 
     private void Start()
     {
-        restartButton = Save.save.fastRestartKey;
+        SetControll();
+        ControllSettingsManager.OnButtonChange += SetControll;
     }
 
     private void Update()
@@ -39,5 +40,10 @@ public class LevelManager: MonoBehaviour
     public void Exit()
     {
         SceneManager.LoadScene(2);
+    }
+
+    private void SetControll()
+    {
+        restartButton = Save.save.fastRestartKey;
     }
 }

@@ -2,7 +2,7 @@
 	<key name="DialogeTest_1">
 		<id_user>0</id_user>
 		<mood>Calm</mood>
-		<speed>0.8</speed>
+		<speed>1</speed>
 		<text>Приветствую в новой тестовой системе. Ответьте на простой вопрос.</text>
 		<next>2</next>
 	</key>
@@ -10,26 +10,24 @@
 		<id_user>0</id_user>
 		<mood>Angry</mood>
 		<speed>1</speed>
-		<text>Иначе будете уничтожены.</text>
+		<text>Иначе будете уничтожены. Я сёрьёзно. Шутки в сторону. И анекдоты тоже.</text>
 		<next>3</next>
 	</key>
 	<key name="DialogeTest_3">
-		<id_user>1</id_user>
-		<mood>Calm</mood>
+		<id_user>0</id_user>
+		<mood>Confused</mood>
 		<speed>1</speed>
+		<text>Ты меня уважаешь?</text>
 		<choice>
-			<text next="4" existing_id="0">Хорошо</text>
-			<text next="4" existing_id="1">Окей</text>
-			<text next="4" existing_id="2" do_id="1">Нет проблем</text>
-			<text next="4" do_id="0">Ну давай</text>
-			<text next="5" required="true">Нет, спасибо</text>
+			<text next="4" existing_id="0">Да</text>
+			<text next="5" required="true">Нет конечно</text>
 		</choice>
 	</key>
 	<key name="DialogeTest_4">
 		<id_user>0</id_user>
 		<mood>Happy</mood>
 		<speed>1</speed>
-		<text>Вот и хорошо.</text>
+		<text>Вот и хорошо. Кстати, я так и не придумал вопроса, так что до скорого.</text>
 		<next>-1</next>
 	</key>
 	<key name="DialogeTest_5">

@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using TMPro;
 
 public class ControllSettingsManager : MonoBehaviour
 {
     public Animator canvas;
+
+    public static event LanguageChangeHandler OnButtonChange;
+    public delegate void LanguageChangeHandler();
 
     public ControllButton changingButton;
     public bool waitingForKey;
@@ -298,5 +300,10 @@ public class ControllSettingsManager : MonoBehaviour
         restartButton.SetText(restartDefault.ToString());
         Save.save.fastRestartKey = restartDefault;
         isRestartChanged = restartOriginall != restartDefault;
+    }
+
+    public void EventActive()
+    {
+        OnButtonChange?.Invoke();
     }
 }

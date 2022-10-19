@@ -1,0 +1,20 @@
+{
+  "name": "com.needle.animation-utils",
+  "description": "Utilities for Unity's animation tools. For example to make fixing missing animation bindings a drag-drop operation",
+  "author": {
+    "name": "Needle",
+    "email": "hi@needle.tools",
+    "url": "https://needle.tools"
+  },
+  "version": "0.3.0-exp",
+  "unity": "2020.3",
+  "displayName": "Needle Animation Utils",
+  "type": "tool",
+  "license": "MIT",
+  "dependencies": {
+    "com.unity.test-framework": "1.1.31"
+  },
+  "publishConfig": {
+    "registry": "https://package.openupm.com"
+  }
+}

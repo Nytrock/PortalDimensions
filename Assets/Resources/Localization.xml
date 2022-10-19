@@ -391,14 +391,14 @@
 	</key>
 	<key name="DialogeTest_2">
 		<translates>
-			<en-us>Otherwise, you will be destroyed.</en-us>
-			<ru>Иначе будете уничтожены.</ru>
+			<en-us>Otherwise, you will be destroyed. I'm serious. Seriously. And jokes too.</en-us>
+			<ru>Иначе будете уничтожены. Я серьёзно. Шутки в сторону. И анекдоты тоже.</ru>
 		</translates>
 	</key>
 	<key name="DialogeTest_4">
 		<translates>
-			<en-us>That&#39;s good.</en-us>
-			<ru>Вот и хорошо.</ru>
+			<en-us>That's good. By the way, I never came up with a question, so see you soon.</en-us>
+			<ru>Вот и хорошо. Кстати, я так и не придумал вопроса, так что до скорого.</ru>
 		</translates>
 	</key>
 	<key name="DialogeTest_5">
