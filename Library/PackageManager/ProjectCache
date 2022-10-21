@@ -5,21 +5,87 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638017142337155371
-    m_Hash: 3832608154
+      ticks: 638019783722418336
+    m_Hash: 4084726375
   m_LockFileStatus:
     m_FilePath: "D:/\u041F\u0440\u043E\u0435\u043A\u0442\u044B/Dimension Castle Alpha/Packages/packages-lock.json"
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638017145135327638
-    m_Hash: 1453249749
+      ticks: 638019783722747457
+    m_Hash: 3719058662
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
+    - packageId: com.needle.animation-utils@0.3.0-exp
+      testable: 0
+      isDirectDependency: 1
+      version: 0.3.0-exp
+      source: 1
+      resolvedPath: "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\Dimension Castle
+        Alpha\\Library\\PackageCache\\com.needle.animation-utils@0.3.0-exp"
+      assetPath: Packages/com.needle.animation-utils
+      name: com.needle.animation-utils
+      displayName: Needle Animation Utils
+      author:
+        name: Needle
+        email: hi@needle.tools
+        url: https://needle.tools
+      category: 
+      type: tool
+      description: Utilities for Unity's animation tools. For example to make fixing
+        missing animation bindings a drag-drop operation
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.0.1-pre
+        - 0.1.0-pre
+        - 0.2.0-pre
+        - 0.3.0-exp
+        compatible:
+        - 0.0.1-pre
+        - 0.1.0-pre
+        - 0.2.0-pre
+        - 0.3.0-exp
+        verified: 
+      dependencies:
+      - name: com.unity.test-framework
+        version: 1.1.31
+      resolvedDependencies:
+      - name: com.unity.test-framework
+        version: 1.1.31
+      - name: com.unity.ext.nunit
+        version: 1.0.6
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      keywords: []
+      registry:
+        id: scoped:OpenUPM
+        name: OpenUPM
+        url: https://package.openupm.com
+        scopes:
+        - com.needle.animation-utils
+        isDefault: 0
+        capabilities: 0
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637977905561770000
+      documentationUrl: 
+      hasRepository: 0
+      repository:
+        type: 
+        url: 
+        revision: 
+        path: 
     - packageId: com.unity.2d.animation@5.0.5
       testable: 0
       isDirectDependency: 1
@@ -779,6 +845,7 @@ m_PackageAssets:
         - 2.9.0-pre.1
         - 2.9.0-pre.6
         - 2.9.1
+        - 2.9.2
         compatible:
         - 2.5.0
         - 2.6.0-preview.2
@@ -820,6 +887,7 @@ m_PackageAssets:
         - 2.9.0-pre.1
         - 2.9.0-pre.6
         - 2.9.1
+        - 2.9.2
         verified: 2.6.17
       dependencies: []
       resolvedDependencies: []
@@ -1403,6 +1471,124 @@ m_PackageAssets:
         url: git+https://github.com/Unity-Technologies/Graphics.git
         revision: 075b452f2c4bf910a168632b3cedbd6835477ddd
         path: 
+    - packageId: com.unity.recorder@2.5.7
+      testable: 0
+      isDirectDependency: 1
+      version: 2.5.7
+      source: 1
+      resolvedPath: "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\Dimension Castle
+        Alpha\\Library\\PackageCache\\com.unity.recorder@2.5.7"
+      assetPath: Packages/com.unity.recorder
+      name: com.unity.recorder
+      displayName: Unity Recorder
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: 'The Unity Recorder allows you to capture and save data from the
+        Unity Editor during Play Mode: animations, videos, images, audio, and more.'
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 2.0.0-preview.6
+        - 2.0.1-preview.1
+        - 2.0.2-preview.3
+        - 2.0.3-preview.1
+        - 2.1.0-preview.1
+        - 2.2.0-preview.4
+        - 2.3.0-preview.3
+        - 2.4.0-preview.1
+        - 2.5.0-pre.1
+        - 2.5.2
+        - 2.5.4
+        - 2.5.5
+        - 2.5.7
+        - 2.6.0-exp.3
+        - 2.6.0-exp.4
+        - 3.0.0-pre.1
+        - 3.0.0-pre.2
+        - 3.0.0
+        - 3.0.1
+        - 3.0.2
+        - 3.0.3
+        - 4.0.0-pre.1
+        - 4.0.0-pre.2
+        - 4.0.0-pre.3
+        - 4.0.0-pre.4
+        - 4.0.0-pre.5
+        - 4.0.0
+        compatible:
+        - 2.0.0-preview.6
+        - 2.0.1-preview.1
+        - 2.0.2-preview.3
+        - 2.0.3-preview.1
+        - 2.1.0-preview.1
+        - 2.2.0-preview.4
+        - 2.3.0-preview.3
+        - 2.4.0-preview.1
+        - 2.5.0-pre.1
+        - 2.5.2
+        - 2.5.4
+        - 2.5.5
+        - 2.5.7
+        - 2.6.0-exp.3
+        - 2.6.0-exp.4
+        - 3.0.0-pre.1
+        - 3.0.0-pre.2
+        - 3.0.0
+        - 3.0.1
+        - 3.0.2
+        - 3.0.3
+        - 4.0.0-pre.1
+        - 4.0.0-pre.2
+        - 4.0.0-pre.3
+        verified: 2.5.7
+      dependencies:
+      - name: com.unity.timeline
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.timeline
+        version: 1.4.8
+      - name: com.unity.modules.director
+        version: 1.0.0
+      - name: com.unity.modules.audio
+        version: 1.0.0
+      - name: com.unity.modules.animation
+        version: 1.0.0
+      - name: com.unity.modules.particlesystem
+        version: 1.0.0
+      keywords:
+      - unity
+      - recorder
+      - recording
+      - capture
+      - video
+      - animation
+      - clip
+      - images
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637717102070000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.recorder.git
+        revision: a59deb20019b176e95dd8efa2f9b41b8e4a0bb96
+        path: 
     - packageId: com.unity.render-pipelines.universal@10.5.1
       testable: 0
       isDirectDependency: 1
@@ -1786,6 +1972,7 @@ m_PackageAssets:
         - 1.7.0-pre.2
         - 1.7.0
         - 1.7.1
+        - 1.7.2
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -1814,6 +2001,7 @@ m_PackageAssets:
         - 1.7.0-pre.2
         - 1.7.0
         - 1.7.1
+        - 1.7.2
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
@@ -3585,181 +3773,6 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.needle.animation-utils@0.3.0-exp
-      testable: 0
-      isDirectDependency: 1
-      version: 0.3.0-exp
-      source: 1
-      resolvedPath: "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\Dimension Castle
-        Alpha\\Library\\PackageCache\\com.needle.animation-utils@0.3.0-exp"
-      assetPath: Packages/com.needle.animation-utils
-      name: com.needle.animation-utils
-      displayName: Needle Animation Utils
-      author:
-        name: Needle
-        email: hi@needle.tools
-        url: https://needle.tools
-      category: 
-      type: tool
-      description: Utilities for Unity's animation tools. For example to make fixing
-        missing animation bindings a drag-drop operation
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.0.1-pre
-        - 0.1.0-pre
-        - 0.2.0-pre
-        - 0.3.0-exp
-        compatible:
-        - 0.0.1-pre
-        - 0.1.0-pre
-        - 0.2.0-pre
-        - 0.3.0-exp
-        verified: 
-      dependencies:
-      - name: com.unity.test-framework
-        version: 1.1.31
-      resolvedDependencies:
-      - name: com.unity.test-framework
-        version: 1.1.31
-      - name: com.unity.ext.nunit
-        version: 1.0.6
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      - name: com.unity.modules.jsonserialize
-        version: 1.0.0
-      keywords: []
-      registry:
-        id: scoped:OpenUPM
-        name: OpenUPM
-        url: https://package.openupm.com
-        scopes:
-        - com.needle.animation-utils
-        isDefault: 0
-        capabilities: 0
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637977905561770000
-      documentationUrl: 
-      hasRepository: 0
-      repository:
-        type: 
-        url: 
-        revision: 
-        path: 
-    - packageId: com.unity.test-framework@1.1.31
-      testable: 0
-      isDirectDependency: 1
-      version: 1.1.31
-      source: 1
-      resolvedPath: "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\Dimension Castle
-        Alpha\\Library\\PackageCache\\com.unity.test-framework@1.1.31"
-      assetPath: Packages/com.unity.test-framework
-      name: com.unity.test-framework
-      displayName: Test Framework
-      author:
-        name: 
-        email: 
-        url: 
-      category: Unity Test Framework
-      type: 
-      description: Test framework for running Edit mode and Play mode tests in Unity.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.0.4-preview
-        - 0.0.29-preview
-        - 1.0.0
-        - 1.0.7
-        - 1.0.9
-        - 1.0.11
-        - 1.0.12
-        - 1.0.13
-        - 1.0.14
-        - 1.0.16
-        - 1.0.17
-        - 1.0.18
-        - 1.1.0
-        - 1.1.1
-        - 1.1.2
-        - 1.1.3
-        - 1.1.5
-        - 1.1.8
-        - 1.1.9
-        - 1.1.11
-        - 1.1.13
-        - 1.1.14
-        - 1.1.16
-        - 1.1.18
-        - 1.1.19
-        - 1.1.20
-        - 1.1.22
-        - 1.1.24
-        - 1.1.26
-        - 1.1.27
-        - 1.1.29
-        - 1.1.30
-        - 1.1.31
-        - 1.1.33
-        - 1.3.0
-        - 2.0.1-exp.1
-        - 2.0.1-pre.12
-        - 2.0.1-pre.18
-        compatible:
-        - 1.1.24
-        - 1.1.26
-        - 1.1.27
-        - 1.1.29
-        - 1.1.30
-        - 1.1.31
-        - 1.1.33
-        - 1.3.0
-        - 2.0.1-exp.1
-        - 2.0.1-pre.12
-        - 2.0.1-pre.18
-        verified: 1.1.33
-      dependencies:
-      - name: com.unity.ext.nunit
-        version: 1.0.6
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      - name: com.unity.modules.jsonserialize
-        version: 1.0.0
-      resolvedDependencies:
-      - name: com.unity.ext.nunit
-        version: 1.0.6
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      - name: com.unity.modules.jsonserialize
-        version: 1.0.0
-      keywords:
-      - Test
-      - TestFramework
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637804266210000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.com/Unity-Technologies/com.unity.test-framework.git
-        revision: 438b0defc147c9be5c969ca79ff03a722b4590ed
-        path: 
     - packageId: com.unity.modules.subsystems@1.0.0
       testable: 0
       isDirectDependency: 0
@@ -3902,6 +3915,7 @@ m_PackageAssets:
         - 1.0.5
         - 1.0.6
         - 2.0.2
+        - 2.0.3
         compatible:
         - 0.1.5-preview
         - 0.1.6-preview
@@ -3910,6 +3924,7 @@ m_PackageAssets:
         - 1.0.5
         - 1.0.6
         - 2.0.2
+        - 2.0.3
         verified: 1.0.6
       dependencies: []
       resolvedDependencies: []
@@ -4384,6 +4399,7 @@ m_PackageAssets:
         - 2.0.1-preview.1
         - 2.0.2
         - 3.0.1
+        - 3.0.2
         compatible:
         - 1.0.0-preview.2
         - 1.0.0-preview.3
@@ -4397,6 +4413,7 @@ m_PackageAssets:
         - 2.0.1-preview.1
         - 2.0.2
         - 3.0.1
+        - 3.0.2
         verified: 2.0.2
       dependencies: []
       resolvedDependencies: []
@@ -4463,6 +4480,8 @@ m_PackageAssets:
         - 4.0.3
         - 4.0.4
         - 4.1.0
+        - 4.2.0
+        - 4.2.1
         - 5.0.0-pre.1
         - 5.0.0-pre.2
         - 5.0.0
@@ -4473,9 +4492,16 @@ m_PackageAssets:
         - 6.0.1
         - 6.0.2
         - 6.0.3
+        - 6.0.4
+        - 6.0.5
         - 7.0.0-pre.3
         - 7.0.0-pre.4
         - 7.0.0
+        - 7.0.1
+        - 7.0.2
+        - 8.0.0-pre.1
+        - 8.0.0-pre.2
+        - 8.0.0
         compatible:
         - 4.0.2
         - 4.0.3
@@ -4592,6 +4618,115 @@ m_PackageAssets:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/2d.git
         revision: 7d7470f4ca0ea8353d4c9640b3b6ae9d1ebd9c1d
+        path: 
+    - packageId: com.unity.test-framework@1.1.31
+      testable: 0
+      isDirectDependency: 1
+      version: 1.1.31
+      source: 1
+      resolvedPath: "D:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\Dimension Castle
+        Alpha\\Library\\PackageCache\\com.unity.test-framework@1.1.31"
+      assetPath: Packages/com.unity.test-framework
+      name: com.unity.test-framework
+      displayName: Test Framework
+      author:
+        name: 
+        email: 
+        url: 
+      category: Unity Test Framework
+      type: 
+      description: Test framework for running Edit mode and Play mode tests in Unity.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.0.4-preview
+        - 0.0.29-preview
+        - 1.0.0
+        - 1.0.7
+        - 1.0.9
+        - 1.0.11
+        - 1.0.12
+        - 1.0.13
+        - 1.0.14
+        - 1.0.16
+        - 1.0.17
+        - 1.0.18
+        - 1.1.0
+        - 1.1.1
+        - 1.1.2
+        - 1.1.3
+        - 1.1.5
+        - 1.1.8
+        - 1.1.9
+        - 1.1.11
+        - 1.1.13
+        - 1.1.14
+        - 1.1.16
+        - 1.1.18
+        - 1.1.19
+        - 1.1.20
+        - 1.1.22
+        - 1.1.24
+        - 1.1.26
+        - 1.1.27
+        - 1.1.29
+        - 1.1.30
+        - 1.1.31
+        - 1.1.33
+        - 1.3.0
+        - 2.0.1-exp.1
+        - 2.0.1-pre.12
+        - 2.0.1-pre.18
+        compatible:
+        - 1.1.24
+        - 1.1.26
+        - 1.1.27
+        - 1.1.29
+        - 1.1.30
+        - 1.1.31
+        - 1.1.33
+        - 1.3.0
+        - 2.0.1-exp.1
+        - 2.0.1-pre.12
+        - 2.0.1-pre.18
+        verified: 1.1.33
+      dependencies:
+      - name: com.unity.ext.nunit
+        version: 1.0.6
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.ext.nunit
+        version: 1.0.6
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      keywords:
+      - Test
+      - TestFramework
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637804266210000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: https://github.com/Unity-Technologies/com.unity.test-framework.git
+        revision: 438b0defc147c9be5c969ca79ff03a722b4590ed
         path: 
     - packageId: com.unity.searcher@4.3.2
       testable: 0
