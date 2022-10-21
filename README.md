@@ -4,10 +4,9 @@ Full game versions will appear periodically, on this page this will also be repo
 source code (if you ever feel like it) below.
 
 # Social media and support
-- [YouTube (Russian channel)](https://www.youtube.com/channel/UC-hf-Ao9DYHTqHR0jKuyWqg)
-- [YouTube (English channel)](https://www.youtube.com/channel/UC89MsReZbGoIqExrLadwDXA)
-- [Vkontakte group](https://vk.com/public213638597)
-- [Vkontakte page](https://vk.com/nytrock)
+- [YouTube](https://www.youtube.com/c/Nytrock)
+- [Vkontakte group](https://vk.com/nytrock)
+- [Vkontakte page](https://vk.com/everything_develoer)
 - [DonationAlerts](https://www.donationalerts.com/r/nytrock)
 - [Twitter](https://twitter.com/Nytr0ck)
 - [Twitch](https://www.twitch.tv/nytrock)
