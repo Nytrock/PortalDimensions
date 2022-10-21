@@ -33,8 +33,10 @@ public class ButtonFunctional : MonoBehaviour
         Time.timeScale = 1;
         pauseEnable = true;
 
-        exitText.SetActive(false);
-        settingsText.SetActive(false);
+        if (exitText != null) {
+            exitText.SetActive(false);
+            settingsText.SetActive(false);
+        }
     }
 
     private void Update()
@@ -62,7 +64,7 @@ public class ButtonFunctional : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2); // дебил, если забудешь поменять это в альфа-версии, то ты окончательно отупел
     }
 
     public void Statistics()
@@ -78,8 +80,10 @@ public class ButtonFunctional : MonoBehaviour
         mainPanel.SetActive(!settingsActive);
         settingsPanel.SetActive(settingsActive);
 
-        exitText.SetActive(!settingsActive);
-        settingsText.SetActive(settingsActive);
+        if (exitText != null) {
+            exitText.SetActive(!settingsActive);
+            settingsText.SetActive(settingsActive);
+        }
 
         if (settingsActive) {
             settingsChoice.TargetPosition = settingsChoice.positions[0];

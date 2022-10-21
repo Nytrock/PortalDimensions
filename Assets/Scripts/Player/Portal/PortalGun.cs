@@ -191,9 +191,7 @@ public class PortalGun : MonoBehaviour
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Hand.position;
         rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        float off = offset + 15;
-        if (player.Right)
-            off = offset - 15;
+        float off = offset;
         Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
 
         if (player.Right)

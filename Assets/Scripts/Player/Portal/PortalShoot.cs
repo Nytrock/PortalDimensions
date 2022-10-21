@@ -51,14 +51,12 @@ public class PortalShoot : MonoBehaviour
             isUsed = true;
             GetComponent<Animator>().enabled = true;
         } else if (!isUsed && !(obj.tag == "Player")) {
-            if (obj.TryGetComponent(out PortalCollider portalCollider))
-            {
+            Debug.Log(obj.name);
+            if (obj.TryGetComponent(out PortalCollider portalCollider)) {
                 SpawnPortal(portalCollider.portal.Collider);
                 isUsed = true;
                 GetComponent<Animator>().enabled = true;
-            }
-            else if (obj.TryGetComponent(out PolygonCollider2D polygon) && obj.tag != "Player")
-            {
+            } else if (obj.TryGetComponent(out PolygonCollider2D polygon) && obj.tag != "Player") {
                 if (obj.tag == "ForPortal")
                     SpawnPortal(polygon);
                 isUsed = true;
@@ -182,7 +180,6 @@ public class PortalShoot : MonoBehaviour
 
     void FindSideAndAlign(Portal portal, Vector2[] points, PolygonCollider2D other)
     {
-        this.GetComponent<CircleCollider2D>().radius = 0.4f;
         for (int i = 0; i < points.Length - 1; i++)
         {
             foreach (RaycastHit2D item in Physics2D.LinecastAll(points[i], points[i + 1]))

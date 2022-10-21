@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1653878075347395304}
   - component: {fileID: 5048967434916064823}
   - component: {fileID: 3575071549134056335}
-  m_Layer: 3
+  - component: {fileID: -3628251209555439543}
+  m_Layer: 6
   m_Name: Shoot
   m_TagString: Shoot
   m_Icon: {fileID: 0}
@@ -93,6 +94,27 @@ CircleCollider2D:
   m_Offset: {x: 0.02446334, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!50 &-3628251209555439543
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854667479263560037}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &854667480011513847
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +126,7 @@ GameObject:
   - component: {fileID: 854667480011513846}
   - component: {fileID: 854667480011513844}
   - component: {fileID: 854667480011513845}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4907,7 +4929,7 @@ GameObject:
   m_Component:
   - component: {fileID: 359336225753264493}
   - component: {fileID: 8303326400739088842}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4979,7 +5001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8019585131385695779}
   - component: {fileID: 1768932880318285444}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5050,7 +5072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8247840996218155278}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5084,7 +5106,7 @@ GameObject:
   - component: {fileID: 6947848886415671480}
   - component: {fileID: 6947848886415671482}
   - component: {fileID: 6947848886415671483}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9886,7 +9908,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7027968337395111928}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
