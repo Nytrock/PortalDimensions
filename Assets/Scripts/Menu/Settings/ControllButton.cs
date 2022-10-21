@@ -72,7 +72,7 @@ public class ControllButton : MonoBehaviour
 
     IEnumerator SetLeftArrow()
     {
-        yield return new WaitForSeconds(0.0001f);
+        yield return new WaitForSecondsRealtime(0.0001f);
         float percent = text.fontSize / text.fontSizeMax;
         leftArrow.localPosition = new Vector2(leftArrowPos - text.preferredWidth * percent + 22f, leftArrow.localPosition.y);
     }

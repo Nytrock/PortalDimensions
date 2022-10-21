@@ -183,7 +183,7 @@ public class GameSettingsManager : MonoBehaviour
     private void ChangeCursorTexture()
     {
         CursorSeeker.cursorSeeker.cursorId = cursorId;
-        Cursor.SetCursor(cursorsTextures[cursorId], Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursorsTextures[cursorId], Vector2.zero, CursorMode.ForceSoftware);
         isCursorChange = cursorId != originalCursor;
         cursorImage.texture = cursorsTextures[cursorId];
     }
@@ -258,6 +258,7 @@ public class GameSettingsManager : MonoBehaviour
     {
         localization.SetLanguage(defaultLanguage);
         isLanguageChange = originallyLanguage != LocalizationManager.SelectedLanguage;
+        SetMoreButtonsPosition();
 
         cursorId = defaultCursor;
         ChangeCursorTexture();
