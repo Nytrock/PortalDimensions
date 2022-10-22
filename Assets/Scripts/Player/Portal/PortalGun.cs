@@ -156,7 +156,8 @@ public class PortalGun : MonoBehaviour
                 ShootBlue.Blue.SetActive(true);
                 ShootBlue.gun = this;
                 ShootBlue.Right = RightButton;
-                ShootBlue.isUsed = cooldown;
+                ShootBlue.isUsed = ShootOrange != null && cooldown;
+
             }
             BlueLight.SetActive(true);
         } else {
@@ -169,7 +170,7 @@ public class PortalGun : MonoBehaviour
                 ShootOrange.Orange.SetActive(true);
                 ShootOrange.gun = this;
                 ShootOrange.Right = RightButton;
-                ShootOrange.isUsed = cooldown;
+                ShootOrange.isUsed = ShootBlue != null && cooldown;
             }
             OrangeLight.SetActive(true);
         }
@@ -194,36 +195,27 @@ public class PortalGun : MonoBehaviour
         float off = offset;
         Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
 
-        if (player.Right)
-        {
-            if (-90 >= rotateZ || rotateZ >= 90)
-            {
-                if ((rotateZ <= -90 && rotateZ < 0) || (rotateZ >= 90 && rotateZ > 0))
-                {
+        if (player.Right) {
+            if (-90 >= rotateZ || rotateZ >= 90) {
+                if ((rotateZ <= -90 && rotateZ < 0) || (rotateZ >= 90 && rotateZ > 0)) {
                     player.Flip();
-                    off = offset + 15;
                     Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
                     if (-90 <= rotateZ && rotateZ <= 90)
                         Barrier(90);
-                }
-                else
+                } else {
                     Barrier(90);
+                }
             }
-        }
-        else
-        {
-            if (-90 <= rotateZ && rotateZ <= 90)
-            {
-                if ((rotateZ >= -90 && rotateZ < 0) || (rotateZ <= 90 && rotateZ > 0))
-                {
+        } else {
+            if (-90 <= rotateZ && rotateZ <= 90) {
+                if ((rotateZ >= -90 && rotateZ < 0) || (rotateZ <= 90 && rotateZ > 0)) {
                     player.Flip();
-                    off = offset - 15;
                     Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
                     if (-90 >= rotateZ || rotateZ >= 90)
                         Barrier(90);
-                }
-                else
+                } else {
                     Barrier(90);
+                }
 
             }
         }
@@ -242,19 +234,20 @@ public class PortalGun : MonoBehaviour
         if (player.Right) {
             off = -off;
         }
-        Head.rotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z + off);
         if (player.Right) {
-            if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 + offset == Mathf.RoundToInt(Hand.rotation.eulerAngles.z) && Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 > 3)
-                Head.rotation = Quaternion.Euler(0f, 0f, 3f);
-            else if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 == Mathf.RoundToInt(Hand.rotation.eulerAngles.z) && Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 - offset < -2)
-                Head.rotation = Quaternion.Euler(0f, 0f, -2f);
-            else if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 == 0)
-                Head.rotation = Quaternion.Euler(0f, 0f, 3f);
+            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 > 3)
+                Head.localRotation = Quaternion.Euler(0f, 0f, 3f);
+            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 < -2)
+                Head.localRotation = Quaternion.Euler(0f, 0f, -2f);
+            else
+                Head.localRotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z + off);
         } else {
-            if (Mathf.RoundToInt(Head.rotation.eulerAngles.z) - offset == Mathf.RoundToInt(Hand.rotation.eulerAngles.z) && offset - Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 > 3)
-                Head.rotation = Quaternion.Euler(0f, 0f, -3f);
-            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 == Mathf.RoundToInt(Head.rotation.eulerAngles.z) % 90 && Mathf.RoundToInt(Head.rotation.eulerAngles.z) > 2)
-                Head.rotation = Quaternion.Euler(0f, 0f, 2f);
+            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 < 87 && Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 > 48)
+                Head.localRotation = Quaternion.Euler(0f, 0f, 3f);
+            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 > 2 && Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 < 45)
+                Head.localRotation = Quaternion.Euler(0f, 0f, -2f);
+            else
+                Head.localRotation = Quaternion.Euler(0f, 0f, -(Hand.rotation.eulerAngles.z + off));
         }
     }
 

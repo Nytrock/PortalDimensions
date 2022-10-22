@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -233,6 +232,9 @@ public class AnimationPlayer : MonoBehaviour
 
     public void StartShooting()
     {
+        Sleep = false;
+        sleepEffect.Stop();
+
         if (animator.GetBool("IsShoot") && !animator.GetBool("RestartShooting"))
             animator.SetBool("RestartShooting", true);
         animator.SetBool("IsShoot", true);
