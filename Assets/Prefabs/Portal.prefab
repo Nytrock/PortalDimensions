@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 6614251766874240884}
   m_Layer: 3
   m_Name: Collider2
-  m_TagString: Untagged
+  m_TagString: ForPortal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 8724072395821854907}
   m_Layer: 3
   m_Name: Collider1
-  m_TagString: Untagged
+  m_TagString: ForPortal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

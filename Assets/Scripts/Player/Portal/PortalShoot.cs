@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -50,15 +49,13 @@ public class PortalShoot : MonoBehaviour
         if (gun.RightButton == Blue.activeSelf && gun.InWall) {
             isUsed = true;
             GetComponent<Animator>().enabled = true;
-        } else if (!isUsed && !(obj.tag == "Player")) {
-            Debug.Log(obj.name);
+        } else if (!isUsed && (obj.tag == "ForPortal")) {
             if (obj.TryGetComponent(out PortalCollider portalCollider)) {
                 SpawnPortal(portalCollider.portal.Collider);
                 isUsed = true;
                 GetComponent<Animator>().enabled = true;
-            } else if (obj.TryGetComponent(out PolygonCollider2D polygon) && obj.tag != "Player") {
-                if (obj.tag == "ForPortal")
-                    SpawnPortal(polygon);
+            } else if (obj.TryGetComponent(out PolygonCollider2D polygon)) {
+                SpawnPortal(polygon);
                 isUsed = true;
                 GetComponent<Animator>().enabled = true;
             }
@@ -180,6 +177,7 @@ public class PortalShoot : MonoBehaviour
 
     void FindSideAndAlign(Portal portal, Vector2[] points, PolygonCollider2D other)
     {
+        GetComponent<CircleCollider2D>().radius = 0.6f;
         for (int i = 0; i < points.Length - 1; i++)
         {
             foreach (RaycastHit2D item in Physics2D.LinecastAll(points[i], points[i + 1]))
