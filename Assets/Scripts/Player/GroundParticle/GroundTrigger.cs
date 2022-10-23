@@ -10,20 +10,25 @@ public class GroundTrigger : MonoBehaviour
     {
         player = GetComponentInParent<Player>();
     }
-    public void Update()
+    private void Update()
+    {
+        Update_Ground();
+    }
+
+    private void Update_Ground()
     {
         if (NowColliders.Count == 0)
             player.onGround = false;
         else
             player.onGround = true;
     }
+
     void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet ground))
-        {
-            if (!NowColliders.Contains(obj))
-            {
+        if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet ground)) {
+            if (!NowColliders.Contains(obj)) {
                 NowColliders.Add(obj);
+                Update_Ground();
                 player.Update_Ground(ground);
             }
         }
@@ -31,8 +36,7 @@ public class GroundTrigger : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet _))
-        {
+        if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet _)) {
             if (NowColliders.Contains(obj))
                 NowColliders.Remove(obj);
         }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PortalTrigger : MonoBehaviour
@@ -8,7 +6,7 @@ public class PortalTrigger : MonoBehaviour
     public Portal portal;
     void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Rigidbody2D _))
+        if (obj.TryGetComponent(out Rigidbody2D _) && obj.isTrigger == false)
         {
             inPortal = true;
             portal.gun.itemToTeleport = obj;
@@ -20,7 +18,7 @@ public class PortalTrigger : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Rigidbody2D _))
+        if (obj.TryGetComponent(out Rigidbody2D _) && obj.isTrigger == false)
         {
             inPortal = false;
             portal.Update_Portal();

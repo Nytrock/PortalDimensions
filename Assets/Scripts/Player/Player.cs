@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
         animations.colorGroundParticle = ground.color;
         if (rb.velocity.y < -14f && onGround) {
             var main = animations.Fall.main;
-            main.maxParticles = (int)(20 * (rb.velocity.y * -1 - 14f) / 1.5f);
+            main.maxParticles = Mathf.Min((int)(8 * (rb.velocity.y * -1 - 14f)), 250);
             animations.FallParticle();
         }
     }
