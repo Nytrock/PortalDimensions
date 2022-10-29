@@ -40,12 +40,10 @@ public class GameSettingsManager : MonoBehaviour
     private float moreShaderVisualPos;
 
     [Header("Настройки локализации")]
-    public LocalizationManager localization;
     private int originallyLanguage;
     private bool isLanguageChange;
 
     [Header("Настройки курсора")]
-    public List<Texture2D> cursorsTextures;
     public RawImage cursorImage;
     public int cursorId;
     private bool isCursorChange;
@@ -59,7 +57,6 @@ public class GameSettingsManager : MonoBehaviour
 
     [Header("Настройки счётчика fps")]
     public Toggle fpsManager;
-    public FpsCounter fpsCounter;
     private bool fpsShowing;
     private bool originallyFps;
     private bool isFpsChange;
@@ -72,9 +69,6 @@ public class GameSettingsManager : MonoBehaviour
 
     [Header("Настройки шейдера")]
     public Toggle glitchManager;
-    public Material glitchMaterial;
-    public Material noGlitchMaterial;
-    public List<RawImage> quads;
     private bool glitch;
     private bool originallyGlitch;
     private bool isGlitchChange;
@@ -110,17 +104,17 @@ public class GameSettingsManager : MonoBehaviour
 
         SetResetBlur();
         ChangeCursorTexture();
-        SetShaderActive();
         SetChangesFalse();
         SetMorePositionsValues();
         SetMoreButtonsPosition();
+        Save.save.SetShaderActive(glitch);
     }
     public void NextLanguage()
     {
         int newId = 0;
         if (LocalizationManager.SelectedLanguage + 1 < Save.NumberLanguages)
             newId = LocalizationManager.SelectedLanguage + 1;
-        localization.SetLanguage(newId);
+        LocalizationManager.localizationManager.SetLanguage(newId);
         isLanguageChange = originallyLanguage != newId;
         SetResetBlur();
         SetMoreButtonsPosition();
@@ -131,7 +125,7 @@ public class GameSettingsManager : MonoBehaviour
         int newId = Save.NumberLanguages - 1;
         if (LocalizationManager.SelectedLanguage - 1 >= 0)
             newId = LocalizationManager.SelectedLanguage - 1;
-        localization.SetLanguage(newId);
+        LocalizationManager.localizationManager.SetLanguage(newId);
         isLanguageChange = originallyLanguage != newId;
         SetResetBlur();
         SetMoreButtonsPosition();
@@ -152,12 +146,12 @@ public class GameSettingsManager : MonoBehaviour
     {
         fpsShowing = !fpsShowing;
         isFpsChange = fpsShowing != originallyFps;
-        fpsCounter.ChangeWorking(fpsShowing);
+        FpsCounter.fpsCounter.ChangeWorking(fpsShowing);
     }
 
     public void NextCursor()
     {
-        if (cursorId + 1 < cursorsTextures.Count)
+        if (cursorId + 1 < CursorSeeker.cursorSeeker.cursorsTextures.Count)
             cursorId += 1;
         else
             cursorId = 0;
@@ -169,7 +163,7 @@ public class GameSettingsManager : MonoBehaviour
         if (cursorId - 1 >= 0)
             cursorId -= 1;
         else
-            cursorId = cursorsTextures.Count - 1;
+            cursorId = CursorSeeker.cursorSeeker.cursorsTextures.Count - 1;
         ChangeCursorTexture();
     }
 
@@ -177,26 +171,15 @@ public class GameSettingsManager : MonoBehaviour
     {
         glitch = !glitch;
         isGlitchChange = originallyGlitch != glitch;
-        SetShaderActive();
+        Save.save.SetShaderActive(glitch);
     }
 
     private void ChangeCursorTexture()
     {
         CursorSeeker.cursorSeeker.cursorId = cursorId;
-        Cursor.SetCursor(cursorsTextures[cursorId], Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(CursorSeeker.cursorSeeker.cursorsTextures[cursorId], Vector2.zero, CursorMode.ForceSoftware);
         isCursorChange = cursorId != originalCursor;
-        cursorImage.texture = cursorsTextures[cursorId];
-    }
-
-    private void SetShaderActive()
-    {
-        if (glitch) {
-            foreach (RawImage quad in quads)
-                quad.material = glitchMaterial;
-        } else {
-            foreach (RawImage quad in quads)
-                quad.material = noGlitchMaterial;
-        }
+        cursorImage.texture = CursorSeeker.cursorSeeker.cursorsTextures[cursorId];
     }
 
     public void CheckChanges()
@@ -219,20 +202,20 @@ public class GameSettingsManager : MonoBehaviour
     {
         SetChangesFalse();
 
-        localization.SetLanguage(originallyLanguage);
+        LocalizationManager.localizationManager.SetLanguage(originallyLanguage);
 
         cursorId = originalCursor;
         ChangeCursorTexture();
 
         fpsManager.isOn = originallyFps;
-        fpsCounter.ChangeWorking(originallyFps);
+        FpsCounter.fpsCounter.ChangeWorking(originallyFps);
 
         autoManager.isOn = originallyAuto;
 
         confirmManager.isOn = originallyConfirm;
 
         glitchManager.isOn = originallyGlitch;
-        SetShaderActive();
+        Save.save.SetShaderActive(glitch);
     }
 
     public void SetNewOriginall()
@@ -256,7 +239,7 @@ public class GameSettingsManager : MonoBehaviour
 
     public void SetDefaults()
     {
-        localization.SetLanguage(defaultLanguage);
+        LocalizationManager.localizationManager.SetLanguage(defaultLanguage);
         isLanguageChange = originallyLanguage != LocalizationManager.SelectedLanguage;
         SetMoreButtonsPosition();
 

@@ -6,6 +6,7 @@ using System.Xml;
 public class LocalizationManager : MonoBehaviour
 {
     public static int SelectedLanguage { get; private set; }
+    public static LocalizationManager localizationManager;
 
     public static event LanguageChangeHandler OnLanguageChange;
     public delegate void LanguageChangeHandler();
@@ -19,6 +20,7 @@ public class LocalizationManager : MonoBehaviour
 
     private void Awake()
     {
+        localizationManager = this;
         if (localization == null)
             LoadLocatization();
     }

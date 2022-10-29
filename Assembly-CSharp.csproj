@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Menu\FpsCounter.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PregradsControl.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ProfileDialogue.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\CellVisual.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\DialogueInterface.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\ItemStartDialogue.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\ControllButton.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalCollider.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\WorldInterface.cs" />
     <Compile Include="Assets\Scripts\Save\CursorSeeker.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundGet.cs" />
     <Compile Include="Assets\Scripts\Player\DeathTrap.cs" />
@@ -83,6 +85,8 @@
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueChoiceManager.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalChecker.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedDialogueText.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\CellButton.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\World.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalGun.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\InterfaceButtons.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\AudioSettingsManager.cs" />
@@ -103,8 +107,8 @@
     <Compile Include="Assets\Scripts\LevelsSystem\ButtonSwitch.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\ConfirmButtons.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\LevelsSystem\CellButton.cs" />
-    <Compile Include="Assets\Scripts\LevelsSystem\CellVisual.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\LevelInfoHolder.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\Level.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
