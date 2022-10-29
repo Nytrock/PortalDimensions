@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Player\AnimationPlayer.cs" />
     <Compile Include="Assets\Scripts\Menu\ChoiceButton.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\LevelsSwitchManager.cs" />
     <Compile Include="Assets\Scripts\Player\JumpCrystall.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\GameSettingsManager.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueChoice.cs" />
@@ -99,8 +100,11 @@
     <Compile Include="Assets\Scripts\Localization\LocalizationManager.cs" />
     <Compile Include="Assets\Scripts\Menu\ShaderUpdate.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedText.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\ButtonSwitch.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\ConfirmButtons.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\CellButton.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\CellVisual.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -711,6 +715,9 @@
     <Reference Include="Unity.2D.Animation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
       <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
@@ -722,6 +729,9 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
@@ -840,14 +850,8 @@
     <Reference Include="Unity.2D.SpriteShape.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Recorder">
       <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Recorder.Base">
-      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

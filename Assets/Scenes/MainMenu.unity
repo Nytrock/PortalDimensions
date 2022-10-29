@@ -22383,6 +22383,8 @@ MonoBehaviour:
   audioSettings: {fileID: 45861625}
   Yes: {fileID: 771675409}
   No: {fileID: 1587388473}
+  exitText: {fileID: 0}
+  settingsText: {fileID: 0}
 --- !u!1 &712953892
 GameObject:
   m_ObjectHideFlags: 0
