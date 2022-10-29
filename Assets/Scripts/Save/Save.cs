@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Save : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class Save : MonoBehaviour
     public ControllSettingsManager controllSettingsManager;
     public AudioSettingsManager audioSettingsManager;
     public VideoSettingsManager videoSettingsManager;
-    public FpsCounter fpsCounter;
     public DialogueChoiceManager dialogueChoiceManager;
 
     [Header("Профили для диалогов")]
@@ -34,7 +34,18 @@ public class Save : MonoBehaviour
     public KeyCode dialogueStartKey;
     public KeyCode fastRestartKey;
 
-    [System.Serializable]
+    [Header("Шейдеры")]
+    public Material glitchMaterial;
+    public Material noGlitchMaterial;
+    public List<RawImage> quads;
+
+    [Header("Миры")]
+    public List<World> worlds;
+
+    [Header("Игроки")]
+    public List<Player> players;
+
+    [Serializable]
     private class SettingsSave
     {
         public int languageId;
@@ -56,7 +67,7 @@ public class Save : MonoBehaviour
         public int screenResolutionId;
         public int screenModId;
     }
-    [System.Serializable]
+    [Serializable]
     private class DialoguesSave
     {
         public List<bool> existingChoices;
@@ -117,6 +128,7 @@ public class Save : MonoBehaviour
 
             try {
                 SettingsSave settings = (SettingsSave)form.Deserialize(stream);
+                GetComponent<CursorSeeker>().cursorId = settings.cursorId;
                 localizationManager.SetLanguage(settings.languageId);
                 if (gameSettingsManager) {
                     gameSettingsManager.autoManager.isOn = settings.AutoRestart;
@@ -124,6 +136,15 @@ public class Save : MonoBehaviour
                     gameSettingsManager.fpsManager.isOn = settings.FpsShowing;
                     gameSettingsManager.confirmManager.isOn = settings.ConfimToExitActive;
                     gameSettingsManager.glitchManager.isOn = settings.shaderOn;
+                } else {
+                    FpsCounter.fpsCounter.isWorking = settings.FpsShowing;
+                    if (settings.shaderOn) {
+                        foreach (RawImage quad in quads)
+                            quad.material = glitchMaterial;
+                    } else {
+                        foreach (RawImage quad in quads)
+                            quad.material = noGlitchMaterial;
+                    }
                 }
 
                 Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
@@ -250,5 +271,16 @@ public class Save : MonoBehaviour
         BinaryFormatter form = new BinaryFormatter();
         form.Serialize(stream, settings);
         stream.Close();
+    }
+
+    public void SetShaderActive(bool glitch)
+    {
+        if (glitch) {
+            foreach (RawImage quad in quads)
+                quad.material = glitchMaterial;
+        } else {
+            foreach (RawImage quad in quads)
+                quad.material = noGlitchMaterial;
+        }
     }
 }

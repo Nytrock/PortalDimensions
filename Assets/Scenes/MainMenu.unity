@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWorking: 0
-  _hudRefreshRate: 1
+  hudRefreshRate: 1
 --- !u!114 &5789979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25851,7 +25851,7 @@ MonoBehaviour:
   - {fileID: 331947332}
   - {fileID: 1700707963}
   - {fileID: 194536234}
-  speed: 4
+  speed: 5
   working: 1
 --- !u!222 &868273450
 CanvasRenderer:
@@ -28170,7 +28170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &934451018
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36562,7 +36562,6 @@ MonoBehaviour:
   controllSettingsManager: {fileID: 1089393724}
   audioSettingsManager: {fileID: 45861625}
   videoSettingsManager: {fileID: 889220447}
-  fpsCounter: {fileID: 5789978}
   dialogueChoiceManager: {fileID: 0}
   DialogueProfiles: []
   ExistingChoiceIdList: 
@@ -36574,6 +36573,12 @@ MonoBehaviour:
   portalGunRightKey: 324
   dialogueStartKey: 101
   fastRestartKey: 114
+  glitchMaterial: {fileID: 2100000, guid: 37f479f2dbd81f14980d6c8e62094187, type: 2}
+  noGlitchMaterial: {fileID: 2100000, guid: 6d293acfe12ae8445b9a025867b23cab, type: 2}
+  quads:
+  - {fileID: 597853861}
+  worlds: []
+  players: []
 --- !u!4 &1199938460
 Transform:
   m_ObjectHideFlags: 0
@@ -36607,6 +36612,13 @@ MonoBehaviour:
   normalRightCursor: {fileID: 2800000, guid: 565b81b0878869544b2ea72bb1cafa8a, type: 3}
   shortLeftCursor: {fileID: 2800000, guid: 51bec6e8b802c9f4a8a38fedbc774b02, type: 3}
   shortRightCursor: {fileID: 2800000, guid: 17b7ad3a1d5fcbe4cad0d7916bc1fa16, type: 3}
+  cursorsTextures:
+  - {fileID: 2800000, guid: 8496099d7f6f73d4eb88f7eabb20580f, type: 3}
+  - {fileID: 2800000, guid: 0c0500dd6324fa2498c20e1925346c4f, type: 3}
+  - {fileID: 2800000, guid: cc7ca19d43e67304d80b4be4a34f0c78, type: 3}
+  - {fileID: 2800000, guid: 258ca6a5a5cfd7148b570051d134a0f6, type: 3}
+  - {fileID: 2800000, guid: 90adb7a29b51b8d4e9c03e12f1274091, type: 3}
+  - {fileID: 2800000, guid: 498e2a9fcbf5a8145afd461d8d136ed8, type: 3}
 --- !u!1 &1206476309
 GameObject:
   m_ObjectHideFlags: 0
@@ -54409,25 +54421,12 @@ MonoBehaviour:
   moreShaderVisual: {fileID: 740959951}
   moreShaderButton: {fileID: 1789302195}
   moreShaderText: {fileID: 422131635}
-  localization: {fileID: 79656920}
-  cursorsTextures:
-  - {fileID: 2800000, guid: 8496099d7f6f73d4eb88f7eabb20580f, type: 3}
-  - {fileID: 2800000, guid: 0c0500dd6324fa2498c20e1925346c4f, type: 3}
-  - {fileID: 2800000, guid: cc7ca19d43e67304d80b4be4a34f0c78, type: 3}
-  - {fileID: 2800000, guid: 258ca6a5a5cfd7148b570051d134a0f6, type: 3}
-  - {fileID: 2800000, guid: 90adb7a29b51b8d4e9c03e12f1274091, type: 3}
-  - {fileID: 2800000, guid: 498e2a9fcbf5a8145afd461d8d136ed8, type: 3}
   cursorImage: {fileID: 1424719443}
   cursorId: 0
   autoManager: {fileID: 1064993058}
   fpsManager: {fileID: 480579205}
-  fpsCounter: {fileID: 5789978}
   confirmManager: {fileID: 278068438}
   glitchManager: {fileID: 679564266}
-  glitchMaterial: {fileID: 2100000, guid: 37f479f2dbd81f14980d6c8e62094187, type: 2}
-  noGlitchMaterial: {fileID: 2100000, guid: 6d293acfe12ae8445b9a025867b23cab, type: 2}
-  quads:
-  - {fileID: 597853861}
   headerText: {fileID: 112477008}
   sentenceText: {fileID: 663558675}
   sentences:

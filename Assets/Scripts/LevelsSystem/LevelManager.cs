@@ -1,15 +1,18 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class LevelManager: MonoBehaviour
 {
     private KeyCode restartButton;
+    public List<Level> levels;
 
     private void Start()
     {
         SetControll();
         ControllSettingsManager.OnButtonChange += SetControll;
+        SetLevel(LevelInfoHolder.levelId);
     }
 
     private void Update()
@@ -45,5 +48,15 @@ public class LevelManager: MonoBehaviour
     private void SetControll()
     {
         restartButton = Save.save.fastRestartKey;
+    }
+
+    private void SetLevel(int id)
+    {
+        for (int i=0; i < levels.Count; i++)
+            levels[i].gameObject.SetActive(false);
+        levels[id].gameObject.SetActive(true);
+
+        var player = Instantiate(Save.save.players[0]);
+        player.transform.position = new Vector2(levels[id].spawnPoint.position.x, levels[id].spawnPoint.position.y);
     }
 }

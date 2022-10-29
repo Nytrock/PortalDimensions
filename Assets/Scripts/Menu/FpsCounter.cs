@@ -3,13 +3,16 @@ using TMPro;
 
 public class FpsCounter : MonoBehaviour
 {
+    public static FpsCounter fpsCounter;
+
     public bool isWorking;
     private TextMeshProUGUI text;
     private float timer;
-    [SerializeField] private float _hudRefreshRate = 1f;
+    [SerializeField] private float hudRefreshRate = 1f;
 
     private void Awake()
     {
+        fpsCounter = this;
         text = GetComponent<TextMeshProUGUI>();
         if (!isWorking)
             text.text = "";
@@ -21,7 +24,7 @@ public class FpsCounter : MonoBehaviour
             if (Time.unscaledTime > timer) {
                 int fps = (int)(1f / Time.unscaledDeltaTime);
                 text.text = fps + " fps";
-                timer = Time.unscaledTime + _hudRefreshRate;
+                timer = Time.unscaledTime + hudRefreshRate;
             }
         }
     }
