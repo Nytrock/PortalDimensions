@@ -242,9 +242,9 @@ public class PortalGun : MonoBehaviour
             else
                 Head.localRotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z + off);
         } else {
-            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 < 87 && Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 > 48)
+            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 180 < 87)
                 Head.localRotation = Quaternion.Euler(0f, 0f, 3f);
-            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 > 2 && Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 90 < 45)
+            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 180 > 92)
                 Head.localRotation = Quaternion.Euler(0f, 0f, -2f);
             else
                 Head.localRotation = Quaternion.Euler(0f, 0f, -(Hand.rotation.eulerAngles.z + off));
@@ -358,28 +358,33 @@ public class PortalGun : MonoBehaviour
         float velY = (Mathf.Abs(rb.velocity.y) + 1.4f) / 10f;
         if (velY < 1.3f)
             velY = 1.3f;
+        else if (velY > 3f)
+            velY = 3f;
         float massCompY = rb.mass;
         if (massCompY > 1)
             massCompY *= 1.03f;
         float massCompX = rb.mass;
         if (massCompX > 1)
             massCompX *= 0.3f;
-        float horizontalForceMultiply = 1f;
+        float ForceMultiply = 1f;
         if (item.TryGetComponent(out Player _))
-            horizontalForceMultiply = 15f;
+            ForceMultiply = 15f;
         switch (Exit.side)
         {
             case "Left": 
-                VectorForce = new Vector2(-Force * Mathf.Max(velY, 1.6f) * 0.8f * massCompX * 2.5f * horizontalForceMultiply, 0);
+                VectorForce = new Vector2(-Force * Mathf.Max(velY, 1.6f) * 0.8f * massCompX * 2.5f * ForceMultiply, 0);
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 break;
-            case "Down": break;
+            case "Down":
+                if (rb.velocity.y < -21f)
+                    rb.velocity = new Vector2(rb.velocity.x, -21f);
+                break;
             case "Right": 
-                VectorForce = new Vector2(Force * massCompX * Mathf.Max(velY, 1.6f) * 0.8f * 2.5f * horizontalForceMultiply, 0);
+                VectorForce = new Vector2(Force * massCompX * Mathf.Max(velY, 1.6f) * 0.8f * 2.5f * ForceMultiply, 0);
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 break;
             case "Up":
-                VectorForce = new Vector2(0, Force * massCompY * velY);
+                VectorForce = new Vector2(0, Force * massCompY * velY * ForceMultiply * 0.082f);
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 break;
         }
@@ -390,7 +395,8 @@ public class PortalGun : MonoBehaviour
         else
             item.transform.rotation = Quaternion.Euler(0f, 0f, Exit.transform.rotation.eulerAngles.z);
         ForceIteration = 1f;
-        StartCoroutine(GiveForce());
+        if (Exit.side != "Down")
+            StartCoroutine(GiveForce());
     }
 
     IEnumerator GiveForce()

@@ -2,14 +2,15 @@ Shader "Custom/Glitchy Footage Shader"{
 	Properties{
 		_MainTex("Main Texture", 2D) = "white" {}
 		_GlitchColor("Glitch Color", Color) = (1.0,1.0,1.0,1.0)
+		_NoiseColor("Colored Noise Color", Color) = (1.0,1.0,1.0,1.0)
+		_WaveColor("Wave Noise Color", Color) = (1.0,1.0,1.0,1.0)
 		_GlitchInterval("Glitch Interval", Float) = 5.0	
 		_GlitchRate("Glitch Rate", Range(0,1)) = 0.9
 		_ResHorizontal("Horizontal Resolution", Float) = 640
 		_ResVertical("Vertical Resolution", Float) = 480
-		_WhiteNoiseIntensity("White Noise Intensity", Float) = 1.0	
+		_ColorNoiseIntensity("Color Noise Intensity", Float) = 1.0
 		_WaveNoiseIntensity("Wave Noise Intensity", Float) = 1.0
 		_RGBShiftIntensity("RGB Shift Intensity", Float) = 1.0
-		_BlockGlitchEnabled("Block Glitch", Float) = 1.0
 		_ShakeGlitchEnabled("Shake Glitch", Float) = 1.0
 		_ScanlineGlitchEnabled("Scanline Glitch", Float) = 1.0
 		_UnscaledTime("Unscaled Time", Float) = 0
@@ -54,10 +55,11 @@ Shader "Custom/Glitchy Footage Shader"{
 			uniform float _GlitchRate;
 			uniform float _ResHorizontal;
 			uniform float _ResVertical;
-			uniform fixed _WhiteNoiseIntensity;
+			uniform fixed _ColorNoiseIntensity;
 			uniform fixed _WaveNoiseIntensity;
 			uniform fixed4 _GlitchColor;
-			uniform float _BlockGlitchEnabled;
+			uniform fixed4 _NoiseColor;
+			uniform fixed4 _WaveColor;
 			uniform float _ScanlineGlitchEnabled;
 			uniform float _ShakeGlitchEnabled;
 			uniform fixed _RGBShiftIntensity;
@@ -99,42 +101,13 @@ Shader "Custom/Glitchy Footage Shader"{
 				fixed g = tex2D(_MainTex, float2(rgbUvX, i.uv.y) + shake).g;
 				fixed2 rb = tex2D(_MainTex, float2(rgbUvX + rgbDiff, i.uv.y) + shake).rb;//r and b channels get shifted by rgbDiff amount
 				
-				fixed whiteNoise = (random(i.uv + mod(1 / _UnscaledTime, 10.0)) * 2.0 - 1.0) * (0.15 + strength * 0.15);
-
-				fixed bnMask = 0.;
-				fixed bnMask2 = 0.;
-				fixed4 blockNoise = fixed4(0., 0., 0., 0.);
-				fixed4 blockNoise2 = fixed4(0., 0., 0., 0.);
-
-				if (_BlockGlitchEnabled == 1.) {
-					fixed bnTime = floor(1 / _UnscaledTime * 20.0) * 200.0;
-					float noiseX = step((snoise(float3(0.0, i.uv.x * 3.0, bnTime)) + 1.0) / 2.0, 0.12 + strength * 0.3);
-					float noiseY = step((snoise(float3(0.0, i.uv.y * 3.0, bnTime)) + 1.0) / 2.0, 0.12 + strength * 0.3);
-					bnMask = noiseX * noiseY;
-					fixed bnUvX = i.uv.x + sin(bnTime) * 0.2 + rgbWave;
-					half bnR = tex2D(_MainTex, float2(bnUvX + rgbDiff, i.uv.y)).r * bnMask;
-					half bnG = tex2D(_MainTex, float2(bnUvX, i.uv.y)).g * bnMask;
-					half bnB = tex2D(_MainTex, float2(bnUvX - rgbDiff, i.uv.y)).b * bnMask;
-					blockNoise = fixed4(bnR, bnG, bnB, 1.0);
-
-					float bnTime2 = floor(fixed4(_UnscaledTime, 1 / _UnscaledTime, _UnscaledTime, 1 / _UnscaledTime) * 25.0) * 300.0;
-					float noiseX2 = step((snoise(float3(0.0, i.uv.x * 2.0, bnTime2)) + 1.0) / 2.0, 0.12 + strength * 0.5);
-					float noiseY2 = step((snoise(float3(0.0, i.uv.y * 8.0, bnTime2)) + 1.0) / 2.0, 0.12 + strength * 0.3);
-					bnMask2 = noiseX2 * noiseY2;
-					half bnR2 = tex2D(_MainTex, float2(bnUvX + rgbDiff, i.uv.y)).r * bnMask2;
-					half bnG2 = tex2D(_MainTex, float2(bnUvX, i.uv.y)).g * bnMask2;
-					half bnB2 = tex2D(_MainTex, float2(bnUvX - rgbDiff, i.uv.y)).b * bnMask2;
-					blockNoise2 = fixed4(bnR2, bnG2, bnB2, 1.0);
-				}
+				fixed colorNoise = (random(i.uv + mod(1 / _UnscaledTime, 10.0)) * 2.0 - 1.0) * (0.15 + strength * 0.15);
 
 				fixed waveNoise = (sin(i.uv.y * 1200.0) + 1.0) / 2.0 * (0.15 + strength * 0.2);
 
 				half4 ret = fixed4(rb.x, g, rb.y, 1.0) *
-					((1.0 - bnMask - bnMask2) * _GlitchColor) +
-					((whiteNoise* _WhiteNoiseIntensity) +
-						blockNoise +
-						blockNoise2 -
-						(waveNoise* _WaveNoiseIntensity)) * _GlitchColor;
+					(1.0 * _GlitchColor) +
+					(colorNoise * _ColorNoiseIntensity) * _NoiseColor - (waveNoise * _WaveNoiseIntensity) * _WaveColor;
 				return ret;
 			}
 			ENDCG

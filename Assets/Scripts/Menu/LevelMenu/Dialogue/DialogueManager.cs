@@ -8,18 +8,15 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField]
-    private TextAsset textFile;
-    [SerializeField]
-    private GameObject JustText;
-    [SerializeField]
-    private GameObject TextWithChoice;
-    [SerializeField]
-    private GameObject TextWithChoiceContainer;
-    [SerializeField]
-    private GameObject JustChoice;
-    [SerializeField]
-    private GameObject JustChoiceContainer;
+    public static DialogueManager dialogueManager;
+    private Player player;
+
+    [SerializeField] private TextAsset textFile;
+    [SerializeField] private GameObject JustText;
+    [SerializeField] private GameObject TextWithChoice;
+    [SerializeField] private GameObject TextWithChoiceContainer;
+    [SerializeField] private GameObject JustChoice;
+    [SerializeField] private GameObject JustChoiceContainer;
 
     public Choice choiceArrow;
     public DialogueChoiceManager choiceManager;
@@ -47,6 +44,7 @@ public class DialogueManager : MonoBehaviour
     private static Dictionary<string, Dictionary<string, Dictionary<string, string>>> choices;
     private void Awake()
     {
+        dialogueManager = this;
         if (dialogues == null)
             LoadDialogues();
         SetNotActive();
@@ -99,7 +97,7 @@ public class DialogueManager : MonoBehaviour
             SetTextPanel(JustText);
         }
 
-        GameObject.Find("Player").GetComponent<Player>().Dialogue();
+        player.StopWorking();
         panelsController.SetBool("isDialogue", true);
         isAnimation = true;
     }
@@ -112,7 +110,6 @@ public class DialogueManager : MonoBehaviour
 
         if (numPanel == -1) {
             panelsController.SetBool("isDialogue", false);
-            var player = GameObject.Find("Player").GetComponent<Player>();
             player.enabled = true;
             player.animations.portalGun.enabled = true;
             viewChoices.Clear();
@@ -284,6 +281,7 @@ public class DialogueManager : MonoBehaviour
                 case "Confused": animator.SetBool("isConfused", true); break;
                 case "Tense": animator.SetBool("isTense", true); break;
             }
+            animator.Play(information["mood"], 0, 0f);
         } else {
             switch (information["mood"]) {
                 case "Calm": ProfileImage.sprite = profile.CalmImage; break;
@@ -406,11 +404,13 @@ public class DialogueManager : MonoBehaviour
     {
         var information = dialogues[dialogeKey + "_" + numPanel];
         var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
-        if (profile.isRobot)
-        {
+        if (profile.isRobot) {
             SetAllStatesFalse(ProfileImage.GetComponent<Animator>());
             ProfileImage.GetComponent<Animator>().enabled = false;
             SetImageAfterAnimation(information);
         }
+    }
+    public void SetPlayer(Player newPlayer) {
+        player = newPlayer;
     }
 }

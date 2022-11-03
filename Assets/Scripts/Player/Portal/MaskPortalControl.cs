@@ -6,7 +6,13 @@ public class MaskPortalControl : MonoBehaviour
 {
     public Portal portal;
 
-    void OnTriggerEnter2D(Collider2D obj)
+    private void Start()
+    {
+        if (portal.side == "Down")
+            portal.Mask.SetActive(true);
+    }
+
+    private void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Rigidbody2D _))
         {
@@ -14,11 +20,11 @@ public class MaskPortalControl : MonoBehaviour
             portal.Teleport = true;
         }
     }
-    void OnTriggerExit2D(Collider2D obj)
+    private void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Rigidbody2D _))
-        {
-            portal.Mask.SetActive(false);
+        if (obj.TryGetComponent(out Rigidbody2D _)) {
+            if (portal.side != "Down")
+                portal.Mask.SetActive(false);
             portal.Teleport = false;
         }
     }

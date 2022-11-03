@@ -4,7 +4,7 @@ using UnityEngine;
 public class ProfileDialogue : ScriptableObject, DialogueInterface
 {
     public int id => _id;
-    public string name => _name;
+    public string header => _name;
     public Color profileColor => _color;
     public bool isRobot => _robot;
     public Sprite CalmImage => _calm;

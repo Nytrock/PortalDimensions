@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
 
         SetControll();
         ControllSettingsManager.OnButtonChange += SetControll;
+
+        DialogueManager.dialogueManager.SetPlayer(this);
     }
 
     void Update()
@@ -143,7 +145,7 @@ public class Player : MonoBehaviour
         enabled = false;
     }
 
-    public void Dialogue()
+    public void StopWorking()
     {
         animations.portalGun.enabled = false;
         moveVector = new Vector2(0, 0);

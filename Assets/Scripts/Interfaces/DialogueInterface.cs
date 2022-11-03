@@ -3,7 +3,7 @@ using UnityEngine;
 public interface DialogueInterface
 {
     int id { get; }
-    string name { get; }
+    string header { get; }
     Color profileColor { get; }
     bool isRobot { get; }
     Sprite CalmImage { get; }
