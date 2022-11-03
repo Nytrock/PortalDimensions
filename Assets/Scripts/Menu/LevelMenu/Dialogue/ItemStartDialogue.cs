@@ -5,7 +5,6 @@ public class ItemStartDialogue : MonoBehaviour
 {
     public string KeyToDialogue;
     public bool InstantStart;
-    public DialogueManager dialogueManager;
 
     private KeyCode startKey;
 
@@ -24,8 +23,8 @@ public class ItemStartDialogue : MonoBehaviour
         if (!InstantStart) {
             if (Input.GetKeyDown(startKey) && GetComponent<Animator>().GetBool("isActive") && !ButtonFunctional.isGamePaused) {
                 GetComponent<Animator>().SetBool("isActive", false);
-                dialogueManager.SetKey(KeyToDialogue);
-                dialogueManager.StartDialogue();
+                DialogueManager.dialogueManager.SetKey(KeyToDialogue);
+                DialogueManager.dialogueManager.StartDialogue();
             }
         }
     }
@@ -35,8 +34,8 @@ public class ItemStartDialogue : MonoBehaviour
         if (obj.TryGetComponent(out Player _))
         {
             if (InstantStart) {
-                dialogueManager.SetKey(KeyToDialogue);
-                dialogueManager.StartDialogue();
+                DialogueManager.dialogueManager.SetKey(KeyToDialogue);
+                DialogueManager.dialogueManager.StartDialogue();
             } else {
                 StartAnimation();
             }

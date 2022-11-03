@@ -11,6 +11,7 @@ public class Save : MonoBehaviour
 
     public const int NumberLanguages = 2;
     public const string WayToSavefile = "/save/PortalDimensionsSave.pd";
+    public FpsCounter fpsCounter;
     public LocalizationManager localizationManager;
     public GameSettingsManager gameSettingsManager;
     public ControllSettingsManager controllSettingsManager;
@@ -137,7 +138,7 @@ public class Save : MonoBehaviour
                     gameSettingsManager.confirmManager.isOn = settings.ConfimToExitActive;
                     gameSettingsManager.glitchManager.isOn = settings.shaderOn;
                 } else {
-                    FpsCounter.fpsCounter.isWorking = settings.FpsShowing;
+                    fpsCounter.ChangeWorking(settings.FpsShowing);
                     if (settings.shaderOn) {
                         foreach (RawImage quad in quads)
                             quad.material = glitchMaterial;

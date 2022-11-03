@@ -1,17 +1,6 @@
 Shader "Custom/Glitchy Footage Shader No Blend"{
 	Properties{
 		_MainTex("Main Texture", 2D) = "white" {}
-		_GlitchColor("Glitch Color", Color) = (1.0,1.0,1.0,1.0)
-		_GlitchInterval("Glitch Interval", Float) = 5.0	
-		_GlitchRate("Glitch Rate", Range(0,1)) = 0.9
-		_ResHorizontal("Horizontal Resolution", Float) = 640
-		_ResVertical("Vertical Resolution", Float) = 480
-		_WhiteNoiseIntensity("White Noise Intensity", Float) = 1.0	
-		_WaveNoiseIntensity("Wave Noise Intensity", Float) = 1.0
-		_RGBShiftIntensity("RGB Shift Intensity", Float) = 1.0
-		_BlockGlitchEnabled("Block Glitch", Float) = 1.0
-		_ShakeGlitchEnabled("Shake Glitch", Float) = 1.0
-		_ScanlineGlitchEnabled("Scanline Glitch", Float) = 1.0
 	}
 	SubShader
 	{
@@ -49,17 +38,6 @@ Shader "Custom/Glitchy Footage Shader No Blend"{
 			}
 
 			uniform sampler2D _MainTex;
-			uniform float _GlitchInterval;
-			uniform float _GlitchRate;
-			uniform float _ResHorizontal;
-			uniform float _ResVertical;
-			uniform fixed _WhiteNoiseIntensity;
-			uniform fixed _WaveNoiseIntensity;
-			uniform fixed4 _GlitchColor;
-			uniform float _BlockGlitchEnabled;
-			uniform float _ScanlineGlitchEnabled;
-			uniform float _ShakeGlitchEnabled;
-			uniform fixed _RGBShiftIntensity;
 
 			float random(float2 c) {
 				return frac(sin(dot(c.xy, float2(12.9898, 78.233))) * 43758.5453);

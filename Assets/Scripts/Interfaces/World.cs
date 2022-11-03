@@ -4,7 +4,7 @@ using UnityEngine;
 public class World : ScriptableObject, WorldInterface
 {
     public int id => _id;
-    public string name => _name;
+    public string header => _name;
     public Sprite image => _image;
     public int countLevels => _levelsCount;
     public int completedLevels

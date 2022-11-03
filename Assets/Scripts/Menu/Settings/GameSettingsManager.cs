@@ -57,6 +57,7 @@ public class GameSettingsManager : MonoBehaviour
 
     [Header("Настройки счётчика fps")]
     public Toggle fpsManager;
+    public FpsCounter fpsCounter;
     private bool fpsShowing;
     private bool originallyFps;
     private bool isFpsChange;
@@ -146,7 +147,7 @@ public class GameSettingsManager : MonoBehaviour
     {
         fpsShowing = !fpsShowing;
         isFpsChange = fpsShowing != originallyFps;
-        FpsCounter.fpsCounter.ChangeWorking(fpsShowing);
+        fpsCounter.ChangeWorking(fpsShowing);
     }
 
     public void NextCursor()
@@ -208,7 +209,7 @@ public class GameSettingsManager : MonoBehaviour
         ChangeCursorTexture();
 
         fpsManager.isOn = originallyFps;
-        FpsCounter.fpsCounter.ChangeWorking(originallyFps);
+        fpsCounter.ChangeWorking(originallyFps);
 
         autoManager.isOn = originallyAuto;
 

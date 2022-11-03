@@ -54,7 +54,7 @@ TextureImporter:
       213: -1751906564290372188
     second: MoneyMan_16
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -75,6 +75,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -113,6 +114,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -164,6 +166,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -544,6 +570,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      MoneyMan_111: 6652948946609326743
+      MoneyMan_10: -4944758978344943904
+      MoneyMan_7: -6098203528242018971
+      MoneyMan_9: -594903380850277696
+      MoneyMan_14: 8237537334103103000
+      MoneyMan_15: -3872338963106270238
+      MoneyMan_16: -1751906564290372188
+      MoneyMan_1: -5437197618783901451
+      MoneyMan_6: 4407576331105533260
+      MoneyMan_8: 2483824946701678094
+      MoneyMan_0: -8400847382147928473
+      MoneyMan_11: -7992021654167591992
+      MoneyMan_13: 7893028046681780030
+      MoneyMan_12: 1099758080634968164
+      MoneyMan_3: -4323456769026615117
+      MoneyMan_2: 6231817552772413037
+      MoneyMan_4: -4076693975602026936
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

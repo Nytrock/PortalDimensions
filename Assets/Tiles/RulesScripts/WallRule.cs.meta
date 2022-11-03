@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a41d567b1e6750a4d8e32801f47550de
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_DefaultSprite: {instanceID: 0}
+  - m_DefaultGameObject: {instanceID: 0}
+  - portalTile: {instanceID: 0}
+  - protectTile: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
