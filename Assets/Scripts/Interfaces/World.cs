@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "World")]
+[CreateAssetMenu(menuName = "Interfaces/World")]
 public class World : ScriptableObject, WorldInterface
 {
     public int id => _id;

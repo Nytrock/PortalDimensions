@@ -19,6 +19,10 @@ public class Save : MonoBehaviour
     public VideoSettingsManager videoSettingsManager;
     public DialogueChoiceManager dialogueChoiceManager;
 
+    [Header("Деньги")]
+    public MoneyManager moneyManager;
+    public int moneyCount;
+
     [Header("Профили для диалогов")]
     public List<ProfileDialogue> DialogueProfiles;
 
@@ -75,6 +79,12 @@ public class Save : MonoBehaviour
         public List<bool> doingChoices;
     }
 
+    [Serializable]
+    private class LevelsSave
+    {
+        public int numMoney;
+    }
+
 
     public void Awake()
     {
@@ -111,6 +121,9 @@ public class Save : MonoBehaviour
         dialogues.existingChoices = ExistingChoiceIdList;
         dialogues.doingChoices = DoChoiceIdList;
 
+        LevelsSave levels = new LevelsSave();
+        levels.numMoney = moneyManager.GetCoins();
+
         if (!Directory.Exists(Application.dataPath + "/save"))
             Directory.CreateDirectory(Application.dataPath + "/save");
 
@@ -118,6 +131,7 @@ public class Save : MonoBehaviour
         BinaryFormatter form = new BinaryFormatter();
         form.Serialize(stream, settings);
         form.Serialize(stream, dialogues);
+        form.Serialize(stream, levels);
         stream.Close();
     }
 
@@ -186,6 +200,10 @@ public class Save : MonoBehaviour
                             dialogueChoiceManager.DoSomethingFromId(i);
                     }
                 }
+
+                LevelsSave levels = (LevelsSave)form.Deserialize(stream);
+                if (moneyManager)
+                    moneyManager.SetCoins(levels.numMoney);
             } catch {
                 stream.Close();
             } finally {

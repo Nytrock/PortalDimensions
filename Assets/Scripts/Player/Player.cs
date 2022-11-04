@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
     private KeyCode walkRightKey;
     private KeyCode jumpKey;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -140,6 +139,7 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
+        LevelManager.levelManager.AddToScore("Death");
         GetComponent<DeathEffect>().StartDeath(1f, new Color(4f / 256f, 4f / 256f, 221f / 256f));
         animations.Death();
         enabled = false;

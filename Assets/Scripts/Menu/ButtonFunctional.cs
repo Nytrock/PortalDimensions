@@ -218,4 +218,10 @@ public class ButtonFunctional : MonoBehaviour
     {
         gameSettingsSlider.value = 1;
     }
+
+    public void ActivateCoins()
+    {
+        animator.SetBool("isMoney", true);
+        LevelManager.levelManager.StartParticles();
+    }
 }

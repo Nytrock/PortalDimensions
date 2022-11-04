@@ -158,6 +158,8 @@ public class LevelsSwitchManager : MonoBehaviour
 
     public void LoadLevel(int id)
     {
+        LevelInfoHolder.deathsCount = 0;
+        LevelInfoHolder.restartsCount = 0;
         LevelInfoHolder.levelId = id;
         LevelInfoHolder.worldId = showingWorld.id;
         SceneManager.LoadScene(4);

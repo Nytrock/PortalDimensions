@@ -65,7 +65,7 @@
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\DialogueInterface.cs" />
     <Compile Include="Assets\Scripts\GunGet.cs" />
-    <Compile Include="Assets\Scripts\LevelsSystem\Level.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\Level.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelInfoHolder.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonFunctional.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\ControllSettingsManager.cs" />
@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Save\Save.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\VideoSettingsManager.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\Portal.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\FinishLevel\MoneyManager.cs" />
     <Compile Include="Assets\Scripts\Menu\Choice.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalShoot.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\ItemStartDialogue.cs" />
@@ -106,9 +107,11 @@
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueChoice.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalTrigger.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizationManager.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\LevelInterface.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\FinishLevel\ExitManager.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\FinishLevel\ExitCollider.cs" />
     <Compile Include="Assets\Scripts\Menu\ShaderUpdate.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\LevelStructure.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedText.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\ButtonSwitch.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\ConfirmButtons.cs" />
