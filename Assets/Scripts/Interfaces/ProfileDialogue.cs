@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "DialogueProfile")]
+[CreateAssetMenu(menuName = "Interfaces/DialogueProfile")]
 public class ProfileDialogue : ScriptableObject, DialogueInterface
 {
     public int id => _id;

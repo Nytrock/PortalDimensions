@@ -39,6 +39,8 @@ public class ExitManager : MonoBehaviour
     public void SetCanvasAnimation()
     {
         canvas.SetBool("isComplete", true);
+        LevelManager.levelManager.ChangeButtonsWorking(false);
+        LevelManager.levelManager.FixTime();
     }
 
     public void TurnOffPlayer()

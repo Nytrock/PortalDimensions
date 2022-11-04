@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -53,6 +52,7 @@ public class PortalGun : MonoBehaviour
 
             HeadRotation();
 
+            LevelManager.levelManager.AddToScore("Shoot");
             transform.parent = NewPosition;
             player.Shoot = true;
             player.animations.StartShooting();
@@ -397,6 +397,7 @@ public class PortalGun : MonoBehaviour
         ForceIteration = 1f;
         if (Exit.side != "Down")
             StartCoroutine(GiveForce());
+        LevelManager.levelManager.AddToScore("Teleport");
     }
 
     IEnumerator GiveForce()
@@ -421,5 +422,10 @@ public class PortalGun : MonoBehaviour
     {
         leftPortalKey = Save.save.portalGunLeftKey;
         rightPortalKey = Save.save.portalGunRightKey;
+    }
+
+    public void SetLevelSettings(bool working)
+    {
+        gameObject.SetActive(working);
     }
 }
