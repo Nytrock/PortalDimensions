@@ -27,7 +27,10 @@ public class LevelManager: MonoBehaviour
     [Header("Счёт")]
     public TextMeshProUGUI scoreText;
     public List<string> inscriptions;
+    public TextMeshProUGUI message;
     public List<Animator> stars;
+    public GameObject newRecordText;
+    public ParticleSystem newRecordParticle;
     public int needScore;
     public int nowScore;
 
@@ -45,6 +48,7 @@ public class LevelManager: MonoBehaviour
     {
         levelManager = this;
         coinsBound.SetActive(false);
+        newRecordText.SetActive(false);
         SetControll();
         ControllSettingsManager.OnButtonChange += SetControll;
         SetLevel(LevelInfoHolder.levelId);
@@ -75,6 +79,13 @@ public class LevelManager: MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void DropRestart()
+    {
+        LevelInfoHolder.deathsCount = 0;
+        LevelInfoHolder.restartsCount = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     IEnumerator Reload()
     {
         yield return new WaitForSeconds(1.3f);
@@ -91,6 +102,8 @@ public class LevelManager: MonoBehaviour
         var world = levelMain.world;
         world.completedLevels = levelMain.id + 1;
         LevelInfoHolder.levelId = (levelMain.id + 1) % world.countLevels;
+        LevelInfoHolder.deathsCount = 0;
+        LevelInfoHolder.restartsCount = 0;
         Save.save.SaveAll();
         RestartScene();
     }
@@ -150,6 +163,7 @@ public class LevelManager: MonoBehaviour
     {
         if (!levelMain.wasCompleted) {
             coinsBound.SetActive(true);
+            levelMain.wasCompleted = true;
 
             var emission = coinsParticle.emission;
             emission.rateOverTime = Mathf.Min(numCoins * 100, 20000);
@@ -168,7 +182,7 @@ public class LevelManager: MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         coinsBound.SetActive(false);
-        float speed = 10f;
+        float speed = 11f;
         var moneyManager = Save.save.moneyManager;
         int coinsGived = 0;
         int coinsToParticle = 1;
@@ -211,7 +225,7 @@ public class LevelManager: MonoBehaviour
             coinsParticle.SetParticles(particles, count);
             yield return new WaitForSeconds(Time.deltaTime);
         }
-
+        coinsParticle.Stop();
         SetScore();
     }
 
@@ -224,6 +238,12 @@ public class LevelManager: MonoBehaviour
     private void SetScore()
     {
         StopAllCoroutines();
+        var extraTime = timeCoef - levelMain.bestTime;
+        var extraShoots = numShoots - levelMain.bestShootCount;
+        var extraTeleport = numTeleports - levelMain.bestTeleportCount;
+        needScore = levelMain.maxScore - extraTime * 15 - restartsCoef * 20 - deathsCoef * 40 - extraShoots * 5 - extraTeleport * 10; // это ещё балансить нужно аааа
+        needScore = Mathf.Max(1, needScore);
+        StartCoroutine(AnimatedScoreText());
     }
 
     public void ChangeButtonsWorking(bool value)
@@ -235,5 +255,38 @@ public class LevelManager: MonoBehaviour
     public void FixTime()
     {
         timeCoef = (int)Time.timeSinceLevelLoad;
+    }
+    IEnumerator AnimatedScoreText()
+    {
+        coinsParticle.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        int num = 13;
+        int starsGet = 0;
+        List<int> scoresForStars = new List<int>() { levelMain.scoreForOneStar, levelMain.scoreForTwoStar, levelMain.scoreForThreeStar, levelMain.maxScore + 1000 };
+        for (int i=0; i <= (needScore / num) * num + num; i+=num) {
+            nowScore = Mathf.Min(i, needScore);
+            scoreText.text = "Счёт:" + nowScore.ToString();
+            if (nowScore >= scoresForStars[starsGet]) {
+                stars[starsGet].Play("FillStar", 0, 0.1f);
+                starsGet += 1;
+            }
+            if (nowScore >= levelMain.bestScore && levelMain.wasCompleted) {
+                newRecordText.SetActive(true);
+                newRecordParticle.Play();
+                levelMain.bestScore = needScore;
+            }
+            yield return new WaitForSeconds(Time.deltaTime / 1.1f);
+        }
+        if (starsGet == 0)
+            stars[starsGet].Play("FillStar", 0, 0.1f);
+
+        yield return new WaitForSeconds(1f);
+        message.GetComponent<Animator>().SetBool("isActivate", true);
+        var a = (int)((needScore / (levelMain.maxScore * 1f)) * 10) / 10f;
+        message.text = inscriptions[(int)a * 10 - 1];
+
+        yield return new WaitForSeconds(1.1f);
+        foreach (Button button in completeButtons)
+            button.interactable = true;
     }
 }

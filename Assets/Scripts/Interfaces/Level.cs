@@ -4,11 +4,7 @@ using UnityEngine;
 public class Level : ScriptableObject, LevelInterface
 {
     public int id => _id;
-    public World world
-    {
-        get => _world;
-        set => _world = value;
-    }
+    public World world => _world;
     public float cameraZoom => _cameraZoom;
     public int coinsNumber => _coinsNumber;
     public int bestScore
@@ -18,6 +14,7 @@ public class Level : ScriptableObject, LevelInterface
     }
     public int bestShootCount => _bestShootCount;
     public int bestTeleportCount => _bestTeleportCount;
+    public int bestTime => _bestTime;
     public bool wasCompleted
     {
         get => _wasCompleted;
@@ -36,6 +33,7 @@ public class Level : ScriptableObject, LevelInterface
     [SerializeField] private int _bestScore;
     [SerializeField] private int _bestShootCount;
     [SerializeField] private int _bestTeleportCount;
+    [SerializeField] private int _bestTime;
     [SerializeField] private bool _wasCompleted;
     [SerializeField] private bool _hasGun;
     [SerializeField] private int _maxScore;
