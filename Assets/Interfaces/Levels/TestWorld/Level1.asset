@@ -19,9 +19,10 @@ MonoBehaviour:
   _bestScore: 0
   _bestShootCount: 0
   _bestTeleportCount: 0
+  _bestTime: 5
   _wasCompleted: 0
   _hasGun: 0
-  _maxScore: 3500
+  _maxScore: 3300
   _scoreForOneStar: 1000
   _scoreForTwoStar: 2000
   _scoreForThreeStar: 3000

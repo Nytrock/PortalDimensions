@@ -7,6 +7,7 @@ public interface LevelInterface
     int bestScore { get; set; }
     int bestShootCount { get; }
     int bestTeleportCount { get; }
+    int bestTime { get; }
     bool wasCompleted { get; set; }
     bool hasGun { get; }
     int maxScore { get; }
