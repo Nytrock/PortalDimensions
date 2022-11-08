@@ -16,7 +16,7 @@ public class LocalizationManager : MonoBehaviour
     private static Dictionary<string, List<string>> localization;
 
     [SerializeField]
-    private TextAsset textFile;
+    private List<TextAsset> textFiles;
 
     private void Awake()
     {
@@ -35,18 +35,19 @@ public class LocalizationManager : MonoBehaviour
     {
         localization = new Dictionary<string, List<string>>();
 
-        XmlDocument xmlDocument = new XmlDocument();
-        xmlDocument.LoadXml(textFile.text);
+        foreach (TextAsset file in textFiles) {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(file.text);
 
-        foreach (XmlNode key in xmlDocument["keys"].ChildNodes)
-        {
-            string keyStr = key.Attributes["name"].Value;
+            foreach (XmlNode key in xmlDocument["keys"].ChildNodes) {
+                string keyStr = key.Attributes["name"].Value;
 
-            var values = new List<string>();
-            foreach (XmlNode translate in key["translates"].ChildNodes)
-                values.Add(translate.InnerText);
-            numLanguages = values.Count;
-            localization[keyStr] = values;
+                var values = new List<string>();
+                foreach (XmlNode translate in key["translates"].ChildNodes)
+                    values.Add(translate.InnerText);
+                numLanguages = values.Count;
+                localization[keyStr] = values;
+            }
         }
     }
 

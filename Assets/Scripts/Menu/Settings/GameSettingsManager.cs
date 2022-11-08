@@ -107,7 +107,7 @@ public class GameSettingsManager : MonoBehaviour
         ChangeCursorTexture();
         SetChangesFalse();
         SetMorePositionsValues();
-        SetMoreButtonsPosition();
+        StartCoroutine(StartButtonMorePosition());
         Save.save.SetShaderActive(glitch);
     }
     public void NextLanguage()
@@ -259,6 +259,15 @@ public class GameSettingsManager : MonoBehaviour
         moreFpsVisualPos = moreFpsVisual.localPosition.x;
         moreExitVisualPos = moreExitVisual.localPosition.x;
         moreShaderVisualPos = moreShaderVisual.localPosition.x;
+    }
+
+    IEnumerator StartButtonMorePosition()
+    {
+        yield return new WaitForSeconds(0.01f);
+        moreAutoVisual.localPosition = new Vector2(moreAutoVisualPos + moreAutoText.preferredWidth, moreAutoVisual.localPosition.y);
+        moreFpsVisual.localPosition = new Vector2(moreFpsVisualPos + moreFpsText.preferredWidth, moreFpsVisual.localPosition.y);
+        moreExitVisual.localPosition = new Vector2(moreExitVisualPos + moreExitText.preferredWidth, moreExitVisual.localPosition.y);
+        moreShaderVisual.localPosition = new Vector2(moreShaderVisualPos + moreShaderText.preferredWidth, moreShaderVisual.localPosition.y);
     }
 
     private void SetMoreButtonsPosition()

@@ -83,6 +83,12 @@
 			<ru>Выйти в меню</ru>
 		</translates>
 	</key>
+	<key name="Продолжить">
+		<translates>
+			<en-us>Continue</en-us>
+			<ru>Продолжить</ru>
+		</translates>
+	</key>
 	<key name="Все изменения будут утеряны">
 		<translates>
 			<en-us>All changes will be lost</en-us>
@@ -341,70 +347,106 @@
 			<ru>Причина смерти:</ru>
 		</translates>
 	</key>
-	<key name="Меню">
+	<key name="☰Меню">
 		<translates>
-			<en-us>Menu</en-us>
-			<ru>Меню</ru>
+			<en-us>☰Menu</en-us>
+			<ru>☰Меню</ru>
+		</translates>
+	</key>
+	<key name="🢒Далее">
+		<translates>
+			<en-us>🢒Next</en-us>
+			<ru>🢒Далее</ru>
+		</translates>
+	</key>
+	<key name="Уровень пройден!">
+		<translates>
+			<en-us>Level completed!</en-us>
+			<ru>Уровень пройден!</ru>
+		</translates>
+	</key>
+	<key name="Счёт:">
+		<translates>
+			<en-us>Score:</en-us>
+			<ru>Счёт:</ru>
+		</translates>
+	</key>
+	<key name="👑Новый рекорд!">
+		<translates>
+			<en-us>👑New record!</en-us>
+			<ru>👑Новый рекорд!</ru>
+		</translates>
+	</key>
+	<key name="Счёт: 0">
+		<translates>
+			<en-us>Score: 0</en-us>
+			<ru>Счёт: 0</ru>
+		</translates>
+	</key>
+	<key name="Без комментариев">
+		<translates>
+			<en-us>No comments</en-us>
+			<ru>Без комментариев</ru>
+		</translates>
+	</key>
+	<key name="Лучше чем ничего...">
+		<translates>
+			<en-us>Better than nothing...</en-us>
+			<ru>Лучше чем ничего...</ru>
+		</translates>
+	</key>
+	<key name="Ужасно">
+		<translates>
+			<en-us>Terrible</en-us>
+			<ru>Ужасно</ru>
+		</translates>
+	</key>
+	<key name="Могло быть и лучше">
+		<translates>
+			<en-us>Might be better</en-us>
+			<ru>Могло быть и лучше</ru>
+		</translates>
+	</key>
+	<key name="Приемлемо">
+		<translates>
+			<en-us>Acceptable</en-us>
+			<ru>Приемлемо</ru>
+		</translates>
+	</key>
+	<key name="Неплохо">
+		<translates>
+			<en-us>Not bad</en-us>
+			<ru>Неплохо</ru>
+		</translates>
+	</key>
+	<key name="Хорошая работа">
+		<translates>
+			<en-us>Good job</en-us>
+			<ru>Хорошая работа</ru>
+		</translates>
+	</key>
+	<key name="Отлично!">
+		<translates>
+			<en-us>Excellent!</en-us>
+			<ru>Отлично!</ru>
+		</translates>
+	</key>
+	<key name="Великолепно!">
+		<translates>
+			<en-us>Fabulous!</en-us>
+			<ru>Великолепно!</ru>
+		</translates>
+	</key>
+	<key name="Божественно!!!">
+		<translates>
+			<en-us>Divine!!!</en-us>
+			<ru>Божественно!!!</ru>
 		</translates>
 	</key>
 	<key name="тупость">
 		<translates>
 			<en-us>stupidity</en-us>
 			<ru>тупость</ru>
-		</translates>
-	</key>
-	<key name="Хорошо">
-		<translates>
-			<en-us>Alright</en-us>
-			<ru>Хорошо</ru>
-		</translates>
-	</key>
-	<key name="Окей">
-		<translates>
-			<en-us>Okay</en-us>
-			<ru>Окей</ru>
-		</translates>
-	</key>
-	<key name="Нет проблем">
-		<translates>
-			<en-us>No problem</en-us>
-			<ru>Нет проблем</ru>
-		</translates>
-	</key>
-	<key name="Ну давай">
-		<translates>
-			<en-us>Come on</en-us>
-			<ru>Ну давай</ru>
-		</translates>
-	</key>
-	<key name="Нет, спасибо">
-		<translates>
-			<en-us>No, thanks</en-us>
-			<ru>Нет, спасибо</ru>
-		</translates>
-	</key>
-	<key name="DialogeTest_1">
-		<translates>
-			<en-us>Welcome to the new test system. Answer a simple question.</en-us>
-			<ru>Приветствую в новой тестовой системе. Ответьте на простой вопрос.</ru>
-		</translates>
-	</key>
-	<key name="DialogeTest_2">
-		<translates>
-			<en-us>Otherwise, you will be destroyed. I'm serious. Seriously. And jokes too.</en-us>
-			<ru>Иначе будете уничтожены. Я серьёзно. Шутки в сторону. И анекдоты тоже.</ru>
-		</translates>
-	</key>
-	<key name="DialogeTest_4">
-		<translates>
-			<en-us>That's good. By the way, I never came up with a question, so see you soon.</en-us>
-			<ru>Вот и хорошо. Кстати, я так и не придумал вопроса, так что до скорого.</ru>
-		</translates>
-	</key>
-	<key name="DialogeTest_5">
-		<translates>
-			<en-us>You said no. I would suggest that you turn around more often on the street.</en-us>
-			<ru>Ты сказал нет. Я бы предложил тебе почаще оборачиваться на улице.</ru>
 		</translates>
 	</key>
 </keys>

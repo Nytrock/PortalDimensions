@@ -46,7 +46,7 @@ public class LevelsSwitchManager : MonoBehaviour
     private void Awake()
     {
         countMenus = showingWorld.countLevels / 10;
-        header.text = showingWorld.header;
+        header.text = LocalizationManager.GetTranslate(showingWorld.header);
         int countCompleted = showingWorld.completedLevels;
 
         for (int i=0; i < countMenus; i++) {
