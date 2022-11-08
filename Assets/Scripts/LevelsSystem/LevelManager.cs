@@ -10,6 +10,8 @@ public class LevelManager: MonoBehaviour
 {
     public static LevelManager levelManager;
     private KeyCode restartButton;
+    private bool completeAnimations;
+    private int oldCoins;
 
     [Header("Настройка уровня")]
     public CinemachineVirtualCamera mainVirtualCamera;
@@ -56,8 +58,11 @@ public class LevelManager: MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(restartButton))
+        if (Input.GetKeyDown(restartButton) && restartButton != KeyCode.None)
             RestartScene();
+
+        if (Input.GetKeyDown(KeyCode.Escape) && completeAnimations)
+            BreakAllAnimations();
     }
 
     public void RestartLevel()
@@ -161,9 +166,11 @@ public class LevelManager: MonoBehaviour
 
     public void StartParticles()
     {
+        completeAnimations = true;
         if (!levelMain.wasCompleted) {
             coinsBound.SetActive(true);
             levelMain.wasCompleted = true;
+            oldCoins = Save.save.moneyManager.GetCoins();
 
             var emission = coinsParticle.emission;
             emission.rateOverTime = Mathf.Min(numCoins * 100, 20000);
@@ -238,11 +245,7 @@ public class LevelManager: MonoBehaviour
     private void SetScore()
     {
         StopAllCoroutines();
-        var extraTime = timeCoef - levelMain.bestTime;
-        var extraShoots = numShoots - levelMain.bestShootCount;
-        var extraTeleport = numTeleports - levelMain.bestTeleportCount;
-        needScore = levelMain.maxScore - extraTime * 15 - restartsCoef * 20 - deathsCoef * 40 - extraShoots * 5 - extraTeleport * 10; // это ещё балансить нужно аааа
-        needScore = Mathf.Max(1, needScore);
+        needScore = Mathf.Max(1, GetScore());
         StartCoroutine(AnimatedScoreText());
     }
 
@@ -263,14 +266,15 @@ public class LevelManager: MonoBehaviour
         int num = 13;
         int starsGet = 0;
         List<int> scoresForStars = new List<int>() { levelMain.scoreForOneStar, levelMain.scoreForTwoStar, levelMain.scoreForThreeStar, levelMain.maxScore + 1000 };
+        string localize = LocalizationManager.GetTranslate("Счёт:");
         for (int i=0; i <= (needScore / num) * num + num; i+=num) {
             nowScore = Mathf.Min(i, needScore);
-            scoreText.text = "Счёт:" + nowScore.ToString();
+            scoreText.text = localize + " " + nowScore.ToString();
             if (nowScore >= scoresForStars[starsGet]) {
                 stars[starsGet].Play("FillStar", 0, 0.1f);
                 starsGet += 1;
             }
-            if (nowScore >= levelMain.bestScore && levelMain.wasCompleted) {
+            if (nowScore > levelMain.bestScore && levelMain.wasCompleted) {
                 newRecordText.SetActive(true);
                 newRecordParticle.Play();
                 levelMain.bestScore = needScore;
@@ -283,10 +287,64 @@ public class LevelManager: MonoBehaviour
         yield return new WaitForSeconds(1f);
         message.GetComponent<Animator>().SetBool("isActivate", true);
         var a = (int)((needScore / (levelMain.maxScore * 1f)) * 10) / 10f;
-        message.text = inscriptions[(int)a * 10 - 1];
+        message.text = LocalizationManager.GetTranslate(inscriptions[(int)(a * 10) - 1]);
 
         yield return new WaitForSeconds(1.1f);
         foreach (Button button in completeButtons)
             button.interactable = true;
+        completeAnimations = false;
+    }
+
+    public void NullResrtartButton()
+    {
+        restartButton = KeyCode.None;
+    }
+
+    private void BreakAllAnimations()
+    {
+        StopAllCoroutines();
+        completeAnimations = false;
+
+        coinsParticle.gameObject.SetActive(false);
+        Save.save.moneyManager.SetCoins(oldCoins + numCoins);
+        moneyAnimator.Play("AddMoney", 9, 0.1f);
+
+        needScore = GetScore();
+        nowScore = needScore;
+        scoreText.text = LocalizationManager.GetTranslate("Счёт:") + " " + needScore.ToString();
+        List<int> scoresForStars = new List<int>() { levelMain.scoreForOneStar, levelMain.scoreForTwoStar, levelMain.scoreForThreeStar, levelMain.maxScore + 1000 };
+        for (int i = 0; i <= scoresForStars.Count; i++) {
+            if (scoresForStars[i] <= needScore)
+                stars[i].Play("FillStar", 0, 0.1f);
+            else
+                break;
+        }
+        if (scoresForStars[0] > needScore)
+            stars[0].Play("FillStar", 0, 0.1f);
+
+        message.GetComponent<Animator>().Play("Show", 0, 0f);
+        var a = (int)((needScore / (levelMain.maxScore * 1f)) * 10) / 10f;
+        message.text = LocalizationManager.GetTranslate(inscriptions[(int)(a * 10) - 1]);
+
+        foreach (Button button in completeButtons)
+            button.interactable = true;
+        completeAnimations = false;
+
+        if (nowScore > levelMain.bestScore && levelMain.wasCompleted) {
+            newRecordText.SetActive(true);
+            newRecordParticle.Play();
+            levelMain.bestScore = needScore;
+        }
+
+        levelMain.wasCompleted = true;
+    }
+
+    private int GetScore()
+    {
+        var extraTime = timeCoef - levelMain.bestTime;
+        var extraShoots = numShoots - levelMain.bestShootCount;
+        var extraTeleport = numTeleports - levelMain.bestTeleportCount;
+        var result = levelMain.maxScore - extraTime * 15 - restartsCoef * 20 - deathsCoef * 40 - extraShoots * 5 - extraTeleport * 10; // это ещё балансить нужно аааа
+        return result;
     }
 }

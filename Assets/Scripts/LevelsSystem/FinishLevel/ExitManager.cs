@@ -30,6 +30,8 @@ public class ExitManager : MonoBehaviour
 
         if (playerDown && playerInside) {
             player.StopWorking();
+            canvas.GetComponent<ButtonFunctional>().TurnOffMainButtons();
+            LevelManager.levelManager.NullResrtartButton();
             GetComponent<Animator>().SetBool("Exit", true);
         }
 

@@ -1884,7 +1884,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ae8d086abb6d45b42409393e0a549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textFile: {fileID: 4900000, guid: 8354b96507d09b04498fd161b4c0ea63, type: 3}
+  textFiles:
+  - {fileID: 4900000, guid: 3ebcb8488a10bc84a9035103bc7f579a, type: 3}
+  - {fileID: 4900000, guid: 0487961f3eaeeea49917ae20bdd5b271, type: 3}
+  - {fileID: 4900000, guid: ee09a3d1d9927d94c80627d7751dc0aa, type: 3}
 --- !u!4 &532461451
 Transform:
   m_ObjectHideFlags: 0

@@ -122,7 +122,8 @@ public class Save : MonoBehaviour
         dialogues.doingChoices = DoChoiceIdList;
 
         LevelsSave levels = new LevelsSave();
-        levels.numMoney = moneyManager.GetCoins();
+        if (moneyManager)
+            levels.numMoney = moneyManager.GetCoins();
 
         if (!Directory.Exists(Application.dataPath + "/save"))
             Directory.CreateDirectory(Application.dataPath + "/save");

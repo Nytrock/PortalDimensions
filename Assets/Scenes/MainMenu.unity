@@ -2944,7 +2944,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ae8d086abb6d45b42409393e0a549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textFile: {fileID: 4900000, guid: 8354b96507d09b04498fd161b4c0ea63, type: 3}
+  textFiles:
+  - {fileID: 4900000, guid: 3ebcb8488a10bc84a9035103bc7f579a, type: 3}
+  - {fileID: 4900000, guid: 0487961f3eaeeea49917ae20bdd5b271, type: 3}
+  - {fileID: 4900000, guid: ee09a3d1d9927d94c80627d7751dc0aa, type: 3}
 --- !u!1 &80330508
 GameObject:
   m_ObjectHideFlags: 0
@@ -18941,8 +18944,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1854978813}
   m_HandleRect: {fileID: 1854978812}
   m_Direction: 2
-  m_Value: 0.99999624
-  m_Size: 0.8077632
+  m_Value: 0.9999996
+  m_Size: 0.8077631
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22640,7 +22643,8 @@ MonoBehaviour:
   settingsChoice: {fileID: 1570339129}
   mainChoice: {fileID: 868273448}
   settingsPanel: {fileID: 166918125}
-  mainPanel: {fileID: 1772957753}
+  settingsMainPanel: {fileID: 1772957753}
+  mainPanel: {fileID: 0}
   gameSettingsSlider: {fileID: 625816389}
   gameSettings: {fileID: 1820429417}
   controllSettings: {fileID: 1089393724}
@@ -36991,6 +36995,8 @@ MonoBehaviour:
   audioSettingsManager: {fileID: 45861625}
   videoSettingsManager: {fileID: 889220447}
   dialogueChoiceManager: {fileID: 0}
+  moneyManager: {fileID: 0}
+  moneyCount: 0
   DialogueProfiles: []
   ExistingChoiceIdList: 
   DoChoiceIdList: 
@@ -44385,7 +44391,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_Value: 0.9999808
-  m_Size: 0.8077634
+  m_Size: 0.80776334
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

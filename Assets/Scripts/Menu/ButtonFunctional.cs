@@ -12,6 +12,7 @@ public class ButtonFunctional : MonoBehaviour
     public Choice settingsChoice;
     public Choice mainChoice;
     public GameObject settingsPanel;
+    public GameObject settingsMainPanel;
     public GameObject mainPanel;
     public Scrollbar gameSettingsSlider;
 
@@ -77,7 +78,7 @@ public class ButtonFunctional : MonoBehaviour
         animator.SetBool("isSettings", !animator.GetBool("isSettings"));
         bool settingsActive = animator.GetBool("isSettings");
 
-        mainPanel.SetActive(!settingsActive);
+        settingsMainPanel.SetActive(!settingsActive);
         settingsPanel.SetActive(settingsActive);
 
         if (exitText != null) {
@@ -187,7 +188,7 @@ public class ButtonFunctional : MonoBehaviour
         mainChoice.StartPauseWorking();
         settingsChoice.StartPauseWorking();
         animator.SetBool("isPause", true);
-        mainPanel.SetActive(true);
+        settingsMainPanel.SetActive(true);
     }
     public void ResumeGame()
     {
@@ -196,7 +197,7 @@ public class ButtonFunctional : MonoBehaviour
         mainChoice.StopPauseWorking();
         settingsChoice.StopPauseWorking();
         animator.SetBool("isPause", false);
-        mainPanel.SetActive(false);
+        settingsMainPanel.SetActive(false);
     }
     public void SetChoicePosition()
     {
@@ -223,5 +224,12 @@ public class ButtonFunctional : MonoBehaviour
     {
         animator.SetBool("isMoney", true);
         LevelManager.levelManager.StartParticles();
+    }
+
+    public void TurnOffMainButtons()
+    {
+        foreach (Button button in mainPanel.GetComponentsInChildren<Button>())
+            button.interactable = false;
+        pauseEnable = false;
     }
 }

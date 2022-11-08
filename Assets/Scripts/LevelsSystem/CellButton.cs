@@ -8,6 +8,11 @@ public class CellButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public Button button;
     public Image blur;
 
+    public void Start()
+    {
+        blur.color = new Color(1f, 1f, 1f, 0f);
+    }
+
     public void OnPointerEnter(PointerEventData eventData) {
         StartCoroutine(BlurVisible());
     }

@@ -1,0 +1,56 @@
+<keys>
+	<key name="Хорошо">
+		<translates>
+			<en-us>Alright</en-us>
+			<ru>Хорошо</ru>
+		</translates>
+	</key>
+	<key name="Окей">
+		<translates>
+			<en-us>Okay</en-us>
+			<ru>Окей</ru>
+		</translates>
+	</key>
+	<key name="Нет проблем">
+		<translates>
+			<en-us>No problem</en-us>
+			<ru>Нет проблем</ru>
+		</translates>
+	</key>
+	<key name="Ну давай">
+		<translates>
+			<en-us>Come on</en-us>
+			<ru>Ну давай</ru>
+		</translates>
+	</key>
+	<key name="Нет, спасибо">
+		<translates>
+			<en-us>No, thanks</en-us>
+			<ru>Нет, спасибо</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_1">
+		<translates>
+			<en-us>Welcome to the new test system. Answer a simple question.</en-us>
+			<ru>Приветствую в новой тестовой системе. Ответьте на простой вопрос.</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_2">
+		<translates>
+			<en-us>Otherwise, you will be destroyed. I'm serious. Seriously. And jokes too.</en-us>
+			<ru>Иначе будете уничтожены. Я серьёзно. Шутки в сторону. И анекдоты тоже.</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_4">
+		<translates>
+			<en-us>That's good. By the way, I never came up with a question, so see you soon.</en-us>
+			<ru>Вот и хорошо. Кстати, я так и не придумал вопроса, так что до скорого.</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_5">
+		<translates>
+			<en-us>You said no. I would suggest that you turn around more often on the street.</en-us>
+			<ru>Ты сказал нет. Я бы предложил тебе почаще оборачиваться на улице.</ru>
+		</translates>
+	</key>
+</keys>
