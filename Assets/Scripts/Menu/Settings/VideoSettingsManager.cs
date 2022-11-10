@@ -5,6 +5,7 @@ using TMPro;
 
 public class VideoSettingsManager : MonoBehaviour
 {
+    public bool lightVersion;
     public Animator canvas;
 
     [Header("Дефолтные настройки")]
@@ -28,6 +29,9 @@ public class VideoSettingsManager : MonoBehaviour
     public Button nextModButton;
     public Button previousModButton;
     public TextMeshProUGUI modText;
+
+    [Header("Текстуры")]
+    [SerializeField] private RenderTexture[] textures;
 
     private void Start()
     {
@@ -101,32 +105,42 @@ public class VideoSettingsManager : MonoBehaviour
 
     private void SetResolutionScreen()
     {
-        resolutionText.text = resolutionsScreen[resolutionId];
-        isResolutionChange = originallResolution != resolutionId;
+        if (!lightVersion) {
+            resolutionText.text = resolutionsScreen[resolutionId];
+            isResolutionChange = originallResolution != resolutionId;
+        }
 
         var resolution = resolutionsScreen[resolutionId].Split('x');
         int width = int.Parse(resolution[0]);
         int height = int.Parse(resolution[1]);
         SetScreenMode(width, height);
+        foreach (RenderTexture texture in textures) {
+            texture.Release();
+            texture.width = width;
+            texture.height = height;
+            texture.Create(); 
+        }
     }
 
     private void SetScreenMode(int width, int height)
     {
-        modText.GetComponent<LocalizedText>().Localize(screenMods[modId]);
-        isModsChange = originallMod != modId;
+        if (!lightVersion) {
+            modText.GetComponent<LocalizedText>().Localize(screenMods[modId]);
+            isModsChange = originallMod != modId;
 
-        nextResolutionButton.interactable = true;
-        previousResolutionButton.interactable = true;
+            nextResolutionButton.interactable = true;
+            previousResolutionButton.interactable = true;
 
-        switch (screenMods[modId])
-        {
-            case "Fullscreen": 
-                Screen.SetResolution(1920, 1080, FullScreenMode.ExclusiveFullScreen);
+            if (screenMods[modId] == "Fullscreen") {
                 nextResolutionButton.interactable = false;
                 previousResolutionButton.interactable = false;
                 resolutionId = 0;
                 resolutionText.text = resolutionsScreen[resolutionId];
-                break;
+            }
+        }
+
+        switch (screenMods[modId]) {
+            case "Fullscreen": Screen.SetResolution(1920, 1080, FullScreenMode.ExclusiveFullScreen); break;
             case "Windowed": Screen.SetResolution(width, height, FullScreenMode.Windowed); break;
             case "Borderless": Screen.SetResolution(width, height, FullScreenMode.FullScreenWindow); break;
         }

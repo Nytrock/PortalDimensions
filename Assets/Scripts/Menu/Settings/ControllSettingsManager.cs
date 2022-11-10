@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ControllSettingsManager : MonoBehaviour
 {
+    public bool lightVersion;
     public Animator canvas;
 
     public static event LanguageChangeHandler OnButtonChange;
@@ -56,14 +57,16 @@ public class ControllSettingsManager : MonoBehaviour
 
     private void Start()
     {
-        leftButton.SetText(Save.save.leftKey.ToString());
-        rightButton.SetText(Save.save.rightKey.ToString());
-        jumpButton.SetText(Save.save.jumpKey.ToString());
-        portalLeftButton.SetText(Save.save.portalGunLeftKey.ToString());
-        portalRightButton.SetText(Save.save.portalGunRightKey.ToString());
-        dialogueButton.SetText(Save.save.dialogueStartKey.ToString());
-        restartButton.SetText(Save.save.fastRestartKey.ToString());
-        SetNewOriginall();
+        if (!lightVersion) {
+            leftButton.SetText(Save.save.leftKey.ToString());
+            rightButton.SetText(Save.save.rightKey.ToString());
+            jumpButton.SetText(Save.save.jumpKey.ToString());
+            portalLeftButton.SetText(Save.save.portalGunLeftKey.ToString());
+            portalRightButton.SetText(Save.save.portalGunRightKey.ToString());
+            dialogueButton.SetText(Save.save.dialogueStartKey.ToString());
+            restartButton.SetText(Save.save.fastRestartKey.ToString());
+            SetNewOriginall();
+        }
     }
     public void CheckChanges()
     {

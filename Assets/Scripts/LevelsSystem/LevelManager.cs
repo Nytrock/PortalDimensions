@@ -232,6 +232,7 @@ public class LevelManager: MonoBehaviour
             coinsParticle.SetParticles(particles, count);
             yield return new WaitForSeconds(Time.deltaTime);
         }
+        Save.save.SaveAll();
         coinsParticle.Stop();
         SetScore();
     }
@@ -336,6 +337,7 @@ public class LevelManager: MonoBehaviour
             levelMain.bestScore = needScore;
         }
 
+        Save.save.SaveAll();
         levelMain.wasCompleted = true;
     }
 

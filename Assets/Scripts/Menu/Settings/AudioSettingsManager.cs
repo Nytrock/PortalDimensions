@@ -4,6 +4,7 @@ using UnityEngine.Audio;
 
 public class AudioSettingsManager : MonoBehaviour
 {
+    public bool lightVersion;
     public Animator canvas;
 
     [Header("Дефолтные значения")]
@@ -21,6 +22,10 @@ public class AudioSettingsManager : MonoBehaviour
     public Slider effectsSlider;
     public Slider uiSlider;
 
+    private float musicValue;
+    private float effectsValue;
+    private float uiValue;
+
     [Header("Музыка")]
     private float originallMusic;
     private bool isMusicChange;
@@ -35,11 +40,13 @@ public class AudioSettingsManager : MonoBehaviour
 
     private void Start()
     {
-        ChangeMusic(musicSlider.value);
-        ChangeEffect(effectsSlider.value);
-        ChangeUI(uiSlider.value);
-        SetNewOriginall();
-        SetChangesFalse();
+        ChangeMusic(musicValue);
+        ChangeEffect(effectsValue);
+        ChangeUI(uiValue);
+        if (!lightVersion) {
+            SetNewOriginall();
+            SetChangesFalse();
+        }
     }
 
     public void CheckChanges()
@@ -61,19 +68,25 @@ public class AudioSettingsManager : MonoBehaviour
 
     public void ChangeMusic(float volume)
     {
+        if (!lightVersion)
+            musicSlider.value = musicValue;
         musicMixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, volume));
         isMusicChange = volume != originallMusic;
     }
 
     public void ChangeEffect(float volume)
     {
-        musicMixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, volume));
+        if (!lightVersion)
+            effectsSlider.value = effectsValue;
+        effectsMixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, volume));
         isEffectsChange = volume != originallEffects;
     }
 
     public void ChangeUI(float volume)
     {
-        musicMixer.audioMixer.SetFloat("UIVolume", Mathf.Lerp(-80, 0, volume));
+        if (!lightVersion)
+            uiSlider.value = uiValue;
+        uiMixer.audioMixer.SetFloat("UIVolume", Mathf.Lerp(-80, 0, volume));
         isUiChange = volume != originallUi;
     }
 
@@ -113,5 +126,12 @@ public class AudioSettingsManager : MonoBehaviour
 
         uiSlider.value = originallUi;
         ChangeUI(uiDefault);
+    }
+
+    public void SetValues(float volumeMusic, float volumeEffects, float volumeUI)
+    {
+        musicValue = volumeMusic;
+        effectsValue = volumeEffects;
+        uiValue = volumeUI;
     }
 }

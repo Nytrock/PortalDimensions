@@ -63,10 +63,12 @@
     <Compile Include="Assets\Scripts\LevelsSystem\CellVisual.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\Editors\ControllSettingsEditor.cs" />
     <Compile Include="Assets\Scripts\Interfaces\DialogueInterface.cs" />
     <Compile Include="Assets\Scripts\GunGet.cs" />
     <Compile Include="Assets\Scripts\Interfaces\Level.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelInfoHolder.cs" />
+    <Compile Include="Assets\Scripts\Editors\GameSettingsEditor.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonFunctional.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\ControllSettingsManager.cs" />
     <Compile Include="Assets\Scripts\Player\JumpBonus.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Assets\Scripts\Player\Portal\PortalCollider.cs" />
     <Compile Include="Assets\Scripts\Interfaces\WorldInterface.cs" />
     <Compile Include="Assets\Scripts\Save\CursorSeeker.cs" />
+    <Compile Include="Assets\Scripts\Editors\VideoSettingsEditor.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundGet.cs" />
     <Compile Include="Assets\Scripts\Player\DeathTrap.cs" />
     <Compile Include="Assets\Scripts\Player\DeathEffect.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelsSwitchManager.cs" />
     <Compile Include="Assets\Scripts\Player\JumpCrystall.cs" />
+    <Compile Include="Assets\Scripts\Editors\AudioSettingsEditor.cs" />
     <Compile Include="Assets\Scripts\Menu\Settings\GameSettingsManager.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueChoice.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalTrigger.cs" />

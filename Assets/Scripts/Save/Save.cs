@@ -21,7 +21,6 @@ public class Save : MonoBehaviour
 
     [Header("Деньги")]
     public MoneyManager moneyManager;
-    public int moneyCount;
 
     [Header("Профили для диалогов")]
     public List<ProfileDialogue> DialogueProfiles;
@@ -38,11 +37,6 @@ public class Save : MonoBehaviour
     public KeyCode portalGunRightKey;
     public KeyCode dialogueStartKey;
     public KeyCode fastRestartKey;
-
-    [Header("Шейдеры")]
-    public Material glitchMaterial;
-    public Material noGlitchMaterial;
-    public List<RawImage> quads;
 
     [Header("Миры")]
     public List<World> worlds;
@@ -147,19 +141,15 @@ public class Save : MonoBehaviour
                 GetComponent<CursorSeeker>().cursorId = settings.cursorId;
                 localizationManager.SetLanguage(settings.languageId);
                 if (gameSettingsManager) {
-                    gameSettingsManager.autoManager.isOn = settings.AutoRestart;
                     gameSettingsManager.cursorId = settings.cursorId;
-                    gameSettingsManager.fpsManager.isOn = settings.FpsShowing;
-                    gameSettingsManager.confirmManager.isOn = settings.ConfimToExitActive;
-                    gameSettingsManager.glitchManager.isOn = settings.shaderOn;
-                } else {
-                    fpsCounter.ChangeWorking(settings.FpsShowing);
-                    if (settings.shaderOn) {
-                        foreach (RawImage quad in quads)
-                            quad.material = glitchMaterial;
+                    if (gameSettingsManager.lightVersion) {
+                        gameSettingsManager.SetFps(settings.FpsShowing);
+                        gameSettingsManager.SetGlitch(settings.shaderOn);
                     } else {
-                        foreach (RawImage quad in quads)
-                            quad.material = noGlitchMaterial;
+                        gameSettingsManager.autoManager.isOn = settings.AutoRestart;
+                        gameSettingsManager.fpsManager.isOn = settings.FpsShowing;
+                        gameSettingsManager.confirmManager.isOn = settings.ConfimToExitActive;
+                        gameSettingsManager.glitchManager.isOn = settings.shaderOn;
                     }
                 }
 
@@ -180,9 +170,7 @@ public class Save : MonoBehaviour
                     fastRestartKey = (KeyCode)allKeyTypes.GetValue(settings.keyRestart);
                 
                 if (audioSettingsManager) {
-                    audioSettingsManager.musicSlider.value = settings.volumeMusic;
-                    audioSettingsManager.effectsSlider.value = settings.volumeEffects;
-                    audioSettingsManager.uiSlider.value = settings.volumeUI;
+                    audioSettingsManager.SetValues(settings.volumeMusic, settings.volumeEffects, settings.volumeUI);
                 }
 
                 if (videoSettingsManager) {
@@ -291,16 +279,5 @@ public class Save : MonoBehaviour
         BinaryFormatter form = new BinaryFormatter();
         form.Serialize(stream, settings);
         stream.Close();
-    }
-
-    public void SetShaderActive(bool glitch)
-    {
-        if (glitch) {
-            foreach (RawImage quad in quads)
-                quad.material = glitchMaterial;
-        } else {
-            foreach (RawImage quad in quads)
-                quad.material = noGlitchMaterial;
-        }
     }
 }

@@ -43,7 +43,7 @@ public class LevelsSwitchManager : MonoBehaviour
 
     private int index;
 
-    private void Awake()
+    private void Start()
     {
         countMenus = showingWorld.countLevels / 10;
         header.text = LocalizationManager.GetTranslate(showingWorld.header);
@@ -117,14 +117,14 @@ public class LevelsSwitchManager : MonoBehaviour
     public void NextMenu()
     {
         index += 1;
-        targetPosition -= 923.76f;
+        targetPosition -= 800f;
         UpdateButtons();
         SetInstant(index - 1, index);
     }
     public void PreviousMenu()
     {
         index -= 1;
-        targetPosition += 923.76f;
+        targetPosition += 800f;
         UpdateButtons();
         SetInstant(index + 1, index);
     }
