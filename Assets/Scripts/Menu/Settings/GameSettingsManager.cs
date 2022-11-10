@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameSettingsManager : MonoBehaviour
 {
+    public bool lightVersion;
     public Animator canvas;
 
     [Header("Скроллбары")]
@@ -44,6 +45,7 @@ public class GameSettingsManager : MonoBehaviour
     private bool isLanguageChange;
 
     [Header("Настройки курсора")]
+    public List<Texture2D> cursorsTextures;
     public RawImage cursorImage;
     public int cursorId;
     private bool isCursorChange;
@@ -69,6 +71,9 @@ public class GameSettingsManager : MonoBehaviour
     private bool isConfirmChange;
 
     [Header("Настройки шейдера")]
+    public Material glitchMaterial;
+    public Material noGlitchMaterial;
+    public List<RawImage> quads;
     public Toggle glitchManager;
     private bool glitch;
     private bool originallyGlitch;
@@ -96,19 +101,26 @@ public class GameSettingsManager : MonoBehaviour
 
     public void Start()
     {
-        SetNewOriginall();
+        if (!lightVersion) {
+            SetNewOriginall();
 
-        autorestart = originallyAuto;
-        confirm = originallyConfirm;
-        fpsShowing = originallyFps;
-        glitch = originallyGlitch;
+            autorestart = originallyAuto;
+            confirm = originallyConfirm;
+            fpsShowing = originallyFps;
+            glitch = originallyGlitch;
 
-        SetResetBlur();
+            ChangeFps();
+            ChangeGlitch();
+            ChangeAutorestart();
+            ChangeConfirmNeed();
+            SetResetBlur();
+            SetChangesFalse();
+            SetMorePositionsValues();
+            StartCoroutine(StartButtonMorePosition());
+        }
+        SetShaderActive();
         ChangeCursorTexture();
-        SetChangesFalse();
-        SetMorePositionsValues();
-        StartCoroutine(StartButtonMorePosition());
-        Save.save.SetShaderActive(glitch);
+        fpsCounter.ChangeWorking(fpsShowing);
     }
     public void NextLanguage()
     {
@@ -134,25 +146,25 @@ public class GameSettingsManager : MonoBehaviour
 
     public void ChangeAutorestart()
     {
-        autorestart = !autorestart;
+        autorestart = autoManager.isOn;
         isAutoChange = autorestart != originallyAuto;
     }
 
     public void ChangeConfirmNeed()
     {
-        confirm = !confirm;
+        confirm = confirmManager.isOn;
         isConfirmChange = confirm != originallyConfirm;
     }
     public void ChangeFps()
     {
-        fpsShowing = !fpsShowing;
+        fpsShowing = fpsManager.isOn;
         isFpsChange = fpsShowing != originallyFps;
         fpsCounter.ChangeWorking(fpsShowing);
     }
 
     public void NextCursor()
     {
-        if (cursorId + 1 < CursorSeeker.cursorSeeker.cursorsTextures.Count)
+        if (cursorId + 1 < cursorsTextures.Count)
             cursorId += 1;
         else
             cursorId = 0;
@@ -164,23 +176,23 @@ public class GameSettingsManager : MonoBehaviour
         if (cursorId - 1 >= 0)
             cursorId -= 1;
         else
-            cursorId = CursorSeeker.cursorSeeker.cursorsTextures.Count - 1;
+            cursorId = cursorsTextures.Count - 1;
         ChangeCursorTexture();
     }
 
     public void ChangeGlitch()
     {
-        glitch = !glitch;
+        glitch = glitchManager.isOn;
         isGlitchChange = originallyGlitch != glitch;
-        Save.save.SetShaderActive(glitch);
+        SetShaderActive();
     }
 
     private void ChangeCursorTexture()
     {
-        CursorSeeker.cursorSeeker.cursorId = cursorId;
-        Cursor.SetCursor(CursorSeeker.cursorSeeker.cursorsTextures[cursorId], Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursorsTextures[cursorId], Vector2.zero, CursorMode.ForceSoftware);
         isCursorChange = cursorId != originalCursor;
-        cursorImage.texture = CursorSeeker.cursorSeeker.cursorsTextures[cursorId];
+        if (!lightVersion)
+            cursorImage.texture = cursorsTextures[cursorId];
     }
 
     public void CheckChanges()
@@ -216,7 +228,7 @@ public class GameSettingsManager : MonoBehaviour
         confirmManager.isOn = originallyConfirm;
 
         glitchManager.isOn = originallyGlitch;
-        Save.save.SetShaderActive(glitch);
+        SetShaderActive();
     }
 
     public void SetNewOriginall()
@@ -369,5 +381,26 @@ public class GameSettingsManager : MonoBehaviour
             buttonBlurs[LocalizationManager.SelectedLanguage].color = new Color(1f, 1f, 1f, 240f / 256f);
             buttonReset.targetGraphic = buttonBlurs[LocalizationManager.SelectedLanguage];
         }
+    }
+
+    public void SetShaderActive()
+    {
+        if (glitch) {
+            foreach (RawImage quad in quads)
+                quad.material = glitchMaterial;
+        } else {
+            foreach (RawImage quad in quads)
+                quad.material = noGlitchMaterial;
+        }
+    }
+
+    public void SetFps(bool newValue)
+    {
+        fpsShowing = newValue;
+    }
+
+    public void SetGlitch(bool newValue)
+    {
+        glitch = newValue;
     }
 }

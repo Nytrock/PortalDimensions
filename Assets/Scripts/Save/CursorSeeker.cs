@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CursorSeeker : MonoBehaviour
 {
-    public static CursorSeeker cursorSeeker;
-
     public int cursorId;
 
     public Texture2D defaultNormalCursor;
@@ -16,14 +14,6 @@ public class CursorSeeker : MonoBehaviour
 
     public Texture2D shortLeftCursor;
     public Texture2D shortRightCursor;
-
-    public List<Texture2D> cursorsTextures;
-
-    private void Awake()
-    {
-        cursorSeeker = this;
-        Cursor.SetCursor(cursorsTextures[cursorId], Vector2.zero, CursorMode.ForceSoftware);
-    }
 
     private void Update()
     {
