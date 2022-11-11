@@ -363,6 +363,7 @@ public class DialogueManager : MonoBehaviour
             if(variant.Value.ContainsKey("existing_id"))
                 dialogueChoice.existingId = int.Parse(variant.Value["existing_id"]);
             workingbuttonChoice.SetActive(false);
+            workingbuttonChoice.GetComponent<ButtonSwitch>().SetAnimator(choiceArrow.GetComponent<Animator>());
 
             choiceArrow.Buttons.Add(workingbuttonChoice.GetComponent<Button>());
 

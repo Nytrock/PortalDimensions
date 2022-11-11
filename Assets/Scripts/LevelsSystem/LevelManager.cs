@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using Cinemachine;
 using TMPro;
 
-public class LevelManager: MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     public static LevelManager levelManager;
     private KeyCode restartButton;
@@ -126,7 +126,7 @@ public class LevelManager: MonoBehaviour
         restartsCoef = LevelInfoHolder.restartsCount;
         deathsCoef = LevelInfoHolder.deathsCount;
 
-        for (int i=0; i < levels.Count; i++)
+        for (int i = 0; i < levels.Count; i++)
             levels[i].gameObject.SetActive(false);
         level.gameObject.SetActive(true);
 
@@ -268,7 +268,7 @@ public class LevelManager: MonoBehaviour
         int starsGet = 0;
         List<int> scoresForStars = new List<int>() { levelMain.scoreForOneStar, levelMain.scoreForTwoStar, levelMain.scoreForThreeStar, levelMain.maxScore + 1000 };
         string localize = LocalizationManager.GetTranslate("Счёт:");
-        for (int i=0; i <= (needScore / num) * num + num; i+=num) {
+        for (int i = 0; i <= (needScore / num) * num + num; i += num) {
             nowScore = Mathf.Min(i, needScore);
             scoreText.text = localize + " " + nowScore.ToString();
             if (nowScore >= scoresForStars[starsGet]) {
@@ -348,5 +348,9 @@ public class LevelManager: MonoBehaviour
         var extraTeleport = numTeleports - levelMain.bestTeleportCount;
         var result = levelMain.maxScore - extraTime * 15 - restartsCoef * 20 - deathsCoef * 40 - extraShoots * 5 - extraTeleport * 10; // это ещё балансить нужно аааа
         return result;
+    }
+
+    public void SetOtherCameras() {
+        
     }
 }

@@ -47,6 +47,8 @@ public class ButtonFunctional : MonoBehaviour
                 gameSettings.SetResetAnimation();
             else if (animator.GetBool("isMore"))
                 gameSettings.SetMoreAnimation();
+            else if (animator.GetBool("isConfirm"))
+                SetConfirm();
             else if (animator.GetBool("isSettingsGame"))
                 gameSettings.CheckChanges();
             else if (animator.GetBool("isSettingsControll"))

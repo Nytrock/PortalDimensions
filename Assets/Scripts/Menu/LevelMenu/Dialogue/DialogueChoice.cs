@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class DialogueChoice : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -11,6 +12,12 @@ public class DialogueChoice : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void ChangePanel()
     {
+        StartCoroutine(WaitAndChange());
+    }
+    
+    IEnumerator WaitAndChange()
+    {
+        yield return new WaitForSeconds(Time.deltaTime * 5);
         dialogueManager.ChangePanel(NextPanel);
         if (doId > -1) {
             dialogueManager.choiceManager.DoSomethingFromId(doId);

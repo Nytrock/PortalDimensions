@@ -22,14 +22,14 @@ public class CellButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     IEnumerator BlurVisible()
     {
-        for (int i=1; i <= 10; i++) {
+        for (int i=1; i <= 8; i++) {
             blur.color = new Color(1f, 1f, 1f, 1f / 10f * i);
             yield return new WaitForSecondsRealtime(0.01f);
         }
     }
     IEnumerator BlurNonVisible()
     {
-        for (int i = 10; i >= 0; i--) {
+        for (int i = 8; i >= 0; i--) {
             blur.color = new Color(1f, 1f, 1f, 1f / 10f * i);
             yield return new WaitForSecondsRealtime(0.01f);
         }

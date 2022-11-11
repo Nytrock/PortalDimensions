@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -30,8 +31,9 @@ public class VideoSettingsManager : MonoBehaviour
     public Button previousModButton;
     public TextMeshProUGUI modText;
 
-    [Header("Текстуры")]
+    [Header("Текстуры и камеры")]
     [SerializeField] private RenderTexture[] textures;
+    [SerializeField] private Camera[] renderCameras;
 
     private void Start()
     {
@@ -120,6 +122,11 @@ public class VideoSettingsManager : MonoBehaviour
             texture.height = height;
             texture.Create(); 
         }
+        try {
+            StartCoroutine(Textures());
+        } catch {
+
+        }
     }
 
     private void SetScreenMode(int width, int height)
@@ -165,5 +172,14 @@ public class VideoSettingsManager : MonoBehaviour
 
         modId = defaultMod;
         SetScreenMode(Screen.width, Screen.height);
+    }
+
+    IEnumerator Textures()
+    {
+        foreach (Camera camera in renderCameras)
+            camera.targetTexture = null;
+        yield return new WaitForSeconds(Time.deltaTime);
+        for (int i = 0; i < renderCameras.Length; i++)
+            renderCameras[i].targetTexture = textures[i];
     }
 }
