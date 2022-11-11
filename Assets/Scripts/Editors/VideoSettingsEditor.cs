@@ -22,6 +22,7 @@ public class VideoSettingsEditor : Editor
             EditorGUILayout.PropertyField(serializedObject.FindProperty("resolutionsScreen"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("screenMods"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("textures"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("renderCameras"), true);
 
             serializedObject.ApplyModifiedProperties();
         }

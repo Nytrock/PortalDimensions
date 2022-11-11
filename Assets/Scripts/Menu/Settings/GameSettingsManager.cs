@@ -280,6 +280,7 @@ public class GameSettingsManager : MonoBehaviour
         moreFpsVisual.localPosition = new Vector2(moreFpsVisualPos + moreFpsText.preferredWidth, moreFpsVisual.localPosition.y);
         moreExitVisual.localPosition = new Vector2(moreExitVisualPos + moreExitText.preferredWidth, moreExitVisual.localPosition.y);
         moreShaderVisual.localPosition = new Vector2(moreShaderVisualPos + moreShaderText.preferredWidth, moreShaderVisual.localPosition.y);
+        StartCoroutine(SetButtonMoreGlobalPositions());
     }
 
     private void SetMoreButtonsPosition()
@@ -303,10 +304,18 @@ public class GameSettingsManager : MonoBehaviour
         var offset = 0f;
         if (Save.save.dialogueChoiceManager != null)
             offset = 0.15f;
+
         moreAutoButton.position = new Vector2(moreAutoVisual.position.x - offset, moreAutoVisual.position.y + offset);
-        moreFpsButton.position = new Vector3(moreFpsVisual.position.x - offset, moreFpsVisual.position.y + offset);
-        moreExitButton.position = new Vector3(moreExitVisual.position.x - offset, moreExitVisual.position.y + offset);
-        moreShaderButton.position = new Vector3(moreShaderVisual.position.x - offset, moreShaderVisual.position.y + offset);
+        moreAutoButton.localPosition = new Vector3(moreAutoButton.localPosition.x, moreAutoButton.localPosition.y, 0f);
+
+        moreFpsButton.position = new Vector2(moreFpsVisual.position.x - offset, moreFpsVisual.position.y + offset);
+        moreFpsButton.localPosition = new Vector3(moreFpsButton.localPosition.x, moreFpsButton.localPosition.y, 0f);
+
+        moreExitButton.position = new Vector2(moreExitVisual.position.x - offset, moreExitVisual.position.y + offset);
+        moreExitButton.localPosition = new Vector3(moreExitButton.localPosition.x, moreExitButton.localPosition.y, 0f);
+
+        moreShaderButton.position = new Vector2(moreShaderVisual.position.x - offset, moreShaderVisual.position.y + offset);
+        moreShaderButton.localPosition = new Vector3(moreShaderButton.localPosition.x, moreShaderButton.localPosition.y, 0f);
     }
 
     public void StartReset()

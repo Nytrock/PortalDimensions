@@ -113,6 +113,12 @@
 			<ru>Вы уверены?</ru>
 		</translates>
 	</key>
+	<key name="Прогресс прохождения уровня сбросится">
+		<translates>
+			<en-us>Level progress will be lost</en-us>
+			<ru>Прогресс прохождения уровня сбросится</ru>
+		</translates>
+	</key>
 	<key name="Геймплей">
 		<translates>
 			<en-us>Gameplay</en-us>

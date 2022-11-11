@@ -50,8 +50,17 @@ public class Choice : MonoBehaviour
             SetPosition(Mathf.Max(NowId - 1, 0));
         if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && Buttons.Count - 1 > NowId)
             SetPosition(Mathf.Min(NowId + 1, positions.Count - 1));
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) {
             Buttons[NowId].onClick.Invoke();
+            GetComponent<Animator>().SetBool("Normal", false);
+            GetComponent<Animator>().SetBool("Highlighted", false);
+            GetComponent<Animator>().SetBool("Pressed", true);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space)) {
+            GetComponent<Animator>().SetBool("Pressed", false);
+            GetComponent<Animator>().SetBool("Normal", true);
+        }
     }
 
     public void StartPauseWorking()

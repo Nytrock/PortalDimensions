@@ -3,16 +3,7 @@ using UnityEngine;
 public class ButtonSwitch : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] public bool isRight;
-    private string animationType;
-
-    private void Start()
-    {
-        if (isRight)
-            animationType = "Right";
-        else
-            animationType = "Left";
-    }
+    [SerializeField] private string animationType;
 
     public void Normal()
     {
@@ -43,5 +34,10 @@ public class ButtonSwitch : MonoBehaviour
         animator.SetBool("Highlighted" + animationType, false);
         animator.SetBool("Pressed" + animationType, false);
         animator.SetBool("Disabled" + animationType, false);
+    }
+
+    public void SetAnimator(Animator newAnimator)
+    {
+        animator = newAnimator;
     }
 }

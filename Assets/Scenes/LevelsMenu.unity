@@ -410,7 +410,7 @@ MonoBehaviour:
   defaultResolution: 0
   defaultMod: 0
   resolutionsScreen:
-  - 1600x1000
+  - 1920x1080
   - 1680x1050
   - 1600x1200
   - 1600x1024
@@ -444,7 +444,8 @@ MonoBehaviour:
   modText: {fileID: 0}
   textures:
   - {fileID: 8400000, guid: 5dd2d2a8a63af3e4d8c844509e84cecb, type: 2}
-  - {fileID: 8400000, guid: e96fd5666083c7649bea9e4134b01804, type: 2}
+  renderCameras:
+  - {fileID: 623920608}
 --- !u!4 &28161445
 Transform:
   m_ObjectHideFlags: 0
@@ -5352,7 +5353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 239245266}
-  isRight: 1
+  animationType: Right
 --- !u!95 &1175819684
 Animator:
   serializedVersion: 4
@@ -8507,7 +8508,6 @@ MonoBehaviour:
   videoSettingsManager: {fileID: 28161444}
   dialogueChoiceManager: {fileID: 0}
   moneyManager: {fileID: 0}
-  moneyCount: 0
   DialogueProfiles: []
   ExistingChoiceIdList: 
   DoChoiceIdList: 
@@ -8834,7 +8834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 239245266}
-  isRight: 0
+  animationType: Left
 --- !u!95 &1851023787
 Animator:
   serializedVersion: 4
