@@ -5,15 +5,15 @@ using System.Collections;
 public class ControllSettingsManager : MonoBehaviour
 {
     public bool lightVersion;
-    public Animator canvas;
+    [SerializeField] private Animator canvas;
 
     public static event LanguageChangeHandler OnButtonChange;
     public delegate void LanguageChangeHandler();
 
-    public ControllButton changingButton;
-    public bool waitingForKey;
-    public Event keyEvent;
-    public KeyCode newKey;
+    private ControllButton changingButton;
+    private bool waitingForKey;
+    private Event keyEvent;
+    private KeyCode newKey;
 
     [Header("Дефолтные кнопки")]
     [SerializeField] private KeyCode leftDefault;
@@ -25,35 +25,38 @@ public class ControllSettingsManager : MonoBehaviour
     [SerializeField] private KeyCode restartDefault;
 
     [Header("Текст кнопок управления")]
-    public ControllButton leftButton;
-    public ControllButton rightButton;
-    public ControllButton jumpButton;
-    public ControllButton portalLeftButton;
-    public ControllButton portalRightButton;
-    public ControllButton dialogueButton;
-    public ControllButton restartButton;
+    [SerializeField] private ControllButton leftButton;
+    [SerializeField] private ControllButton rightButton;
+    [SerializeField] private ControllButton jumpButton;
+    [SerializeField] private ControllButton portalLeftButton;
+    [SerializeField] private ControllButton portalRightButton;
+    [SerializeField] private ControllButton dialogueButton;
+    [SerializeField] private ControllButton restartButton;
+
+    [Header("Кнопки меню")]
+    [SerializeField] private Button[] menuButtons;
 
     [Header("Кнопка влево")]
-    public KeyCode leftOriginall;
-    public bool isLeftChanged;
+    private KeyCode leftOriginall;
+    private bool isLeftChanged;
     [Header("Кнопка вправо")]
-    public KeyCode rightOriginall;
-    public bool isRightChanged;
+    private KeyCode rightOriginall;
+    private bool isRightChanged;
     [Header("Кнопка прыжка")]
-    public KeyCode jumpOriginall;
-    public bool isJumpChanged;
+    private KeyCode jumpOriginall;
+    private bool isJumpChanged;
     [Header("Кнопка левого портала")]
-    public KeyCode leftPortalOriginall;
-    public bool isLeftPortalChanged;
+    private KeyCode leftPortalOriginall;
+    private bool isLeftPortalChanged;
     [Header("Кнопка правого портала")]
-    public KeyCode rightPortalOriginall;
-    public bool isRightPortalChanged;
+    private KeyCode rightPortalOriginall;
+    private bool isRightPortalChanged;
     [Header("Кнопка диалога")]
-    public KeyCode dialogueOriginall;
-    public bool isDialogueChanged;
+    private KeyCode dialogueOriginall;
+    private bool isDialogueChanged;
     [Header("Кнопка рестарта")]
-    public KeyCode restartOriginall;
-    public bool isRestartChanged;
+    private KeyCode restartOriginall;
+    private bool isRestartChanged;
 
     private void Start()
     {
@@ -86,11 +89,6 @@ public class ControllSettingsManager : MonoBehaviour
 
     IEnumerator WaitForKey()
     {
-        var button = changingButton.GetComponent<Button>();
-        ColorBlock cb = button.colors;
-        cb.normalColor = new Color(1f, 1f, 1f, 1f);
-        button.colors = cb;
-
         changingButton.leftArrow.gameObject.SetActive(true);
         changingButton.rightArrow.gameObject.SetActive(true);
 
@@ -109,7 +107,7 @@ public class ControllSettingsManager : MonoBehaviour
         }
     }
 
-    public IEnumerator AssignKey(string keyName)
+    IEnumerator AssignKey(string keyName)
     {
         waitingForKey = true;
 
@@ -165,6 +163,7 @@ public class ControllSettingsManager : MonoBehaviour
         }
 
         changingButton = null;
+        yield return new WaitForSecondsRealtime(0.1f);
         SetInteractable(true);
 
         yield return null;
@@ -203,20 +202,18 @@ public class ControllSettingsManager : MonoBehaviour
 
     private void SetInteractable(bool value)
     {
-        if (changingButton != leftButton)
-            leftButton.GetComponent<Button>().interactable = value;
-        if (changingButton != rightButton)
-            rightButton.GetComponent<Button>().interactable = value;
-        if (changingButton != jumpButton)
-            jumpButton.GetComponent<Button>().interactable = value;
-        if (changingButton != portalLeftButton)
-            portalLeftButton.GetComponent<Button>().interactable = value;
-        if (changingButton != portalRightButton)
-            portalRightButton.GetComponent<Button>().interactable = value;
-        if (changingButton != dialogueButton)
-            dialogueButton.GetComponent<Button>().interactable = value;
-        if (changingButton != restartButton)
-            restartButton.GetComponent<Button>().interactable = value;
+        leftButton.SetButtonActive(value);
+        rightButton.SetButtonActive(value);
+        jumpButton.SetButtonActive(value);
+        portalLeftButton.SetButtonActive(value);
+        portalRightButton.SetButtonActive(value);
+        dialogueButton.SetButtonActive(value);
+        restartButton.SetButtonActive(value);
+
+        foreach (Button button in menuButtons) {
+            button.interactable = value;
+            button.GetComponent<CellButton>().enabled = value;
+        }
     }
 
     private void CheckNewKey(KeyCode changingKey)

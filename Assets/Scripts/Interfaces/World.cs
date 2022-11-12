@@ -12,12 +12,14 @@ public class World : ScriptableObject, WorldInterface
         get => _levelsCompleted;
         set => _levelsCompleted = value;
     }
+    public Level[] levels => _levels;
 
     [SerializeField] private int _id;
     [SerializeField] private string _name;
     [SerializeField] private Sprite _image;
     [SerializeField] private int _levelsCount;
     [SerializeField] private int _levelsCompleted;
+    [SerializeField] private Level[] _levels;
 
 }
 

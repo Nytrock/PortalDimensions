@@ -4598,9 +4598,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightVersion: 1
   canvas: {fileID: 0}
-  changingButton: {fileID: 0}
-  waitingForKey: 0
-  newKey: 0
   leftDefault: 97
   rightDefault: 100
   jumpDefault: 32
@@ -4615,20 +4612,7 @@ MonoBehaviour:
   portalRightButton: {fileID: 0}
   dialogueButton: {fileID: 0}
   restartButton: {fileID: 0}
-  leftOriginall: 0
-  isLeftChanged: 0
-  rightOriginall: 0
-  isRightChanged: 0
-  jumpOriginall: 0
-  isJumpChanged: 0
-  leftPortalOriginall: 0
-  isLeftPortalChanged: 0
-  rightPortalOriginall: 0
-  isRightPortalChanged: 0
-  dialogueOriginall: 0
-  isDialogueChanged: 0
-  restartOriginall: 0
-  isRestartChanged: 0
+  menuButtons: []
 --- !u!1 &1103631366
 GameObject:
   m_ObjectHideFlags: 0
@@ -5485,6 +5469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1201030254}
   - component: {fileID: 1201030255}
+  - component: {fileID: 1201030256}
   m_Layer: 5
   m_Name: SettingsGame
   m_TagString: Untagged
@@ -5578,10 +5563,28 @@ MonoBehaviour:
   startingResetWorking: {fileID: 0}
   endingResetVisual: {fileID: 0}
   endingResetWorking: {fileID: 0}
-  toggleName: 
   moreHeader: {fileID: 0}
   moreText: {fileID: 0}
   moreToggle: {fileID: 0}
+--- !u!114 &1201030256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201030253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49deeb560dd95974e854d4958a990c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorId: 0
+  defaultNormalCursor: {fileID: 2800000, guid: 90adb7a29b51b8d4e9c03e12f1274091, type: 3}
+  defaultShortCursor: {fileID: 2800000, guid: 498e2a9fcbf5a8145afd461d8d136ed8, type: 3}
+  normalLeftCursor: {fileID: 2800000, guid: 69aafcb7353ee36468087f893797b3f5, type: 3}
+  normalRightCursor: {fileID: 2800000, guid: 565b81b0878869544b2ea72bb1cafa8a, type: 3}
+  shortLeftCursor: {fileID: 2800000, guid: 51bec6e8b802c9f4a8a38fedbc774b02, type: 3}
+  shortRightCursor: {fileID: 2800000, guid: 17b7ad3a1d5fcbe4cad0d7916bc1fa16, type: 3}
 --- !u!1 &1203825918
 GameObject:
   m_ObjectHideFlags: 0
@@ -8479,7 +8482,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1824010898}
-  - component: {fileID: 1824010897}
   - component: {fileID: 1824010896}
   m_Layer: 0
   m_Name: Save
@@ -8521,25 +8523,6 @@ MonoBehaviour:
   worlds:
   - {fileID: 11400000, guid: f3a6a59b85f947f42b6f7b9a6879ce40, type: 2}
   players: []
---- !u!114 &1824010897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824010895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49deeb560dd95974e854d4958a990c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorId: 0
-  defaultNormalCursor: {fileID: 2800000, guid: 90adb7a29b51b8d4e9c03e12f1274091, type: 3}
-  defaultShortCursor: {fileID: 2800000, guid: 498e2a9fcbf5a8145afd461d8d136ed8, type: 3}
-  normalLeftCursor: {fileID: 2800000, guid: 69aafcb7353ee36468087f893797b3f5, type: 3}
-  normalRightCursor: {fileID: 2800000, guid: 565b81b0878869544b2ea72bb1cafa8a, type: 3}
-  shortLeftCursor: {fileID: 2800000, guid: 51bec6e8b802c9f4a8a38fedbc774b02, type: 3}
-  shortRightCursor: {fileID: 2800000, guid: 17b7ad3a1d5fcbe4cad0d7916bc1fa16, type: 3}
 --- !u!4 &1824010898
 Transform:
   m_ObjectHideFlags: 0

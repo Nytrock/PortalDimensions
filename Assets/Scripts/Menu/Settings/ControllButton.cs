@@ -17,11 +17,15 @@ public class ControllButton : MonoBehaviour
 
     private float leftArrowPos;
     private float smallBlurPos;
+    private CellButton cellButton;
+    private Button button;
 
     public void Awake()
     {
         leftArrowPos = leftArrow.localPosition.x;
         smallBlurPos = smallBlur.transform.localPosition.x;
+        cellButton = GetComponent<CellButton>();
+        button = GetComponent<Button>();
     }
     public void SetText(string keyText)
     {
@@ -31,10 +35,6 @@ public class ControllButton : MonoBehaviour
 
     public void UpdateLeftArrowAndBlur()
     {
-        var button = GetComponent<Button>();
-        ColorBlock cb = button.colors;
-        cb.normalColor = new Color(1f, 1f, 1f, 0f);
-        button.colors = cb;
 
         leftArrow.gameObject.SetActive(false);
         rightArrow.gameObject.SetActive(false);
@@ -56,17 +56,13 @@ public class ControllButton : MonoBehaviour
         }
 
         if (leght <= 2) {
-            smallBlur.color = new Color(1f, 1f, 1f, 1);
-            GetComponent<Button>().targetGraphic = smallBlur;
+            cellButton.blur = smallBlur;
         }  else if (leght <= 4) {
-            mediumBlur.color = new Color(1f, 1f, 1f, 1);
-            GetComponent<Button>().targetGraphic = mediumBlur;
+            cellButton.blur = mediumBlur;
         } else if (leght <= 6) {
-            bigBlur.color = new Color(1f, 1f, 1f, 1);
-            GetComponent<Button>().targetGraphic = bigBlur;
+            cellButton.blur = bigBlur;
         } else {
-            hugeBlur.color = new Color(1f, 1f, 1f, 1);
-            GetComponent<Button>().targetGraphic = hugeBlur;
+            cellButton.blur = hugeBlur;
         }
     }
 
@@ -75,5 +71,11 @@ public class ControllButton : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.0001f);
         float percent = text.fontSize / text.fontSizeMax;
         leftArrow.localPosition = new Vector2(leftArrowPos - text.preferredWidth * percent + 22f, leftArrow.localPosition.y);
+    }
+
+    public void SetButtonActive(bool value)
+    {
+        button.interactable = value;
+        cellButton.enabled = value;
     }
 }

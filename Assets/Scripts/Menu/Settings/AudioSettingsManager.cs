@@ -68,6 +68,7 @@ public class AudioSettingsManager : MonoBehaviour
 
     public void ChangeMusic(float volume)
     {
+        musicValue = volume;
         if (!lightVersion)
             musicSlider.value = musicValue;
         musicMixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, volume));
@@ -76,6 +77,7 @@ public class AudioSettingsManager : MonoBehaviour
 
     public void ChangeEffect(float volume)
     {
+        effectsValue = volume;
         if (!lightVersion)
             effectsSlider.value = effectsValue;
         effectsMixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, volume));
@@ -84,6 +86,7 @@ public class AudioSettingsManager : MonoBehaviour
 
     public void ChangeUI(float volume)
     {
+        uiValue = volume;
         if (!lightVersion)
             uiSlider.value = uiValue;
         uiMixer.audioMixer.SetFloat("UIVolume", Mathf.Lerp(-80, 0, volume));

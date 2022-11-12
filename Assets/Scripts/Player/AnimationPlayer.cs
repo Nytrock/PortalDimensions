@@ -43,8 +43,6 @@ public class AnimationPlayer : MonoBehaviour
     private Color AddFirstPowerColor;
     private Color AddSecondPowerColor;
 
-    private bool Sleep;
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -74,15 +72,6 @@ public class AnimationPlayer : MonoBehaviour
             animator.Play("Calm-" + choose);
             PreviosChoose = choose;
         }
-    }
-
-    public void Sleeping()
-    {
-        Sleep = !Sleep;
-        if (Sleep)
-            sleepEffect.Play();
-        else
-            sleepEffect.Stop();
     }
 
     public void GroundParticleLeft()
@@ -232,9 +221,6 @@ public class AnimationPlayer : MonoBehaviour
 
     public void StartShooting()
     {
-        Sleep = false;
-        sleepEffect.Stop();
-
         if (animator.GetBool("IsShoot") && !animator.GetBool("RestartShooting"))
             animator.SetBool("RestartShooting", true);
         animator.SetBool("IsShoot", true);

@@ -138,7 +138,6 @@ public class Save : MonoBehaviour
 
             try {
                 SettingsSave settings = (SettingsSave)form.Deserialize(stream);
-                GetComponent<CursorSeeker>().cursorId = settings.cursorId;
                 localizationManager.SetLanguage(settings.languageId);
                 if (gameSettingsManager) {
                     gameSettingsManager.cursorId = settings.cursorId;
@@ -250,27 +249,36 @@ public class Save : MonoBehaviour
 
     public void ResetGame()
     {
-        SettingsSave settings = new SettingsSave();
-        settings.languageId = LocalizationManager.SelectedLanguage;
-        settings.cursorId = gameSettingsManager.cursorId;
-        settings.AutoRestart = gameSettingsManager.autoManager.isOn;
-        settings.FpsShowing = gameSettingsManager.fpsManager.isOn;
-        settings.ConfimToExitActive = gameSettingsManager.confirmManager.isOn;
-        settings.shaderOn = gameSettingsManager.glitchManager.isOn;
+        foreach (World world in worlds) {
+            world.completedLevels = 1;
+            foreach (Level level in world.levels) {
+                level.bestScore = 0;
+                level.wasCompleted = false;
+            }
+        }
 
         Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
-        settings.keyLeft = Array.IndexOf(allKeyTypes, leftKey);
-        settings.keyRight = Array.IndexOf(allKeyTypes, rightKey);
-        settings.keyJump = Array.IndexOf(allKeyTypes, jumpKey);
-        settings.keyLeftPortal = Array.IndexOf(allKeyTypes, portalGunLeftKey);
-        settings.keyRightPortal = Array.IndexOf(allKeyTypes, portalGunRightKey);
-        settings.keyDialogue = Array.IndexOf(allKeyTypes, dialogueStartKey);
-        settings.keyRestart = Array.IndexOf(allKeyTypes, fastRestartKey);
-        settings.volumeMusic = audioSettingsManager.musicSlider.value;
-        settings.volumeEffects = audioSettingsManager.effectsSlider.value;
-        settings.volumeUI = audioSettingsManager.uiSlider.value;
-        settings.screenResolutionId = videoSettingsManager.resolutionId;
-        settings.screenModId = videoSettingsManager.modId;
+        SettingsSave settings = new SettingsSave
+        {
+            languageId = LocalizationManager.SelectedLanguage,
+            cursorId = gameSettingsManager.cursorId,
+            AutoRestart = gameSettingsManager.autoManager.isOn,
+            FpsShowing = gameSettingsManager.fpsManager.isOn,
+            ConfimToExitActive = gameSettingsManager.confirmManager.isOn,
+            shaderOn = gameSettingsManager.glitchManager.isOn,
+            keyLeft = Array.IndexOf(allKeyTypes, leftKey),
+            keyRight = Array.IndexOf(allKeyTypes, rightKey),
+            keyJump = Array.IndexOf(allKeyTypes, jumpKey),
+            keyLeftPortal = Array.IndexOf(allKeyTypes, portalGunLeftKey),
+            keyRightPortal = Array.IndexOf(allKeyTypes, portalGunRightKey),
+            keyDialogue = Array.IndexOf(allKeyTypes, dialogueStartKey),
+            keyRestart = Array.IndexOf(allKeyTypes, fastRestartKey),
+            volumeMusic = audioSettingsManager.musicSlider.value,
+            volumeEffects = audioSettingsManager.effectsSlider.value,
+            volumeUI = audioSettingsManager.uiSlider.value,
+            screenResolutionId = videoSettingsManager.resolutionId,
+            screenModId = videoSettingsManager.modId
+        };
 
         if (!Directory.Exists(Application.dataPath + "/save"))
             Directory.CreateDirectory(Application.dataPath + "/save");
