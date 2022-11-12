@@ -8,16 +8,34 @@ public class CellButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public Button button;
     public Image blur;
 
-    public void Start()
+    private bool mouseDown;
+    private bool pointerDown;
+
+    private void Start()
     {
         blur.color = new Color(1f, 1f, 1f, 0f);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && pointerDown) {
+            mouseDown = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0) && mouseDown) {
+            mouseDown = false;
+            if (!pointerDown)
+                UpdateBlur();
+        }
+    }
+
     public void OnPointerEnter(PointerEventData eventData) {
-        StartCoroutine(BlurVisible());
+        pointerDown = true;
+        UpdateBlur();
     }
     public void OnPointerExit(PointerEventData eventData) {
-        StartCoroutine(BlurNonVisible());
+        pointerDown = false;
+        UpdateBlur();
     }
 
     IEnumerator BlurVisible()
@@ -33,5 +51,13 @@ public class CellButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             blur.color = new Color(1f, 1f, 1f, 1f / 10f * i);
             yield return new WaitForSecondsRealtime(0.01f);
         }
+    }
+
+    private void UpdateBlur()
+    {
+        if (pointerDown)
+            StartCoroutine(BlurVisible());
+        else if (!mouseDown)
+            StartCoroutine(BlurNonVisible());
     }
 }

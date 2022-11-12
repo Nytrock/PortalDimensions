@@ -113,6 +113,312 @@
 			<ru>Вы уверены?</ru>
 		</translates>
 	</key>
+	<key name="Весь прогресс будет сброшен">
+		<translates>
+			<en-us>All progress will be dropped</en-us>
+			<ru>Весь прогресс будет сброшен</ru>
+		</translates>
+	</key>
+	<key name="Повторяю: ВЕСЬ прогресс будет сброшен">
+		<translates>
+			<en-us>I repeat: ALL progress will be lost</en-us>
+			<ru>Повторяю: ВЕСЬ прогресс будет сброшен</ru>
+		</translates>
+	</key>
+	<key name="Ещё раз: АБСОЛЮТНО ВЕСЬ прогресс будет сброшен">
+		<translates>
+			<en-us>Once again: ABSOLUTELY all progress will be lost</en-us>
+			<ru>Ещё раз: АБСОЛЮТНО ВЕСЬ прогресс будет сброшен</ru>
+		</translates>
+	</key>
+	<key name="И снова: прогресс исчезнет НАВСЕГДА">
+		<translates>
+			<en-us>And again: progress will disappear FOREVER</en-us>
+			<ru>И снова: прогресс исчезнет НАВСЕГДА</ru>
+		</translates>
+	</key>
+	<key name='"Навсегда" значит, что его нельзя будет восстановить'>
+		<translates>
+			<en-us>"Forever" means that it cannot be restored</en-us>
+			<ru>"Навсегда" значит, что его нельзя будет восстановить</ru>
+		</translates>
+	</key>
+	<key name="Я не шучу, весь прогресс правда будет уничтожен">
+		<translates>
+			<en-us>I'm not joking, all the progress will be destroyed</en-us>
+			<ru>Я не шучу, весь прогресс правда будет уничтожен</ru>
+		</translates>
+	</key>
+	<key name="Я серьёзно">
+		<translates>
+			<en-us>I'm serious</en-us>
+			<ru>Я серьёзно</ru>
+		</translates>
+	</key>
+	<key name="Шутки в сторону">
+		<translates>
+			<en-us>Jokes aside</en-us>
+			<ru>Шутки в сторону</ru>
+		</translates>
+	</key>
+	<key name="В моих словах нет ни капли иронии">
+		<translates>
+			<en-us>There is not a drop of irony in my words</en-us>
+			<ru>В моих словах нет ни капли иронии</ru>
+		</translates>
+	</key>
+	<key name="Или сарказма">
+		<translates>
+			<en-us>Or sarcasm</en-us>
+			<ru>Или сарказма</ru>
+		</translates>
+	</key>
+	<key name="Ну так что, хочешь ли ты сбросить свой прогресс?">
+		<translates>
+			<en-us>So, do you want to lost your progress?</en-us>
+			<ru>Ну так что, хочешь ли ты сбросить свой прогресс?</ru>
+		</translates>
+	</key>
+	<key name="Все твои пройденные уровни исчезнут">
+		<translates>
+			<en-us>All your levels pass will disappear</en-us>
+			<ru>Все твои пройденные уровни исчезнут</ru>
+		</translates>
+	</key>
+	<key name="И рекорды, которые ты на них поставил, тоже">
+		<translates>
+			<en-us>And the records that you set on them, too</en-us>
+			<ru>И рекорды, которые ты на них поставил, тоже</ru>
+		</translates>
+	</key>
+	<key name="Деньги тоже исчезнут">
+		<translates>
+			<en-us>Money will also disappear</en-us>
+			<ru>Деньги тоже исчезнут</ru>
+		</translates>
+	</key>
+	<key name="Все диалоги сбросятся">
+		<translates>
+			<en-us>All dialogs will lost</en-us>
+			<ru>Все диалоги сбросятся</ru>
+		</translates>
+	</key>
+	<key name="Ты ПРАВДА хочешь опять случать эту болтовню?">
+		<translates>
+			<en-us>Do you REALLY want to serve this chatter again?</en-us>
+			<ru>Ты ПРАВДА хочешь опять случать эту болтовню?</ru>
+		</translates>
+	</key>
+	<key name="А ты знал, что в будущем теряемого контента станет ЕЩЁ больше?">
+		<translates>
+			<en-us>Did you know that in the future of the lost content there would be EVEN MORE?</en-us>
+			<ru>А ты знал, что в будущем теряемого контента станет ЕЩЁ больше?</ru>
+		</translates>
+	</key>
+	<key name="И ты не сможешь насладиться им всем сразу?">
+		<translates>
+			<en-us>And you can't enjoy them all at once?</en-us>
+			<ru>И ты не сможешь насладиться им всем сразу?</ru>
+		</translates>
+	</key>
+	<key name="Только если не перепройдёшь всю игру заново...">
+		<translates>
+			<en-us>Only if you do not recall the whole game again...</en-us>
+			<ru>Только если не перепройдёшь всю игру заново...</ru>
+		</translates>
+	</key>
+	<key name="Но ты правда этого хочешь?">
+		<translates>
+			<en-us>But do you really want this?</en-us>
+			<ru>Но ты правда этого хочешь?</ru>
+		</translates>
+	</key>
+	<key name="Неужели?">
+		<translates>
+			<en-us>Really?</en-us>
+			<ru>Неужели?</ru>
+		</translates>
+	</key>
+	<key name="Да ладно???">
+		<translates>
+			<en-us>No way???</en-us>
+			<ru>Да ладно???</ru>
+		</translates>
+	</key>
+	<key name="Серьёзно??????">
+		<translates>
+			<en-us>Seriously??????</en-us>
+			<ru>Серьёзно??????</ru>
+		</translates>
+	</key>
+	<key name="Прям СЕРЬЁЗНО!?">
+		<translates>
+			<en-us>Straight SERIOUS!?</en-us>
+			<ru>Прям СЕРЬЁЗНО!?</ru>
+		</translates>
+	</key>
+	<key name="Ладно,я тебе верю.">
+		<translates>
+			<en-us>Okay, I believe you.</en-us>
+			<ru>Ладно,я тебе верю.</ru>
+		</translates>
+	</key>
+	<key name="Перед сбросом хочу тебе кое-что сказать">
+		<translates>
+			<en-us>Before reset I want to tell you something</en-us>
+			<ru>Перед сбросом хочу тебе кое-что сказать</ru>
+		</translates>
+	</key>
+	<key name="ИДИ">
+		<translates>
+			<en-us>GO</en-us>
+			<ru>ИДИ</ru>
+		</translates>
+	</key>
+	<key name="К">
+		<translates>
+			<en-us>TO</en-us>
+			<ru>К</ru>
+		</translates>
+	</key>
+	<key name="ЧЁРТУ">
+		<translates>
+			<en-us>HELL</en-us>
+			<ru>ЧЁРТУ</ru>
+		</translates>
+	</key>
+	<key name="Прогресс был сброшен">
+		<translates>
+			<en-us>Progress was dropped</en-us>
+			<ru>Прогресс был сброшен</ru>
+		</translates>
+	</key>
+	<key name="Вы ТОЧНО уверены?">
+		<translates>
+			<en-us>Are you sure of sure?</en-us>
+			<ru>Вы ТОЧНО уверены?</ru>
+		</translates>
+	</key>
+	<key name="Точно-точно?">
+		<translates>
+			<en-us>Exactly?</en-us>
+			<ru>Точно-точно?</ru>
+		</translates>
+	</key>
+	<key name="Точно-преточно?">
+		<translates>
+			<en-us>Exactly-Exactly?</en-us>
+			<ru>Точно-преточно?</ru>
+		</translates>
+	</key>
+	<key name="Подумай ещё немного">
+		<translates>
+			<en-us>Think a little more</en-us>
+			<ru>Подумай ещё немного</ru>
+		</translates>
+	</key>
+	<key name='Я сказал "подумай"!'>
+		<translates>
+			<en-us>I said "think"!</en-us>
+			<ru>Я сказал "подумай"!</ru>
+		</translates>
+	</key>
+	<key name="Подумал? Сделай это ещё раз!">
+		<translates>
+			<en-us>Thought? Do it again!</en-us>
+			<ru>Подумал? Сделай это ещё раз!</ru>
+		</translates>
+	</key>
+	<key name="И ещё раз">
+		<translates>
+			<en-us>Once again</en-us>
+			<ru>И ещё раз</ru>
+		</translates>
+	</key>
+	<key name="И ещё раз...">
+		<translates>
+			<en-us>Once again...</en-us>
+			<ru>И ещё раз...</ru>
+		</translates>
+	</key>
+	<key name="И ЕЩЁ раз...">
+		<translates>
+			<en-us>Once again...</en-us>
+			<ru>И ЕЩЁ раз...</ru>
+		</translates>
+	</key>
+	<key name="Последний шанс">
+		<translates>
+			<en-us>Last chance</en-us>
+			<ru>Последний шанс</ru>
+		</translates>
+	</key>
+	<key name="Подожди-ка, ЧТО?!">
+		<translates>
+			<en-us>Wait, what?!</en-us>
+			<ru>Подожди-ка, ЧТО?!</ru>
+		</translates>
+	</key>
+	<key name="Неважно...">
+		<translates>
+			<en-us>No matter...</en-us>
+			<ru>Неважно...</ru>
+		</translates>
+	</key>
+	<key name="Последний шанс.">
+		<translates>
+			<en-us>Last chance.</en-us>
+			<ru>Последний шанс.</ru>
+		</translates>
+	</key>
+	<key name="Последний шанс..">
+		<translates>
+			<en-us>Last chance..</en-us>
+			<ru>Последний шанс..</ru>
+		</translates>
+	</key>
+	<key name="Последний шанс...">
+		<translates>
+			<en-us>Last chance...</en-us>
+			<ru>Последний шанс...</ru>
+		</translates>
+	</key>
+	<key name="Всё ещё последний шанс...">
+		<translates>
+			<en-us>Still the last chance...</en-us>
+			<ru>Всё ещё последний шанс...</ru>
+		</translates>
+	</key>
+	<key name="ПОСЛЕДНИЙ ШАНС">
+		<translates>
+			<en-us>LAST CHANCE</en-us>
+			<ru>ПОСЛЕДНИЙ ШАНС</ru>
+		</translates>
+	</key>
+	<key name="Тебе не надоело?">
+		<translates>
+			<en-us>Are you tired of?</en-us>
+			<ru>Тебе не надоело?</ru>
+		</translates>
+	</key>
+	<key name="Сдаюсь.">
+		<translates>
+			<en-us>I give up.</en-us>
+			<ru>Сдаюсь.</ru>
+		</translates>
+	</key>
+	<key name="НО">
+		<translates>
+			<en-us>BUT</en-us>
+			<ru>НО</ru>
+		</translates>
+	</key>
+	<key name="Поздравляю!!!">
+		<translates>
+			<en-us>Congratulations!!!</en-us>
+			<ru>Поздравляю!!!</ru>
+		</translates>
+	</key>
 	<key name="Прогресс прохождения уровня сбросится">
 		<translates>
 			<en-us>Level progress will be lost</en-us>

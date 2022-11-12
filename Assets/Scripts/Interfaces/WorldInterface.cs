@@ -7,5 +7,6 @@ public interface WorldInterface
     Sprite image { get; }
     int countLevels { get; }
     int completedLevels { get; set; }
+    Level[] levels { get; }
 }
 

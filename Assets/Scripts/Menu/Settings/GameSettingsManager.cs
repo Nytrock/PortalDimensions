@@ -85,7 +85,7 @@ public class GameSettingsManager : MonoBehaviour
     public List<string> sentences;
     public List<string> headers;
     public List<Image> buttonBlurs;
-    public Button buttonReset;
+    public CellButton buttonReset;
     public GameObject startingResetVisual;
     public GameObject startingResetWorking;
     public GameObject endingResetVisual;
@@ -93,7 +93,7 @@ public class GameSettingsManager : MonoBehaviour
     private int resetId;
 
     [Header("Настройки подробной информации")]
-    public string toggleName;
+    private string toggleName;
     public TextMeshProUGUI moreHeader;
     public TextMeshProUGUI moreText;
     public Toggle moreToggle;
@@ -191,6 +191,7 @@ public class GameSettingsManager : MonoBehaviour
     {
         Cursor.SetCursor(cursorsTextures[cursorId], Vector2.zero, CursorMode.ForceSoftware);
         isCursorChange = cursorId != originalCursor;
+        GetComponent<CursorSeeker>().cursorId = cursorId;
         if (!lightVersion)
             cursorImage.texture = cursorsTextures[cursorId];
     }
@@ -387,8 +388,7 @@ public class GameSettingsManager : MonoBehaviour
         if (Save.save.dialogueChoiceManager == null) {
             foreach (Image blur in buttonBlurs)
                 blur.color = new Color(1f, 1f, 1f, 0);
-            buttonBlurs[LocalizationManager.SelectedLanguage].color = new Color(1f, 1f, 1f, 240f / 256f);
-            buttonReset.targetGraphic = buttonBlurs[LocalizationManager.SelectedLanguage];
+            buttonReset.blur = buttonBlurs[LocalizationManager.SelectedLanguage];
         }
     }
 
