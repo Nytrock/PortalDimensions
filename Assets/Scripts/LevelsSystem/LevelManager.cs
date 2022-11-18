@@ -130,7 +130,7 @@ public class LevelManager : MonoBehaviour
             levels[i].gameObject.SetActive(false);
         level.gameObject.SetActive(true);
 
-        var player = Instantiate(Save.save.players[0]);
+        var player = Instantiate(Save.save.characters[0].prefab).GetComponent<Player>();
         player.transform.position = new Vector2(level.spawnPoint.position.x, level.spawnPoint.position.y);
         player.animations.portalGun.gameObject.SetActive(levelMain.hasGun);
 

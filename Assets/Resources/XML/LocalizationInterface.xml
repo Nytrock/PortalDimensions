@@ -1,0 +1,20 @@
+<keys>
+	<key name="Матрица">
+		<translates>
+			<en-us>Matrix</en-us>
+			<ru>Матрица</ru>
+		</translates>
+	</key>
+	<key name="ИИ">
+		<translates>
+			<en-us>AI</en-us>
+			<ru>ИИ</ru>
+		</translates>
+	</key>
+	<key name="Альберт">
+		<translates>
+			<en-us>Albert</en-us>
+			<ru>Альберт</ru>
+		</translates>
+	</key>
+</keys>

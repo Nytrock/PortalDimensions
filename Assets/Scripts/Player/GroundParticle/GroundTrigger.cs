@@ -4,7 +4,7 @@ using UnityEngine;
 public class GroundTrigger : MonoBehaviour
 {
     private Player player;
-    public List<Collider2D> NowColliders;
+    public List<Collider2D> nowColliders;
 
     private void Start()
     {
@@ -17,28 +17,28 @@ public class GroundTrigger : MonoBehaviour
 
     private void Update_Ground()
     {
-        if (NowColliders.Count == 0)
+        if (nowColliders.Count == 0)
             player.onGround = false;
         else
             player.onGround = true;
     }
 
-    void OnTriggerEnter2D(Collider2D obj)
+    private void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet ground)) {
-            if (!NowColliders.Contains(obj)) {
-                NowColliders.Add(obj);
+            if (!nowColliders.Contains(obj)) {
+                nowColliders.Add(obj);
                 Update_Ground();
                 player.Update_Ground(ground);
             }
         }
     }
 
-    void OnTriggerExit2D(Collider2D obj)
+    private void OnTriggerExit2D(Collider2D obj)
     {
         if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet _)) {
-            if (NowColliders.Contains(obj))
-                NowColliders.Remove(obj);
+            if (nowColliders.Contains(obj))
+                nowColliders.Remove(obj);
         }
     }
 }

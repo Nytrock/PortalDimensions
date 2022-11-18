@@ -3,7 +3,6 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Save : MonoBehaviour
 {
@@ -23,11 +22,11 @@ public class Save : MonoBehaviour
     public MoneyManager moneyManager;
 
     [Header("Профили для диалогов")]
-    public List<ProfileDialogue> DialogueProfiles;
+    public ProfileDialogue[] dialogueProfiles;
 
     [Header("Списки для вариантов выбора диалогов")]
-    [SerializeField] private List<bool> ExistingChoiceIdList;
-    [SerializeField] private List<bool> DoChoiceIdList;
+    [SerializeField] private bool[] ExistingChoiceIdList;
+    [SerializeField] private bool[] DoChoiceIdList;
 
     [Header("Бинды кнопок")]
     public KeyCode leftKey;
@@ -39,10 +38,10 @@ public class Save : MonoBehaviour
     public KeyCode fastRestartKey;
 
     [Header("Миры")]
-    public List<World> worlds;
+    public World[] worlds;
 
     [Header("Игроки")]
-    public List<Player> players;
+    public Character[] characters;
 
     [Serializable]
     private class SettingsSave
@@ -69,8 +68,8 @@ public class Save : MonoBehaviour
     [Serializable]
     private class DialoguesSave
     {
-        public List<bool> existingChoices;
-        public List<bool> doingChoices;
+        public bool[] existingChoices;
+        public bool[] doingChoices;
     }
 
     [Serializable]
@@ -84,12 +83,13 @@ public class Save : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         save = this;
-        Load();
+        LoadSave();
+        LoadLists();
     }
 
     public void SaveAll()
     {
-        SettingsSave settings = new SettingsSave();
+        SettingsSave settings = new();
         settings.languageId = LocalizationManager.SelectedLanguage;
         settings.cursorId = gameSettingsManager.cursorId;
         settings.AutoRestart = gameSettingsManager.autoManager.isOn;
@@ -111,30 +111,30 @@ public class Save : MonoBehaviour
         settings.screenResolutionId = videoSettingsManager.resolutionId;
         settings.screenModId = videoSettingsManager.modId;
 
-        DialoguesSave dialogues = new DialoguesSave();
+        DialoguesSave dialogues = new();
         dialogues.existingChoices = ExistingChoiceIdList;
         dialogues.doingChoices = DoChoiceIdList;
 
-        LevelsSave levels = new LevelsSave();
+        LevelsSave levels = new();
         if (moneyManager)
             levels.numMoney = moneyManager.GetCoins();
 
         if (!Directory.Exists(Application.dataPath + "/save"))
             Directory.CreateDirectory(Application.dataPath + "/save");
 
-        FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Create);
-        BinaryFormatter form = new BinaryFormatter();
+        FileStream stream = new(Application.dataPath + WayToSavefile, FileMode.Create);
+        BinaryFormatter form = new();
         form.Serialize(stream, settings);
         form.Serialize(stream, dialogues);
         form.Serialize(stream, levels);
         stream.Close();
     }
 
-    void Load()
+    void LoadSave()
     {
         if (File.Exists(Application.dataPath + WayToSavefile)) {
-            FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Open);
-            BinaryFormatter form = new BinaryFormatter();
+            FileStream stream = new(Application.dataPath + WayToSavefile, FileMode.Open);
+            BinaryFormatter form = new();
 
             try {
                 SettingsSave settings = (SettingsSave)form.Deserialize(stream);
@@ -178,12 +178,12 @@ public class Save : MonoBehaviour
                 }
 
                 DialoguesSave dialogues = (DialoguesSave)form.Deserialize(stream);
-                if (dialogues.existingChoices.Count != 0)
+                if (dialogues.existingChoices.Length != 0)
                     ExistingChoiceIdList = dialogues.existingChoices;
-                if (dialogues.doingChoices.Count != 0)
+                if (dialogues.doingChoices.Length != 0)
                     DoChoiceIdList = dialogues.doingChoices;
                 if (dialogueChoiceManager){
-                    for (int i = 0; i < DoChoiceIdList.Count; i++) {
+                    for (int i = 0; i < DoChoiceIdList.Length; i++) {
                         if (DoChoiceIdList[i])
                             dialogueChoiceManager.DoSomethingFromId(i);
                     }
@@ -201,15 +201,33 @@ public class Save : MonoBehaviour
             if (!Directory.Exists(Application.dataPath + "/save"))
                 Directory.CreateDirectory(Application.dataPath + "/save");
 
-            FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Create);
+            FileStream stream = new(Application.dataPath + WayToSavefile, FileMode.Create);
             stream.Close();
         }
     }
 
+    private void LoadLists()
+    {
+        var loadedProfiles = Resources.LoadAll<ProfileDialogue>("DialogueProfile");
+        dialogueProfiles = new ProfileDialogue[loadedProfiles.Length];
+        foreach (ProfileDialogue profile in loadedProfiles)
+            dialogueProfiles[profile.id] = profile;
+
+        var loadedWorlds = Resources.LoadAll<World>("Worlds");
+        worlds = new World[loadedWorlds.Length];
+        foreach (World world in loadedWorlds)
+            worlds[world.id] = world;
+
+        var loadedCharacters = Resources.LoadAll<Character>("Characters");
+        characters = new Character[loadedCharacters.Length];
+        foreach (Character character in loadedCharacters)
+            characters[character.id] = character;
+    }
+
     public static bool GetAutoRestart()
     {
-        FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Open);
-        BinaryFormatter form = new BinaryFormatter();
+        FileStream stream = new(Application.dataPath + WayToSavefile, FileMode.Open);
+        BinaryFormatter form = new();
         try {
             SettingsSave settings = (SettingsSave)form.Deserialize(stream);
             var result = settings.AutoRestart;
@@ -221,8 +239,8 @@ public class Save : MonoBehaviour
 
     public static bool GetConfirmNeed()
     {
-        FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Open);
-        BinaryFormatter form = new BinaryFormatter();
+        FileStream stream = new(Application.dataPath + WayToSavefile, FileMode.Open);
+        BinaryFormatter form = new();
         try {
             SettingsSave settings = (SettingsSave)form.Deserialize(stream);
             var result = settings.ConfimToExitActive;
@@ -257,8 +275,11 @@ public class Save : MonoBehaviour
             }
         }
 
+        foreach (Character character in characters)
+            character.available = character.id == 0;
+
         Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
-        SettingsSave settings = new SettingsSave
+        SettingsSave settings = new()
         {
             languageId = LocalizationManager.SelectedLanguage,
             cursorId = gameSettingsManager.cursorId,
@@ -283,8 +304,8 @@ public class Save : MonoBehaviour
         if (!Directory.Exists(Application.dataPath + "/save"))
             Directory.CreateDirectory(Application.dataPath + "/save");
 
-        FileStream stream = new FileStream(Application.dataPath + WayToSavefile, FileMode.Create);
-        BinaryFormatter form = new BinaryFormatter();
+        FileStream stream = new(Application.dataPath + WayToSavefile, FileMode.Create);
+        BinaryFormatter form = new();
         form.Serialize(stream, settings);
         stream.Close();
     }

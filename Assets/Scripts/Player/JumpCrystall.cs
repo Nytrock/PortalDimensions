@@ -2,19 +2,21 @@ using UnityEngine;
 
 public class JumpCrystall : MonoBehaviour
 {
-    public bool BoostJump;
+    public bool boostJump;
     private Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
-    void OnTriggerEnter2D(Collider2D obj)
+
+    private void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Player player))
             player.CheckCrystallList(this, false);
     }
-    void OnTriggerExit2D(Collider2D obj)
+
+    private void OnTriggerExit2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Player player))
             player.CheckCrystallList(this, true);

@@ -1,41 +1,42 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Player : MonoBehaviour
 {
     public AnimationPlayer animations;
     private Rigidbody2D rb;
-    public float RealSpeed;
+    [SerializeField] private float realSpeed;
     private Transform skin;
-    public bool Shoot;
-    public bool Right;
-    public bool InPortal;
     public Vector2 moveVector;
 
-    private bool Jumping;
+    private bool jumping;
+    public bool shoot;
+    public bool right;
+    public bool inPortal;
     [Header("Прыжок")]
     public bool onGround;
     private int jumpIteration = 0;
     private float jumpForce;
-    public float NormalForce;
-    public float CrystallForce;
-    public float BoostCrystallForce;
-    private bool CrystallJump;
-    private bool BoostCrystallJump;
-    public bool DoubleJump;
-    public bool TripleJump;
-    private List<JumpCrystall> jumpCrystalls = new List<JumpCrystall>();
-    private List<JumpBonus> bonusDoubleJumps = new List<JumpBonus>();
-    private List<JumpBonus> bonusTripleJumps = new List<JumpBonus>();
+    public float normalForce;
+    public float crystallForce;
+    public float boostCrystallForce;
+    private bool crystallJump;
+    private bool boostCrystallJump;
+    private bool doubleJump;
+    private bool tripleJump;
+    private readonly List<JumpCrystall> jumpCrystalls = new();
+    private readonly List<JumpBonus> bonusDoubleJumps = new();
+    private readonly List<JumpBonus> bonusTripleJumps = new();
     [Header("Смена внешнего вида при повороте")]
-    public List<SpriteRenderer> ChangingObj;
-    public List<Sprite> LeftSprites;
-    public List<Sprite> RightSprites;
+    public SpriteRenderer[] changingObj;
+    public Sprite[] leftSprites;
+    public Sprite[] rightSprites;
     [Header("Бинды кнопок")]
     private KeyCode walkLeftKey;
     private KeyCode walkRightKey;
     private KeyCode jumpKey;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animations = GetComponentInChildren<AnimationPlayer>();
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour
         DialogueManager.dialogueManager.SetPlayer(this);
     }
 
-    void Update()
+    private void Update()
     {
         if (!ButtonFunctional.isGamePaused) {
             Walk();
@@ -55,17 +56,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Walk()
+    private void Walk()
     {
-        var move = 0f;
+        float move = 0f;
         if (Input.GetKey(walkLeftKey) && moveVector.x <= 0)
             move = -1;
         else if (Input.GetKey(walkRightKey) && moveVector.x >= 0)
             move = 1;
-        moveVector.x = move * RealSpeed;
+        moveVector.x = move * realSpeed;
         rb.velocity = new Vector2(moveVector.x, rb.velocity.y);
-        if ((Right && moveVector.x < 0 || !Right && moveVector.x > 0)) {
-            if (Shoot)
+        if ((right && moveVector.x < 0 || !right && moveVector.x > 0)) {
+            if (shoot)
                 animations.ReverseWalk();
             else
                 Flip();
@@ -75,51 +76,51 @@ public class Player : MonoBehaviour
     public void Flip()
     {
         skin.localScale = new Vector2(skin.localScale.x * -1, skin.localScale.y);
-        Right = !Right;
-        if (Right){
-            for (int i=0; i < ChangingObj.Count; i++)
-                ChangingObj[i].sprite = RightSprites[i];
+        right = !right;
+        if (right){
+            for (int i=0; i < changingObj.Length; i++)
+                changingObj[i].sprite = rightSprites[i];
         } else {
-            for (int i = 0; i < ChangingObj.Count; i++)
-                ChangingObj[i].sprite = LeftSprites[i];
+            for (int i = 0; i < changingObj.Length; i++)
+                changingObj[i].sprite = leftSprites[i];
         }
     }
 
-    void Jump()
+    private void Jump()
     {
         if (Input.GetKeyUp(jumpKey))
-            Jumping = false;
+            jumping = false;
         if (Input.GetKeyDown(jumpKey))
-            Jumping = true;
+            jumping = true;
 
         if (jumpIteration > 0) {
             if (!onGround)
-                Jumping = false;
+                jumping = false;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpIteration -= 1;
         }
 
-        if (Jumping && (onGround || CrystallJump || DoubleJump || TripleJump)) {
+        if (jumping && (onGround || crystallJump || doubleJump || tripleJump)) {
             if (onGround) {
-                jumpForce = NormalForce;
+                jumpForce = normalForce;
                 jumpIteration = 10;
-                rb.AddForce(Vector2.up * jumpForce * 1.2f, ForceMode2D.Impulse);
-            } else if (CrystallJump) {
+                rb.AddForce(1.2f * jumpForce * Vector2.up, ForceMode2D.Impulse);
+            } else if (crystallJump) {
                 float value = CalculateJumpForce();
-                jumpForce = CrystallForce / value;
-                if (BoostCrystallJump)
-                    jumpForce = BoostCrystallForce / value;
+                jumpForce = crystallForce / value;
+                if (boostCrystallJump)
+                    jumpForce = boostCrystallForce / value;
                 jumpIteration = 10;
                 jumpCrystalls[0].Active(true);
-            }  else if (DoubleJump || TripleJump) {
+            }  else if (doubleJump || tripleJump) {
                 float value = CalculateJumpForce();
-                jumpForce = CrystallForce / value;
+                jumpForce = crystallForce / value;
                 jumpIteration = 10;
-                if (DoubleJump) {
-                    DoubleJump = false;
-                } else if (TripleJump) {
-                    TripleJump = false;
-                    DoubleJump = true;
+                if (doubleJump) {
+                    doubleJump = false;
+                } else if (tripleJump) {
+                    tripleJump = false;
+                    doubleJump = true;
                 }
                 animations.UpdateJumpBonus();
                 CheckJumpBonuses();
@@ -131,7 +132,7 @@ public class Player : MonoBehaviour
     {
         animations.colorGroundParticle = ground.color;
         if (rb.velocity.y < -14f && onGround) {
-            var main = animations.Fall.main;
+            ParticleSystem.MainModule main = animations.fall.main;
             main.maxParticles = Mathf.Min((int)(8 * (rb.velocity.y * -1 - 14f)), 250);
             animations.FallParticle();
         }
@@ -171,17 +172,17 @@ public class Player : MonoBehaviour
             jumpCrystalls.Add(crystall);
 
         if (jumpCrystalls.Count != 0) {
-            CrystallJump = true;
-            BoostCrystallJump = jumpCrystalls[0].BoostJump;
+            crystallJump = true;
+            boostCrystallJump = jumpCrystalls[0].boostJump;
         } else {
-            CrystallJump = false;
-            BoostCrystallJump = false;
+            crystallJump = false;
+            boostCrystallJump = false;
         }
     }
 
     public void AddToJumpBonusesLists(JumpBonus bonus, bool removing)
     {
-        if (bonus.TripleJump) {
+        if (bonus.tripleJump) {
             if (removing)
                 bonusTripleJumps.Remove(bonus);
             else
@@ -198,14 +199,14 @@ public class Player : MonoBehaviour
 
     private void CheckJumpBonuses()
     {
-        if (bonusTripleJumps.Count > 0 && !TripleJump) {
-            TripleJump = true;
-            DoubleJump = false;
+        if (bonusTripleJumps.Count > 0 && !tripleJump) {
+            tripleJump = true;
+            doubleJump = false;
             bonusTripleJumps[0].GetComponent<Animator>().SetBool("Death", true);
             bonusTripleJumps.RemoveAt(0);
             animations.UpdateJumpBonus();
-        } else if (bonusDoubleJumps.Count > 0 && !DoubleJump && !TripleJump) {
-            DoubleJump = true;
+        } else if (bonusDoubleJumps.Count > 0 && !doubleJump && !tripleJump) {
+            doubleJump = true;
             bonusDoubleJumps[0].GetComponent<Animator>().SetBool("Death", true);
             bonusDoubleJumps.RemoveAt(0);
             animations.UpdateJumpBonus();
@@ -217,5 +218,12 @@ public class Player : MonoBehaviour
         walkLeftKey = Save.save.leftKey;
         walkRightKey = Save.save.rightKey;
         jumpKey = Save.save.jumpKey;
+    }
+
+    public bool GetJump(bool areTriple=false)
+    {
+        if (areTriple)
+            return tripleJump;
+        return doubleJump;
     }
 }

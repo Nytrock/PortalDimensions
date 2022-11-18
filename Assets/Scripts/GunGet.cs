@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GunGet : MonoBehaviour
@@ -18,14 +16,14 @@ public class GunGet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player player)) {
+        if (obj.TryGetComponent(out Player _)) {
             canPickUp = true;
         }
     }
 
     public void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player player)) {
+        if (obj.TryGetComponent(out Player _)) {
             canPickUp = false;
         }
     }

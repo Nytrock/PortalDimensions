@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PortalChecker : MonoBehaviour
 {
     public PortalGun gun;
 
-    void OnTriggerEnter2D(Collider2D obj)
+    private void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet ground))
         {
@@ -14,7 +12,7 @@ public class PortalChecker : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D obj)
+    private void OnTriggerExit2D(Collider2D obj)
     {
         if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet ground))
         {

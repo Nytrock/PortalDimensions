@@ -1,47 +1,46 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationPlayer : MonoBehaviour
 {
     private Animator animator;
-    private List<int> Calm = new List<int> { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4, 5 };
+    private readonly int[] calm = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4, 5 };
     private int PreviosChoose;
     public ParticleSystem sleepEffect;
-    public ParticleSystem Walk1;
-    public ParticleSystem Walk2;
-    public ParticleSystem Fall;
-    public ParticleSystem Shoot;
+    public ParticleSystem walk1;
+    public ParticleSystem walk2;
+    public ParticleSystem fall;
+    public ParticleSystem shoot;
     public Player player;
     public Color colorGroundParticle;
 
     [Header("Связанное с портальной пушкой")]
-    public Transform Body;
-    public SpriteRenderer GunSprite;
-    public Sprite GunOrigSprite;
-    public Sprite LeftSprite;
-    public Sprite RightSprite;
+    public Transform body;
+    public SpriteRenderer gunSprite;
+    public Sprite gunOrigSprite;
+    public Sprite leftSprite;
+    public Sprite rightSprite;
     public PortalGun portalGun;
-    public Transform Hand;
-    public Transform Head;
-    public Color FirstColor;
-    public Color SecondColor;
-    public ParticleSystem Teleport;
+    public Transform hand;
+    public Transform head;
+    public Color firstColor;
+    public Color secondColor;
+    public ParticleSystem teleport;
 
     [Header("Усиления прыжка")]
-    public SpriteRenderer Eye;
-    public Sprite NormalEye;
-    public Sprite DoubleEye;
-    public Sprite TripleEye;
-    public GameObject DoubleLight;
-    public GameObject TripleLight;
-    public ParticleSystem PowerParticle;
-    public Gradient DoubleGradient;
+    public SpriteRenderer eye;
+    public Sprite normalEye;
+    public Sprite doubleEye;
+    public Sprite tripleEye;
+    public GameObject doubleLight;
+    public GameObject tripleLight;
+    public ParticleSystem powerParticle;
+    public Gradient doubleGradient;
     public Gradient TripleGradient;
 
-    private Color FirstPowerColor;
-    private Color SecondPowerColor;
-    private Color AddFirstPowerColor;
-    private Color AddSecondPowerColor;
+    private Color firstPowerColor;
+    private Color secondPowerColor;
+    private Color addFirstPowerColor;
+    private Color addSecondPowerColor;
 
     void Start()
     {
@@ -52,22 +51,18 @@ public class AnimationPlayer : MonoBehaviour
     void Update()
     {
         animator.SetBool("IsJump", !player.onGround);
-        animator.SetBool("IsCalm", player.onGround && player.moveVector.x == 0 && !player.Shoot);
+        animator.SetBool("IsCalm", player.onGround && player.moveVector.x == 0 && !player.shoot);
         animator.SetBool("IsWalk", player.onGround && player.moveVector.x != 0);
     }
 
     public void SetCalm()
     {
-        if (animator.GetBool("IsCalm"))
-        {
-            int choose = 0;
-            while (true)
-            {
-                choose = Calm[Random.Range(0, Calm.Count)];
+        if (animator.GetBool("IsCalm")) {
+            int choose;
+            while (true) {
+                choose = calm[Random.Range(0, calm.Length)];
                 if (choose == 1 || PreviosChoose != choose)
-                {
                     break;
-                }
             }
             animator.Play("Calm-" + choose);
             PreviosChoose = choose;
@@ -76,66 +71,61 @@ public class AnimationPlayer : MonoBehaviour
 
     public void GroundParticleLeft()
     {
-        var main = Walk2.main;
+        var main = walk2.main;
         main.startColor = colorGroundParticle;
-        Walk2.Play();
+        walk2.Play();
     }
 
     public void GroundParticleRight()
     {
-        var main = Walk1.main;
+        var main = walk1.main;
         main.startColor = colorGroundParticle;
-        Walk1.Play();
+        walk1.Play();
     }
 
     public void FallParticle()
     {
-        var main = Fall.main;
+        var main = fall.main;
         main.startColor = colorGroundParticle;
-        Fall.Play();
+        fall.Play();
     }
 
     public void EndShoot()
     {
         animator.SetBool("IsShoot", false);
-        Hand.rotation = Quaternion.Euler(0f, 0f, 0f);
-        Hand.rotation *= Quaternion.Euler(0f, 0f, 0f);
-        Head.rotation = Quaternion.Euler(0f, 0f, 0f);
-        Head.rotation *= Quaternion.Euler(0f, 0f, 0f);
-        portalGun.transform.parent = Body.transform;
+        hand.rotation = Quaternion.Euler(0f, 0f, 0f);
+        hand.rotation *= Quaternion.Euler(0f, 0f, 0f);
+        head.rotation = Quaternion.Euler(0f, 0f, 0f);
+        head.rotation *= Quaternion.Euler(0f, 0f, 0f);
+        portalGun.transform.parent = body.transform;
         portalGun.BlueLight.SetActive(false);
         portalGun.OrangeLight.SetActive(false);
-        GunSprite.sprite = GunOrigSprite;
-        player.Shoot = false;
+        gunSprite.sprite = gunOrigSprite;
+        player.shoot = false;
         animator.SetFloat("Speed", 1);
     }
 
     public void StartShoot()
     {
-        Shoot.Stop();
-        var main = Shoot.main;
+        shoot.Stop();
+        var main = shoot.main;
         animator.SetBool("RestartShooting", false);
-        if (portalGun.RightButton)
-        {
-            GunSprite.sprite = RightSprite;
-            main.startColor = SecondColor;
+        if (portalGun.RightButton) {
+            gunSprite.sprite = rightSprite;
+            main.startColor = secondColor;
+        } else {
+            gunSprite.sprite = leftSprite;
+            main.startColor = firstColor;
         }
-        else
-        {
-            GunSprite.sprite = LeftSprite;
-            main.startColor = FirstColor;
-        }
-        Shoot.Play();
+        shoot.Play();
     }
 
     public void FreeShoot()
     {
-        if (portalGun.RightButton && portalGun.ShootBlue != null)
-        {
+        if (portalGun.RightButton && portalGun.ShootBlue != null) {
             portalGun.ShootBlue.transform.position = new Vector2(portalGun.Shoot_parent.position.x, portalGun.Shoot_parent.position.y);
             portalGun.ShootBlue.gameObject.SetActive(true);
-        } else if (portalGun.ShootOrange != null)
-        {
+        } else if (portalGun.ShootOrange != null) {
             portalGun.ShootOrange.transform.position = new Vector2(portalGun.Shoot_parent.position.x, portalGun.Shoot_parent.position.y);
             portalGun.ShootOrange.gameObject.SetActive(true);
         }
@@ -143,80 +133,80 @@ public class AnimationPlayer : MonoBehaviour
 
     public void From_Portal(bool Right)
     {
-        var main = Teleport.main;
+        var main = teleport.main;
         if (Right)
-            main.startColor = SecondColor;
+            main.startColor = secondColor;
         else
-            main.startColor = FirstColor;
-        Teleport.Play();
+            main.startColor = firstColor;
+        teleport.Play();
     }
 
     public void UpdateJumpBonus()
     {
-        if (player.TripleJump)
-            Eye.sprite = TripleEye;
-        else if (player.DoubleJump)
-            Eye.sprite = DoubleEye;
+        bool doubleJump = player.GetJump();
+        bool tripleJump = player.GetJump(true);
+
+        if (tripleJump)
+            eye.sprite = tripleEye;
+        else if (doubleJump)
+            eye.sprite = doubleEye;
         else
-            Eye.sprite = NormalEye;
-        TripleLight.SetActive(player.TripleJump);
-        DoubleLight.SetActive(player.DoubleJump);
+            eye.sprite = normalEye;
+        tripleLight.SetActive(tripleJump);
+        doubleLight.SetActive(doubleJump);
         
-
-        var main = PowerParticle.main;
-
-        if (player.DoubleJump || player.TripleJump) {
-            PowerParticle.Play();
+        var main = powerParticle.main;
+        if (doubleJump || tripleJump) {
+            powerParticle.Play();
         } else {
-            PowerParticle.Stop();
+            powerParticle.Stop();
             main.startColor = Color.white;
         }
 
-        animator.SetBool("TriplePower", player.TripleJump);
-        animator.SetBool("DoublePower", player.DoubleJump);
+        animator.SetBool("TriplePower", tripleJump);
+        animator.SetBool("DoublePower", doubleJump);
         animator.SetBool("StartPower", main.startColor.color == Color.white);
 
-        if (main.startColor.color == SecondColor && player.TripleJump) {
-            FirstPowerColor = DoubleGradient.colorKeys[0].color;
-            SecondPowerColor = DoubleGradient.colorKeys[1].color;
-            AddFirstPowerColor = (TripleGradient.colorKeys[0].color - DoubleGradient.colorKeys[0].color) / 15f;
-            AddSecondPowerColor = (TripleGradient.colorKeys[1].color - DoubleGradient.colorKeys[1].color) / 15f;
-        } else if (main.startColor.color == FirstColor && player.DoubleJump) {
-            FirstPowerColor = TripleGradient.colorKeys[0].color;
-            SecondPowerColor = TripleGradient.colorKeys[1].color;
-            AddFirstPowerColor = (DoubleGradient.colorKeys[0].color - TripleGradient.colorKeys[0].color) / 15f;
-            AddSecondPowerColor = (DoubleGradient.colorKeys[1].color - TripleGradient.colorKeys[1].color) / 15f;
+        if (main.startColor.color == secondColor && tripleJump) {
+            firstPowerColor = doubleGradient.colorKeys[0].color;
+            secondPowerColor = doubleGradient.colorKeys[1].color;
+            addFirstPowerColor = (TripleGradient.colorKeys[0].color - doubleGradient.colorKeys[0].color) / 15f;
+            addSecondPowerColor = (TripleGradient.colorKeys[1].color - doubleGradient.colorKeys[1].color) / 15f;
+        } else if (main.startColor.color == firstColor && doubleJump) {
+            firstPowerColor = TripleGradient.colorKeys[0].color;
+            secondPowerColor = TripleGradient.colorKeys[1].color;
+            addFirstPowerColor = (doubleGradient.colorKeys[0].color - TripleGradient.colorKeys[0].color) / 15f;
+            addSecondPowerColor = (doubleGradient.colorKeys[1].color - TripleGradient.colorKeys[1].color) / 15f;
         } else if (main.startColor.color == Color.white) {
-            var gradient = PowerParticle.colorOverLifetime;
-            if (player.DoubleJump)
-                gradient.color = DoubleGradient;
-            else if (player.TripleJump)
+            var gradient = powerParticle.colorOverLifetime;
+            if (doubleJump)
+                gradient.color = doubleGradient;
+            else if (tripleJump)
                 gradient.color = TripleGradient;
         }
 
-        if (player.DoubleJump)
-            main.startColor = SecondColor;
-        else if (player.TripleJump)
-            main.startColor = FirstColor;
+        if (doubleJump)
+            main.startColor = secondColor;
+        else if (tripleJump)
+            main.startColor = firstColor;
         else
             main.startColor = Color.white;
     }
 
     public void ChangePowerGradient()
     {
-        var gradient = PowerParticle.colorOverLifetime;
-        FirstPowerColor += AddFirstPowerColor;
-        SecondPowerColor += AddSecondPowerColor;
-        Gradient grad = new Gradient();
-        grad.SetKeys(new GradientColorKey[] { new GradientColorKey(FirstPowerColor, 0.0f), new GradientColorKey(SecondPowerColor, 1.0f) }, 
+        var gradient = powerParticle.colorOverLifetime;
+        firstPowerColor += addFirstPowerColor;
+        secondPowerColor += addSecondPowerColor;
+        Gradient grad = new();
+        grad.SetKeys(new GradientColorKey[] { new GradientColorKey(firstPowerColor, 0.0f), new GradientColorKey(secondPowerColor, 1.0f) }, 
             new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 0.8f), new GradientAlphaKey(0.0f, 1.0f) });
         gradient.color = grad;
     }
 
     public void RestartLevel()
     {
-        var manager = GameObject.Find("LevelsManager").GetComponent<LevelManager>();
-        manager.RestartLevel();
+        LevelManager.levelManager.RestartLevel();
     }
 
     public void StartShooting()

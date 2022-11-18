@@ -1,0 +1,41 @@
+<keys>
+	<key name="DialogeTest_1" instant="true">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>2</next>
+	</key>
+	<key name="DialogeTest_2">
+		<id_user>0</id_user>
+		<mood>Angry</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>3</next>
+	</key>
+	<key name="DialogeTest_3">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1</speed>
+		<choice>
+			<text next="4" existing_id="0">Да</text>
+			<text next="5" existing_id="1">Ага</text>
+			<text next="4" existing_id="2">Негры АХАХАХ</text>
+			<text next="5" required="true">Нет конечно</text>
+		</choice>
+	</key>
+	<key name="DialogeTest_4">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+	<key name="DialogeTest_5" instant="true">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+</keys>

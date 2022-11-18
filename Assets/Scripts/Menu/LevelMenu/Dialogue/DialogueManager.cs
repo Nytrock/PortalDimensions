@@ -57,8 +57,10 @@ public class DialogueManager : MonoBehaviour
         {
             if (isTextShow) {
                 StopAllCoroutines();
-                if (MainText != null)
+                if (MainText != null) {
+                    ClearTextFromCommands();
                     MainText.text = NeedText;
+                }
                 foreach (var button in viewChoices) {
                     button.Key.SetActive(true);
                     button.Value.SetActive(true);
@@ -99,6 +101,12 @@ public class DialogueManager : MonoBehaviour
 
         player.StopWorking();
         panelsController.SetBool("isDialogue", true);
+        if (bool.Parse(information["instant"])) {
+            panelsController.Play("StartDialogue", 0, 0f);
+            StartCoroutine(StartShowText(0.3f));
+        } else {
+            StartCoroutine(StartShowText(1.3f));
+        }
         isAnimation = true;
     }
 
@@ -110,6 +118,12 @@ public class DialogueManager : MonoBehaviour
 
         if (numPanel == -1) {
             panelsController.SetBool("isDialogue", false);
+            if (bool.Parse(information["instant"])) {
+                panelsController.Play("EndDialogue", 0, 0f);
+                StartCoroutine(ClearText(0.3f));
+            } else {
+                StartCoroutine(ClearText(1.3f));
+            }
             player.enabled = true;
             player.animations.portalGun.enabled = true;
             viewChoices.Clear();
@@ -146,21 +160,90 @@ public class DialogueManager : MonoBehaviour
             SetTextPanel(JustText);
             MainText.text = "";
         }
-        StartShowText();
+        StartCoroutine(StartShowText(0f));
     }
 
-    public void StartShowText()
+    private IEnumerator StartShowText(float wait)
     {
-        StartCoroutine(ShowingText());
+        yield return new WaitForSeconds(wait);
         isTextShow = true;
         isAnimation = false;
 
         var information = dialogues[dialogeKey + "_" + numPanel];
-        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
+        var profile = save.dialogueProfiles[int.Parse(information["id_user"])];
+        var animator = ProfileImage.GetComponent<Animator>();
         if (profile.isRobot) {
-            var animator = ProfileImage.GetComponent<Animator>();
             animator.SetFloat("Speed", 1 / (speedShowingText * 10) / 1.5f);
         }
+
+        NeedText = NeedText.Replace("{GK_Left}", Save.save.leftKey.ToString());
+        NeedText = NeedText.Replace("{GK_Right}", Save.save.rightKey.ToString());
+        NeedText = NeedText.Replace("{GK_Jump}", Save.save.jumpKey.ToString());
+        NeedText = NeedText.Replace("{GK_LeftPortal}", Save.save.portalGunLeftKey.ToString());
+        NeedText = NeedText.Replace("{GK_RightPortal}", Save.save.portalGunRightKey.ToString());
+        NeedText = NeedText.Replace("{GK_Act}", Save.save.dialogueStartKey.ToString());
+        NeedText = NeedText.Replace("{GK_Restart}", Save.save.fastRestartKey.ToString());
+
+        int position = 0;
+        if (MainText != null) {
+            while (NeedText.Length != position) {
+                if (NeedText[position] == '{') {
+                    int end = position + 1;
+                    var command = "";
+                    while (NeedText[end] != '}') {
+                        command += NeedText[end];
+                        end += 1;
+                    }
+
+                    var commandValue = command.Split('_')[1];
+                    if (command.Contains("WS")) {
+                        SetAllStatesFalse(animator);
+                        yield return new WaitForSeconds(float.Parse(commandValue, CultureInfo.InvariantCulture.NumberFormat));
+                        SetProfileInformation(information);
+                    } else if (command.Contains("CS")) {
+                        speedShowingText = float.Parse(commandValue, CultureInfo.InvariantCulture.NumberFormat);
+                    } else if (command.Contains("CE")) {
+                        information["mood"] = commandValue;
+                        SetProfileInformation(information);
+                    }
+                    animator.SetFloat("Speed", 1 / (speedShowingText * 10) / 1.5f);
+                    NeedText = NeedText.Remove(position, end - position + 1);
+                    position -= 1;
+                } else {
+                    MainText.text += NeedText[position];
+                }
+                position += 1;
+                yield return new WaitForSeconds(speedShowingText);
+            }
+        }
+
+        if (viewChoices.Count > 0) {
+            if (animator.GetBool("isCalm"))
+                ProfileImage.sprite = profile.CalmImage;
+            if (animator.GetBool("isAngry"))
+                ProfileImage.sprite = profile.AngryImage;
+            if (animator.GetBool("isAfraid"))
+                ProfileImage.sprite = profile.AfraidImage;
+            if (animator.GetBool("isConfused"))
+                ProfileImage.sprite = profile.ConfusedImage;
+            if (animator.GetBool("isHappy"))
+                ProfileImage.sprite = profile.HappyImage;
+            if (animator.GetBool("isTense"))
+                ProfileImage.sprite = profile.TenseImage;
+            SetAllStatesFalse(animator);
+            animator.enabled = false;
+
+            yield return new WaitForSeconds(speedShowingText * 3);
+            choiceArrow.gameObject.SetActive(true);
+            foreach (var button in viewChoices) {
+                button.Key.SetActive(true);
+                button.Value.SetActive(true);
+                yield return new WaitForSeconds(speedShowingText * 2);
+            }
+        }
+
+        CheckRobotAtEnd();
+        isTextShow = false;
     }
 
     public void ChangeMainText()
@@ -174,37 +257,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    IEnumerator ShowingText()
+    private IEnumerator ClearText(float wait)
     {
-        int position = 1;
-        if (MainText != null) {
-            while (MainText.text != NeedText)
-            {
-                MainText.text = NeedText.Substring(0, position);
-                position += 1;
-                yield return new WaitForSeconds(speedShowingText);
-            }
-        }
-        if (viewChoices.Count > 0) {
-            yield return new WaitForSeconds(speedShowingText * 3);
-            choiceArrow.gameObject.SetActive(true);
-            foreach (var button in viewChoices)
-            {
-                button.Key.SetActive(true);
-                button.Value.SetActive(true);
-                yield return new WaitForSeconds(speedShowingText * 2);
-            }
-        }
-
-        CheckRobotAtEnd();
-        isTextShow = false;
-    }
-
-    public void ClearText()
-    {
+        yield return new WaitForSeconds(wait);
         SetNotActive();
         MainText.text = "";
-        MainText = null;
     }
 
     private void LoadDialogues()
@@ -218,9 +275,11 @@ public class DialogueManager : MonoBehaviour
         foreach (XmlNode key in xmlDocument["keys"].ChildNodes)
         {
             string keyStr = key.Attributes["name"].Value;
+            var instant = key.Attributes["instant"];
 
             var values = new Dictionary<string, string>();
             foreach (XmlNode value in key.ChildNodes) {
+                values["instant"] = (instant != null).ToString();
                 if (value.Name != "choice") {
                     values[value.Name] = value.InnerText;
                 } else {
@@ -261,8 +320,8 @@ public class DialogueManager : MonoBehaviour
 
     private void SetProfileInformation(Dictionary<string, string> information)
     {
-        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
-        Name.GetComponent<LocalizedText>().Localize(profile.name);
+        var profile = save.dialogueProfiles[int.Parse(information["id_user"])];
+        Name.GetComponent<LocalizedText>().Localize(profile.header);
 
         ProfileImage.color = profile.profileColor;
 
@@ -389,7 +448,7 @@ public class DialogueManager : MonoBehaviour
 
     private void SetImageAfterAnimation(Dictionary<string, string> information)
     {
-        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
+        var profile = save.dialogueProfiles[int.Parse(information["id_user"])];
 
         switch (information["mood"]) {
             case "Calm": ProfileImage.sprite = profile.CalmImage; break;
@@ -404,7 +463,7 @@ public class DialogueManager : MonoBehaviour
     private void CheckRobotAtEnd()
     {
         var information = dialogues[dialogeKey + "_" + numPanel];
-        var profile = save.DialogueProfiles[int.Parse(information["id_user"])];
+        var profile = save.dialogueProfiles[int.Parse(information["id_user"])];
         if (profile.isRobot) {
             SetAllStatesFalse(ProfileImage.GetComponent<Animator>());
             ProfileImage.GetComponent<Animator>().enabled = false;
@@ -413,5 +472,23 @@ public class DialogueManager : MonoBehaviour
     }
     public void SetPlayer(Player newPlayer) {
         player = newPlayer;
+    }
+
+    private void ClearTextFromCommands()
+    {
+        int position = 0;
+        while (NeedText.Length != position) {
+            if (NeedText[position] == '{') {
+                int end = position + 1;
+                var command = "";
+                while (NeedText[end] != '}') {
+                    command += NeedText[end];
+                    end += 1;
+                }
+                NeedText = NeedText.Remove(position, end - position + 1);
+            } else {
+                position += 1;
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using System;
 
 public class PortalShoot : MonoBehaviour
 {
@@ -19,48 +19,48 @@ public class PortalShoot : MonoBehaviour
 
     public bool isUsed = false;
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(AddSpeed());
-        Invoke("DestroyAmmo", destroyTime);
+        Invoke(nameof(DestroyAmmo), destroyTime);
     }
 
     public void Update()
     {
-        transform.Translate(new Vector2(0, -1) * Speed * Time.deltaTime);
+        transform.Translate(Speed * Time.deltaTime * new Vector2(0, -1));
     }
 
-    void DestroyAmmo()
+    private void DestroyAmmo()
     {
         GetComponent<Animator>().enabled = true;
     }
 
-    IEnumerator AddSpeed()
+    private IEnumerator AddSpeed()
     {
-        while (true)
-        {
+        while (true) {
             Speed += boost;
             yield return new WaitForSeconds(0.1f);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D obj)
+    private void OnTriggerEnter2D(Collider2D obj)
     {
+        var animator = GetComponent<Animator>();
         if (gun.RightButton == Blue.activeSelf && gun.InWall) {
             isUsed = true;
-            GetComponent<Animator>().enabled = true;
-        } else if (!isUsed && (obj.tag == "ForPortal")) {
+            animator.enabled = true;
+        } else if (!isUsed && (obj.CompareTag("ForPortal"))) {
             if (obj.TryGetComponent(out PortalCollider portalCollider)) {
                 SpawnPortal(portalCollider.portal.Collider);
                 isUsed = true;
-                GetComponent<Animator>().enabled = true;
+                animator.enabled = true;
             } else if (obj.TryGetComponent(out PolygonCollider2D polygon)) {
                 SpawnPortal(polygon);
                 isUsed = true;
-                GetComponent<Animator>().enabled = true;
+                animator.enabled = true;
             }
-        } else if ((isUsed && !(obj.tag == "Player")) || (!isUsed && obj.tag == "NotForPortal")) {
-            GetComponent<Animator>().enabled = true;
+        } else if ((isUsed && !(obj.CompareTag("Player"))) || (!isUsed && obj.CompareTag("NotForPortal"))) {
+            animator.enabled = true;
         }
     }
 
@@ -71,19 +71,19 @@ public class PortalShoot : MonoBehaviour
 
     public void SpawnPortal(PolygonCollider2D other)
     {
-        var portal = Instantiate(portalPrefab, null);
+        Portal portal = Instantiate(portalPrefab, null);
         portal.SetPortal(Right, gun);
 
         Vector2[] points = other.points;
         Array.Resize(ref points, points.Length + 1);
-        points[points.Length - 1] = points[0];
+        points[^1] = points[0];
         for (int i = 0; i < points.Length; i++)
             points[i] = other.transform.TransformPoint(points[i]);
 
         FindSideAndAlign(portal, points, other);
 
         portal.transform.parent = other.gameObject.transform;
-        var main = portal.Particles.main;
+        ParticleSystem.MainModule main = portal.Particles.main;
         if (Right)
             main.startColor = SecondColor;
         else
@@ -91,7 +91,7 @@ public class PortalShoot : MonoBehaviour
         gun.CheckPortals(Right);
     }
 
-    void Horizontal_Alignment(Vector2 portal0, Vector2 portal1, Vector2 pointI, Vector2 pointII, Portal portal)
+    private void Horizontal_Alignment(Vector2 portal0, Vector2 portal1, Vector2 pointI, Vector2 pointII, Portal portal)
     {
         if (portal1.x > pointI.x && portal0.x < pointII.x)
             Destroy_Portal(portal);
@@ -101,7 +101,7 @@ public class PortalShoot : MonoBehaviour
             portal.transform.position = new Vector2(portal.transform.position.x + (pointII.x - portal0.x), portal.transform.position.y);
     }
 
-    void Vertical_Alignment(Vector2 portal0, Vector2 portal1, Vector2 pointI, Vector2 pointII, Portal portal)
+    private void Vertical_Alignment(Vector2 portal0, Vector2 portal1, Vector2 pointI, Vector2 pointII, Portal portal)
     {
         if (portal1.y > pointI.y && portal0.y < pointII.y)
             Destroy_Portal(portal);
@@ -111,19 +111,19 @@ public class PortalShoot : MonoBehaviour
             portal.transform.position = new Vector2(portal.transform.position.x, portal.transform.position.y + (pointII.y - portal0.y));
     }
 
-    bool Horizontal_Check(Vector2[] center, Vector2 side1, Vector2 side2)
+    private bool Horizontal_Check(Vector2[] center, Vector2 side1, Vector2 side2)
     {
         return center[0].x > side2.x && center[0].x < side1.x || center[1].x > side2.x && center[1].x < side1.x ||
                                             center[0].x == side1.x && center[1].x == side2.x;
     }
 
-    bool Vertical_Check(Vector2[] center, Vector2 side1, Vector2 side2)
+    private bool Vertical_Check(Vector2[] center, Vector2 side1, Vector2 side2)
     {
         return center[0].y > side2.y && center[0].y < side1.y || center[1].y > side2.y && center[1].y < side1.y ||
                                             center[0].y == side1.y && center[1].y == side2.y;
     }
 
-    void VerticalPortalsAligment(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
+    private void VerticalPortalsAligment(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
     {
         if (center1.y >= Points2[num1].y && center1.y <= Points2[num2].y)
             Destroy_Portal(portal);
@@ -133,7 +133,7 @@ public class PortalShoot : MonoBehaviour
             portal.transform.position = new Vector2(center1.x + (Points2[num2].x - Points1[num1].x) * 1.1f, center1.y + (Points2[num2].y - Points1[num1].y) * 1.1f);
     }
 
-    void HorizontalPortalsAligment(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
+    private void HorizontalPortalsAligment(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
     {
         if (center1.x >= Points2[num2].x && center1.x <= Points2[num1].x)
             Destroy_Portal(portal);
@@ -143,7 +143,7 @@ public class PortalShoot : MonoBehaviour
             portal.transform.position = new Vector2(center1.x + (Points2[num1].x - Points1[num2].x) * 1.1f, center1.y - (Points1[num2].y - Points2[num1].y) * 1.1f);
     }
 
-    void Destroy_Portal(Portal portal)
+    private void Destroy_Portal(Portal portal)
     {
         Destroy(portal.gameObject);
         if (Right)
@@ -152,11 +152,10 @@ public class PortalShoot : MonoBehaviour
             gun.OrangePortal = null;
     }
 
-    void SetPortalScaleAndRotation(Portal portal, PolygonCollider2D other, int i)
+    private void SetPortalScaleAndRotation(Portal portal, PolygonCollider2D other, int i)
     {
         float rotat = other.transform.rotation.eulerAngles.z;
-        switch (i)
-        {
+        switch (i) {
             case 0: rotat += -90f; break;
             case 1: rotat += 0f; break;
             case 2: rotat += 90f; break;
@@ -175,12 +174,12 @@ public class PortalShoot : MonoBehaviour
         portal.Collider2.transform.localScale = new Vector2(1f / Scale, 1f);
     }
 
-    void FindSideAndAlign(Portal portal, Vector2[] points, PolygonCollider2D other)
+    private void FindSideAndAlign(Portal portal, Vector2[] points, PolygonCollider2D other)
     {
         while (true) {
             for (int i = 0; i < points.Length - 1; i++) {
                 foreach (RaycastHit2D item in Physics2D.LinecastAll(points[i], points[i + 1])) {
-                    if (item.collider.tag == "Shoot") {
+                    if (item.collider.CompareTag("Shoot")) {
                         if (Right) {
                             if (gun.BluePortal != null)
                                 gun.BluePortal.DestroyPortalAnimation();
@@ -213,7 +212,7 @@ public class PortalShoot : MonoBehaviour
                                     else
                                         Points2[j] = gun.BluePortal.Blue.transform.TransformPoint(Points2[j]);
                                 }
-                                var center1 = portal.transform.position;
+                                Vector3 center1 = portal.transform.position;
 
                                 switch (i) {
                                     case 0:
@@ -266,7 +265,7 @@ public class PortalShoot : MonoBehaviour
                                     else
                                         Points2[j] = gun.BluePortal.Blue.transform.TransformPoint(Points2[j]);
                                 }
-                                var center1 = portal.transform.position;
+                                Vector3 center1 = portal.transform.position;
 
                                 switch (i) {
                                     case 0:

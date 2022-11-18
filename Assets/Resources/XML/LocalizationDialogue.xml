@@ -1,0 +1,56 @@
+<keys>
+	<key name="Хорошо">
+		<translates>
+			<en-us>Alright</en-us>
+			<ru>Хорошо</ru>
+		</translates>
+	</key>
+	<key name="Окей">
+		<translates>
+			<en-us>Okay</en-us>
+			<ru>Окей</ru>
+		</translates>
+	</key>
+	<key name="Нет проблем">
+		<translates>
+			<en-us>No problem</en-us>
+			<ru>Нет проблем</ru>
+		</translates>
+	</key>
+	<key name="Ну давай">
+		<translates>
+			<en-us>Come on</en-us>
+			<ru>Ну давай</ru>
+		</translates>
+	</key>
+	<key name="Нет, спасибо">
+		<translates>
+			<en-us>No, thanks</en-us>
+			<ru>Нет, спасибо</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_1">
+		<translates>
+			<en-us>Left button - {GK_Left}. Jump Button - {GK_Jump}.</en-us>
+			<ru>Кнопка влево - {GK_Left}. Кнопка прыжка - {GK_Jump}.</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_2">
+		<translates>
+			<en-us>Text Text Stop 3 seconds. {WS_3}{CE_Afraid}Text Text Decrease speed by 2. {CS_0.5}Text Text End.</en-us>
+			<ru>Текст Текст Стоп 3 секунды. {WS_3}{CE_Afraid}Текст Текст Уменьшить скорость на 2. {CS_0.5}Текст Текст Конец.</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_4">
+		<translates>
+			<en-us>That's good. By the way, I never came up with a question, so see you soon.</en-us>
+			<ru>Вот и хорошо. Кстати, я так и не придумал вопроса, так что до скорого.</ru>
+		</translates>
+	</key>
+	<key name="DialogeTest_5">
+		<translates>
+			<en-us>You said no. I would suggest that you turn around more often on the street.</en-us>
+			<ru>Ты сказал нет. Я бы предложил тебе почаще оборачиваться на улице.</ru>
+		</translates>
+	</key>
+</keys>
