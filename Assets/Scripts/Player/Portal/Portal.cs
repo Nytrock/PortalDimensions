@@ -39,7 +39,7 @@ public class Portal : MonoBehaviour
     {
         if (gun.itemToTeleport) {
             if (gun.itemToTeleport.TryGetComponent(out Player player))
-                player.InPortal = trigger.inPortal;
+                player.inPortal = trigger.inPortal;
         }
 
         if (Teleport && !trigger.inPortal) {
@@ -61,11 +61,6 @@ public class Portal : MonoBehaviour
     public void DestroyPortalAnimation()
     {
         animator.SetBool("Death", true);
-    }
-
-    void DestroyPortal()
-    {
-        Destroy(gameObject);
     }
 
     public void ChangePregrads(bool Const)

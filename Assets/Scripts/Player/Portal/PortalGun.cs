@@ -44,7 +44,7 @@ public class PortalGun : MonoBehaviour
     
     private void Update()
     {
-        if ((Input.GetKeyDown(leftPortalKey) || Input.GetKeyDown(rightPortalKey)) && !player.InPortal && !menuActive && !ButtonFunctional.isGamePaused)
+        if ((Input.GetKeyDown(leftPortalKey) || Input.GetKeyDown(rightPortalKey)) && !player.inPortal && !menuActive && !ButtonFunctional.isGamePaused)
         {
             Shoot();
 
@@ -54,7 +54,7 @@ public class PortalGun : MonoBehaviour
 
             LevelManager.levelManager.AddToScore("Shoot");
             transform.parent = NewPosition;
-            player.Shoot = true;
+            player.shoot = true;
             player.animations.StartShooting();
         }
     }
@@ -195,7 +195,7 @@ public class PortalGun : MonoBehaviour
         float off = offset;
         Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
 
-        if (player.Right) {
+        if (player.right) {
             if (-90 >= rotateZ || rotateZ >= 90) {
                 if ((rotateZ <= -90 && rotateZ < 0) || (rotateZ >= 90 && rotateZ > 0)) {
                     player.Flip();
@@ -231,10 +231,10 @@ public class PortalGun : MonoBehaviour
     public void HeadRotation()
     {
         float off = offset;
-        if (player.Right) {
+        if (player.right) {
             off = -off;
         }
-        if (player.Right) {
+        if (player.right) {
             if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 > 3)
                 Head.localRotation = Quaternion.Euler(0f, 0f, 3f);
             else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 < -2)

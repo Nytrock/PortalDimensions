@@ -617,18 +617,6 @@
 			<ru>Работа глючного эффекта в меню и не только в нём (выключите, если у вас слабый пк).</ru>
 		</translates>
 	</key>
-	<key name="ИИ">
-		<translates>
-			<en-us>AI</en-us>
-			<ru>ИИ</ru>
-		</translates>
-	</key>
-	<key name="Альберт">
-		<translates>
-			<en-us>Albert</en-us>
-			<ru>Альберт</ru>
-		</translates>
-	</key>
 	<key name="💬Начать диалог">
 		<translates>
 			<en-us>💬Start dialogue</en-us>

@@ -157,7 +157,7 @@ public class LevelsSwitchManager : MonoBehaviour
 
     public void InstantTransition(int newIndex)
     {
-        float newPosition = (index - newIndex) * 923.76f;
+        float newPosition = (index - newIndex) * 800f;
         nowPosition += newPosition;
         targetPosition += newPosition;
         visualGridContainer.localPosition = new Vector2(nowPosition, visualGridContainer.localPosition.y);

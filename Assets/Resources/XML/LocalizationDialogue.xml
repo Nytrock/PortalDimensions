@@ -31,14 +31,14 @@
 	</key>
 	<key name="DialogeTest_1">
 		<translates>
-			<en-us>Welcome to the new test system. Answer a simple question.</en-us>
-			<ru>Приветствую в новой тестовой системе. Ответьте на простой вопрос.</ru>
+			<en-us>Left button - {GK_Left}. Jump Button - {GK_Jump}.</en-us>
+			<ru>Кнопка влево - {GK_Left}. Кнопка прыжка - {GK_Jump}.</ru>
 		</translates>
 	</key>
 	<key name="DialogeTest_2">
 		<translates>
-			<en-us>Otherwise, you will be destroyed. I'm serious. Seriously. And jokes too.</en-us>
-			<ru>Иначе будете уничтожены. Я серьёзно. Шутки в сторону. И анекдоты тоже.</ru>
+			<en-us>Text Text Stop 3 seconds. {WS_3}{CE_Afraid}Text Text Decrease speed by 2. {CS_0.5}Text Text End.</en-us>
+			<ru>Текст Текст Стоп 3 секунды. {WS_3}{CE_Afraid}Текст Текст Уменьшить скорость на 2. {CS_0.5}Текст Текст Конец.</ru>
 		</translates>
 	</key>
 	<key name="DialogeTest_4">
