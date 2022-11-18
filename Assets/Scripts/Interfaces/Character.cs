@@ -6,7 +6,7 @@ public class Character : ScriptableObject, CharacterInterface
     public int id => _id;
     public GameObject prefab => _prefab;
     public int price => _price;
-    CharacterInterface.RarityLevel CharacterInterface.rarity => throw new System.NotImplementedException();
+    public CharacterInterface.RarityLevel rarity => _rarity;
     public bool available {
         get => _available;
         set => _available = value;
