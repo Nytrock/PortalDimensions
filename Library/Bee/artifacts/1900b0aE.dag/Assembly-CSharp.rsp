@@ -450,6 +450,7 @@
 "Assets/Scripts/Save/CursorSeeker.cs"
 "Assets/Scripts/Save/Save.cs"
 "Assets/Scripts/ScriptableObjectsEditors/CharacterEditor.cs"
+"Assets/Scripts/ScriptableObjectsEditors/DialogueEditor.cs"
 "Assets/Scripts/ScriptableObjectsEditors/LevelEditor.cs"
 "Assets/Scripts/ScriptableObjectsEditors/WorldEditor.cs"
 "Assets/Scripts/WorldsChoice/WorldsChoiceManager.cs"
