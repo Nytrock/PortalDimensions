@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Menu\Settings\VideoSettingsManager.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\Portal.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\FinishLevel\MoneyManager.cs" />
+    <Compile Include="Assets\Scripts\Menu\SliderVolume.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjectsEditors\CharacterEditor.cs" />
     <Compile Include="Assets\Scripts\Menu\Choice.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalShoot.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundGet.cs" />
     <Compile Include="Assets\Scripts\Player\DeathTrap.cs" />
     <Compile Include="Assets\Scripts\Player\DeathEffect.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjectsEditors\DialogueEditor.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedDropdown.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DialogueChoiceManager.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalChecker.cs" />
@@ -125,7 +127,6 @@
     <Compile Include="Assets\Scripts\LevelsSystem\ButtonSwitch.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\ConfirmButtons.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\ScriptableObjectsEditors\DialogueEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

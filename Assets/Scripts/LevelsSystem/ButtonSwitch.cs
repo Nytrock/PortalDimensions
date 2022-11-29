@@ -14,12 +14,14 @@ public class ButtonSwitch : MonoBehaviour
     public void Highlighted()
     {
         ResetAllAnimations();
+        ButtonFunctional.buttonFunctional.HoverPlay();
         animator.SetBool("Highlighted" + animationType, true);
     }
 
     public void Pressed()
     {
         ResetAllAnimations();
+        ButtonFunctional.buttonFunctional.PressPlay();
         animator.SetBool("Pressed" + animationType, true);
     }
     public void Disabled()

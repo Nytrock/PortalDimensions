@@ -21,6 +21,9 @@ public class Portal : MonoBehaviour
     private Animator animator;
     public List<Collider2D> Pregrads;
 
+    [Header("Звуки")]
+    [SerializeField] private AudioSource teleportSound;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -70,5 +73,15 @@ public class Portal : MonoBehaviour
             if (Pregrads[i] != Collider)
                 Pregrads[i].enabled = Const;
         }
+    }
+
+    public void DestroyPortal()
+    {
+        Destroy(gameObject);
+    }
+
+    public void PlayTeleport()
+    {
+        teleportSound.Play();
     }
 }

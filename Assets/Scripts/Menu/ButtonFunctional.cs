@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunctional : MonoBehaviour
 {
+    public static ButtonFunctional buttonFunctional;
+
     public static bool isGamePaused;
     public static bool pauseEnable;
     private Animator animator;
@@ -28,9 +30,15 @@ public class ButtonFunctional : MonoBehaviour
     public GameObject exitText;
     public GameObject settingsText;
 
+    [Header("Ёффекты")]
+    [SerializeField] private AudioSource press;
+    [SerializeField] private AudioSource hover;
+
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        buttonFunctional = this;
+        if (TryGetComponent(out Animator anim))
+            animator = anim;
         Time.timeScale = 1;
         pauseEnable = true;
 
@@ -42,7 +50,8 @@ public class ButtonFunctional : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && pauseEnable) {
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseEnable && animator != null) {
+            PressPlay();
             if (animator.GetBool("isGameReset"))
                 gameSettings.SetResetAnimation();
             else if (animator.GetBool("isMore"))
@@ -186,6 +195,7 @@ public class ButtonFunctional : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        Time.fixedDeltaTime = 0.02f;
         isGamePaused = true;
         mainChoice.StartPauseWorking();
         settingsChoice.StartPauseWorking();
@@ -195,6 +205,7 @@ public class ButtonFunctional : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.002f;
         isGamePaused = false;
         mainChoice.StopPauseWorking();
         settingsChoice.StopPauseWorking();
@@ -233,5 +244,15 @@ public class ButtonFunctional : MonoBehaviour
         foreach (Button button in mainPanel.GetComponentsInChildren<Button>())
             button.interactable = false;
         pauseEnable = false;
+    }
+
+    public void PressPlay()
+    {
+        press.Play();
+    }
+
+    public void HoverPlay()
+    {
+        hover.Play();
     }
 }

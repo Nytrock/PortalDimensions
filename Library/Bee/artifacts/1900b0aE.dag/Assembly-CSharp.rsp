@@ -431,6 +431,7 @@
 "Assets/Scripts/Menu/Settings/GameSettingsManager.cs"
 "Assets/Scripts/Menu/Settings/VideoSettingsManager.cs"
 "Assets/Scripts/Menu/ShaderUpdate.cs"
+"Assets/Scripts/Menu/SliderVolume.cs"
 "Assets/Scripts/Player/AnimationPlayer.cs"
 "Assets/Scripts/Player/DeathEffect.cs"
 "Assets/Scripts/Player/DeathTrap.cs"

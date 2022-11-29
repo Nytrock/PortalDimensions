@@ -133,6 +133,7 @@ public class LevelManager : MonoBehaviour
         var player = Instantiate(Save.save.characters[0].prefab).GetComponent<Player>();
         player.transform.position = new Vector2(level.spawnPoint.position.x, level.spawnPoint.position.y);
         player.animations.portalGun.gameObject.SetActive(levelMain.hasGun);
+        Time.fixedDeltaTime = 0.002f;
 
         mainVirtualCamera.Follow = player.transform;
         CinemachineConfiner confiner = mainVirtualCamera.gameObject.AddComponent<CinemachineConfiner>();

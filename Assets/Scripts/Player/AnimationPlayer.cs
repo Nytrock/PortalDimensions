@@ -42,6 +42,10 @@ public class AnimationPlayer : MonoBehaviour
     private Color addFirstPowerColor;
     private Color addSecondPowerColor;
 
+    [Header("Звуки")]
+    [SerializeField] private AudioSource walkSound;
+    [SerializeField] private AudioSource jumpSound;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -74,6 +78,7 @@ public class AnimationPlayer : MonoBehaviour
         var main = walk2.main;
         main.startColor = colorGroundParticle;
         walk2.Play();
+        PlayWalk();
     }
 
     public void GroundParticleRight()
@@ -81,6 +86,18 @@ public class AnimationPlayer : MonoBehaviour
         var main = walk1.main;
         main.startColor = colorGroundParticle;
         walk1.Play();
+        PlayWalk();
+    }
+
+    public void PlayWalk()
+    {
+        ChangeWalkPitch();
+        walkSound.Play();
+    }
+
+    private void ChangeWalkPitch()
+    {
+        walkSound.pitch = 1 + Random.Range(-0.2f, 0.2f);
     }
 
     public void FallParticle()
@@ -226,5 +243,17 @@ public class AnimationPlayer : MonoBehaviour
     {
         portalGun.enabled = false;
         animator.SetBool("IsDeath", true);
+    }
+
+    public void SetWalkSound(AudioSource source)
+    {
+        walkSound.clip = source.clip;
+        walkSound.volume = source.volume;
+    }
+
+    public void PlayJump()
+    {
+        if (!jumpSound.isPlaying)
+            jumpSound.Play();
     }
 }
