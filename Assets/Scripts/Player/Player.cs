@@ -102,6 +102,7 @@ public class Player : MonoBehaviour
 
         if (jumping && (onGround || crystallJump || doubleJump || tripleJump)) {
             if (onGround) {
+                animations.PlayJump();
                 jumpForce = normalForce;
                 jumpIteration = 10;
                 rb.AddForce(1.2f * jumpForce * Vector2.up, ForceMode2D.Impulse);
@@ -131,6 +132,7 @@ public class Player : MonoBehaviour
     public void Update_Ground(GroundGet ground)
     {
         animations.colorGroundParticle = ground.color;
+        animations.SetWalkSound(ground.walkAudio);
         if (rb.velocity.y < -14f && onGround) {
             ParticleSystem.MainModule main = animations.fall.main;
             main.maxParticles = Mathf.Min((int)(8 * (rb.velocity.y * -1 - 14f)), 250);

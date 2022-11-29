@@ -12,7 +12,6 @@ public class ControllSettingsManager : MonoBehaviour
 
     private ControllButton changingButton;
     private bool waitingForKey;
-    private Event keyEvent;
     private KeyCode newKey;
 
     [Header("Дефолтные кнопки")]
@@ -99,6 +98,7 @@ public class ControllSettingsManager : MonoBehaviour
             {
                 if (Input.GetKeyDown((KeyCode)nowKeyCode))
                 {
+                    ButtonFunctional.buttonFunctional.PressPlay();
                     newKey = (KeyCode)nowKeyCode;
                     waitingForKey = false;
                 }

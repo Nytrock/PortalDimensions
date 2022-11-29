@@ -36,6 +36,10 @@ public class PortalGun : MonoBehaviour
     private KeyCode leftPortalKey;
     private KeyCode rightPortalKey;
 
+    [Header("Звуки")]
+    [SerializeField] private AudioSource leftGunSound;
+    [SerializeField] private AudioSource rightGunSound;
+
     private void Start()
     {
         SetControll();
@@ -131,7 +135,9 @@ public class PortalGun : MonoBehaviour
                 break;
         }
         portal.Collider1.GetComponent<GroundGet>().color = portal.Collider.GetComponent<GroundGet>().color;
+        portal.Collider1.GetComponent<GroundGet>().walkAudio = portal.Collider.GetComponent<GroundGet>().walkAudio;
         portal.Collider2.GetComponent<GroundGet>().color = portal.Collider.GetComponent<GroundGet>().color;
+        portal.Collider2.GetComponent<GroundGet>().walkAudio = portal.Collider.GetComponent<GroundGet>().walkAudio;
     }
 
     void Set_Collider(BoxCollider2D collider, Vector2 x1, Vector2 x2, Vector2 y1, Vector2 y2, Vector2 center)
@@ -147,6 +153,7 @@ public class PortalGun : MonoBehaviour
         OrangeLight.SetActive(false);
 
         if (RightButton) {
+            rightGunSound.Play();
             if (ShootBlue) {
                 ShootBlue.GetComponent<Animator>().enabled = true;
                 ShootBlue = null;
@@ -161,6 +168,7 @@ public class PortalGun : MonoBehaviour
             }
             BlueLight.SetActive(true);
         } else {
+            leftGunSound.Play();
             if (ShootOrange) {
                 ShootOrange.GetComponent<Animator>().enabled = true;
                 ShootOrange = null;
@@ -340,6 +348,7 @@ public class PortalGun : MonoBehaviour
         Exit.ChangePregrads(false);
         Exit.Mask.SetActive(true);
         Exit.AnimatorPortal();
+        Exit.PlayTeleport();
 
         float x = item.bounds.extents.x;
         float y = item.bounds.extents.y;
@@ -376,8 +385,10 @@ public class PortalGun : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 break;
             case "Down":
-                if (rb.velocity.y < -21f)
-                    rb.velocity = new Vector2(rb.velocity.x, -21f);
+                if (rb.velocity.y < -180f)
+                    rb.velocity = new Vector2(rb.velocity.x, -180f);
+                else if (rb.velocity.y > -5f)
+                    rb.velocity = new Vector2(rb.velocity.x, -5f);
                 break;
             case "Right": 
                 VectorForce = new Vector2(Force * massCompX * Mathf.Max(velY, 1.6f) * 0.8f * 2.5f * ForceMultiply, 0);

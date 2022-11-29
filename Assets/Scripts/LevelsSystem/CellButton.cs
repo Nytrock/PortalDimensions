@@ -19,6 +19,7 @@ public class CellButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && pointerDown) {
+            ButtonFunctional.buttonFunctional.PressPlay();
             mouseDown = true;
         }
 
@@ -31,6 +32,7 @@ public class CellButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData) {
         pointerDown = true;
+        ButtonFunctional.buttonFunctional.HoverPlay();
         UpdateBlur();
     }
     public void OnPointerExit(PointerEventData eventData) {

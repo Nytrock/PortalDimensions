@@ -71,7 +71,7 @@ public class AudioSettingsManager : MonoBehaviour
         musicValue = volume;
         if (!lightVersion)
             musicSlider.value = musicValue;
-        musicMixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, volume));
+        musicMixer.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-60, 20, volume));
         isMusicChange = volume != originallMusic;
     }
 
@@ -80,7 +80,7 @@ public class AudioSettingsManager : MonoBehaviour
         effectsValue = volume;
         if (!lightVersion)
             effectsSlider.value = effectsValue;
-        effectsMixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, volume));
+        effectsMixer.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-60, 20, volume));
         isEffectsChange = volume != originallEffects;
     }
 
@@ -89,7 +89,7 @@ public class AudioSettingsManager : MonoBehaviour
         uiValue = volume;
         if (!lightVersion)
             uiSlider.value = uiValue;
-        uiMixer.audioMixer.SetFloat("UIVolume", Mathf.Lerp(-80, 0, volume));
+        uiMixer.audioMixer.SetFloat("UIVolume", Mathf.Lerp(-60, 20, volume));
         isUiChange = volume != originallUi;
     }
 

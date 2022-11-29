@@ -27,6 +27,8 @@ public class Choice : MonoBehaviour
     }
     public void SetPosition(int id)
     {
+        if (NowId != id)
+            ButtonFunctional.buttonFunctional.HoverPlay();
         NowId = id;
         TargetPosition = positions[id];
     }
@@ -46,10 +48,12 @@ public class Choice : MonoBehaviour
 
     public void CheckButtons()
     {
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && Buttons.Count - 1 > 0)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && Buttons.Count - 1 > 0) {
             SetPosition(Mathf.Max(NowId - 1, 0));
-        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && Buttons.Count - 1 > NowId)
+        }
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) && Buttons.Count - 1 > NowId) {
             SetPosition(Mathf.Min(NowId + 1, positions.Count - 1));
+        }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) {
             Buttons[NowId].onClick.Invoke();
             GetComponent<Animator>().SetBool("Normal", false);
@@ -97,5 +101,10 @@ public class Choice : MonoBehaviour
                 CheckButtons();
             yield return new WaitForSecondsRealtime(Time.deltaTime);
         }
+    }
+
+    public void PlayPress()
+    {
+        ButtonFunctional.buttonFunctional.PressPlay();
     }
 }

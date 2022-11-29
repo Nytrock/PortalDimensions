@@ -29,7 +29,7 @@ public class LevelsSwitchManager : MonoBehaviour
     [Header("Кнопки")]
     [SerializeField] private Button leftButton;
     [SerializeField] private Button rightButton;
-    private List<Image> instantButtons = new List<Image>();
+    private readonly List<Image> instantButtons = new();
 
     [Header("Спрайты кнопок")]
     [SerializeField] private Sprite disableInstant;
@@ -86,7 +86,7 @@ public class LevelsSwitchManager : MonoBehaviour
             var instantButton = Instantiate(instantButtonPrefab, instantGridContainer);
             instantButtons.Add(instantButton.GetComponent<Image>());
             int iCopy = i;
-            instantButton.GetComponent<Button>().onClick.AddListener(delegate { InstantTransition(iCopy); });
+            instantButton.GetComponent<Button>().onClick.AddListener(delegate { InstantTransition(iCopy); ButtonFunctional.buttonFunctional.HoverPlay(); });
         }
 
         index = 0;
