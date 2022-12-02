@@ -14,15 +14,12 @@ public class MaskPortalControl : MonoBehaviour
     {
         if (obj.TryGetComponent(out Rigidbody2D _))
         {
-            portal.Mask.SetActive(true);
             portal.Teleport = true;
         }
     }
     private void OnTriggerExit2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Rigidbody2D _)) {
-            if (portal.side != "Down")
-                portal.Mask.SetActive(false);
             portal.Teleport = false;
         }
     }

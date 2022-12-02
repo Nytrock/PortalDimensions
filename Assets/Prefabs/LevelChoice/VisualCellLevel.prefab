@@ -365,7 +365,7 @@ MonoBehaviour:
   - {fileID: 3879868671961238477}
   - {fileID: 5139644358115297278}
   - {fileID: 614675546029099036}
-  starActive: {fileID: -1372914156, guid: cfae2b581676b9b498ded62a39c8249b, type: 3}
+  starActive: {fileID: -1279531672, guid: cfae2b581676b9b498ded62a39c8249b, type: 3}
 --- !u!1 &2053685669075638116
 GameObject:
   m_ObjectHideFlags: 0

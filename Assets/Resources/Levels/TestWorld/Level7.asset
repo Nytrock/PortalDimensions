@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f274500182d0e0c4b8e20a792ae58ee1, type: 3}
-  m_Name: Level1
+  m_Name: Level7
   m_EditorClassIdentifier: 
-  _id: 0
+  _id: 6
   _world: {fileID: 11400000, guid: f3a6a59b85f947f42b6f7b9a6879ce40, type: 2}
   _cameraZoom: 5.74
   _coinsNumber: 10
-  _bestScore: 3300
+  _bestScore: 0
   _bestShootCount: 0
   _bestTeleportCount: 0
   _bestTime: 5
-  _wasCompleted: 1
+  _wasCompleted: 0
   _hasGun: 1
   _maxScore: 3300
   _scoreForOneStar: 1000
