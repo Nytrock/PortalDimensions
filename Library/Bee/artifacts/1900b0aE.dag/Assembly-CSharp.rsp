@@ -402,6 +402,7 @@
 "Assets/Scripts/LevelsSystem/ButtonSwitch.cs"
 "Assets/Scripts/LevelsSystem/CellButton.cs"
 "Assets/Scripts/LevelsSystem/CellVisual.cs"
+"Assets/Scripts/LevelsSystem/FinishLevel/CoinsBounds.cs"
 "Assets/Scripts/LevelsSystem/FinishLevel/ExitCollider.cs"
 "Assets/Scripts/LevelsSystem/FinishLevel/ExitManager.cs"
 "Assets/Scripts/LevelsSystem/FinishLevel/MoneyManager.cs"

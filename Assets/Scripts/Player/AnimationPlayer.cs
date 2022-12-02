@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AnimationPlayer : MonoBehaviour
@@ -43,8 +44,11 @@ public class AnimationPlayer : MonoBehaviour
     private Color addSecondPowerColor;
 
     [Header("Звуки")]
-    [SerializeField] private AudioSource walkSound;
+    [SerializeField] private AudioSource[] walkSounds;
     [SerializeField] private AudioSource jumpSound;
+    [SerializeField] private AudioSource crystallJump;
+    [SerializeField] private AudioSource bonusGet;
+    [SerializeField] private AudioSource bonusJump;
 
     void Start()
     {
@@ -92,12 +96,27 @@ public class AnimationPlayer : MonoBehaviour
     public void PlayWalk()
     {
         ChangeWalkPitch();
-        walkSound.Play();
+        walkSounds[0].Play();
     }
 
-    private void ChangeWalkPitch()
+    public IEnumerator PlayFall(int number)
     {
-        walkSound.pitch = 1 + Random.Range(-0.2f, 0.2f);
+        var oldVolume = walkSounds[0].volume;
+        foreach (AudioSource walk in walkSounds)
+            walk.volume = Mathf.Max(number / 35f, walk.volume);
+        ChangeWalkPitch(0);
+        ChangeWalkPitch(1);
+        walkSounds[0].Play();
+        yield return new WaitForSeconds(Time.deltaTime);
+        walkSounds[1].Play();
+        foreach (AudioSource walk in walkSounds)
+            walk.volume = oldVolume;
+        yield return null;
+    }
+
+    private void ChangeWalkPitch(int index = 0)
+    {
+        walkSounds[index].pitch = 1 + Random.Range(-0.2f, 0.2f);
     }
 
     public void FallParticle()
@@ -247,13 +266,42 @@ public class AnimationPlayer : MonoBehaviour
 
     public void SetWalkSound(AudioSource source)
     {
-        walkSound.clip = source.clip;
-        walkSound.volume = source.volume;
+        foreach (AudioSource walk in walkSounds) {
+            walk.clip = source.clip;
+            walk.volume = source.volume;
+        }
     }
 
     public void PlayJump()
     {
         if (!jumpSound.isPlaying)
             jumpSound.Play();
+    }
+
+    public void PlayCrystallJump(bool boost)
+    {
+        float standard = 1;
+        if (boost)
+            standard += 0.15f;
+        crystallJump.pitch = standard + Random.Range(-0.2f, 0.2f);
+        crystallJump.Play();
+    }
+
+    public void PlayGetBonus(bool boost)
+    {
+        if (boost)
+            bonusGet.pitch = 1.5f;
+        else
+            bonusGet.pitch = 1f;
+        bonusGet.Play();
+    }
+
+    public void PlayBonusJump(bool triple)
+    {
+        if (triple)
+            bonusJump.pitch = 2f;
+        else
+            bonusJump.pitch = 1f;
+        bonusJump.Play();
     }
 }

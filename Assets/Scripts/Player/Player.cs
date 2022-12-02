@@ -113,10 +113,12 @@ public class Player : MonoBehaviour
                     jumpForce = boostCrystallForce / value;
                 jumpIteration = 10;
                 jumpCrystalls[0].Active(true);
+                animations.PlayCrystallJump(boostCrystallJump);
             }  else if (doubleJump || tripleJump) {
                 float value = CalculateJumpForce();
                 jumpForce = crystallForce / value;
                 jumpIteration = 10;
+                animations.PlayBonusJump(tripleJump);
                 if (doubleJump) {
                     doubleJump = false;
                 } else if (tripleJump) {
@@ -135,7 +137,9 @@ public class Player : MonoBehaviour
         animations.SetWalkSound(ground.walkAudio);
         if (rb.velocity.y < -14f && onGround) {
             ParticleSystem.MainModule main = animations.fall.main;
-            main.maxParticles = Mathf.Min((int)(8 * (rb.velocity.y * -1 - 14f)), 250);
+            var num = Mathf.Min((int)(8 * (rb.velocity.y * -1 - 14f)), 250);
+            main.maxParticles = num;
+            StartCoroutine(animations.PlayFall(num));
             animations.FallParticle();
         }
     }
@@ -195,19 +199,20 @@ public class Player : MonoBehaviour
             else
                 bonusDoubleJumps.Add(bonus);
         }
-
         CheckJumpBonuses();
     }
 
     private void CheckJumpBonuses()
     {
         if (bonusTripleJumps.Count > 0 && !tripleJump) {
+            animations.PlayGetBonus(true);
             tripleJump = true;
             doubleJump = false;
             bonusTripleJumps[0].GetComponent<Animator>().SetBool("Death", true);
             bonusTripleJumps.RemoveAt(0);
             animations.UpdateJumpBonus();
         } else if (bonusDoubleJumps.Count > 0 && !doubleJump && !tripleJump) {
+            animations.PlayGetBonus(false);
             doubleJump = true;
             bonusDoubleJumps[0].GetComponent<Animator>().SetBool("Death", true);
             bonusDoubleJumps.RemoveAt(0);

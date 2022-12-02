@@ -16,7 +16,15 @@ MonoBehaviour:
   _name: "\u041C\u0430\u0442\u0440\u0438\u0446\u0430"
   _image: {fileID: 21300000, guid: 7d43db76d9d0ced4d9fb63ba56c293a8, type: 3}
   _levelsCount: 30
-  _levelsCompleted: 1
+  _levelsCompleted: 2
   _levels:
   - {fileID: 11400000, guid: ae2ee477cebb9e44181c9d0303ab7d2e, type: 2}
   - {fileID: 11400000, guid: c55d3112915516240b525bae3bb7fc72, type: 2}
+  - {fileID: 11400000, guid: 8561d81e5e832b540b4217d4111b7dfc, type: 2}
+  - {fileID: 11400000, guid: 2eab53c58ab2daf47b402731c4af1ff6, type: 2}
+  - {fileID: 11400000, guid: 794f49606beb89b47a508dd3ed3de536, type: 2}
+  - {fileID: 11400000, guid: 4d12772c060145f4aaa51a3c64b5ad9c, type: 2}
+  - {fileID: 11400000, guid: 5915c35e7c3b4e84f9406113917b0897, type: 2}
+  - {fileID: 11400000, guid: a84156cc563fee547a6346cb032e9ae7, type: 2}
+  - {fileID: 11400000, guid: ed7dc6bb22e29b847a9bf6ba7355d090, type: 2}
+  - {fileID: 11400000, guid: db78425aadf64fd40b72e40093693aee, type: 2}

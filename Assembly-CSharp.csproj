@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\Menu\Settings\AudioSettingsManager.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundTrigger.cs" />
     <Compile Include="Assets\Scripts\Interfaces\CharachterInterface.cs" />
+    <Compile Include="Assets\Scripts\LevelsSystem\FinishLevel\CoinsBounds.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonLoadScene.cs" />
     <Compile Include="Assets\Scripts\WorldsChoice\WorldsChoiceManager.cs" />
     <Compile Include="Assets\Scripts\Player\AnimationPlayer.cs" />

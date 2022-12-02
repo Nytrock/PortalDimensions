@@ -45,6 +45,7 @@ public class Portal : MonoBehaviour
                 player.inPortal = trigger.inPortal;
         }
 
+        Mask.SetActive(trigger.inPortal);
         if (Teleport && !trigger.inPortal) {
             if (Blue.activeSelf)
                 gun.Move_To_Portal(gun.OrangePortal, gun.BluePortal, gun.itemToTeleport);
