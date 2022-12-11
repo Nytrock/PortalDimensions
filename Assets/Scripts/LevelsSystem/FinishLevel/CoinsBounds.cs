@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinsBounds : MonoBehaviour
 {
+    [SerializeField] private AudioSource coinsBound;
     public void OnParticleCollision(GameObject other)
     {
-        Debug.Log(other.name);
+        coinsBound.pitch = 0.9f + Random.Range(-0.1f, 0.1f);
+        coinsBound.Play();
     }
 }

@@ -36,7 +36,7 @@ MonoBehaviour:
   m_Name: Movie
   m_EditorClassIdentifier: 
   enabled: 1
-  take: 7
+  take: 3
   captureEveryNthFrame: 1
   fileNameGenerator:
     m_Path:
@@ -60,13 +60,13 @@ MonoBehaviour:
     m_Selected: gameViewInputSettings
     gameViewInputSettings:
       m_OutputResolution:
-        m_CustomWidth: 1600
-        m_CustomHeight: 1000
-        imageHeight: 1080
+        m_CustomWidth: 3300
+        m_CustomHeight: 2247
+        imageHeight: 0
         maxSupportedHeight: 2160
         m_AspectRatio:
-          m_CustomAspectX: 1
-          m_CustomAspectY: 1
+          m_CustomAspectX: 1590
+          m_CustomAspectY: 530
           m_ImageAspect: 1
       flipFinalOutput: 1
     cameraInputSettings:

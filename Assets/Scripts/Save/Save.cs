@@ -82,6 +82,7 @@ public class Save : MonoBehaviour
     public void Awake()
     {
         Application.targetFrameRate = 60;
+        Time.fixedDeltaTime = 0.02f;
         save = this;
         LoadSave();
         LoadLists();
