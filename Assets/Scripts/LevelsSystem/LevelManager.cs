@@ -20,21 +20,24 @@ public class LevelManager : MonoBehaviour
     private Level levelMain;
 
     [Header("Переменные для счёта")]
-    public int numShoots;
-    public int numTeleports;
-    public int restartsCoef;
-    public int deathsCoef;
-    public int timeCoef;
+    private int numShoots;
+    private int numTeleports;
+    private int restartsCoef;
+    private int deathsCoef;
+    private int timeCoef;
 
     [Header("Счёт")]
     public TextMeshProUGUI scoreText;
     public List<string> inscriptions;
     public TextMeshProUGUI message;
     public List<Animator> stars;
+    [SerializeField] private AudioSource starGet;
     public GameObject newRecordText;
     public ParticleSystem newRecordParticle;
-    public int needScore;
-    public int nowScore;
+    private int needScore;
+    private int nowScore;
+    [SerializeField] private AudioSource scoreSound;
+    [SerializeField] private AudioSource newRecordSound;
 
     [Header("Деньги")]
     public Animator moneyAnimator;
@@ -42,6 +45,8 @@ public class LevelManager : MonoBehaviour
     public int numCoins;
     public GameObject coinsBound;
     public Transform coinsTarget;
+    [SerializeField] private AudioSource coinsAdd;
+    [SerializeField] private AudioSource coinsStart;
 
     [Header("Список кнопок")]
     public List<Button> completeButtons;
@@ -169,6 +174,7 @@ public class LevelManager : MonoBehaviour
     {
         completeAnimations = true;
         if (!levelMain.wasCompleted) {
+            coinsStart.Play();
             coinsBound.SetActive(true);
             levelMain.wasCompleted = true;
             oldCoins = Save.save.moneyManager.GetCoins();
@@ -213,7 +219,7 @@ public class LevelManager : MonoBehaviour
             velocities.Add(new Vector2(cosinus * speed, sinus * speed));
         }
 
-        List<int> used = new List<int>();
+        List<int> used = new();
         while (used.Count != count) {
             particles = new ParticleSystem.Particle[coinsParticle.particleCount];
             count = coinsParticle.GetParticles(particles);
@@ -227,6 +233,7 @@ public class LevelManager : MonoBehaviour
                     else
                         moneyManager.AddCoins(coinsToParticle);
                     moneyAnimator.Play("AddMoney", 9, 0.1f);
+                    coinsAdd.Play();
                 }
                 particles[i].velocity = velocities[i];
             }
@@ -268,21 +275,25 @@ public class LevelManager : MonoBehaviour
         int num = 13;
         int starsGet = 0;
         List<int> scoresForStars = new List<int>() { levelMain.scoreForOneStar, levelMain.scoreForTwoStar, levelMain.scoreForThreeStar, levelMain.maxScore + 1000 };
+        scoreSound.Play();
         string localize = LocalizationManager.GetTranslate("Счёт:");
         for (int i = 0; i <= (needScore / num) * num + num; i += num) {
             nowScore = Mathf.Min(i, needScore);
             scoreText.text = localize + " " + nowScore.ToString();
             if (nowScore >= scoresForStars[starsGet]) {
+                starGet.Play();
                 stars[starsGet].Play("FillStar", 0, 0.1f);
                 starsGet += 1;
             }
             if (nowScore > levelMain.bestScore && levelMain.wasCompleted) {
                 newRecordText.SetActive(true);
                 newRecordParticle.Play();
+                newRecordSound.Play();
                 levelMain.bestScore = needScore;
             }
             yield return new WaitForSeconds(Time.deltaTime / 1.1f);
         }
+        scoreSound.Stop();
         if (starsGet == 0)
             stars[starsGet].Play("FillStar", 0, 0.1f);
 
@@ -323,6 +334,8 @@ public class LevelManager : MonoBehaviour
         }
         if (scoresForStars[0] > needScore)
             stars[0].Play("FillStar", 0, 0.1f);
+        starGet.Stop();
+        scoreSound.Stop();
 
         message.GetComponent<Animator>().Play("Show", 0, 0f);
         var a = (int)((needScore / (levelMain.maxScore * 1f)) * 10) / 10f;
@@ -335,6 +348,7 @@ public class LevelManager : MonoBehaviour
         if (nowScore > levelMain.bestScore && levelMain.wasCompleted) {
             newRecordText.SetActive(true);
             newRecordParticle.Play();
+            newRecordSound.Play();
             levelMain.bestScore = needScore;
         }
 
@@ -349,9 +363,5 @@ public class LevelManager : MonoBehaviour
         var extraTeleport = numTeleports - levelMain.bestTeleportCount;
         var result = levelMain.maxScore - extraTime * 15 - restartsCoef * 20 - deathsCoef * 40 - extraShoots * 5 - extraTeleport * 10; // это ещё балансить нужно аааа
         return result;
-    }
-
-    public void SetOtherCameras() {
-        
     }
 }

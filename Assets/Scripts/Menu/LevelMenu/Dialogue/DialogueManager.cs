@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
     public Animator panelsController;
     private int numPanel = 1;
     public Save save;
+    [SerializeField] private AudioSource textShowSound;
 
     public string NeedText;
     private float speedShowingText = 1f;
@@ -82,6 +83,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
+        Time.fixedDeltaTime = 0.02f;
         numPanel = 1;
         var information = dialogues[dialogeKey + "_" + numPanel];
         speedShowingText = float.Parse(information["speed"], CultureInfo.InvariantCulture.NumberFormat);
@@ -129,6 +131,7 @@ public class DialogueManager : MonoBehaviour
             viewChoices.Clear();
             choiceArrow.Buttons.Clear();
             numPanel = 1;
+            Time.fixedDeltaTime = 0.002f;
             save.SaveAll();
             return;
         } else {
@@ -211,6 +214,8 @@ public class DialogueManager : MonoBehaviour
                     position -= 1;
                 } else {
                     MainText.text += NeedText[position];
+                    if (NeedText[position] != ' ')
+                        textShowSound.Play();
                 }
                 position += 1;
                 yield return new WaitForSeconds(speedShowingText);

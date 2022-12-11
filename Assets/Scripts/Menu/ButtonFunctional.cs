@@ -237,6 +237,7 @@ public class ButtonFunctional : MonoBehaviour
     {
         animator.SetBool("isMoney", true);
         LevelManager.levelManager.StartParticles();
+
     }
 
     public void TurnOffMainButtons()
