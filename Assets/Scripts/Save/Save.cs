@@ -25,7 +25,7 @@ public class Save : MonoBehaviour
     public ProfileDialogue[] dialogueProfiles;
 
     [Header("Списки для вариантов выбора диалогов")]
-    [SerializeField] private bool[] ExistingChoiceIdList;
+    [SerializeField] private bool[] existingChoiceIdList;
     [SerializeField] private bool[] DoChoiceIdList;
 
     [Header("Бинды кнопок")]
@@ -113,7 +113,7 @@ public class Save : MonoBehaviour
         settings.screenModId = videoSettingsManager.modId;
 
         DialoguesSave dialogues = new();
-        dialogues.existingChoices = ExistingChoiceIdList;
+        dialogues.existingChoices = existingChoiceIdList;
         dialogues.doingChoices = DoChoiceIdList;
 
         LevelsSave levels = new();
@@ -179,10 +179,10 @@ public class Save : MonoBehaviour
                 }
 
                 DialoguesSave dialogues = (DialoguesSave)form.Deserialize(stream);
-                if (dialogues.existingChoices.Length != 0)
-                    ExistingChoiceIdList = dialogues.existingChoices;
-                if (dialogues.doingChoices.Length != 0)
-                    DoChoiceIdList = dialogues.doingChoices;
+                if (dialogues.existingChoices != null)
+                    Array.Copy(dialogues.existingChoices, 0, existingChoiceIdList, 0, Mathf.Min(dialogues.existingChoices.Length, existingChoiceIdList.Length));
+                if (dialogues.doingChoices != null)
+                    Array.Copy(dialogues.doingChoices, 0, DoChoiceIdList, 0, Mathf.Min(dialogues.doingChoices.Length, DoChoiceIdList.Length));
                 if (dialogueChoiceManager){
                     for (int i = 0; i < DoChoiceIdList.Length; i++) {
                         if (DoChoiceIdList[i])
@@ -199,11 +199,13 @@ public class Save : MonoBehaviour
                 stream.Close();
             }
         } else {
-            if (!Directory.Exists(Application.dataPath + "/save"))
-                Directory.CreateDirectory(Application.dataPath + "/save");
+            audioSettingsManager.SetValues(0.5f, 0.5f, 0.5f);
+            gameSettingsManager.autoManager.isOn = false;
+            gameSettingsManager.fpsManager.isOn = false;
+            gameSettingsManager.confirmManager.isOn = true;
+            gameSettingsManager.glitchManager.isOn = true;
 
-            FileStream stream = new(Application.dataPath + WayToSavefile, FileMode.Create);
-            stream.Close();
+            SaveAll();
         }
     }
 
@@ -253,12 +255,12 @@ public class Save : MonoBehaviour
 
     public bool GetChoiceExisting(int id)
     {
-        return ExistingChoiceIdList[id];
+        return existingChoiceIdList[id];
     }
 
     public void SetChoiceExisting(int id, bool newValue)
     {
-        ExistingChoiceIdList[id] = newValue;
+        existingChoiceIdList[id] = newValue;
     }
 
     public void SetChoiceDoing(int id, bool newValue)

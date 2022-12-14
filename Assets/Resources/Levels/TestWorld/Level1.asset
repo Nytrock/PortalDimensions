@@ -16,12 +16,12 @@ MonoBehaviour:
   _world: {fileID: 11400000, guid: f3a6a59b85f947f42b6f7b9a6879ce40, type: 2}
   _cameraZoom: 5.74
   _coinsNumber: 10
-  _bestScore: 3165
+  _bestScore: 0
   _bestShootCount: 0
   _bestTeleportCount: 0
-  _bestTime: 5
-  _wasCompleted: 1
-  _hasGun: 1
+  _bestTime: 1000
+  _wasCompleted: 0
+  _hasGun: 0
   _maxScore: 3300
   _scoreForOneStar: 1000
   _scoreForTwoStar: 2000

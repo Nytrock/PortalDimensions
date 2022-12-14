@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
-  walkAudio: {fileID: 0}
+  walkAudio: {fileID: -799715259572080658}
 --- !u!50 &2904535764264649802
 Rigidbody2D:
   serializedVersion: 4

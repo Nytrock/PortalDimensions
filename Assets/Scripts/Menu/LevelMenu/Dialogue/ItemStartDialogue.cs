@@ -13,9 +13,11 @@ public class ItemStartDialogue : MonoBehaviour
         SetControll();
         ControllSettingsManager.OnButtonChange += SetControll;
 
-        GetComponentInChildren<LocalizedText>().Localize();
-        AddKeyToText();
-        LocalizationManager.OnLanguageChange += AddKeyToText;
+        if (!InstantStart) {
+            GetComponentInChildren<LocalizedText>().Localize(GetComponentInChildren<TextMeshProUGUI>().text);
+            AddKeyToText();
+            LocalizationManager.OnLanguageChange += AddKeyToText;
+        }
     }
 
     private void Update()
@@ -47,18 +49,18 @@ public class ItemStartDialogue : MonoBehaviour
         if (obj.TryGetComponent(out Player _))
         {
             if (!InstantStart)
-                this.GetComponent<Animator>().SetBool("isActive", false);
+                GetComponent<Animator>().SetBool("isActive", false);
         }
     }
 
     public void StartAnimation()
     {
-        this.GetComponent<Animator>().SetBool("isActive", true);
+        GetComponent<Animator>().SetBool("isActive", true);
     }
 
     private void AddKeyToText()
     {
-        GetComponentInChildren<TextMeshProUGUI>().text += "(" + startKey.ToString() + ")";
+        GetComponentInChildren<TextMeshProUGUI>().text += " (" + startKey.ToString() + ")";
     }
 
     private void SetControll()

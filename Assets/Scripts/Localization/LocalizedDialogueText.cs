@@ -37,11 +37,10 @@ public class LocalizedDialogueText : MonoBehaviour
         if (newKey != null)
             key = newKey;
 
-        if (dialogueManager.isTextShow) {
-            dialogueManager.NeedText = LocalizationManager.GetTranslate(key);
+        dialogueManager.NeedText = LocalizationManager.GetTranslate(key);
+        if (dialogueManager.isTextShow)
             dialogueManager.ChangeMainText();
-        }
         else
-            text.text = LocalizationManager.GetTranslate(key);
+            dialogueManager.LocalizeText();
     }
 }
