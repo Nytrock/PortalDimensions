@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager dialogueManager;
+    public static bool isButton;
     private Player player;
 
     [SerializeField] private TextAsset textFile;
@@ -27,11 +28,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private AudioSource textShowSound;
 
     public string NeedText;
-    private float speedShowingText = 1f;
     public bool isTextShow;
     private bool isAnimation;
-    public static bool isButton;
-    private string dialogeKey;
+    private float speedShowingText = 1f;
+    private string dialogueKey;
+    [SerializeField] private int doId = -1;
 
     [Header("Статические данные")]
     public Image ProfileImage;
@@ -78,28 +79,31 @@ public class DialogueManager : MonoBehaviour
 
     public void SetKey(string key)
     {
-        dialogeKey = key;
+        dialogueKey = key;
     }
 
     public void StartDialogue()
     {
         Time.fixedDeltaTime = 0.02f;
-        numPanel = 1;
-        var information = dialogues[dialogeKey + "_" + numPanel];
+        numPanel = 0;
+        var information = dialogues[dialogueKey + "_" + numPanel];
         speedShowingText = float.Parse(information["speed"], CultureInfo.InvariantCulture.NumberFormat);
         speedShowingText = 1 / (10 * speedShowingText) / 1.5f;
 
         SetProfileInformation(information);
 
-        if (choices.ContainsKey(dialogeKey + "_" + numPanel) && information.ContainsKey("text")) {
+        if (choices.ContainsKey(dialogueKey + "_" + numPanel) && information.ContainsKey("text")) {
             SetTextPanel(TextWithChoice);
             SetChoicePanel(TextWithChoice, TextWithChoice.GetComponentInChildren<VerticalLayoutGroup>().transform, TextWithChoiceContainer.transform, 1);
-        } else if (choices.ContainsKey(dialogeKey + "_" + numPanel)) {
+        } else if (choices.ContainsKey(dialogueKey + "_" + numPanel)) {
             SetChoicePanel(JustChoice, JustChoice.transform, JustChoiceContainer.transform, 0);
         } else {
             JustText.SetActive(true);
             SetTextPanel(JustText);
         }
+
+        if (information.ContainsKey("do_id"))
+            doId = int.Parse(information["do_id"]);
 
         player.StopWorking();
         panelsController.SetBool("isDialogue", true);
@@ -114,9 +118,14 @@ public class DialogueManager : MonoBehaviour
 
     public void ContinueDialogue()
     {
-        var information = dialogues[dialogeKey + "_" + numPanel];
+        var information = dialogues[dialogueKey + "_" + numPanel];
         if (JustText.activeSelf)
             numPanel = int.Parse(information["next"]);
+        if (doId != -1) {
+            choiceManager.DoSomethingFromId(doId);
+            save.SetChoiceDoing(doId, true);
+            doId = -1;
+        }
 
         if (numPanel == -1) {
             panelsController.SetBool("isDialogue", false);
@@ -130,16 +139,19 @@ public class DialogueManager : MonoBehaviour
             player.animations.portalGun.enabled = true;
             viewChoices.Clear();
             choiceArrow.Buttons.Clear();
-            numPanel = 1;
+            numPanel = 0;
             Time.fixedDeltaTime = 0.002f;
             save.SaveAll();
             return;
         } else {
-            information = dialogues[dialogeKey + "_" + numPanel];
+            information = dialogues[dialogueKey + "_" + numPanel];
         }
 
         speedShowingText = float.Parse(information["speed"], CultureInfo.InvariantCulture.NumberFormat);
         speedShowingText = 1 / (10 * speedShowingText) / 1.5f;
+
+        if (information.ContainsKey("do_id"))
+            doId = int.Parse(information["do_id"]);
 
         SetProfileInformation(information);
 
@@ -152,11 +164,11 @@ public class DialogueManager : MonoBehaviour
             MainText = null;
         }
 
-        if (choices.ContainsKey(dialogeKey + "_" + numPanel) && information.ContainsKey("text")) {
+        if (choices.ContainsKey(dialogueKey + "_" + numPanel) && information.ContainsKey("text")) {
             SetTextPanel(TextWithChoice);
             SetChoicePanel(TextWithChoice, TextWithChoice.GetComponentInChildren<VerticalLayoutGroup>().transform, TextWithChoiceContainer.transform, 1);
             MainText.text = "";
-        } else if (choices.ContainsKey(dialogeKey + "_" + numPanel)) {
+        } else if (choices.ContainsKey(dialogueKey + "_" + numPanel)) {
             SetChoicePanel(JustChoice, JustChoice.transform, JustChoiceContainer.transform, 0);
         } else {
             JustText.SetActive(true);
@@ -172,11 +184,11 @@ public class DialogueManager : MonoBehaviour
         isTextShow = true;
         isAnimation = false;
 
-        var information = dialogues[dialogeKey + "_" + numPanel];
+        var information = dialogues[dialogueKey + "_" + numPanel];
         var profile = save.dialogueProfiles[int.Parse(information["id_user"])];
         var animator = ProfileImage.GetComponent<Animator>();
         if (profile.isRobot) {
-            animator.SetFloat("Speed", 1 / (speedShowingText * 10) / 1.5f);
+            animator.SetFloat("Speed", speedShowingText * 15);
         }
 
         NeedText = NeedText.Replace("{GK_Left}", Save.save.leftKey.ToString());
@@ -198,20 +210,29 @@ public class DialogueManager : MonoBehaviour
                         end += 1;
                     }
 
-                    var commandValue = command.Split('_')[1];
                     if (command.Contains("WS")) {
                         SetAllStatesFalse(animator);
-                        yield return new WaitForSeconds(float.Parse(commandValue, CultureInfo.InvariantCulture.NumberFormat));
+                        yield return new WaitForSeconds(float.Parse(command.Split('_')[1], CultureInfo.InvariantCulture.NumberFormat));
                         SetProfileInformation(information);
+                        NeedText = NeedText.Remove(position, end - position + 1);
+                        position -= 1;
                     } else if (command.Contains("CS")) {
-                        speedShowingText = float.Parse(commandValue, CultureInfo.InvariantCulture.NumberFormat);
+                        speedShowingText = float.Parse(command.Split('_')[1], CultureInfo.InvariantCulture.NumberFormat);
+                        speedShowingText = 1 / (speedShowingText * 10) / 1.5f;
+                        NeedText = NeedText.Remove(position, end - position + 1);
+                        position -= 1;
                     } else if (command.Contains("CE")) {
-                        information["mood"] = commandValue;
+                        position -= 1;
+                        information["mood"] = command.Split('_')[1];
                         SetProfileInformation(information);
+                        NeedText = NeedText.Remove(position, end - position + 1);
+                        position -= 1;
+                    } else {
+                        MainText.text += NeedText[position];
+                        if (NeedText[position] != ' ')
+                            textShowSound.Play();
                     }
-                    animator.SetFloat("Speed", 1 / (speedShowingText * 10) / 1.5f);
-                    NeedText = NeedText.Remove(position, end - position + 1);
-                    position -= 1;
+                    animator.SetFloat("Speed", speedShowingText * 15);
                 } else {
                     MainText.text += NeedText[position];
                     if (NeedText[position] != ' ')
@@ -254,8 +275,27 @@ public class DialogueManager : MonoBehaviour
     public void ChangeMainText()
     {
         if (MainText.text.Length < NeedText.Length){
-            MainText.text = NeedText.Substring(0, MainText.text.Length);
+            var newText = NeedText.Substring(0, MainText.text.Length);
+            int position = 0;
+            while (newText.Length != position) {
+                if (newText[position] == '{') {
+                    int end = position + 1;
+                    var command = "{";
+                    while (newText[end] != '}') {
+                        command += newText[end];
+                        end += 1;
+                    }
+                    if (command.Contains("{CS") || command.Contains("{WS") || command.Contains("{CE"))
+                        newText = newText.Remove(position, end - position + 1);
+                    else
+                        position += 1;
+                } else {
+                    position += 1;
+                }
+            }
+            MainText.text = newText;
         } else {
+            ClearTextFromCommands();
             MainText.text = NeedText;
             StopAllCoroutines();
             isTextShow = false;
@@ -274,7 +314,7 @@ public class DialogueManager : MonoBehaviour
         dialogues = new Dictionary<string, Dictionary<string, string>>();
         choices = new Dictionary<string, Dictionary<string, Dictionary<string, string>>>();
         viewChoices = new Dictionary<GameObject, GameObject>();
-        XmlDocument xmlDocument = new XmlDocument();
+        XmlDocument xmlDocument = new();
         xmlDocument.LoadXml(textFile.text);
 
         foreach (XmlNode key in xmlDocument["keys"].ChildNodes)
@@ -287,6 +327,8 @@ public class DialogueManager : MonoBehaviour
                 values["instant"] = (instant != null).ToString();
                 if (value.Name != "choice") {
                     values[value.Name] = value.InnerText;
+                    if (key.Attributes["do_id"] != null)
+                        values["do_id"] = key.Attributes["do_id"].Value;
                 } else {
                     var choiceKey = keyStr;
                     var choiceValues = new Dictionary<string, Dictionary<string, string>>();
@@ -380,7 +422,7 @@ public class DialogueManager : MonoBehaviour
     {
         MainPanel.SetActive(true);
 
-        var choiceInformation = choices[dialogeKey + "_" + numPanel];
+        var choiceInformation = choices[dialogueKey + "_" + numPanel];
         int num = StartNum;
 
         choiceArrow.transform.localPosition = new Vector2(choiceArrow.transform.localPosition.x, choiceArrow.positions[num]);
@@ -414,7 +456,7 @@ public class DialogueManager : MonoBehaviour
         foreach (var variant in updatedChoiceInformation) {
             var visualbuttonChoice = Instantiate(VisualChoiceButtonPrefab, VisualButtonsContainers);
             visualbuttonChoice.GetComponentInChildren<TextMeshProUGUI>().text = variant.Key;
-            visualbuttonChoice.GetComponentInChildren<LocalizedText>().Localize();
+            visualbuttonChoice.GetComponentInChildren<LocalizedText>().Localize(variant.Key);
             visualbuttonChoice.SetActive(false);
 
             var workingbuttonChoice = Instantiate(WorkingChoiceButtonPrefab, WorkingButtonsContainers);
@@ -438,8 +480,8 @@ public class DialogueManager : MonoBehaviour
 
     private void SetTextPanel(GameObject container) {
         MainText = container.GetComponentInChildren<TextMeshProUGUI>();
-        MainText.GetComponent<LocalizedDialogueText>().key = dialogeKey + "_" + numPanel;
-        NeedText = LocalizationManager.GetTranslate(dialogeKey + "_" + numPanel);
+        MainText.GetComponent<LocalizedDialogueText>().key = dialogueKey + "_" + numPanel;
+        NeedText = LocalizationManager.GetTranslate(dialogueKey + "_" + numPanel);
     }
 
     private void SetAllStatesFalse(Animator animator) {
@@ -467,7 +509,7 @@ public class DialogueManager : MonoBehaviour
 
     private void CheckRobotAtEnd()
     {
-        var information = dialogues[dialogeKey + "_" + numPanel];
+        var information = dialogues[dialogueKey + "_" + numPanel];
         var profile = save.dialogueProfiles[int.Parse(information["id_user"])];
         if (profile.isRobot) {
             SetAllStatesFalse(ProfileImage.GetComponent<Animator>());
@@ -485,15 +527,46 @@ public class DialogueManager : MonoBehaviour
         while (NeedText.Length != position) {
             if (NeedText[position] == '{') {
                 int end = position + 1;
-                var command = "";
+                var command = "{";
                 while (NeedText[end] != '}') {
                     command += NeedText[end];
                     end += 1;
                 }
-                NeedText = NeedText.Remove(position, end - position + 1);
+                if (command.Contains("{CE")) {
+                    var information = dialogues[dialogueKey + "_" + numPanel];
+                    information["mood"] = command.Split('_')[1];
+                    SetProfileInformation(information);
+                }
+                if (command.Contains("{CS") || command.Contains("{WS") || command.Contains("{CE"))
+                    NeedText = NeedText.Remove(position, end - position + 1);
+                else
+                    position += 1;
             } else {
                 position += 1;
             }
         }
+    }
+
+    public void LocalizeText()
+    {
+        int position = 0;
+        while (NeedText.Length != position) {
+            if (NeedText[position] == '{') {
+                int end = position + 1;
+                var command = "{";
+                while (NeedText[end] != '}') {
+                    command += NeedText[end];
+                    end += 1;
+                }
+                if (command.Contains("{CS") || command.Contains("{WS") || command.Contains("{CE"))
+                    NeedText = NeedText.Remove(position, end - position + 1);
+                else
+                    position += 1;
+            } else {
+                position += 1;
+            }
+        }
+        if (MainText != null)
+            MainText.text = NeedText;
     }
 }

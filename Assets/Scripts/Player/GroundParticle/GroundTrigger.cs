@@ -6,11 +6,11 @@ public class GroundTrigger : MonoBehaviour
     private Player player;
     public List<Collider2D> nowColliders;
 
-    private void Start()
+    private void Awake()
     {
         player = GetComponentInParent<Player>();
     }
-    private void Update()
+    private void LateUpdate()
     {
         Update_Ground();
     }
@@ -28,7 +28,6 @@ public class GroundTrigger : MonoBehaviour
         if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet ground)) {
             if (!nowColliders.Contains(obj)) {
                 nowColliders.Add(obj);
-                Update_Ground();
                 player.Update_Ground(ground);
             }
         }

@@ -18,7 +18,7 @@ public class LevelEditor : Editor
         texture.Apply();
 
         List<Texture2D> settingTextures = new();
-        int num = item.id;
+        int num = item.id + 1;
         if (num == 0)
             settingTextures.Add((Texture2D)Resources.Load("NumberTextures/0"));
         while (num != 0) {

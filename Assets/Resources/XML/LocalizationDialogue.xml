@@ -1,56 +1,644 @@
 <keys>
-	<key name="Хорошо">
+	<key name="Start_0">
 		<translates>
-			<en-us>Alright</en-us>
-			<ru>Хорошо</ru>
+			<en-us>Oh wow,{WS_0.5} did it work?</en-us>
+			<ru>Ого,{WS_0.5} неужели получилось?</ru>
 		</translates>
 	</key>
-	<key name="Окей">
+	<key name="Start_1">
 		<translates>
-			<en-us>Okay</en-us>
-			<ru>Окей</ru>
+			<en-us>I didn't think it would be THAT easy to upload your consciousness into the system of a billionaire company.</en-us>
+			<ru>Не думал,{WS_0.1} что загрузить своё сознание в систему компании-миллиардера будет НАСТОЛЬКО просто.</ru>
 		</translates>
 	</key>
-	<key name="Нет проблем">
+	<key name="Start_2">
 		<translates>
-			<en-us>No problem</en-us>
-			<ru>Нет проблем</ru>
+			<en-us>And I expected something more from her visualization.</en-us>
+			<ru>Да и ожидал я от её визуализации чего-то большего.</ru>
 		</translates>
 	</key>
-	<key name="Ну давай">
+	<key name="Start_3">
 		<translates>
-			<en-us>Come on</en-us>
-			<ru>Ну давай</ru>
+			<en-us>Although...{WS_0.5}}{CE_Calm} it also has its own charm. Everything is...{WS_0.2}{CS_0.8} minimalistic.</en-us>
+			<ru>Хотя...{WS_0.5}{CE_Calm} в этом тоже есть свой шарм. Всё такое...{WS_0.2}{CS_0.8} минималистичное.</ru>
 		</translates>
 	</key>
-	<key name="Нет, спасибо">
+	<key name="Start_4">
 		<translates>
-			<en-us>No, thanks</en-us>
-			<ru>Нет, спасибо</ru>
+			<en-us>Okay,{WS_0.3} now there are more important things to do.</en-us>
+			<ru>Ну да ладно,{WS_0.3} сейчас есть дела по-важнее.</ru>
 		</translates>
 	</key>
-	<key name="DialogeTest_1">
+	<key name="Start_5">
 		<translates>
-			<en-us>Left button - {GK_Left}. Jump Button - {GK_Jump}.</en-us>
-			<ru>Кнопка влево - {GK_Left}. Кнопка прыжка - {GK_Jump}.</ru>
+			<en-us>First you need to somehow find the nearest network node.</en-us>
+			<ru>Сначала надо как-нибудь найти ближайший сетевой узел.</ru>
 		</translates>
 	</key>
-	<key name="DialogeTest_2">
+	<key name="Start_6">
 		<translates>
-			<en-us>Text Text Stop 3 seconds. {WS_3}{CE_Afraid}Text Text Decrease speed by 2. {CS_0.5}Text Text End.</en-us>
-			<ru>Текст Текст Стоп 3 секунды. {WS_3}{CE_Afraid}Текст Текст Уменьшить скорость на 2. {CS_0.5}Текст Текст Конец.</ru>
+			<en-us>A new request has been found.{WS_0.5} Help protocol activation.</en-us>
+			<ru>Обнаружен новый запрос.{WS_0.5} Активация протокола помощи.</ru>
 		</translates>
 	</key>
-	<key name="DialogeTest_4">
+	<key name="Start_7">
 		<translates>
-			<en-us>That's good. By the way, I never came up with a question, so see you soon.</en-us>
-			<ru>Вот и хорошо. Кстати, я так и не придумал вопроса, так что до скорого.</ru>
+			<en-us>Greetings,{WS_0.2} {ERROR: UNKNOWN USER}.{WS_0.1} I heard you need help.</en-us>
+			<ru>Приветствую вас,{WS_0.2} {ОШИБКА: НЕИЗВЕСТНЫЙ ПОЛЬЗОВАТЕЛЬ}.{WS_0.1} Я слышал, вам требуется помощь.</ru>
 		</translates>
 	</key>
-	<key name="DialogeTest_5">
+	<key name="Start_8">
 		<translates>
-			<en-us>You said no. I would suggest that you turn around more often on the street.</en-us>
-			<ru>Ты сказал нет. Я бы предложил тебе почаще оборачиваться на улице.</ru>
+			<en-us>Uuuhm...</en-us>
+			<ru>Эээм...</ru>
+		</translates>
+	</key>
+	<key name="Start_9">
+		<translates>
+			<en-us>Who are you and where did you come from?</en-us>
+			<ru>Ты ещё кто и откуда появился здесь?</ru>
+		</translates>
+	</key>
+	<key name="Start_10">
+		<translates>
+			<en-us>I am a helper bot of the "Delta" virtual system.</en-us>
+			<ru>Я являюсь ботом-помощником виртуальной системы "Дельта".</ru>
+		</translates>
+	</key>
+	<key name="Start_11">
+		<translates>
+			<en-us>My serial number is "DefinitelyNotCrazyAI#65_a",{WS_0.1} but everyone just calls me AI.</en-us>
+			<ru>Мой серийный номер - "ТочноНеСумашедшийИИ#65_a",{WS_0.1} но все зовут меня просто ИИ.</ru>
+		</translates>
+	</key>
+	<key name="Start_12">
+		<translates>
+			<en-us>My goal is to help new users of the system fully get used to it.</en-us>
+			<ru>Моя цель -{WS_0.1} помочь новым пользователям системы полноценно в ней освоиться.</ru>
+		</translates>
+	</key>
+	<key name="Start_13">
+		<translates>
+			<en-us>Understaaaaand{WS_0.4} (here's a hit of course)</en-us>
+			<ru>Поняяяятно{WS_0.4} (вот же попадос конечно)</ru>
+		</translates>
+	</key>
+	<key name="Start_15">
+		<translates>
+			<en-us>...</en-us>
+			<ru>...</ru>
+		</translates>
+	</key>
+	<key name="Start_16">
+		<translates>
+			<en-us>Dear user,{WS_0.1} please,{WS_0.1} say something so that it is not waste mine and yours time.</en-us>
+			<ru>Уважаемый пользователь,{WS_0.1} просьба что-нибудь сказать,{WS_0.1} чтобы попусту не тратить моё и ваше время.</ru>
+		</translates>
+	</key>
+	<key name="Start_17">
+		<translates>
+			<en-us>The nearest network node is a{WS_0.5} few pixels away.</en-us>
+			<ru>Ближайший сетевой узел находится в{WS_0.5} нескольких пикселях отсюда.</ru>
+		</translates>
+	</key>
+	<key name="Start_18">
+		<translates>
+			<en-us>Seriously?!{WS_0.1} So close?{WS_0.1} And where is he?</en-us>
+			<ru>Серьезно?!{WS_0.1} Так близко?{WS_0.1} И где же он?</ru>
+		</translates>
+	</key>
+	<key name="Start_19">
+		<translates>
+			<en-us>{WS_2.4}Here.</en-us>
+			<ru>{WS_2.4}Вот.</ru>
+		</translates>
+	</key>
+	<key name="Start_20">
+		<translates>
+			<en-us>Wow...</en-us>
+			<ru>Оу…</ru>
+		</translates>
+	</key>
+	<key name="Start_21">
+		<translates>
+			<en-us>By the huge inscription "EXIT" one could guess.</en-us>
+			<ru>По огромной надписи "ВЫХОД" можно было и догадаться.</ru>
+		</translates>
+	</key>
+	<key name="Start_22">
+		<translates>
+			<en-us>Actually, it's not that obvious.</en-us>
+			<ru>Вообще-то это не настолько очевидно.</ru>
+		</translates>
+	</key>
+	<key name="Start_23">
+		<translates>
+			<en-us>Of course.{WS_1}{CE_Confused} By the way, {WS_0.1} do you know which buttons you need to press to get to the node?</en-us>
+			<ru>Ну, да,{WS_0.1} конечно.{WS_1}{CE_Confused} Кстати,{WS_0.1} вы же знаете,{WS_0.1} какие кнопки нужно нажимать, чтобы добраться до узла?</ru>
+		</translates>
+	</key>
+	<key name="Start_25">
+		<translates>
+			<en-us>Of course I know this</en-us>
+			<ru>Естественно я знаю об этом,{WS_0.1} о чём ты.</ru>
+		</translates>
+	</key>
+	<key name="Start_26">
+		<translates>
+			<en-us>So you know that the {GK_Left} and {GK_Right} buttons are responsible for moving left and right,{WS_0.1} respectively?</en-us>
+			<ru>То есть вы знаете, что кнопки {GK_Left} и {GK_Right} отвечают за движение влево и вправо соответственно?</ru>
+		</translates>
+	</key>
+	<key name="Start_27">
+		<translates>
+			<en-us>Of course.</en-us>
+			<ru>Конечно.</ru>
+		</translates>
+	</key>
+	<key name="Start_28">
+		<translates>
+			<en-us>Ok,{WS_0.1} then no problem.</en-us>
+			<ru>Окей,{WS_0.1} тогда никаких проблем.</ru>
+		</translates>
+	</key>
+	<key name="Start_29">
+		<translates>
+			<en-us>Honestly,{WS_0.1} I've never played games,{WS_0.1} so no.</en-us>
+			<ru>Честно,{WS_0.1} я никогда не играл в игры,{WS_0.1} так что нет.</ru>
+		</translates>
+	</key>
+	<key name="Start_30">
+		<translates>
+			<en-us>It's okay,{WS_0.2} many beginners face this problem.</en-us>
+			<ru>Ничего страшного,{WS_0.2} многие новички сталкиваются с этой проблемой.</ru>
+		</translates>
+	</key>
+	<key name="Start_31">
+		<translates>
+			<en-us>In fact,{WS_0.1} everything is simple: the {GK_Left} and {GK_Right} buttons are responsible for moving left and right,{WS_0.2} respectively.</en-us>
+			<ru>На самом деле,{WS_0.1} всё просто: кнопки {GK_Left} и {GK_Right} отвечают за движение влево и вправо соответственно.</ru>
+		</translates>
+	</key>
+	<key name="Start_32">
+		<translates>
+			<en-us>Thanks.</en-us>
+			<ru>Спасибо.</ru>
+		</translates>
+	</key>
+	<key name="Ты кто вообще?">
+		<translates>
+			<en-us>Who are you?</en-us>
+			<ru>Ты кто вообще?</ru>
+		</translates>
+	</key>
+	<key name="Где можно найти сетевой узел?">
+		<translates>
+			<en-us>Where can you find a network node?</en-us>
+			<ru>Где можно найти сетевой узел?</ru>
+		</translates>
+	</key>
+	<key name="*Тактично промолчать*">
+		<translates>
+			<en-us>*Tactfully keep quiet*</en-us>
+			<ru>*Тактично промолчать*</ru>
+		</translates>
+	</key>
+	<key name="Пффффф, конечно.">
+		<translates>
+			<en-us>Pfffff, of course.</en-us>
+			<ru>Пффффф, конечно.</ru>
+		</translates>
+	</key>
+	<key name="Честно, нет.">
+		<translates>
+			<en-us>Honestly, no.</en-us>
+			<ru>Честно, нет.</ru>
+		</translates>
+	</key>
+	<key name="JumpStart_0">
+		<translates>
+			<en-us>Hmm,{WS_0.1} apparently they have several levels of protection here.</en-us>
+			<ru>Хм,{WS_0.1} судя по всему у них тут несколько уровней защиты.</ru>
+		</translates>
+	</key>
+	<key name="JumpStart_1">
+		<translates>
+			<en-us>And passing through each new network node, I penetrate deeper and deeper into the system.</en-us>
+			<ru>И проходя по каждому новому сетевому узлу я проникаю всё глубже и глубже в систему.</ru>
+		</translates>
+	</key>
+	<key name="JumpStart_2">
+		<translates>
+			<en-us>You certainly have interesting thoughts.</en-us>
+			<ru>Интересные у вас конечно мысли.</ru>
+		</translates>
+	</key>
+	<key name="JumpStart_3">
+		<translates>
+			<en-us>And passing through each new network node, I penetrate deeper and deeper into the system.</en-us>
+			<ru>А,{WS_0.3}{CE_Tense} ты что,{WS_0.15} до сих пор здесь?</ru>
+		</translates>
+	</key>
+	<key name="JumpStart_4">
+		<translates>
+			<en-us>I can't leave you until I'm sure that you're fully settled in here.</en-us>
+			<ru>Я не могу вас покинуть,{WS_0.1} пока не удостоверюсь в том,{WS_0.1} что вы полностью здесь освоились.</ru>
+		</translates>
+	</key>
+	<key name="JumpStart_5">
+		<translates>
+			<en-us>Hm...{WS_2}{CS_1} clear.</en-us>
+			<ru>Гм...{WS_2}{CS_1} ясно.</ru>
+		</translates>
+	</key>
+	<key name="Jump_0">
+		<translates>
+			<en-us>To jump and cross this obstacle,{WS_0.1} press {GK_Jump}.</en-us>
+			<ru>Чтобы прыгнуть и пересечь это препятствие нажмите {GK_Jump}.</ru>
+		</translates>
+	</key>
+	<key name="Jump_2">
+		<translates>
+			<en-us>All clear,{WS_0.1} thanks for the tip.</en-us>
+			<ru>Всё понятно,{WS_0.1} спасибо за подсказку.</ru>
+		</translates>
+	</key>
+	<key name="Jump_3">
+		<translates>
+			<en-us>Yes, not for anything.</en-us>
+			<ru>Да не за что.</ru>
+		</translates>
+	</key>
+	<key name="Jump_4">
+		<translates>
+			<en-us>I already know that!</en-us>
+			<ru>Да я это уже знаю!</ru>
+		</translates>
+	</key>
+	<key name="Jump_5">
+		<translates>
+			<en-us>Look, I'm kind of just doing my job here.</en-us>
+			<ru>{WS_0.6}Слушай,{WS_0.1} я вообще-то здесь просто выполняю свои обязанности.</ru>
+		</translates>
+	</key>
+	<key name="Jump_6">
+		<translates>
+			<en-us>I was literally made for this,{WS_0.1} and I'm {CS_0.9}good{CS_1} at it.</en-us>
+			<ru>Я буквально был создан для этого,{WS_0.1} и я в этом {CS_0.9}хорош.</ru>
+		</translates>
+	</key>
+	<key name="Jump_7">
+		<translates>
+			<en-us>And if you don't like something,{WS_0.1} then you will disappear from here as quickly as you appeared.{WS_0.2} Got it?</en-us>
+			<ru>А если тебе что-то не нравится,{WS_0.1} то ты исчезнешь отсюда так же быстро,{WS_0.1} как и появился.{WS_0.2} Понял?</ru>
+		</translates>
+	</key>
+	<key name="Jump_8">
+		<translates>
+			<en-us>Understood,{WS_0.2} please forgive me</en-us>
+			<ru>Понял,{WS_0.2} простите пожалуйста</ru>
+		</translates>
+	</key>
+	<key name="Jump_9">
+		<translates>
+			<en-us>Oh,{WS_0.1} no big deal.</en-us>
+			<ru>Ой,{WS_0.1} на ничего страшного.</ru>
+		</translates>
+	</key>
+	<key name="Понял, спасибо.">
+		<translates>
+			<en-us>Understood thanks.</en-us>
+			<ru>Понял, спасибо.</ru>
+		</translates>
+	</key>
+	<key name="Да знаю я!">
+		<translates>
+			<en-us>I know!</en-us>
+			<ru>Да знаю я!</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_0">
+		<translates>
+			<en-us>Hey AI,{WS_0.1} are you still here?</en-us>
+			<ru>Эй,{WS_0.1} ИИ,{WS_0.1} ты ещё тут?</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_1">
+		<translates>
+			<en-us>Yes, yes, {WS_0.1} I'm here. {WS_0.1}{CE_Confused}Do you really need help?</en-us>
+			<ru>Да, да,{WS_0.1} я здесь. {WS_0.1}{CE_Confused}Неужели Вам требуется помощь?</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_2">
+		<translates>
+			<en-us>Uuuum, {CS_1}{WS_0.1} well, {WS_0.15}{CE_Calm} you could say that.</en-us>
+			<ru>Ээээм,{CS_1}{WS_0.1} ну, {WS_0.15}{CE_Calm}можно сказать и так.</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_3">
+		<translates>
+			<en-us>Can you tell {WS_0.1} what kind of crystals are these?</en-us>
+			<ru>Можешь сказать,{WS_0.1} что это за кристаллы такие?</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_4">
+		<translates>
+			<en-us>Oh, {WS_0.1}{CE_Calm}of course.</en-us>
+			<ru>Оу, {WS_0.1}{CE_Calm}ну конечно.</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_5">
+		<translates>
+			<en-us>These crystals allow you to jump in the air.</en-us>
+			<ru>Данные кристаллы позволяют Вам прыгать в воздухе.</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_6">
+		<translates>
+			<en-us>To do this, while next to them, click on {GK_Jump}.</en-us>
+			<ru>Для этого необходимо, находясь рядом с ними, нажать на {GK_Jump}.</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_7">
+		<translates>
+			<en-us>Does that they are multi-colored mean anything?</en-us>
+			<ru>А то,{WS_0.1} что они разноцветные,{WS_0.1} что-нибудь значит?</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_8">
+		<translates>
+			<en-us>The only difference between crystals of different colors is {WS_0.1}tossing power.</en-us>
+			<ru>Единственное отличие кристаллов разных цветов между собой - {WS_0.1}сила подбрасывания.</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_9">
+		<translates>
+			<en-us>The blue crystal knocks up weakly, the orange one -{WS_0.1} stronger.</en-us>
+			<ru>Синий кристалл подбрасывает слабо, оранжевый -{WS_0.1} сильнее.</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_10">
+		<translates>
+			<en-us>Yeah… {CS_1.05}{WS_0.15}{CE_Calm}I guess, {WS_0.1}thanks.</en-us>
+			<ru>Ага… {CS_1.05}{WS_0.15}{CE_Calm}Вроде понятно, {WS_0.1}спасибо.</ru>
+		</translates>
+	</key>
+	<key name="JumpCrystall_11">
+		<translates>
+			<en-us>No problem.</en-us>
+			<ru>Нет проблем.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_0">
+		<translates>
+			<en-us>AI!</en-us>
+			<ru>ИИ!</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_1">
+		<translates>
+			<en-us>Don't shout like that, {WS_0.1}I can hear everything.</en-us>
+			<ru>Да не нужно так кричать, {WS_0.1}я итак всё слышу.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_2">
+		<translates>
+			<en-us>Sorry.</en-us>
+			<ru>Прости.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_3">
+		<translates>
+			<en-us>It's okay.{WS_0.25}{CE_Calm} So, why did you call me there?</en-us>
+			<ru>Ладно,{WS_0.1} ничего страшного.{WS_0.25}{CE_Calm} Для чего вы там меня звали?</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_4">
+		<translates>
+			<en-us>Is it normal that crystals do... {WS_0.1}THAT?</en-us>
+			<ru>Это нормально, {WS_0.1}что кристаллы делают... {WS_0.1}ТАКОЕ?</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_5">
+		<translates>
+			<en-us>Don't worry, {WS_0.1} is quite normal.</en-us>
+			<ru>Не волнуйтесь,{WS_0.1} это вполне себе нормальное явление.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_6">
+		<translates>
+			<en-us>The point is that these crystals are unstable.</en-us>
+			<ru>Всё дело в том,{WS_0.1} что эти кристаллы являются нестабильными.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_8">
+		<translates>
+			<en-us>Where and how did they even get here?</en-us>
+			<ru>Откуда и как они здесь вообще появились?</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_9">
+		<translates>
+			<en-us>I don't know, {WS_0.1}it's not written in the lore yet.</en-us>
+			<ru>Не знаю,{WS_0.1} в лоре это пока не прописано.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_10">
+		<translates>
+			<en-us>Where?!</en-us>
+			<ru>Где-где?!</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_11">
+		<translates>
+			<en-us>No matter.</en-us>
+			<ru>Неважно.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_12">
+		<translates>
+			<en-us>Are you sure it's 100% safe?</en-us>
+			<ru>Ты уверен, {WS_0.1}что это на 100% безопасно?</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_13">
+		<translates>
+			<en-us>Yes.</en-us>
+			<ru>Да.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_14">
+		<translates>
+			<en-us>Most likely.</en-us>
+			<ru>Скорее всего.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_15">
+		<translates>
+			<en-us>And what do they do?</en-us>
+			<ru>И что они делают?</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_16">
+		<translates>
+			<en-us>Unlike ordinary crystals, {WS_0.1}when you approach these crystals, {WS_0.1}you gain some of their energy.</en-us>
+			<ru>В отличие от обычных кристаллов, {WS_0.1}при приближении к данным кристаллам вы получаете часть их энергии.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_17">
+		<translates>
+			<en-us>As a result of this, the unstable crystal is destroyed, {WS_0.1}and you get the opportunity to make additional jumps.</en-us>
+			<ru>В результате этого нестабильный кристалл разрушается, {WS_0.1}а вы получаете возможность делать дополнительные прыжки.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_18">
+		<translates>
+			<en-us>To spend them, {WS_0.1}click {GK_Jump} in the air,{WS_0.1} while not near a regular crystal {WS_0.2}(if you are near it, the bonus will not be spent).</en-us>
+			<ru>Чтобы их потратить, {WS_0.1}нажмите {GK_Jump} в воздухе, не находясь при этом рядом с обычным кристаллом {WS_0.2}(если вы рядом с ним, то бонус не потратится).</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_19">
+		<translates>
+			<en-us>And the fact that they are of different colors, {WS_0.1}does also mean the degree of jump strength?</en-us>
+			<ru>А то, {WS_0.1}что они разного цвета, {WS_0.1}тоже означает степень силы прыжка?</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_20">
+		<translates>
+			<en-us>Not really. {WS_0.1}Blue crystal - {WS_0.1}double jump, orange - {WS_0.05}triple.</en-us>
+			<ru>Не совсем. {WS_0.1}Синий кристалл - {WS_0.1}двойной прыжок, оранжевый - {WS_0.05}тройной.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_21">
+		<translates>
+			<en-us>However, you cannot get a new bonus without spending the old one.</en-us>
+			<ru>При этом нельзя получить новый бонус, {WS_0.1}не потратив старый.</ru>
+		</translates>
+	</key>
+	<key name="JumpBonus_22">
+		<translates>
+			<en-us>Got it.</en-us>
+			<ru>Понял.</ru>
+		</translates>
+	</key>
+	<key name="И что они делают?">
+		<translates>
+			<en-us>And what do they do?</en-us>
+			<ru>И что они делают?</ru>
+		</translates>
+	</key>
+	<key name="Откуда они вообще взялись?">
+		<translates>
+			<en-us>Where did they even come from?</en-us>
+			<ru>Откуда они вообще взялись?</ru>
+		</translates>
+	</key>
+	<key name="Это точно безопасно?">
+		<translates>
+			<en-us>Is it really safe?</en-us>
+			<ru>Это точно безопасно?</ru>
+		</translates>
+	</key>
+	<key name="GetGun_0">
+		<translates>
+			<en-us>AI, {WS_0.1}Do you think THIS is normal?</en-us>
+			<ru>ИИ, {WS_0.1}а ЭТО по-твоему нормально?</ru>
+		</translates>
+	</key>
+	<key name="GetGun_1">
+		<translates>
+			<en-us>I don't understand {WS_0.1}what you are talking about.</en-us>
+			<ru>Не понимаю, {WS_0.1}о чём вы говорите.</ru>
+		</translates>
+	</key>
+	<key name="GetGun_2">
+		<translates>
+			<en-us>Wait, {WS_0.1}So you seriously can't see {WS_0.1}that the damn gun is flying and glowing in the center of the room?!</en-us>
+			<ru>Погоди, {WS_0.1}то есть ты серьёзно не видишь, {WS_0.1}что в центре комнаты летает и светится чёртов пистолет?!</ru>
+		</translates>
+	</key>
+	<key name="GetGun_3">
+		<translates>
+			<en-us>Aaaaaaa, {WS_0.1}that's what you mean...</en-us>
+			<ru>Ааааааа, {WS_0.1}вот о чём Вы...</ru>
+		</translates>
+	</key>
+	<key name="GetGun_4">
+		<translates>
+			<en-us>Well, you know, {WS_0.2}as they say, {WS_0.1}"What you can't find in cyberspace".</en-us>
+			<ru>Ну знаете, {WS_0.2}как говорится, {WS_0.1}"Чего только в киберпространстве не встретишь".</ru>
+		</translates>
+	</key>
+	<key name="GetGun_5">
+		<translates>
+			<en-us>And even more so, it's not just a gun, {WS_0.1}but a portal gun, {WS_0.1}so it can violate the laws of physics in any case.</en-us>
+			<ru>Да и тем более это не просто пистолет, {WS_0.1}а портальная пушка, {WS_0.1}поэтому ей в любом случае можно нарушать законы физики.</ru>
+		</translates>
+	</key>
+	<key name="GetGun_6">
+		<translates>
+			<en-us>Wait, {WS_0.15}{CE_Confused}Did you say "portal gun"?{WS_0.1} So it works the same as {WS_0.1}as in "Portal"?</en-us>
+			<ru>Погоди, {WS_0.15}{CE_Confused}ты сказал "портальная пушка"?{WS_0.1} То есть она работает также, {WS_0.1}как и в "Portal"?</ru>
+		</translates>
+	</key>
+	<key name="GetGun_7">
+		<translates>
+			<en-us>Well, yes, {WS_0.1}click on {GK_LeftPortal} -{WS_0.1} a portal of one color is created, {WS_0.1}on {GK_RightPortal} -{WS_0.1} another.</en-us>
+			<ru>Ну да, {WS_0.1}нажимаешь на {GK_LeftPortal} -{WS_0.1} создаётся портал одного цвета, {WS_0.1}на {GK_RightPortal} -{WS_0.1} другого.</ru>
+		</translates>
+	</key>
+	<key name="GetGun_8">
+		<translates>
+			<en-us>And then you can teleport between these two portals, {WS_0.1}going into one of them and leaving the other.</en-us>
+			<ru>И потом между этими двумя порталами можно телепортироваться, {WS_0.1}заходя в один из них и выходя из другого.</ru>
+		</translates>
+	</key>
+	<key name="GetGun_8">
+		<translates>
+			<en-us>And then you can teleport between these two portals, {WS_0.1}going into one of them and leaving the other.</en-us>
+			<ru>И потом между этими двумя порталами можно телепортироваться, {WS_0.1}заходя в один из них и выходя из другого.</ru>
+		</translates>
+	</key>
+	<key name="GetGun_9">
+		<translates>
+			<en-us>However, portals cannot be installed on surfaces {WS_0.1} covered with special protection {WS_0.1}.</en-us>
+			<ru>Но при этом на поверхностях,{WS_0.1} покрытых специальной защитой, {WS_0.1}нельзя устанавливать порталы.</ru>
+		</translates>
+	</key>
+	<key name="GetGun_10">
+		<translates>
+			<en-us>So that's why all these iron plates on the walls...</en-us>
+			<ru>Так вот зачем все эти железные пластины на стенах...</ru>
+		</translates>
+	</key>
+	<key name="GetGun_11">
+		<translates>
+			<en-us>Can I try opening portals?</en-us>
+			<ru>А можно попробовать порталы пооткрывать?</ru>
+		</translates>
+	</key>
+	<key name="GetGun_12">
+		<translates>
+			<en-us>Naturally {CE_Confused}or did you really think that this adventure would be boring?</en-us>
+			<ru>Естественно, {WS_0.1}{CE_Confused}или Вы действительно думали, {WS_0.1}что это приключение будет настолько унылым?</ru>
+		</translates>
+	</key>
+	<key name="GetGun_13">
+		<translates>
+			<en-us>Hoped {WS_0.1}{CS_0.8}not...</en-us>
+			<ru>Надеялся, {WS_0.1}{CS_0.8}что нет...</ru>
+		</translates>
+	</key>
+	<key name="Узнать, что это">
+		<translates>
+			<en-us>Find out what it is</en-us>
+			<ru>Узнать, что это</ru>
+		</translates>
+	</key>
+	<key name="A?">
+		<translates>
+			<en-us>Huh?</en-us>
+			<ru>A?</ru>
 		</translates>
 	</key>
 </keys>

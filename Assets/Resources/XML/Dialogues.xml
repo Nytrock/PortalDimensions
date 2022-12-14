@@ -1,40 +1,701 @@
 <keys>
-	<key name="DialogeTest_1" instant="true">
+	<key name="Start_0">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>1</next>
+	</key>
+	<key name="Start_1">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>2</next>
+	</key>
+	<key name="Start_2">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>3</next>
+	</key>
+	<key name="Start_3">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>4</next>
+	</key>
+	<key name="Start_4">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>5</next>
+	</key>
+	<key name="Start_5">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>6</next>
+	</key>
+	<key name="Start_6">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>7</next>
+	</key>
+	<key name="Start_7">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>8</next>
+	</key>
+	<key name="Start_8">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1</speed>
+		<text></text>
+		<choice>
+			<text next="9" existing_id="0">Ты кто вообще?</text>
+			<text next="17" existing_id="1">Где можно найти сетевой узел?</text>
+			<text next="15" existing_id="2">*Тактично промолчать*</text>
+		</choice>
+	</key>
+	<key name="Start_9">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>10</next>
+	</key>
+	<key name="Start_10">
 		<id_user>0</id_user>
 		<mood>Calm</mood>
 		<speed>1</speed>
 		<text></text>
-		<next>2</next>
+		<next>11</next>
 	</key>
-	<key name="DialogeTest_2">
+	<key name="Start_11">
 		<id_user>0</id_user>
-		<mood>Angry</mood>
+		<mood>Calm</mood>
 		<speed>1</speed>
 		<text></text>
-		<next>3</next>
+		<next>12</next>
 	</key>
-	<key name="DialogeTest_3">
+	<key name="Start_12">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>13</next>
+	</key>
+	<key name="Start_13">
 		<id_user>1</id_user>
 		<mood>Confused</mood>
 		<speed>1</speed>
+		<text></text>
+		<next>14</next>
+	</key>
+	<key name="Start_14">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
 		<choice>
-			<text next="4" existing_id="0">Да</text>
-			<text next="5" existing_id="1">Ага</text>
-			<text next="4" existing_id="2">Негры АХАХАХ</text>
-			<text next="5" required="true">Нет конечно</text>
+			<text next="9" existing_id="0">Ты кто вообще?</text>
+			<text next="17" existing_id="1">Где можно найти сетевой узел?</text>
+			<text next="15" existing_id="2">*Тактично промолчать*</text>
 		</choice>
 	</key>
-	<key name="DialogeTest_4">
+	<key name="Start_15">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>0.2</speed>
+		<text></text>
+		<next>16</next>
+	</key>
+	<key name="Start_16">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>14</next>
+	</key>
+	<key name="Start_17">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>18</next>
+	</key>
+	<key name="Start_18" do_id="0">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>19</next>
+	</key>
+	<key name="Start_19">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>20</next>
+	</key>
+	<key name="Start_20">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>0.97</speed>
+		<text></text>
+		<next>21</next>
+	</key>
+	<key name="Start_21">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>0.97</speed>
+		<text></text>
+		<next>22</next>
+	</key>
+	<key name="Start_22" do_id="1">
+		<id_user>1</id_user>
+		<mood>Angry</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>23</next>
+	</key>
+	<key name="Start_23">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>24</next>
+	</key>
+	<key name="Start_24">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<choice>
+			<text next="25">Пффффф, конечно.</text>
+			<text next="29">Честно, нет.</text>
+		</choice>
+	</key>
+	<key name="Start_25">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>26</next>
+	</key>
+	<key name="Start_26">
+		<id_user>0</id_user>
+		<mood>Confused</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>27</next>
+	</key>
+	<key name="Start_27">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>28</next>
+	</key>
+	<key name="Start_28" do_id="2">
 		<id_user>0</id_user>
 		<mood>Happy</mood>
 		<speed>1</speed>
 		<text></text>
 		<next>-1</next>
 	</key>
-	<key name="DialogeTest_5" instant="true">
+	<key name="Start_29">
+		<id_user>1</id_user>
+		<mood>Afraid</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>30</next>
+	</key>
+	<key name="Start_30">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>31</next>
+	</key>
+	<key name="Start_31">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>32</next>
+	</key>
+	<key name="Start_32" do_id="2">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+	<key name="JumpStart_0">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>1</next>
+	</key>
+	<key name="JumpStart_1">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>2</next>
+	</key>
+	<key name="JumpStart_2">
+		<id_user>0</id_user>
+		<mood>Confused</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>3</next>
+	</key>
+	<key name="JumpStart_3">
+		<id_user>1</id_user>
+		<mood>Afraid</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>4</next>
+	</key>
+	<key name="JumpStart_4">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>5</next>
+	</key>
+	<key name="JumpStart_5" do_id="3">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>0.5</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+	<key name="Jump_0">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>1</next>
+	</key>
+	<key name="Jump_1">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<choice>
+			<text next="4">Да знаю я!</text>
+			<text next="2">Понял, спасибо.</text>
+		</choice>
+	</key>
+	<key name="Jump_2">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>3</next>
+	</key>
+	<key name="Jump_3" do_id="4">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+	<key name="Jump_4">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>5</next>
+	</key>
+	<key name="Jump_5">
+		<id_user>0</id_user>
+		<mood>Angry</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>6</next>
+	</key>
+	<key name="Jump_6">
+		<id_user>0</id_user>
+		<mood>Angry</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>7</next>
+	</key>
+	<key name="Jump_7">
+		<id_user>0</id_user>
+		<mood>Angry</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>8</next>
+	</key>
+	<key name="Jump_8">
+		<id_user>1</id_user>
+		<mood>Afraid</mood>
+		<speed>1.15</speed>
+		<text></text>
+		<next>9</next>
+	</key>
+	<key name="Jump_9" do_id="4">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+	<key name="JumpCrystall_0" instant="true">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>1</next>
+	</key>
+	<key name="JumpCrystall_1">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>2</next>
+	</key>
+	<key name="JumpCrystall_2">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>0.9</speed>
+		<text></text>
+		<next>3</next>
+	</key>
+	<key name="JumpCrystall_3">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>4</next>
+	</key>
+	<key name="JumpCrystall_4">
 		<id_user>0</id_user>
 		<mood>Tense</mood>
 		<speed>1</speed>
+		<text></text>
+		<next>5</next>
+	</key>
+	<key name="JumpCrystall_5">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>6</next>
+	</key>
+	<key name="JumpCrystall_6">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>7</next>
+	</key>
+	<key name="JumpCrystall_7">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>8</next>
+	</key>
+	<key name="JumpCrystall_8">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>9</next>
+	</key>
+	<key name="JumpCrystall_9">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>10</next>
+	</key>
+	<key name="JumpCrystall_10">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>0.75</speed>
+		<text></text>
+		<next>11</next>
+	</key>
+	<key name="JumpCrystall_11" do_id="5" instant="true">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+	<key name="JumpBonus_0" instant="true">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>1</next>
+	</key>
+	<key name="JumpBonus_1">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>2</next>
+	</key>
+	<key name="JumpBonus_2">
+		<id_user>1</id_user>
+		<mood>Afraid</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>3</next>
+	</key>
+	<key name="JumpBonus_3">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>4</next>
+	</key>
+	<key name="JumpBonus_4">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>5</next>
+	</key>
+	<key name="JumpBonus_5">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>6</next>
+	</key>
+	<key name="JumpBonus_6">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>7</next>
+	</key>
+	<key name="JumpBonus_7">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<choice>
+			<text next="15" existing_id="3">И что они делают?</text>
+			<text next="8" existing_id="4">Откуда они вообще взялись?</text>
+			<text next="12" existing_id="5">Это точно безопасно?</text>
+		</choice>
+	</key>
+	<key name="JumpBonus_8">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>9</next>
+	</key>
+	<key name="JumpBonus_9">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>10</next>
+	</key>
+	<key name="JumpBonus_10">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>11</next>
+	</key>
+	<key name="JumpBonus_11">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>7</next>
+	</key>
+	<key name="JumpBonus_12">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>13</next>
+	</key>
+	<key name="JumpBonus_13">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>14</next>
+	</key>
+	<key name="JumpBonus_14">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>7</next>
+	</key>
+	<key name="JumpBonus_15">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>16</next>
+	</key>
+	<key name="JumpBonus_16">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>17</next>
+	</key>
+	<key name="JumpBonus_17">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>18</next>
+	</key>
+	<key name="JumpBonus_18">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>19</next>
+	</key>
+	<key name="JumpBonus_19">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>20</next>
+	</key>
+	<key name="JumpBonus_20">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>21</next>
+	</key>
+	<key name="JumpBonus_21">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>22</next>
+	</key>
+	<key name="JumpBonus_22" do_id="6" instant="true">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+	<key name="GetGun_0" instant="true">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>1</next>
+	</key>
+	<key name="GetGun_1">
+		<id_user>0</id_user>
+		<mood>Confused</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>2</next>
+	</key>
+	<key name="GetGun_2">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>3</next>
+	</key>
+	<key name="GetGun_3">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>4</next>
+	</key>
+	<key name="GetGun_4">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>5</next>
+	</key>
+	<key name="GetGun_5">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>6</next>
+	</key>
+	<key name="GetGun_6">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>7</next>
+	</key>
+	<key name="GetGun_7">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>8</next>
+	</key>
+	<key name="GetGun_8">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>9</next>
+	</key>
+	<key name="GetGun_9">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>10</next>
+	</key>
+	<key name="GetGun_10">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>11</next>
+	</key>
+	<key name="GetGun_11">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>12</next>
+	</key>
+	<key name="GetGun_12">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>13</next>
+	</key>
+	<key name="GetGun_13" do_id="7" instant="true">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
 		<text></text>
 		<next>-1</next>
 	</key>

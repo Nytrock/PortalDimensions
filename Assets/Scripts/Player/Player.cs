@@ -36,16 +36,20 @@ public class Player : MonoBehaviour
     private KeyCode walkRightKey;
     private KeyCode jumpKey;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        DialogueManager.dialogueManager.SetPlayer(this);
+    }
+
+    private void Start()
+    {
         animations = GetComponentInChildren<AnimationPlayer>();
         skin = animations.transform;
 
         SetControll();
         ControllSettingsManager.OnButtonChange += SetControll;
 
-        DialogueManager.dialogueManager.SetPlayer(this);
     }
 
     private void Update()
@@ -135,9 +139,9 @@ public class Player : MonoBehaviour
     {
         animations.colorGroundParticle = ground.color;
         animations.SetWalkSound(ground.walkAudio);
-        if (rb.velocity.y < -14f && onGround) {
+        if (rb.velocity.y < -10f && onGround) {
             ParticleSystem.MainModule main = animations.fall.main;
-            var num = Mathf.Min((int)(8 * (rb.velocity.y * -1 - 14f)), 250);
+            var num = Mathf.Min((int)(8 * (rb.velocity.y * -1 - 10f)), 250);
             main.maxParticles = num;
             StartCoroutine(animations.PlayFall(num));
             animations.FallParticle();

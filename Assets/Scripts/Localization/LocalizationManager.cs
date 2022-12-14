@@ -36,7 +36,7 @@ public class LocalizationManager : MonoBehaviour
         localization = new Dictionary<string, List<string>>();
 
         foreach (TextAsset file in textFiles) {
-            XmlDocument xmlDocument = new XmlDocument();
+            XmlDocument xmlDocument = new();
             xmlDocument.LoadXml(file.text);
 
             foreach (XmlNode key in xmlDocument["keys"].ChildNodes) {

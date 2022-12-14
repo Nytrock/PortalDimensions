@@ -12,6 +12,11 @@ public class LevelManager : MonoBehaviour
     private KeyCode restartButton;
     private bool completeAnimations;
     private int oldCoins;
+    private Player character;
+
+    [Header("Тестирование уровней")]
+    [SerializeField] private int levelId;
+    [SerializeField] private bool hidingBlocks;
 
     [Header("Настройка уровня")]
     public CinemachineVirtualCamera mainVirtualCamera;
@@ -58,7 +63,10 @@ public class LevelManager : MonoBehaviour
         newRecordText.SetActive(false);
         SetControll();
         ControllSettingsManager.OnButtonChange += SetControll;
-        SetLevel(LevelInfoHolder.levelId);
+        if (levelId != -1)
+            SetLevel(levelId);
+        else
+            SetLevel(LevelInfoHolder.levelId);
     }
 
     private void Update()
@@ -139,6 +147,7 @@ public class LevelManager : MonoBehaviour
         player.transform.position = new Vector2(level.spawnPoint.position.x, level.spawnPoint.position.y);
         player.animations.portalGun.gameObject.SetActive(levelMain.hasGun);
         Time.fixedDeltaTime = 0.002f;
+        character = player;
 
         mainVirtualCamera.Follow = player.transform;
         CinemachineConfiner confiner = mainVirtualCamera.gameObject.AddComponent<CinemachineConfiner>();
@@ -148,7 +157,7 @@ public class LevelManager : MonoBehaviour
             camera.orthographicSize = levelMain.cameraZoom;
 
         foreach (Transform square in level.collidersContainer)
-            square.GetComponent<SpriteRenderer>().enabled = false;
+            square.GetComponent<SpriteRenderer>().enabled = !hidingBlocks;
         numCoins = levelMain.coinsNumber;
     }
 
@@ -177,6 +186,7 @@ public class LevelManager : MonoBehaviour
             coinsStart.Play();
             coinsBound.SetActive(true);
             levelMain.wasCompleted = true;
+            levelMain.bestScore = Mathf.Max(1, GetScore());
             oldCoins = Save.save.moneyManager.GetCoins();
 
             var emission = coinsParticle.emission;
@@ -241,6 +251,7 @@ public class LevelManager : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
         Save.save.SaveAll();
+        coinsParticle.SetParticles(particles, 0);
         coinsParticle.Stop();
         SetScore();
     }
@@ -285,7 +296,7 @@ public class LevelManager : MonoBehaviour
                 stars[starsGet].Play("FillStar", 0, 0.1f);
                 starsGet += 1;
             }
-            if (nowScore > levelMain.bestScore && levelMain.wasCompleted) {
+            if (nowScore > levelMain.bestScore && levelMain.bestScore != 0) {
                 newRecordText.SetActive(true);
                 newRecordParticle.Play();
                 newRecordSound.Play();
@@ -345,7 +356,7 @@ public class LevelManager : MonoBehaviour
             button.interactable = true;
         completeAnimations = false;
 
-        if (nowScore > levelMain.bestScore && levelMain.wasCompleted) {
+        if (nowScore > levelMain.bestScore && levelMain.bestScore != 0) {
             newRecordText.SetActive(true);
             newRecordParticle.Play();
             newRecordSound.Play();
@@ -361,7 +372,12 @@ public class LevelManager : MonoBehaviour
         var extraTime = timeCoef - levelMain.bestTime;
         var extraShoots = numShoots - levelMain.bestShootCount;
         var extraTeleport = numTeleports - levelMain.bestTeleportCount;
-        var result = levelMain.maxScore - extraTime * 15 - restartsCoef * 20 - deathsCoef * 40 - extraShoots * 5 - extraTeleport * 10; // это ещё балансить нужно аааа
+        var result = Mathf.Min(levelMain.maxScore - extraTime * 15 - restartsCoef * 20 - deathsCoef * 40 - extraShoots * 5 - extraTeleport * 10, levelMain.maxScore); // это ещё балансить нужно аааа
         return result;
+    }
+
+    public void GivePlayerGun()
+    {
+        character.animations.portalGun.gameObject.SetActive(true);
     }
 }

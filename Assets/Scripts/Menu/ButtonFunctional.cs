@@ -205,7 +205,8 @@ public class ButtonFunctional : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        Time.fixedDeltaTime = 0.002f;
+        if (!animator.GetBool("isDialogue"))
+            Time.fixedDeltaTime = 0.002f;
         isGamePaused = false;
         mainChoice.StopPauseWorking();
         settingsChoice.StopPauseWorking();

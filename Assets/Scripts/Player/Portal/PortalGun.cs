@@ -378,6 +378,13 @@ public class PortalGun : MonoBehaviour
         float ForceMultiply = 1f;
         if (item.TryGetComponent(out Player _))
             ForceMultiply = 15f;
+
+        var UpCoef = 1f;
+        if (Exit.side == "Up") {
+            UpCoef = 0.082f;
+            if (Enter.side == "Up")
+                UpCoef = 0.09f;
+        }
         switch (Exit.side)
         {
             case "Left": 
@@ -395,7 +402,7 @@ public class PortalGun : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 break;
             case "Up":
-                VectorForce = new Vector2(0, Force * massCompY * velY * ForceMultiply * 0.082f);
+                VectorForce = new Vector2(0, Force * massCompY * velY * ForceMultiply * UpCoef);
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 break;
         }
