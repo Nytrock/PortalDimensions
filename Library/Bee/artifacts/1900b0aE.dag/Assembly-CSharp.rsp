@@ -438,6 +438,7 @@
 "Assets/Scripts/Player/DeathTrap.cs"
 "Assets/Scripts/Player/GroundParticle/GroundGet.cs"
 "Assets/Scripts/Player/GroundParticle/GroundTrigger.cs"
+"Assets/Scripts/Player/GroundParticle/JumpTrigger.cs"
 "Assets/Scripts/Player/JumpBonus.cs"
 "Assets/Scripts/Player/JumpCrystall.cs"
 "Assets/Scripts/Player/Player.cs"

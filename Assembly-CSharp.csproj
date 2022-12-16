@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Player\Portal\PortalChecker.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedDialogueText.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\CellButton.cs" />
+    <Compile Include="Assets\Scripts\Player\GroundParticle\JumpTrigger.cs" />
     <Compile Include="Assets\Scripts\Interfaces\World.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalGun.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\InterfaceButtons.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Assets\Scripts\Player\AnimationPlayer.cs" />
     <Compile Include="Assets\Tiles\RuleEditor\NotPortalRuleEditor.cs" />
     <Compile Include="Assets\Scripts\Menu\ChoiceButton.cs" />
+    <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DestroyDialogueItem.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelsSwitchManager.cs" />
     <Compile Include="Assets\Scripts\Player\JumpCrystall.cs" />
@@ -127,7 +129,6 @@
     <Compile Include="Assets\Scripts\LevelsSystem\ButtonSwitch.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\ConfirmButtons.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\Menu\LevelMenu\Dialogue\DestroyDialogueItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

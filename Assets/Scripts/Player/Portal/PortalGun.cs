@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -86,7 +87,30 @@ public class PortalGun : MonoBehaviour
                 SliceColliders(BluePortal);
                 SliceColliders(OrangePortal);
             } else {
-                SliceBothColliders();
+                Dictionary<string, int> sides = new()
+                {
+                    { "Up", 0 },
+                    { "Left", 1 },
+                    { "Down", 2 },
+                    { "Right", 3 },
+                };
+                Dictionary<int, string> numbers = new()
+                {
+                    { -1, "Right"},
+                    { 0, "Up" },
+                    { 1, "Left" },
+                    { 2, "Down" },
+                    { 3, "Right" },
+                    { 4, "Up" }
+                };
+                if (OrangePortal.side == BluePortal.side)
+                    SliceBothCollidersOnSameSide();
+                else if (sides[OrangePortal.side] % 2 == sides[BluePortal.side] % 2)
+                    SliceBothCollidersOnOppositeSide();
+                else if (numbers[sides[OrangePortal.side] + 1] == BluePortal.side)
+                    SliceBothCollidersOnUpLeftSide();
+                else if(numbers[sides[OrangePortal.side] - 1] == BluePortal.side)
+                    SliceBothCollidersOnUpRightSide();
             }
             BluePortal.Active = true;
             OrangePortal.Active = true;
@@ -259,7 +283,7 @@ public class PortalGun : MonoBehaviour
         }
     }
 
-    void SliceBothColliders()
+    private void SliceBothCollidersOnSameSide()
     {
         var portalFirst = OrangePortal;
         var portalSecond = BluePortal;
@@ -304,8 +328,7 @@ public class PortalGun : MonoBehaviour
         for (int i = 0; i < secondPortalPoints.Length; i++)
             secondPortalPoints[i] = portalSecond.transform.TransformPoint(secondPortalPoints[i]);
 
-        switch (OrangePortal.side)
-        {
+        switch (OrangePortal.side) {
             case "Left":
                 Set_Collider(portalFirst.Collider1, points[0], firstPortalPoints[1], points[0], points[3], firstPortalPoints[1]);
                 Set_Collider(portalFirst.Collider2, firstPortalPoints[3], secondPortalPoints[2], points[0], points[3], secondPortalPoints[1]);
@@ -331,6 +354,21 @@ public class PortalGun : MonoBehaviour
                 Set_Collider(portalSecond.Collider2, points[3], secondPortalPoints[1], points[0], points[1], secondPortalPoints[1]);
                 break;
         }
+    }
+
+    private void SliceBothCollidersOnOppositeSide()
+    {
+        Debug.Log("Opposite");
+    }
+
+    private void SliceBothCollidersOnUpLeftSide()
+    {
+        Debug.Log("UpLeft");
+    }
+
+    private void SliceBothCollidersOnUpRightSide()
+    {
+        Debug.Log("UpRight");
     }
 
     public void Move_To_Portal(Portal Exit, Portal Enter, Collider2D item)
