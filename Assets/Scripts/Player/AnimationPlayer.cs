@@ -4,7 +4,7 @@ using UnityEngine;
 public class AnimationPlayer : MonoBehaviour
 {
     private Animator animator;
-    private readonly int[] calm = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4, 5 };
+    private readonly int[] calm = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 3, 3, 4 };
     private int PreviosChoose;
     public ParticleSystem sleepEffect;
     public ParticleSystem walk1;
@@ -53,7 +53,6 @@ public class AnimationPlayer : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        animator.Play("Calm-1");
     }
 
     void Update()
@@ -69,10 +68,10 @@ public class AnimationPlayer : MonoBehaviour
             int choose;
             while (true) {
                 choose = calm[Random.Range(0, calm.Length)];
-                if (choose == 1 || PreviosChoose != choose)
+                if (choose == 0 || PreviosChoose != choose)
                     break;
             }
-            animator.Play("Calm-" + choose);
+            animator.SetInteger("CalmIndex", choose);
             PreviosChoose = choose;
         }
     }
@@ -274,8 +273,7 @@ public class AnimationPlayer : MonoBehaviour
 
     public void PlayJump()
     {
-        if (!jumpSound.isPlaying)
-            jumpSound.Play();
+        jumpSound.Play();
     }
 
     public void PlayCrystallJump(bool boost)
