@@ -146,10 +146,15 @@ public class PortalShoot : MonoBehaviour
     private void Destroy_Portal(Portal portal)
     {
         Destroy(portal.gameObject);
-        if (Right)
+        if (Right) {
+            int layer = LayerMask.NameToLayer("Ground");
+            gun.BluePortal.gameObject.layer = layer;
             gun.BluePortal = null;
-        else
+        } else {
+            int layer = LayerMask.NameToLayer("Ground");
+            gun.OrangePortal.gameObject.layer = layer;
             gun.OrangePortal = null;
+        }
     }
 
     private void SetPortalScaleAndRotation(Portal portal, PolygonCollider2D other, int i)

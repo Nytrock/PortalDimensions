@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class PortalTrigger : MonoBehaviour
 {
-    public bool inPortal;
     public Portal portal;
+    private string layer = "Orange";
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Rigidbody2D _) && !obj.isTrigger) {
-            inPortal = true;
-            portal.gun.itemToTeleport = obj;
-            portal.Update_Portal();
-            portal.ChangePregrads(!inPortal);
+            if (!obj.TryGetComponent(out ItemToteleport _)) {
+                obj.gameObject.AddComponent<ItemToteleport>().SetLayerEnd(layer);
+            }
         }
+
         if (obj.TryGetComponent(out GroundGet _))
             Destroy(portal.gameObject);
     }
@@ -20,9 +20,15 @@ public class PortalTrigger : MonoBehaviour
     private void OnTriggerExit2D(Collider2D obj)
     {
         if (obj.TryGetComponent(out Rigidbody2D _) && !obj.isTrigger){
-            inPortal = false;
-            portal.Update_Portal();
-            portal.ChangePregrads(!inPortal);
+            if (!obj.GetComponent<ItemToteleport>().GetTeleport())
+                Destroy(obj.GetComponent<ItemToteleport>());
+            else
+                portal.ActivatePortal(obj);
         }
+    }
+
+    public void SetLayer(string newValue)
+    {
+        layer = newValue;
     }
 }

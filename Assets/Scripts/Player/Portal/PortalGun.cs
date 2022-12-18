@@ -24,9 +24,7 @@ public class PortalGun : MonoBehaviour
     public Portal BluePortal;
 
     public float ForceIteration;
-    private Vector2 VectorForce;
     public float Force;
-    public Collider2D itemToTeleport;
 
     private bool cooldown;
 
@@ -77,53 +75,24 @@ public class PortalGun : MonoBehaviour
             ShootOrange = null;
         else
             ShootBlue = null;
-        if (OrangePortal && BluePortal)
-        {
+        if (OrangePortal && BluePortal) {
             OrangePortal.Particles.Play();
             BluePortal.Particles.Play();
             OrangePortal.trigger.gameObject.SetActive(true);
             BluePortal.trigger.gameObject.SetActive(true);
-            if (BluePortal.Collider != OrangePortal.Collider) {
-                SliceColliders(BluePortal);
-                SliceColliders(OrangePortal);
-            } else {
-                Dictionary<string, int> sides = new()
-                {
-                    { "Up", 0 },
-                    { "Left", 1 },
-                    { "Down", 2 },
-                    { "Right", 3 },
-                };
-                Dictionary<int, string> numbers = new()
-                {
-                    { -1, "Right"},
-                    { 0, "Up" },
-                    { 1, "Left" },
-                    { 2, "Down" },
-                    { 3, "Right" },
-                    { 4, "Up" }
-                };
-                if (OrangePortal.side == BluePortal.side)
-                    SliceBothCollidersOnSameSide();
-                else if (sides[OrangePortal.side] % 2 == sides[BluePortal.side] % 2)
-                    SliceBothCollidersOnOppositeSide();
-                else if (numbers[sides[OrangePortal.side] + 1] == BluePortal.side)
-                    SliceBothCollidersOnUpLeftSide();
-                else if(numbers[sides[OrangePortal.side] - 1] == BluePortal.side)
-                    SliceBothCollidersOnUpRightSide();
-            }
+            OrangePortal.SetPortalLayer();
+            BluePortal.SetPortalLayer();
+            SliceColliders(BluePortal);
+            SliceColliders(OrangePortal);
             BluePortal.Active = true;
             OrangePortal.Active = true;
-        } else
-        {
-            if (OrangePortal)
-            {
+        } else {
+            if (OrangePortal) {
                 OrangePortal.Particles.Stop();
                 OrangePortal.Active = false;
                 SliceColliders(OrangePortal);
             }
-            if (BluePortal)
-            {
+            if (BluePortal) {
                 BluePortal.Particles.Stop();
                 BluePortal.Active = false;
                 SliceColliders(BluePortal);
@@ -142,20 +111,20 @@ public class PortalGun : MonoBehaviour
         switch (portal.side)
         {
             case "Left":
-                Set_Collider(portal.Collider1, points[0], portals[1], points[0], points[3], portals[1]);
-                Set_Collider(portal.Collider2, portals[0], points[1], points[0], points[3], points[1]);
+                SetColliderAndMask(portal.Collider1, points[0], portals[1], points[0], points[3], portals[1]);
+                SetColliderAndMask(portal.Collider2, portals[0], points[1], points[0], points[3], points[1]);
                 break;
             case "Down":
-                Set_Collider(portal.Collider1, portals[1], points[1], points[0], points[1], points[0]);
-                Set_Collider(portal.Collider2, points[2], portals[0], points[1], points[0], portals[0]);
+                SetColliderAndMask(portal.Collider1, portals[1], points[1], points[0], points[1], points[0]);
+                SetColliderAndMask(portal.Collider2, points[2], portals[0], points[1], points[0], portals[0]);
                 break;
             case "Right":
-                Set_Collider(portal.Collider1, points[3], portals[0], points[3], points[0], portals[0]);
-                Set_Collider(portal.Collider2, portals[1], points[2], points[0], points[3], points[1]);
+                SetColliderAndMask(portal.Collider1, points[3], portals[0], points[3], points[0], portals[0]);
+                SetColliderAndMask(portal.Collider2, portals[1], points[2], points[0], points[3], points[1]);
                 break;
             case "Up":
-                Set_Collider(portal.Collider1, portals[0], points[0], points[0], points[1], points[0]);
-                Set_Collider(portal.Collider2, points[3], portals[1], points[0], points[1], portals[1]);
+                SetColliderAndMask(portal.Collider1, portals[0], points[0], points[0], points[1], points[0]);
+                SetColliderAndMask(portal.Collider2, points[3], portals[1], points[0], points[1], portals[1]);
                 break;
         }
         portal.Collider1.GetComponent<GroundGet>().color = portal.Collider.GetComponent<GroundGet>().color;
@@ -164,7 +133,7 @@ public class PortalGun : MonoBehaviour
         portal.Collider2.GetComponent<GroundGet>().walkAudio = portal.Collider.GetComponent<GroundGet>().walkAudio;
     }
 
-    void Set_Collider(BoxCollider2D collider, Vector2 x1, Vector2 x2, Vector2 y1, Vector2 y2, Vector2 center)
+    void SetColliderAndMask(BoxCollider2D collider, Vector2 x1, Vector2 x2, Vector2 y1, Vector2 y2, Vector2 center)
     {
         collider.size = new Vector2(Vector2.Distance(x1, x2), Vector2.Distance(y1, y2));
         collider.transform.position = center + ((x1 - x2) - (y1 - y2)) / 2;
@@ -283,110 +252,15 @@ public class PortalGun : MonoBehaviour
         }
     }
 
-    private void SliceBothCollidersOnSameSide()
-    {
-        var portalFirst = OrangePortal;
-        var portalSecond = BluePortal;
-
-        Vector2[] points = portalFirst.Collider.points;
-        for (int i = 0; i < points.Length; i++)
-            points[i] = portalFirst.Collider.transform.TransformPoint(points[i]);
-
-        switch (OrangePortal.side) {
-            case "Left":
-                if (portalFirst.transform.position.y < portalSecond.transform.position.y) {
-                    portalFirst = BluePortal;
-                    portalSecond = OrangePortal;
-                }
-                break;
-            case "Down":
-                if (portalFirst.transform.position.x > portalSecond.transform.position.x)
-                {
-                    portalFirst = BluePortal;
-                    portalSecond = OrangePortal;
-                }
-                break;
-            case "Right":
-                if (portalFirst.transform.position.y < portalSecond.transform.position.y) {
-                    portalFirst = BluePortal;
-                    portalSecond = OrangePortal;
-                }
-                break;
-            case "Up":
-                if (portalFirst.transform.position.x > portalSecond.transform.position.x)
-                {
-                    portalFirst = BluePortal;
-                    portalSecond = OrangePortal;
-                }
-                break;
-        }
-
-        Vector2[] firstPortalPoints = portalFirst.GetComponent<PolygonCollider2D>().points;
-        Vector2[] secondPortalPoints = portalFirst.GetComponent<PolygonCollider2D>().points;
-        for (int i = 0; i < firstPortalPoints.Length; i++)
-            firstPortalPoints[i] = portalFirst.transform.TransformPoint(firstPortalPoints[i]);
-        for (int i = 0; i < secondPortalPoints.Length; i++)
-            secondPortalPoints[i] = portalSecond.transform.TransformPoint(secondPortalPoints[i]);
-
-        switch (OrangePortal.side) {
-            case "Left":
-                Set_Collider(portalFirst.Collider1, points[0], firstPortalPoints[1], points[0], points[3], firstPortalPoints[1]);
-                Set_Collider(portalFirst.Collider2, firstPortalPoints[3], secondPortalPoints[2], points[0], points[3], secondPortalPoints[1]);
-                Set_Collider(portalSecond.Collider1, firstPortalPoints[3], secondPortalPoints[2], points[0], points[3], secondPortalPoints[1]);
-                Set_Collider(portalSecond.Collider2, secondPortalPoints[0], points[1], points[0], points[3], points[1]);
-                break;
-            case "Down":
-                Set_Collider(portalFirst.Collider1, firstPortalPoints[1], points[1], points[0], points[1], points[0]);
-                Set_Collider(portalFirst.Collider2, firstPortalPoints[0], secondPortalPoints[1], points[1], points[0], secondPortalPoints[1]);
-                Set_Collider(portalSecond.Collider1, firstPortalPoints[0], secondPortalPoints[1], points[1], points[0], secondPortalPoints[1]);
-                Set_Collider(portalSecond.Collider2, points[2], secondPortalPoints[0], points[1], points[0], secondPortalPoints[0]);
-                break;
-            case "Right":
-                Set_Collider(portalFirst.Collider1, points[3], firstPortalPoints[0], points[3], points[0], firstPortalPoints[0]);
-                Set_Collider(portalFirst.Collider2, firstPortalPoints[1], secondPortalPoints[0], points[3], points[0], secondPortalPoints[0]);
-                Set_Collider(portalSecond.Collider1, firstPortalPoints[1], secondPortalPoints[0], points[3], points[0], secondPortalPoints[0]);
-                Set_Collider(portalSecond.Collider2, secondPortalPoints[1], points[2], points[0], points[3], points[1]);
-                break;
-            case "Up":
-                Set_Collider(portalFirst.Collider1, firstPortalPoints[0], points[0], points[0], points[1], points[0]);
-                Set_Collider(portalFirst.Collider2, firstPortalPoints[1], secondPortalPoints[0], points[0], points[1], secondPortalPoints[0]);
-                Set_Collider(portalSecond.Collider1, firstPortalPoints[1], secondPortalPoints[0], points[0], points[1], secondPortalPoints[0]);
-                Set_Collider(portalSecond.Collider2, points[3], secondPortalPoints[1], points[0], points[1], secondPortalPoints[1]);
-                break;
-        }
-    }
-
-    private void SliceBothCollidersOnOppositeSide()
-    {
-        Debug.Log("Opposite");
-    }
-
-    private void SliceBothCollidersOnUpLeftSide()
-    {
-        Debug.Log("UpLeft");
-    }
-
-    private void SliceBothCollidersOnUpRightSide()
-    {
-        Debug.Log("UpRight");
-    }
-
     public void Move_To_Portal(Portal Exit, Portal Enter, Collider2D item)
     {
-        Enter.trigger.inPortal = false;
-        Enter.Teleport = false;
-
-        if (BluePortal.Collider != OrangePortal.Collider)
-            Enter.Update_Portal();
-
-        Exit.trigger.inPortal = true;
-        Exit.Teleport = false;
-        if (BluePortal.Collider != OrangePortal.Collider)
-            Exit.Update_Portal();
-        Exit.ChangePregrads(false);
-        Exit.Mask.SetActive(true);
         Exit.AnimatorPortal();
         Exit.PlayTeleport();
+        string layerEnd = "Orange";
+        if (Exit.Blue.activeSelf == true)
+            layerEnd = "Blue";
+        item.GetComponent<ItemToteleport>().SetLayerEnd(layerEnd);
+        item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd);
 
         float x = item.bounds.extents.x;
         float y = item.bounds.extents.y;
@@ -423,11 +297,11 @@ public class PortalGun : MonoBehaviour
             if (Enter.side == "Up")
                 UpCoef = 0.09f;
         }
+        Vector2 force = Vector2.zero;
         switch (Exit.side)
         {
-            case "Left": 
-                VectorForce = new Vector2(-Force * Mathf.Max(velY, 1.6f) * 0.8f * massCompX * 2.5f * ForceMultiply, 0);
-                rb.velocity = new Vector2(rb.velocity.x, 0);
+            case "Left":
+                force = new Vector2(-Force * Mathf.Max(velY, 1.6f) * 0.8f * massCompX * 2.5f * ForceMultiply, rb.velocity.y);
                 break;
             case "Down":
                 if (rb.velocity.y < -180f)
@@ -435,37 +309,27 @@ public class PortalGun : MonoBehaviour
                 else if (rb.velocity.y > -5f)
                     rb.velocity = new Vector2(rb.velocity.x, -5f);
                 break;
-            case "Right": 
-                VectorForce = new Vector2(Force * massCompX * Mathf.Max(velY, 1.6f) * 0.8f * 2.5f * ForceMultiply, 0);
-                rb.velocity = new Vector2(rb.velocity.x, 0);
+            case "Right":
+                force = new Vector2(Force * massCompX * Mathf.Max(velY, 1.6f) * 0.8f * 2.5f * ForceMultiply, rb.velocity.y);
                 break;
             case "Up":
-                VectorForce = new Vector2(0, Force * massCompY * velY * ForceMultiply * UpCoef);
-                rb.velocity = new Vector2(rb.velocity.x, 0);
+                force = new Vector2(rb.velocity.x, 13f);
                 break;
         }
 
+        StartCoroutine(GiveForce(rb, force));
 
         if (item.TryGetComponent(out Player player))
             player.animations.From_Portal(Exit.Blue.activeSelf);
         else
             item.transform.rotation = Quaternion.Euler(0f, 0f, Exit.transform.rotation.eulerAngles.z);
-        ForceIteration = 1f;
-        if (Exit.side != "Down")
-            StartCoroutine(GiveForce());
         LevelManager.levelManager.AddToScore("Teleport");
     }
 
-    IEnumerator GiveForce()
+    IEnumerator GiveForce(Rigidbody2D rb, Vector2 force)
     {
-        while (ForceIteration < 60)
-        {
-            itemToTeleport.GetComponent<Rigidbody2D>().AddForce(VectorForce / ForceIteration, ForceMode2D.Impulse);
-            ForceIteration += 1f;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-        if (!OrangePortal.trigger.inPortal && !BluePortal.trigger.inPortal)
-            itemToTeleport = null;
+        yield return new WaitForSeconds(Time.deltaTime);
+        rb.velocity = force;
     }
 
     IEnumerator CooldownTime()
