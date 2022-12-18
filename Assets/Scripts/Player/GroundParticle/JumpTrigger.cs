@@ -13,7 +13,7 @@ public class JumpTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet _)) {
+        if (obj.TryGetComponent(out GroundGet _)) {
             if (!nowColliders.Contains(obj)) {
                 nowColliders.Add(obj);
                 CanJumpSet();
@@ -23,7 +23,7 @@ public class JumpTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet _))
+        if (obj.TryGetComponent(out GroundGet _))
         {
             if (nowColliders.Contains(obj)) {
                 nowColliders.Remove(obj);

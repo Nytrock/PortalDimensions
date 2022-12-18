@@ -16,14 +16,14 @@ TagManager:
   - UI
   - Shoot
   - Glitch
-  - Portal
+  - PortalWall
   - Trap
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ItemToTeleportOrange
+  - ItemToTeleportBlue
+  - TeleportingItemOrange
+  - TeleportingItemBlue
+  - PortalOrange
+  - PortalBlue
   - 
   - 
   - 

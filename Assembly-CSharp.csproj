@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Menu\MenuChoiceLevel\GoToLevel.cs" />
     <Compile Include="Assets\Scripts\Menu\FpsCounter.cs" />
-    <Compile Include="Assets\Scripts\Player\Portal\PregradsControl.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ProfileDialogue.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\CellVisual.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\LevelManager.cs" />
@@ -129,6 +128,7 @@
     <Compile Include="Assets\Scripts\LevelsSystem\ButtonSwitch.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\ConfirmButtons.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
+    <Compile Include="Assets\Scripts\Player\Portal\ItemToteleport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
