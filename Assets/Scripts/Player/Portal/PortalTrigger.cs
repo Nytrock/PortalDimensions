@@ -12,9 +12,6 @@ public class PortalTrigger : MonoBehaviour
                 obj.gameObject.AddComponent<ItemToteleport>().SetLayerEnd(layer);
             }
         }
-
-        if (obj.TryGetComponent(out GroundGet _))
-            Destroy(portal.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D obj)

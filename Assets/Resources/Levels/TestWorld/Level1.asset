@@ -21,7 +21,7 @@ MonoBehaviour:
   _bestTeleportCount: 0
   _bestTime: 1000
   _wasCompleted: 0
-  _hasGun: 0
+  _hasGun: 1
   _maxScore: 3300
   _scoreForOneStar: 1000
   _scoreForTwoStar: 2000

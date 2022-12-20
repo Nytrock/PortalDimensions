@@ -21,10 +21,6 @@ public class Portal : MonoBehaviour
     [Header("Звуки")]
     [SerializeField] private AudioSource teleportSound;
 
-    [Header("Маски")]
-    public Transform mask1;
-    public Transform mask2;
-
     private void Start()
     {
         animator = GetComponent<Animator>();

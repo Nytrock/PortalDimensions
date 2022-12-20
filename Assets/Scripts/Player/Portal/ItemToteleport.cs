@@ -47,10 +47,8 @@ public class ItemToteleport : MonoBehaviour
     {
         int layer = LayerMask.NameToLayer(name);
         gameObject.layer = layer;
-        if (TryGetComponent(out Player player)) {
+        if (TryGetComponent(out Player player))
             player.GetComponentInChildren<GroundTrigger>().gameObject.layer = layer;
-            player.GetComponentInChildren<JumpTrigger>().gameObject.layer = layer;
-        }
     }
 
     public void SetLayerEnd(string newValue)

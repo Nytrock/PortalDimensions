@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Save\CursorSeeker.cs" />
     <Compile Include="Assets\Scripts\Editors\VideoSettingsEditor.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjectsEditors\LevelEditor.cs" />
+    <Compile Include="Assets\Scripts\Player\Portal\ItemToteleport.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjectsEditors\WorldEditor.cs" />
     <Compile Include="Assets\Scripts\Player\GroundParticle\GroundGet.cs" />
     <Compile Include="Assets\Scripts\Player\DeathTrap.cs" />
@@ -96,7 +97,6 @@
     <Compile Include="Assets\Scripts\Player\Portal\PortalChecker.cs" />
     <Compile Include="Assets\Scripts\Localization\LocalizedDialogueText.cs" />
     <Compile Include="Assets\Scripts\LevelsSystem\CellButton.cs" />
-    <Compile Include="Assets\Scripts\Player\GroundParticle\JumpTrigger.cs" />
     <Compile Include="Assets\Scripts\Interfaces\World.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\PortalGun.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\InterfaceButtons.cs" />
@@ -128,7 +128,6 @@
     <Compile Include="Assets\Scripts\LevelsSystem\ButtonSwitch.cs" />
     <Compile Include="Assets\Scripts\Menu\LevelMenu\ConfirmButtons.cs" />
     <Compile Include="Assets\Scripts\Player\Portal\MaskPortalControl.cs" />
-    <Compile Include="Assets\Scripts\Player\Portal\ItemToteleport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
