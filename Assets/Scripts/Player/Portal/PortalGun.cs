@@ -256,11 +256,13 @@ public class PortalGun : MonoBehaviour
     {
         Exit.AnimatorPortal();
         Exit.PlayTeleport();
-        string layerEnd = "Orange";
-        if (Exit.Blue.activeSelf == true)
-            layerEnd = "Blue";
-        item.GetComponent<ItemToteleport>().SetLayerEnd(layerEnd);
-        item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd);
+        if (Exit.Collider == Enter.Collider) {
+            string layerEnd = "Orange";
+            if (Exit.Blue.activeSelf == true)
+                layerEnd = "Blue";
+            item.GetComponent<ItemToteleport>().SetLayerEnd(layerEnd);
+            item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd);
+        }
 
         float x = item.bounds.extents.x;
         float y = item.bounds.extents.y;
@@ -276,60 +278,50 @@ public class PortalGun : MonoBehaviour
         }
 
         var rb = item.GetComponent<Rigidbody2D>();
-        float velY = (Mathf.Abs(rb.velocity.y) + 1.4f) / 10f;
-        if (velY < 1.3f)
-            velY = 1.3f;
-        else if (velY > 3f)
-            velY = 3f;
-        float massCompY = rb.mass;
-        if (massCompY > 1)
-            massCompY *= 1.03f;
-        float massCompX = rb.mass;
-        if (massCompX > 1)
-            massCompX *= 0.3f;
-        float ForceMultiply = 1f;
-        if (item.TryGetComponent(out Player _))
-            ForceMultiply = 15f;
+        var upCoefY = 1.1f;
+        if (Mathf.Abs(rb.velocity.y) >= 20f)
+            upCoefY = 1.075f;
+        var upCoefX = 1.1f;
+        if (Mathf.Abs(rb.velocity.x) >= 20f)
+            upCoefX = 1.075f;
 
-        var UpCoef = 1f;
-        if (Exit.side == "Up") {
-            UpCoef = 0.082f;
-            if (Enter.side == "Up")
-                UpCoef = 0.09f;
-        }
-        Vector2 force = Vector2.zero;
-        switch (Exit.side)
-        {
+        switch (Exit.side) {
             case "Left":
-                force = new Vector2(-Force * Mathf.Max(velY, 1.6f) * 0.8f * massCompX * 2.5f * ForceMultiply, rb.velocity.y);
+                float force = -Mathf.Max(7f, Mathf.Abs(rb.velocity.y) * upCoefY, Mathf.Abs(rb.velocity.x) * upCoefX);
+                if (item.TryGetComponent(out Player charachter))
+                    charachter.SetVelocityAdd(force);
+                else
+                    rb.velocity = new Vector2(force, 0);
                 break;
             case "Down":
+                var downCoef = 0.7f;
+                if (Mathf.Max(Mathf.Abs(rb.velocity.x) * downCoef, Mathf.Abs(rb.velocity.y) * downCoef) >= 17f)
+                    downCoef = 0.9f;
+                if (Mathf.Max(Mathf.Abs(rb.velocity.x) * downCoef, Mathf.Abs(rb.velocity.y) * downCoef) >= 35f)
+                    downCoef = 1f;
+                rb.velocity = new Vector2(0, -Mathf.Max(Mathf.Abs(rb.velocity.x) * downCoef, Mathf.Abs(rb.velocity.y) * downCoef));
                 if (rb.velocity.y < -180f)
                     rb.velocity = new Vector2(rb.velocity.x, -180f);
                 else if (rb.velocity.y > -5f)
                     rb.velocity = new Vector2(rb.velocity.x, -5f);
                 break;
             case "Right":
-                force = new Vector2(Force * massCompX * Mathf.Max(velY, 1.6f) * 0.8f * 2.5f * ForceMultiply, rb.velocity.y);
+                force = Mathf.Max(7f, Mathf.Abs(rb.velocity.y) * upCoefY, Mathf.Abs(rb.velocity.x) * upCoefX);
+                if (item.TryGetComponent(out Player charachter1))
+                    charachter1.SetVelocityAdd(force);
+                else
+                    rb.velocity = new Vector2(force, 0);
                 break;
             case "Up":
-                force = new Vector2(rb.velocity.x, 13f);
+                rb.velocity = new Vector2(0, Mathf.Max(12f, Mathf.Abs(rb.velocity.y) * upCoefY, Mathf.Abs(rb.velocity.x) * upCoefX));
                 break;
         }
-
-        StartCoroutine(GiveForce(rb, force));
 
         if (item.TryGetComponent(out Player player))
             player.animations.From_Portal(Exit.Blue.activeSelf);
         else
             item.transform.rotation = Quaternion.Euler(0f, 0f, Exit.transform.rotation.eulerAngles.z);
         LevelManager.levelManager.AddToScore("Teleport");
-    }
-
-    IEnumerator GiveForce(Rigidbody2D rb, Vector2 force)
-    {
-        yield return new WaitForSeconds(Time.deltaTime);
-        rb.velocity = force;
     }
 
     IEnumerator CooldownTime()

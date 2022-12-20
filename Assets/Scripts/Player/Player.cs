@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     private Transform skin;
     public Vector2 moveVector;
 
+    private float velocityAdd;
+    private bool velocityWork;
+
     private bool jumping;
     public bool shoot;
     public bool right;
@@ -63,7 +66,7 @@ public class Player : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if ((canJump || jumpIteration > 0) && jumping)
+        if (jumpIteration > 0 && jumping)
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + jumpForce);
         
         if (jumpIteration > 0)
@@ -80,7 +83,16 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(walkRightKey) && moveVector.x >= 0)
             move = 1;
         moveVector.x = move * realSpeed;
-        rb.velocity = new Vector2(moveVector.x, rb.velocity.y);
+        if (velocityAdd != 0) {
+            rb.velocity = new Vector2(velocityAdd * 0.4f, rb.velocity.y);
+            velocityAdd = 0;
+        } else if (!velocityWork) {
+            rb.velocity = new Vector2(moveVector.x, rb.velocity.y);
+        }
+
+        if (move != 0 || !inPortal)
+            velocityWork = false;
+
         if ((right && moveVector.x < 0 || !right && moveVector.x > 0)) {
             if (shoot)
                 animations.ReverseWalk();
@@ -113,6 +125,7 @@ public class Player : MonoBehaviour
             if (onGround) {
                 animations.PlayJump();
                 jumpForce = normalForce;
+                jumpIteration = 60;
             } else if (crystallJump) {
                 jumpForce = crystallForce;
                 if (boostCrystallJump)
@@ -123,7 +136,7 @@ public class Player : MonoBehaviour
                 jumpCrystalls[0].Active(true);
                 animations.PlayCrystallJump(boostCrystallJump);
             } else if (doubleJump || tripleJump) {
-                jumpForce = normalForce * 0.85f;
+                jumpForce = 0.2780f * normalForce + 0.0975f;
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 jumpIteration = 60;
 
@@ -168,16 +181,6 @@ public class Player : MonoBehaviour
         moveVector = new Vector2(0, 0);
         rb.velocity = new Vector2(0, 0);
         enabled = false;
-    }
-
-    private float CalculateJumpForce()
-    {
-        float value = 1.4f;
-        if (rb.velocity.y > 1f)
-            value = rb.velocity.y * 1.15f;
-        else if (rb.velocity.y < -1f)
-            value = 1 + (rb.velocity.y / 40f);
-        return value;
     }
 
     public void CheckCrystallList(JumpCrystall crystall, bool removing)
@@ -244,8 +247,9 @@ public class Player : MonoBehaviour
         return doubleJump;
     }
 
-    public void SetJumpingCan(bool newValue)
+    public void SetVelocityAdd(float newValue)
     {
-        canJump = newValue;
+        velocityAdd = newValue;
+        velocityWork = true;
     }
 }
