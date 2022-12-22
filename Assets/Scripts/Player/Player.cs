@@ -84,13 +84,13 @@ public class Player : MonoBehaviour
             move = 1;
         moveVector.x = move * realSpeed;
         if (velocityAdd != 0) {
-            rb.velocity = new Vector2(velocityAdd * 0.4f, rb.velocity.y);
+            rb.velocity = new Vector2(velocityAdd * 0.4f, 1);
             velocityAdd = 0;
         } else if (!velocityWork) {
             rb.velocity = new Vector2(moveVector.x, rb.velocity.y);
         }
 
-        if (move != 0 || !inPortal)
+        if (move != 0)
             velocityWork = false;
 
         if ((right && moveVector.x < 0 || !right && moveVector.x > 0)) {
