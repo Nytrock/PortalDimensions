@@ -1,0 +1,64 @@
+name: Bug report
+description: Report a bug you encounter while playing Portal Dimensions
+labels: "bug"
+title: "Bug in the Portal Dimensions"
+assignees:
+  - nytrock
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this bug report!
+        
+  - type: input
+    id: contact
+    attributes:
+      label: Contact information
+      description: How can I contact you if I need more information about an bug?
+      placeholder: email@example.com
+    validations:
+      required: false
+  
+  - type: dropdown
+    id: type-of-error
+    attributes:
+      label: Type of bug
+      description: What type of bug did you encounter?
+      options:
+        - Technical bug
+        - Visual bug
+        - Audio bug
+        - Another
+    validations:
+      required: true
+      
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What exactly happened?
+      description: Describe in detail what bug occurred.
+      placeholder: What are you looking at, come on, write about the bug.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: how-happened
+    attributes:
+      label: Under what circumstances did the bug occur?
+      description: НWrite what you did in the game to come to this bug.
+      placeholder: Yes, it's a must.
+    validations:
+      required: true
+  
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What OS are you using?
+      multiple: true
+      options:
+        - Windows
+        - Linux
+        - Mac OS
+        - Another
+    validations:
+      required: true
