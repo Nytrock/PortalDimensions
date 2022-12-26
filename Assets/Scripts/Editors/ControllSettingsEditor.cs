@@ -1,5 +1,6 @@
 using UnityEditor;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(ControllSettingsManager))]
 public class ControllSettingsEditor : Editor
 {
@@ -31,3 +32,4 @@ public class ControllSettingsEditor : Editor
         }
     }
 }
+#endif

@@ -1,5 +1,6 @@
 using UnityEditor;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(VideoSettingsManager))]
 public class VideoSettingsEditor : Editor
 {
@@ -28,3 +29,4 @@ public class VideoSettingsEditor : Editor
         }
     }
 }
+#endif

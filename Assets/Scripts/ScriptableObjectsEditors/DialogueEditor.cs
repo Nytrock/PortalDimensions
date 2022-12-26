@@ -4,6 +4,7 @@ using System;
 using System.Reflection;
 using Object = UnityEngine.Object;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(ProfileDialogue), true)]
 [CanEditMultipleObjects]
 public class DialogueEditor : Editor
@@ -55,3 +56,4 @@ public class DialogueEditor : Editor
         return null;
     }
 }
+#endif

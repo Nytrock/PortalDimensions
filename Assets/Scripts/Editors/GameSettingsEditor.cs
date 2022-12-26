@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(GameSettingsManager))]
 public class GameSettingsEditor : Editor
 {
@@ -37,3 +38,4 @@ public class GameSettingsEditor : Editor
         }
     }
 }
+#endif

@@ -9,6 +9,7 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager levelManager;
+    private bool timeFixing;
     private KeyCode restartButton;
     private bool completeAnimations;
     private int oldCoins;
@@ -29,7 +30,7 @@ public class LevelManager : MonoBehaviour
     private int numTeleports;
     private int restartsCoef;
     private int deathsCoef;
-    private int timeCoef;
+    [SerializeField] private float timeCoef;
 
     [Header("Счёт")]
     public TextMeshProUGUI scoreText;
@@ -76,6 +77,9 @@ public class LevelManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && completeAnimations)
             BreakAllAnimations();
+
+        if (Time.fixedDeltaTime != 0.02f && timeFixing)
+            timeCoef += Time.deltaTime;
     }
 
     public void RestartLevel()
@@ -277,7 +281,7 @@ public class LevelManager : MonoBehaviour
 
     public void FixTime()
     {
-        timeCoef = (int)Time.timeSinceLevelLoad;
+        timeFixing = false;
     }
     IEnumerator AnimatedScoreText()
     {
@@ -369,7 +373,7 @@ public class LevelManager : MonoBehaviour
 
     private int GetScore()
     {
-        var extraTime = timeCoef - levelMain.bestTime;
+        var extraTime = (int)timeCoef - levelMain.bestTime;
         var extraShoots = numShoots - levelMain.bestShootCount;
         var extraTeleport = numTeleports - levelMain.bestTeleportCount;
         var result = Mathf.Min(levelMain.maxScore - extraTime * 15 - restartsCoef * 20 - deathsCoef * 40 - extraShoots * 5 - extraTeleport * 10, levelMain.maxScore); // это ещё балансить нужно аааа

@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     private float velocityAdd;
     private bool velocityWork;
+    [SerializeField] private PhysicsMaterial2D slime;
+    [SerializeField] private PhysicsMaterial2D normal;
 
     private bool jumping;
     public bool shoot;
@@ -18,7 +20,6 @@ public class Player : MonoBehaviour
     public bool inPortal;
     [Header("Прыжок")]
     public bool onGround;
-    private bool canJump;
     private int jumpIteration = 0;
     private float jumpForce;
     public float normalForce;

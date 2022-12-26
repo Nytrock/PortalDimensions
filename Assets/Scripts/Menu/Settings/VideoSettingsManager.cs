@@ -116,12 +116,6 @@ public class VideoSettingsManager : MonoBehaviour
         int width = int.Parse(resolution[0]);
         int height = int.Parse(resolution[1]);
         SetScreenMode(width, height);
-        foreach (RenderTexture texture in textures) {
-            texture.Release();
-            texture.width = width;
-            texture.height = height;
-            texture.Create(); 
-        }
         try {
             StartCoroutine(Textures());
         } catch {
@@ -145,9 +139,20 @@ public class VideoSettingsManager : MonoBehaviour
                 resolutionText.text = resolutionsScreen[resolutionId];
             }
         }
+        if (screenMods[modId] == "Fullscreen"){
+            width = 1920;
+            height = 1080;
+        }
+
+        foreach (RenderTexture texture in textures) {
+            texture.Release();
+            texture.width = width;
+            texture.height = height;
+            texture.Create();
+        }
 
         switch (screenMods[modId]) {
-            case "Fullscreen": Screen.SetResolution(1920, 1080, FullScreenMode.ExclusiveFullScreen); break;
+            case "Fullscreen": Screen.SetResolution(width, height, FullScreenMode.ExclusiveFullScreen); StartCoroutine(Textures()); break;
             case "Windowed": Screen.SetResolution(width, height, FullScreenMode.Windowed); break;
             case "Borderless": Screen.SetResolution(width, height, FullScreenMode.FullScreenWindow); break;
         }

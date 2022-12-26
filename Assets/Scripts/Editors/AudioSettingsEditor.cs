@@ -1,5 +1,6 @@
 using UnityEditor;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(AudioSettingsManager))]
 public class AudioSettingsEditor : Editor
 {
@@ -26,3 +27,4 @@ public class AudioSettingsEditor : Editor
         }
     }
 }
+#endif
