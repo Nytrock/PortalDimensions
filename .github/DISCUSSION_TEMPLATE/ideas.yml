@@ -1,0 +1,53 @@
+title: "Portal Dimensions improvement idea"
+labels: "idea"
+assignees:
+  - nytrock
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping make Portal Dimensions better!
+        
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Information
+      description: How can I contact you if I need details of your idea?
+      placeholder: email@example.com
+    validations:
+      required: false
+  
+  - type: dropdown
+    id: type-of-suggest
+    attributes:
+      label: Improvement type
+      description: What aspect of the game would you like to improve?
+      options:
+        - Gameplay
+        - Visual
+        - Audio
+        - Game balance
+        - Other
+    validations:
+      required: true
+      
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Idea text
+      description: Write your idea to improve the game.
+      placeholder: Write here.
+    validations:
+      required: true
+  
+  - type: dropdown
+    id: tech-know
+    attributes:
+      label: Possession of technical knowledge
+      description: Do you have enough technical knowledge so that if there are problems with the implementation of this idea, you can help me?
+      options:
+        - Yes
+        - No
+        - Don't know
+    validations:
+      required: true
