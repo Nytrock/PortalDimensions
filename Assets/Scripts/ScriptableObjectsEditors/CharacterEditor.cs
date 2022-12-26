@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Object = UnityEngine.Object;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(Character), true)]
 [CanEditMultipleObjects]
 public class CharacterEditor : Editor
@@ -84,3 +85,4 @@ public class CharacterEditor : Editor
         return null;
     }
 }
+#endif

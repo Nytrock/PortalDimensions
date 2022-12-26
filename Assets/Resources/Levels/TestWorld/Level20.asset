@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f274500182d0e0c4b8e20a792ae58ee1, type: 3}
+  m_Name: Level20
+  m_EditorClassIdentifier: 
+  _id: 19
+  _world: {fileID: 11400000, guid: f3a6a59b85f947f42b6f7b9a6879ce40, type: 2}
+  _cameraZoom: 5.74
+  _coinsNumber: 10
+  _bestScore: 0
+  _bestShootCount: 0
+  _bestTeleportCount: 0
+  _bestTime: 5
+  _wasCompleted: 0
+  _hasGun: 1
+  _maxScore: 3300
+  _scoreForOneStar: 1000
+  _scoreForTwoStar: 2000
+  _scoreForThreeStar: 3000

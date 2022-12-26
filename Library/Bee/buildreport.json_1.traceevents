@@ -1,0 +1,774 @@
+{ "pid": 0, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
+{ "pid": 0, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
+{ "pid": 0, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
+{ "pid": 0, "tid": 1, "ts": 1671865483306474, "dur": 1932546, "ph": "X", "name": "Build Player", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1671865483306792, "dur": 15602, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1671865483322409, "dur": 1908623, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1671865485231034, "dur": 7984, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1671865485239574, "dur": 17, "ph": "X", "name": "", "args": {} },
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1671865483351876, "dur":1256, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865483353142, "dur":212, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1671865483353414, "dur":32, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1671865483353446, "dur":246, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1671865483353720, "dur":789, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865483354510, "dur":2, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485177435, "dur":475, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485177911, "dur":181, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178093, "dur":18, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178111, "dur":74, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178186, "dur":15, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178201, "dur":27, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178228, "dur":10, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178238, "dur":28, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178267, "dur":8, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178276, "dur":26, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178302, "dur":11, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178313, "dur":27, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178340, "dur":1, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178364, "dur":7, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485178463, "dur":7288, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1671865483354282, "dur":236, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483354518, "dur":4841, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483359371, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1671865483359374, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483359401, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1671865483359403, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483359429, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483359778, "dur":2479, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1671865483362261, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1671865483362320, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483362346, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483362840, "dur":588, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1671865483363480, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1671865483363533, "dur":73, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483363610, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483363615, "dur":512, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1671865483364180, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":1, "ts":1671865483364239, "dur":16, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483364258, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483364263, "dur":477, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":1, "ts":1671865483364791, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865483364842, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483364869, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483365059, "dur":117330, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865483482804, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865483482832, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483482940, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483482947, "dur":97340, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865483580310, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865483580328, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483580358, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483580363, "dur":358426, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865483938804, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865483938822, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483938845, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483938848, "dur":23952, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865483962813, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865483962824, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483962847, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865483962853, "dur":65115, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484027982, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484027993, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484028021, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484028027, "dur":34231, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484062271, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484062288, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484062317, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484062322, "dur":32956, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484095293, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484095304, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484095330, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484095335, "dur":21546, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484116893, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484116911, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484116954, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484116959, "dur":26450, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484143479, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484143492, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484143515, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484143519, "dur":21296, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484164828, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484164839, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484164865, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484164873, "dur":26683, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484191571, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484191591, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484191621, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484191627, "dur":25083, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484216724, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484216737, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484216766, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484216771, "dur":36301, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484253087, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484253107, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484253163, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484253169, "dur":46552, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484299734, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484299766, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484299796, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484299802, "dur":29239, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484329149, "dur":106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484329255, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484329282, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484329287, "dur":31707, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484361007, "dur":94, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484361101, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484361132, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484361137, "dur":13544, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484374697, "dur":99, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484374796, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484374827, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484374833, "dur":21122, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484395968, "dur":313, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.Core.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484396281, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484396311, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484396317, "dur":114354, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.Core.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484510687, "dur":207, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.SpriteShape.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484510894, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484510926, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484510932, "dur":62060, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.SpriteShape.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484573007, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484573028, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484573060, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484573067, "dur":64209, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484637292, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484637304, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484637328, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484637333, "dur":50287, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484687633, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484687643, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484687666, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484687671, "dur":108591, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484796275, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484796286, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484796316, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484796321, "dur":91294, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":1, "ts":1671865484887630, "dur":94, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":1, "ts":1671865484887724, "dur":162, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484887891, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484888041, "dur":523, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":1, "ts":1671865484888574, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":1, "ts":1671865484888587, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484888607, "dur":556, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":1, "ts":1671865484889172, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets5.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1671865484889185, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484889189, "dur":1015, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets5.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1671865484890215, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets5.assets" }}
+,{ "pid":12345, "tid":1, "ts":1671865484890228, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484890232, "dur":571, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets5.assets" }}
+,{ "pid":12345, "tid":1, "ts":1671865484890813, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets4.resource" }}
+,{ "pid":12345, "tid":1, "ts":1671865484890826, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484890831, "dur":2934, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets4.resource" }}
+,{ "pid":12345, "tid":1, "ts":1671865484893777, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets4.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1671865484893807, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484893812, "dur":21711, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets4.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1671865484915547, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":1, "ts":1671865484915561, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484915566, "dur":772, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":1, "ts":1671865484916348, "dur":88, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":1, "ts":1671865484916436, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484916473, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484916478, "dur":431, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":1, "ts":1671865484916918, "dur":789, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":1, "ts":1671865484917707, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484917739, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484917744, "dur":632, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":1, "ts":1671865484918387, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/resources.resource" }}
+,{ "pid":12345, "tid":1, "ts":1671865484918399, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484918403, "dur":764, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/resources.resource" }}
+,{ "pid":12345, "tid":1, "ts":1671865484919178, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/resources.assets" }}
+,{ "pid":12345, "tid":1, "ts":1671865484919195, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484919199, "dur":1730, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/resources.assets" }}
+,{ "pid":12345, "tid":1, "ts":1671865484920945, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level5" }}
+,{ "pid":12345, "tid":1, "ts":1671865484920963, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484921029, "dur":4235, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level5" }}
+,{ "pid":12345, "tid":1, "ts":1671865484925278, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level4" }}
+,{ "pid":12345, "tid":1, "ts":1671865484925293, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484925298, "dur":2248, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level4" }}
+,{ "pid":12345, "tid":1, "ts":1671865484927563, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level3" }}
+,{ "pid":12345, "tid":1, "ts":1671865484927577, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484927581, "dur":684, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level3" }}
+,{ "pid":12345, "tid":1, "ts":1671865484928276, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level2" }}
+,{ "pid":12345, "tid":1, "ts":1671865484928307, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484928312, "dur":1099, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level2" }}
+,{ "pid":12345, "tid":1, "ts":1671865484929427, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level1" }}
+,{ "pid":12345, "tid":1, "ts":1671865484929442, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484929449, "dur":1797, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level1" }}
+,{ "pid":12345, "tid":1, "ts":1671865484931261, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level0" }}
+,{ "pid":12345, "tid":1, "ts":1671865484931281, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484931288, "dur":719, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/level0" }}
+,{ "pid":12345, "tid":1, "ts":1671865484932018, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/globalgamemanagers.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1671865484935482, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484935491, "dur":3875, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/globalgamemanagers.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1671865484939380, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":1, "ts":1671865484939396, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484939401, "dur":795, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":1, "ts":1671865484940206, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":1, "ts":1671865484940219, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484940224, "dur":874, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":1, "ts":1671865484941108, "dur":76, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/boot.config" }}
+,{ "pid":12345, "tid":1, "ts":1671865484941184, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484941209, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1671865484941214, "dur":382, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/boot.config" }}
+,{ "pid":12345, "tid":1, "ts":1671865484941604, "dur":235798, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483355542, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483355543, "dur":3855, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483359399, "dur":81, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":2, "ts":1671865483359481, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483359508, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483361928, "dur":1304, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":2, "ts":1671865483363287, "dur":75, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1671865483363362, "dur":17, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483363398, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483363402, "dur":621, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1671865483364073, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":2, "ts":1671865483364121, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483364144, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483364158, "dur":498, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":2, "ts":1671865483364707, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":2, "ts":1671865483364757, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483364778, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483364782, "dur":1828, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":2, "ts":1671865483366698, "dur":68, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":2, "ts":1671865483366767, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483366797, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483366804, "dur":101486, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":2, "ts":1671865483469306, "dur":1921, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha.exe" }}
+,{ "pid":12345, "tid":2, "ts":1671865483471228, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483471298, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483471306, "dur":98814, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha.exe" }}
+,{ "pid":12345, "tid":2, "ts":1671865483570138, "dur":19, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865483570158, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483570218, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483570224, "dur":40678, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865483610919, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865483610938, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483610982, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483610989, "dur":351892, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865483962894, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865483962905, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483962927, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483962934, "dur":23054, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865483986000, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865483986011, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483986037, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865483986043, "dur":20658, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484006714, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484006725, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484006753, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484006759, "dur":47795, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484054570, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484054582, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484054614, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484054621, "dur":51321, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484105957, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484105970, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484106004, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484106011, "dur":36747, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484142806, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484142842, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484142871, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484142876, "dur":29287, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484172176, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484172193, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484172223, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484172229, "dur":23430, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484195670, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484195680, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484195702, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484195707, "dur":99761, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484295482, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484295494, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484295523, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484295529, "dur":31884, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484327427, "dur":87, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484327515, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484327543, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484327548, "dur":1982, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484329540, "dur":83, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484329623, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484329649, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484329653, "dur":1744, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484331409, "dur":91, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484331500, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484331527, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484331532, "dur":22052, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484353602, "dur":136, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484353739, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484353767, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484353773, "dur":35788, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484389575, "dur":92, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.Universal.Shaders.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484389668, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484389696, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484389702, "dur":4917, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.Universal.Shaders.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484394631, "dur":79, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.Core.ShaderLibrary.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484394710, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484394737, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484394741, "dur":3627, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.Core.ShaderLibrary.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484398394, "dur":86, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Recorder.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484398480, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484398506, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484398511, "dur":1668, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Recorder.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484400190, "dur":175, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Postprocessing.Runtime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484400365, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484400395, "dur":4, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484400403, "dur":163695, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Postprocessing.Runtime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484564112, "dur":118, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.Animation.Runtime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484564231, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484564258, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484564263, "dur":56876, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.Animation.Runtime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484621152, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Runtime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484621163, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484621193, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484621199, "dur":16073, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Runtime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484637287, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484637298, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484637327, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484637333, "dur":49786, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484687138, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484687152, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484687196, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484687202, "dur":29161, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484716375, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484716388, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484716413, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484716418, "dur":143161, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484859591, "dur":306, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Cinemachine.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484859897, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484859923, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1671865484859928, "dur":116935, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Cinemachine.dll" }}
+,{ "pid":12345, "tid":2, "ts":1671865484976875, "dur":200523, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483354556, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483354557, "dur":5052, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483359610, "dur":65, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1671865483359675, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483359712, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483361811, "dur":677, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1671865483362600, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":3, "ts":1671865483362662, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483362684, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483362698, "dur":475, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":3, "ts":1671865483363222, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":3, "ts":1671865483363269, "dur":15, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483363288, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483363292, "dur":454, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":3, "ts":1671865483363793, "dur":91, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":3, "ts":1671865483363884, "dur":16, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483363904, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483363942, "dur":409, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":3, "ts":1671865483364404, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1671865483364452, "dur":16, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483364472, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483364476, "dur":407, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1671865483364931, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865483364980, "dur":104, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483365088, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483365104, "dur":113914, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865483479091, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865483479106, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483479135, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483479140, "dur":102781, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865483581934, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865483581952, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483581980, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483581986, "dur":357272, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865483939275, "dur":106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865483939381, "dur":127, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483939512, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483939538, "dur":43628, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865483983181, "dur":250, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865483983432, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483983460, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865483983466, "dur":130187, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484113665, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484113678, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484113707, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484113713, "dur":25954, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484139681, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484139696, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484139727, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484139733, "dur":29160, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484168908, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484168919, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484168942, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484168947, "dur":91237, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484260198, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484260215, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484260244, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484260250, "dur":27153, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484287418, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484287430, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484287485, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484287491, "dur":104456, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484391964, "dur":517, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.Universal.Runtime.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484392482, "dur":42, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484392530, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484392555, "dur":99671, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.Universal.Runtime.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484492241, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Cecil.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484492256, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484492291, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484492297, "dur":80720, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Cecil.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484573028, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484573043, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484573067, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484573071, "dur":192721, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484765807, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484765820, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484765849, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484765854, "dur":77155, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484843023, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865484843036, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484843067, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1671865484843094, "dur":256506, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":3, "ts":1671865485099618, "dur":77771, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483354693, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483354697, "dur":4819, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483359517, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":4, "ts":1671865483359578, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483359601, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483468508, "dur":609, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":4, "ts":1671865483469312, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865483469328, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483469353, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483469463, "dur":87289, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865483556765, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865483556777, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483556801, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483556813, "dur":50190, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865483607017, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865483607038, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483607073, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483607078, "dur":332396, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865483939486, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865483939531, "dur":1248, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483940786, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483940855, "dur":25179, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865483966049, "dur":15, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865483966064, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483966090, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865483966095, "dur":59053, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484025165, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484025203, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484025247, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484025254, "dur":94480, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484119748, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484119762, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484119792, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484119798, "dur":46779, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484166590, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484166603, "dur":79, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484166686, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484166718, "dur":31114, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484197845, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484197856, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484197884, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484197890, "dur":21759, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484219663, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484219675, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484219706, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484219712, "dur":118306, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484338030, "dur":90, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484338120, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484338148, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484338202, "dur":25964, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484364180, "dur":91, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484364271, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484364299, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484364304, "dur":2170, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484366488, "dur":95, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484366583, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484366613, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484366618, "dur":30926, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484397557, "dur":89, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipeline.Universal.ShaderLibrary.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484397647, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484397677, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484397684, "dur":2020, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipeline.Universal.ShaderLibrary.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484399719, "dur":85, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Recorder.Base.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484399804, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484399832, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484399838, "dur":1802, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Recorder.Base.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484401652, "dur":555, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Mathematics.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484402207, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484402242, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484402248, "dur":45812, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Mathematics.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484448075, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Cecil.Rocks.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484448088, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484448116, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484448121, "dur":55691, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Cecil.Rocks.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484503837, "dur":123, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.Tilemap.Extras.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484503960, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484503992, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484503998, "dur":47257, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.Tilemap.Extras.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484551270, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.Common.Runtime.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484551390, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484551419, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484551425, "dur":33177, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.Common.Runtime.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484584614, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484584626, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484584652, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484584657, "dur":114430, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484699100, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484699112, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484699140, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484699146, "dur":172417, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484871575, "dur":286, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484871881, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1671865484871897, "dur":85997, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":4, "ts":1671865484957907, "dur":219478, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483355523, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483355524, "dur":3906, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483359431, "dur":76, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":5, "ts":1671865483359507, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483359531, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483468267, "dur":699, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":5, "ts":1671865483469310, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":5, "ts":1671865483469371, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483469395, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483469514, "dur":3969, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":5, "ts":1671865483473546, "dur":22, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483473568, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483473643, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483473660, "dur":85815, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483559491, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483559504, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483559535, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483559541, "dur":42721, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483602276, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483602295, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483602326, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483602331, "dur":336635, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483938979, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483938990, "dur":519, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483939533, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483939539, "dur":25383, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483964935, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483964946, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483964970, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483964975, "dur":30353, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483995340, "dur":18, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865483995358, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483995386, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865483995410, "dur":34886, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484030309, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484030336, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484030364, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484030370, "dur":17313, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484047699, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484047713, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484047763, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484047769, "dur":43890, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484091674, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484091687, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484091720, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484091726, "dur":22779, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484114521, "dur":26, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484114547, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484114580, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484114586, "dur":26103, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484140704, "dur":17, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484140722, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484140747, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484140752, "dur":53955, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484194720, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484194732, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484194757, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484194763, "dur":19931, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484214710, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484214722, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484214750, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484214755, "dur":19438, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484234207, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484234224, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484234256, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484234262, "dur":24094, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484258369, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484258380, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484258407, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484258412, "dur":41639, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484300061, "dur":162, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484300223, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484300252, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484300256, "dur":68546, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484368815, "dur":81, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484368896, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484368940, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484368945, "dur":6662, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484375619, "dur":76, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484375695, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484375721, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484375726, "dur":18766, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484394511, "dur":93, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484394604, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484394637, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484394644, "dur":11635, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484406293, "dur":93, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.InternalAPIEngineBridge.001.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484406386, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484406415, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484406421, "dur":31835, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.InternalAPIEngineBridge.001.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484438274, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Unsafe.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484438286, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484438314, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484438319, "dur":3620, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Unsafe.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484441952, "dur":324, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484442276, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484442305, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484442310, "dur":70371, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484512695, "dur":90, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.PixelPerfect.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484512786, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484512816, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484512823, "dur":65695, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.PixelPerfect.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484578542, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484578559, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484578590, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484578595, "dur":33808, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484612415, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484612426, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484612452, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484612457, "dur":108299, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484720771, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484720784, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484720819, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484720824, "dur":24632, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484745470, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484745483, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484745508, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484745513, "dur":128835, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484874365, "dur":9980, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Plugins/x86_64/lib_burst_generated.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484884352, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484884689, "dur":14757, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Plugins/x86_64/lib_burst_generated.dll" }}
+,{ "pid":12345, "tid":5, "ts":1671865484899458, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets4.assets" }}
+,{ "pid":12345, "tid":5, "ts":1671865484899477, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484899484, "dur":801, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets4.assets" }}
+,{ "pid":12345, "tid":5, "ts":1671865484900295, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets3.assets" }}
+,{ "pid":12345, "tid":5, "ts":1671865484900308, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484900312, "dur":661, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets3.assets" }}
+,{ "pid":12345, "tid":5, "ts":1671865484900986, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets2.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1671865484901000, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484901004, "dur":1473, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets2.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1671865484902489, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets2.assets" }}
+,{ "pid":12345, "tid":5, "ts":1671865484902504, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484902509, "dur":583, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets2.assets" }}
+,{ "pid":12345, "tid":5, "ts":1671865484903103, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets1.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1671865484903141, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484903146, "dur":1231, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets1.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1671865484904390, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":5, "ts":1671865484904404, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484904411, "dur":1064, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":5, "ts":1671865484905487, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":5, "ts":1671865484905499, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484905504, "dur":1564, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":5, "ts":1671865484907082, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1671865484907097, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484907101, "dur":11290, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1671865484918401, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1671865484918413, "dur":5, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1671865484918421, "dur":258730, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1671865485177326, "dur":3, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":5, "ts":1671865485177330, "dur":1, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483355575, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483355576, "dur":3785, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483359371, "dur":88, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":6, "ts":1671865483359460, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483359485, "dur":4, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483361753, "dur":564, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":6, "ts":1671865483362375, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":6, "ts":1671865483362425, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483362450, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483362690, "dur":799, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":6, "ts":1671865483363545, "dur":162, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":6, "ts":1671865483363707, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483363740, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483364044, "dur":501, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":6, "ts":1671865483364597, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":6, "ts":1671865483364647, "dur":18, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483364668, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483364672, "dur":660, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":6, "ts":1671865483365383, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865483365435, "dur":19, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483365475, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483365479, "dur":346470, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865483712023, "dur":20, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865483712044, "dur":226736, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483938786, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483938793, "dur":39138, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865483977945, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865483977956, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483977985, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865483977995, "dur":114702, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484092719, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484092733, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484092765, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484092772, "dur":34974, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484127761, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484127774, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484127801, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484127807, "dur":38774, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484166592, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484166660, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484166686, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484166720, "dur":28499, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484195233, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484195244, "dur":20, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484195268, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484195273, "dur":16752, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484212039, "dur":13, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484212052, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484212082, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484212088, "dur":27249, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484239352, "dur":16, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484239368, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484239399, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484239404, "dur":22231, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484261649, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484261660, "dur":21, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484261685, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484261690, "dur":19858, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484281562, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484281574, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484281607, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484281613, "dur":40098, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484321727, "dur":346, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484322073, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484322112, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484322118, "dur":137419, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484459550, "dur":10, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Cecil.Pdb.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484459561, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484459588, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484459593, "dur":28387, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Cecil.Pdb.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484488099, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Cecil.Mdb.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484488113, "dur":25, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484488142, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484488169, "dur":57835, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.Burst.Cecil.Mdb.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484546017, "dur":99, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.IK.Runtime.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484546116, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484546159, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484546165, "dur":32369, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Unity.2D.IK.Runtime.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484578546, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484578558, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484578615, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484578620, "dur":71549, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484650182, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484650194, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484650220, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484650226, "dur":24958, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484675197, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484675209, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484675241, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484675246, "dur":71282, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484746542, "dur":11, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484746554, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484746593, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484746599, "dur":76954, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484823567, "dur":14, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484823581, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484823613, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484823619, "dur":35584, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484859217, "dur":12, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865484859229, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484859255, "dur":5, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1671865484859265, "dur":150788, "ph":"X", "name": "CopyFiles",  "args": { "detail":"D://Portal Dimensions Build/Portal Dimensions PreAlpha_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":6, "ts":1671865485010070, "dur":167323, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1671865485193442, "dur":12780, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1671865485239671, "dur": 1314, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1671865485239558, "dur": 1475, "ph": "X", "name": "Write chrome-trace events", "args": {} },

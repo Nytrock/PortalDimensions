@@ -4,6 +4,7 @@ using System;
 using System.Reflection;
 using Object = UnityEngine.Object;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(World), true)]
 [CanEditMultipleObjects]
 public class WorldEditor : Editor
@@ -55,3 +56,4 @@ public class WorldEditor : Editor
         return null;
     }
 }
+#endif

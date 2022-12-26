@@ -5428,6 +5428,8 @@ GameObject:
   - component: {fileID: 2613019772673950914}
   - component: {fileID: 2613019772673950919}
   - component: {fileID: 2613019772673950918}
+  - component: {fileID: 7387665868170537121}
+  - component: {fileID: 6148408709642455396}
   m_Layer: 0
   m_Name: Standard
   m_TagString: Player
@@ -5504,6 +5506,8 @@ MonoBehaviour:
   animations: {fileID: 2613019774230562250}
   realSpeed: 5.2
   moveVector: {x: 0, y: 0}
+  slime: {fileID: 0}
+  normal: {fileID: 0}
   shoot: 0
   right: 1
   inPortal: 0
@@ -5536,6 +5540,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 2c31de390bac15d4cbad9e701814e5ed, type: 2}
+--- !u!68 &7387665868170537121
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2613019772673950915}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 57dd1325256d3d14086fdd312f0c44cc, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.7572689, y: -2.2868261}
+  - {x: -0.7577572, y: 2.1057863}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!68 &6148408709642455396
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2613019772673950915}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 57dd1325256d3d14086fdd312f0c44cc, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.9258957, y: -2.2197733}
+  - {x: 0.9098816, y: 2.0160131}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &2613019772748025381
 GameObject:
   m_ObjectHideFlags: 0

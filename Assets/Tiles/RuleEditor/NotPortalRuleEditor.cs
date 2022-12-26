@@ -1,5 +1,6 @@
 using UnityEngine;
 
+#if UNITY_EDITOR
 namespace UnityEditor
 {
     [CustomEditor(typeof(WallRule))]
@@ -33,3 +34,4 @@ namespace UnityEditor
         }
     }
 }
+#endif
