@@ -11,6 +11,11 @@ source code (if you ever feel like it) below.
 - [Twitter](https://twitter.com/Nytr0ck)
 - [Twitch](https://www.twitch.tv/nytrock)
 
+# How start the game
+
+- Download the latest release on Github
+- Unzip received archive
+- Run `Portal Dimensions PreAlpha.exe`
 
 # Run source code on local machine
 
