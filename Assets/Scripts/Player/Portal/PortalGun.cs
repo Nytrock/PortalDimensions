@@ -61,13 +61,6 @@ public class PortalGun : MonoBehaviour
             player.animations.StartShooting();
         }
     }
-    void Barrier(float num)
-    {
-        if (Math.Abs(num - rotateZ) > Math.Abs(-num - rotateZ))
-            Hand.rotation = Quaternion.Euler(0f, 0f, -num + offset);
-        else
-            Hand.rotation = Quaternion.Euler(0f, 0f, num + offset);
-    }
 
     public void CheckPortals(bool Right)
     {
@@ -90,11 +83,13 @@ public class PortalGun : MonoBehaviour
             if (OrangePortal) {
                 OrangePortal.Particles.Stop();
                 OrangePortal.Active = false;
+                OrangePortal.trigger.gameObject.SetActive(false);
                 SliceColliders(OrangePortal);
             }
             if (BluePortal) {
                 BluePortal.Particles.Stop();
                 BluePortal.Active = false;
+                BluePortal.trigger.gameObject.SetActive(false);
                 SliceColliders(BluePortal);
             }
         }
@@ -197,27 +192,14 @@ public class PortalGun : MonoBehaviour
         Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
 
         if (player.right) {
-            if (-90 >= rotateZ || rotateZ >= 90) {
-                if ((rotateZ <= -90 && rotateZ < 0) || (rotateZ >= 90 && rotateZ > 0)) {
-                    player.Flip();
-                    Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
-                    if (-90 <= rotateZ && rotateZ <= 90)
-                        Barrier(90);
-                } else {
-                    Barrier(90);
-                }
+            if (rotateZ + off + 5f < 0 || rotateZ + off - 5f > 180) {
+                player.Flip();
+                Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
             }
         } else {
-            if (-90 <= rotateZ && rotateZ <= 90) {
-                if ((rotateZ >= -90 && rotateZ < 0) || (rotateZ <= 90 && rotateZ > 0)) {
-                    player.Flip();
-                    Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
-                    if (-90 >= rotateZ || rotateZ >= 90)
-                        Barrier(90);
-                } else {
-                    Barrier(90);
-                }
-
+            if (!((rotateZ + off >= 175f && rotateZ + off <= 275) || (rotateZ + off <= 5 && rotateZ + off >= -95))) {
+                player.Flip();
+                Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
             }
         }
 
@@ -235,17 +217,18 @@ public class PortalGun : MonoBehaviour
         if (player.right) {
             off = -off;
         }
+
         if (player.right) {
-            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 > 3)
+            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 + 3 >= 3)
                 Head.localRotation = Quaternion.Euler(0f, 0f, 3f);
-            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 < -2)
+            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 - 3 <= -2)
                 Head.localRotation = Quaternion.Euler(0f, 0f, -2f);
             else
                 Head.localRotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z + off);
         } else {
-            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 180 < 87)
+            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 180 + 3 <= 87)
                 Head.localRotation = Quaternion.Euler(0f, 0f, 3f);
-            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 180 > 92)
+            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 180 + 3 >= 92)
                 Head.localRotation = Quaternion.Euler(0f, 0f, -2f);
             else
                 Head.localRotation = Quaternion.Euler(0f, 0f, -(Hand.rotation.eulerAngles.z + off));
@@ -263,6 +246,7 @@ public class PortalGun : MonoBehaviour
             item.GetComponent<ItemToteleport>().SetLayerEnd(layerEnd);
             item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd);
         }
+        item.GetComponent<ItemToteleport>().portal = Exit;
 
         float x = item.bounds.extents.x;
         float y = item.bounds.extents.y;

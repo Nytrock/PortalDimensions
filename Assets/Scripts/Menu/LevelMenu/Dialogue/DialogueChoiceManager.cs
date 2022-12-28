@@ -4,6 +4,8 @@ using Cinemachine;
 
 public class DialogueChoiceManager : MonoBehaviour
 {
+    public static DialogueChoiceManager dialogueChoice;
+
     public CinemachineVirtualCamera mainCamera;
     public GameObject startDialogueTrigger;
     public GameObject jumpStartDialogueTrigger;
@@ -11,6 +13,18 @@ public class DialogueChoiceManager : MonoBehaviour
     public GameObject crystallDialogueTrigger;
     public GameObject jumpBonusDialogueTrigger;
     public GameObject gunGetDialogueTrigger;
+    public GameObject finalDialogueTrigger;
+    public GameObject finalLevel;
+    public GameObject gunGetFinalDialogueTrigger;
+
+    [Header("Музыка")]
+    public GameObject standard;
+    public GameObject final;
+
+    private void Awake()
+    {
+        dialogueChoice = this;
+    }
 
     public void DoSomethingFromId(int id)
     {
@@ -22,7 +36,9 @@ public class DialogueChoiceManager : MonoBehaviour
             case 4: Destroy(jumpDialogueTrigger); break;
             case 5: Destroy(crystallDialogueTrigger); break;
             case 6: Destroy(jumpBonusDialogueTrigger); break;
-            case 7: Destroy(gunGetDialogueTrigger); LevelManager.levelManager.GivePlayerGun(); break;
+            case 7: Destroy(gunGetDialogueTrigger); break;
+            case 8:  Destroy(finalDialogueTrigger); break;
+            case 9: Destroy(gunGetFinalDialogueTrigger); break;
         }
     }
 
@@ -36,5 +52,11 @@ public class DialogueChoiceManager : MonoBehaviour
                 nowOffset += step;
             yield return new WaitForSeconds(Time.deltaTime);
         }
+    }
+
+    public void SetCoolMusic()
+    {
+        standard.SetActive(false);
+        final.SetActive(true);
     }
 }

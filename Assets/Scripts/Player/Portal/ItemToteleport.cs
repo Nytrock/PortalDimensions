@@ -4,6 +4,7 @@ public class ItemToteleport : MonoBehaviour
 {
     private bool teleport;
     private string layerEnd;
+    public Portal portal;
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class ItemToteleport : MonoBehaviour
         teleport = newValue;
         if (teleport)
             SetLayer("TeleportingItem" + layerEnd);
-        else 
+        else
             SetLayer("ItemToTeleport" + layerEnd);
     }
 
@@ -47,8 +48,10 @@ public class ItemToteleport : MonoBehaviour
     {
         int layer = LayerMask.NameToLayer(name);
         gameObject.layer = layer;
-        if (TryGetComponent(out Player player))
+        if (TryGetComponent(out Player player)) {
             player.GetComponentInChildren<GroundTrigger>().gameObject.layer = layer;
+            player.GetComponentInChildren<EdgeCollider2D>().gameObject.layer = layer;
+        }
     }
 
     public void SetLayerEnd(string newValue)

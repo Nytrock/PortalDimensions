@@ -15,7 +15,7 @@ MonoBehaviour:
   _id: 0
   _name: "\u041C\u0430\u0442\u0440\u0438\u0446\u0430"
   _image: {fileID: 21300000, guid: 7d43db76d9d0ced4d9fb63ba56c293a8, type: 3}
-  _levelsCount: 30
+  _levelsCount: 20
   _levelsCompleted: 1
   _levels:
   - {fileID: 11400000, guid: ae2ee477cebb9e44181c9d0303ab7d2e, type: 2}
@@ -28,3 +28,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a84156cc563fee547a6346cb032e9ae7, type: 2}
   - {fileID: 11400000, guid: ed7dc6bb22e29b847a9bf6ba7355d090, type: 2}
   - {fileID: 11400000, guid: db78425aadf64fd40b72e40093693aee, type: 2}
+  - {fileID: 11400000, guid: 46767c7ffec0bdb43b06662a425e5aab, type: 2}
+  - {fileID: 11400000, guid: 8ce1b337e625a824dbe2d0b002e2148f, type: 2}
+  - {fileID: 11400000, guid: 801588d582226d843a911133d5c94c16, type: 2}
+  - {fileID: 11400000, guid: 698b68af33b00d64cb305b67bbb5f89e, type: 2}
+  - {fileID: 11400000, guid: c542b01cc5724c44fb220a67c469fbf1, type: 2}
+  - {fileID: 11400000, guid: 7fd12b111b2b302468c8b087349681c6, type: 2}
+  - {fileID: 11400000, guid: 0ff8acd0f2200cb48a7580996707fa16, type: 2}
+  - {fileID: 11400000, guid: 330dcca263953b14f9c2c4e0538896f7, type: 2}
+  - {fileID: 11400000, guid: 9a31b2d4c6afe2c4aa5236e7c2ece5d1, type: 2}
+  - {fileID: 11400000, guid: ec5a00f65a510154d96acf543e93e808, type: 2}

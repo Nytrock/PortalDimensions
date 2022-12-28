@@ -10,6 +10,7 @@ public class PortalTrigger : MonoBehaviour
         if (obj.TryGetComponent(out Rigidbody2D rb) && !obj.isTrigger) {
             if (!obj.TryGetComponent(out ItemToteleport _) && rb.bodyType == RigidbodyType2D.Dynamic) {
                 obj.gameObject.AddComponent<ItemToteleport>().SetLayerEnd(layer);
+                obj.GetComponent<ItemToteleport>().portal = portal;
             }
         }
     }

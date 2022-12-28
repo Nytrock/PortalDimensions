@@ -676,7 +676,7 @@
 		<mood>Tense</mood>
 		<speed>1.1</speed>
 		<text></text>
-		<next>11</next>
+		<next>14</next>
 	</key>
 	<key name="GetGun_11">
 		<id_user>1</id_user>
@@ -693,6 +693,237 @@
 		<next>13</next>
 	</key>
 	<key name="GetGun_13" do_id="7" instant="true">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+	<key name="GetGun_14">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>11</next>
+	</key>
+	<key name="Final_0">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>1</next>
+	</key>
+	<key name="Final_1">
+		<id_user>1</id_user>
+		<mood>Happy</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>2</next>
+	</key>
+	<key name="Final_2">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>3</next>
+	</key>
+	<key name="Final_3">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>4</next>
+	</key>
+	<key name="Final_4">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>5</next>
+	</key>
+	<key name="Final_5">
+		<id_user>0</id_user>
+		<mood>Angry</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>6</next>
+	</key>
+	<key name="Final_6">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>7</next>
+	</key>
+	<key name="Final_7">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>8</next>
+	</key>
+	<key name="Final_8">
+		<id_user>0</id_user>
+		<mood>Confused</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>9</next>
+	</key>
+	<key name="Final_9">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>10</next>
+	</key>
+	<key name="Final_10">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>11</next>
+	</key>
+	<key name="Final_11">
+		<id_user>1</id_user>
+		<mood>Afraid</mood>
+		<speed>0.9</speed>
+		<text></text>
+		<next>12</next>
+	</key>
+	<key name="Final_12">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>13</next>
+	</key>
+	<key name="Final_13">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>0.9</speed>
+		<text></text>
+		<next>14</next>
+	</key>
+	<key name="Final_14">
+		<id_user>0</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>15</next>
+	</key>
+	<key name="Final_15">
+		<id_user>0</id_user>
+		<mood>Angry</mood>
+		<speed>1.05</speed>
+		<text></text>
+		<next>16</next>
+	</key>
+	<key name="Final_16">
+		<id_user>0</id_user>
+		<mood>Angry</mood>
+		<speed>1.05</speed>
+		<text></text>
+		<next>17</next>
+	</key>
+	<key name="Final_17">
+		<id_user>0</id_user>
+		<mood>Angry</mood>
+		<speed>1.05</speed>
+		<text></text>
+		<next>18</next>
+	</key>
+	<key name="Final_18">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>19</next>
+	</key>
+	<key name="Final_19">
+		<id_user>1</id_user>
+		<mood>Tense</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>20</next>
+	</key>
+	<key name="Final_20">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>21</next>
+	</key>
+	<key name="Final_21">
+		<id_user>0</id_user>
+		<mood>Calm</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>22</next>
+	</key>
+	<key name="Final_22">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>23</next>
+	</key>
+	<key name="Final_23">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>24</next>
+	</key>
+	<key name="Final_24">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>25</next>
+	</key>
+	<key name="Final_25">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>26</next>
+	</key>
+	<key name="Final_26">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>0.95</speed>
+		<text></text>
+		<next>27</next>
+	</key>
+	<key name="Final_27">
+		<id_user>1</id_user>
+		<mood>Confused</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>28</next>
+	</key>
+	<key name="Final_28">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>29</next>
+	</key>
+	<key name="Final_29">
+		<id_user>0</id_user>
+		<mood>Happy</mood>
+		<speed>1</speed>
+		<text></text>
+		<next>30</next>
+	</key>
+	<key name="Final_30" do_id="8">
+		<id_user>1</id_user>
+		<mood>Calm</mood>
+		<speed>1.1</speed>
+		<text></text>
+		<next>-1</next>
+	</key>
+	<key name="GetGunFinal_0" do_id="9">
 		<id_user>1</id_user>
 		<mood>Calm</mood>
 		<speed>1.1</speed>

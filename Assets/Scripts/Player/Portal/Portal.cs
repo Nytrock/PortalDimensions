@@ -67,6 +67,15 @@ public class Portal : MonoBehaviour
     public void DestroyPortalAnimation()
     {
         animator.SetBool("Death", true);
+        if (gun.BluePortal != null && gun.OrangePortal != null) {
+            if (gun.BluePortal.Collider != gun.OrangePortal.Collider) {
+                int layer = LayerMask.NameToLayer("Ground");
+                Collider.gameObject.layer = layer;
+            }
+        } else {
+            int layer = LayerMask.NameToLayer("Ground");
+            Collider.gameObject.layer = layer;
+        }
     }
 
     public void DestroyPortal()

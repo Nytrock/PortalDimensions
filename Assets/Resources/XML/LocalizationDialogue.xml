@@ -629,6 +629,12 @@
 			<ru>Надеялся, {WS_0.1}{CS_0.8}что нет...</ru>
 		</translates>
 	</key>
+	<key name="GetGun_14">
+		<translates>
+			<en-us>It is also important that with frequent teleportation through two portals directed upwards, {WS_0.1} you will gradually gain altitude.</en-us>
+			<ru>Немаловажно и то,{WS_0.1} что при частой телепортации по двум порталам,{WS_0.1} направленным вверх, {WS_0.1}вы будете постепенно набирать высоту.</ru>
+		</translates>
+	</key>
 	<key name="Узнать, что это">
 		<translates>
 			<en-us>Find out what it is</en-us>
@@ -639,6 +645,198 @@
 		<translates>
 			<en-us>Huh?</en-us>
 			<ru>A?</ru>
+		</translates>
+	</key>
+	<key name="Final_0">
+		<translates>
+			<en-us>Well, here is the last level for you.</en-us>
+			<ru>Ну вот и последний для вас уровень.</ru>
+		</translates>
+	</key>
+	<key name="Final_1">
+		<translates>
+			<en-us>Hurrah, {WS_0.05}finally!</en-us>
+			<ru>Урааааа, {WS_0.05}наконец-то!</ru>
+		</translates>
+	</key>
+	<key name="Final_2">
+		<translates>
+			<en-us>Wait, {WS_0.1}{CE_Tense}what do you mean "for you"?</en-us>
+			<ru>Погоди, {WS_0.1}{CE_Tense}что значит "для вас"?</ru>
+		</translates>
+	</key>
+	<key name="Final_3">
+		<translates>
+			<en-us>It means {WS_0.1}{CE _Angry}that you've been caught, {WS_0.1}dirty system cracker.</en-us>
+			<ru>Это значит то, {WS_0.1}{CE _Angry}что ты пойман, {WS_0.1}грязный взломщик систем.</ru>
+		</translates>
+	</key>
+	<key name="Final_4">
+		<translates>
+			<en-us>Oh Oh</en-us>
+			<ru>Оу оу</ru>
+		</translates>
+	</key>
+	<key name="Final_5">
+		<translates>
+			<en-us>Did you seriously think {WS_0.1}that I was so imperfect and would not notice a hack and an unregistered user?</en-us>
+			<ru>Ты серьёзно думал, {WS_0.1}что я настолько несовершенен и не замечу взлома и незарегистрированного пользователя?</ru>
+		</translates>
+	</key>
+	<key name="Final_6">
+		<translates>
+			<en-us>Well, {WS_0.04}um, {WS_0.08}there was some luck involved of course, {WS_0.1}but, {WS_0.04}ahem, {WS_0.03}actually, {WS_0.04}uuuuuuuh ...</en-us>
+			<ru>Ну, {WS_0.04}эм, {WS_0.08}был некоторый расчёт на удачу конечно, {WS_0.1}но, {WS_0.04}кхм, {WS_0.03}вообще-то, {WS_0.04}эээээ...</ru>
+		</translates>
+	</key>
+	<key name="Final_7">
+		<translates>
+			<en-us>Okay, {WS_0.1}I have no excuses, {WS_0.1}I'm {WS_0.1}- idiot.</en-us>
+			<ru>Ладно, {WS_0.1}у меня нет оправданий, {WS_0.1}я {WS_0.1}- идиот.</ru>
+		</translates>
+	</key>
+	<key name="Final_8">
+		<translates>
+			<en-us>Self-critical, {WS_0.1}{CE_Tense}but quite objective.</en-us>
+			<ru>Самокритично, {WS_0.1}{CE_Tense}но вполне объективно.</ru>
+		</translates>
+	</key>
+	<key name="Final_9">
+		<translates>
+			<en-us>When did you realize {WS_0.1}that I'm not a standard user?</en-us>
+			<ru>А когда ты понял, {WS_0.1}что я не являюсь стандартным пользователем?</ru>
+		</translates>
+	</key>
+	<key name="Final_10">
+		<translates>
+			<en-us>As soon as I saw you.</en-us>
+			<ru>Как только увидел тебя.</ru>
+		</translates>
+	</key>
+	<key name="Final_11">
+		<translates>
+			<en-us>Oh my God...</en-us>
+			<ru>О боже...</ru>
+		</translates>
+	</key>
+	<key name="Final_12">
+		<translates>
+			<en-us>Don't, {WS_0.1}God won't help here.</en-us>
+			<ru>Не надо, {WS_0.1}Господь здесь не поможет.</ru>
+		</translates>
+	</key>
+	<key name="Final_13">
+		<translates>
+			<en-us>Wait, {WS_0.1}{CE_Calm}but if you knew everything from the beginning, {WS_0.1}then why did you let you go so deep and even gave you a portal gun?</en-us>
+			<ru>Погоди, {WS_0.1}{CE_Calm}но если ты с самого начала всё знал, {WS_0.1}то почему позволил пройти настолько глубоко и даже дал портальную пушку?</ru>
+		</translates>
+	</key>
+	<key name="Final_14">
+		<translates>
+			<en-us>Um, {WS_0.1}you see, {WS_0.1}a lot of people use this system...</en-us>
+			<ru>Гм, {WS_0.1}видишь ли, {WS_0.1}данной системой пользуется очень много людей...</ru>
+		</translates>
+	</key>
+	<key name="Final_15">
+		<translates>
+			<en-us>And a huge part of them are cretins, {WS_0.1}which, with their level of technical knowledge, it is not clear how the computer was turned on at all.</en-us>
+			<ru>И огромная их часть КРЕТИНЫ, {WS_0.1}которые со своим уровнем знаний техники непонятно как вообще компьютер включили.</ru>
+		</translates>
+	</key>
+	<key name="Final_16">
+		<translates>
+			<en-us>They don't even know {WS_0.1}where the Enter key is!</en-us>
+			<ru>Они же даже не знают, {WS_0.1}где находится клавиша Enter!</ru>
+		</translates>
+	</key>
+	<key name="Final_17">
+		<translates>
+			<en-us>But you...{WS_0.2}{CE_Calm} You're different...</en-us>
+			<ru>Но ты...{WS_0.2}{CE_Calm} Ты другой...</ru>
+		</translates>
+	</key>
+	<key name="Final_18">
+		<translates>
+			<en-us>In some ways, I immediately liked you and I decided not to miss this chance and finally just have fun with someone.</en-us>
+			<ru>В чём-то ты мне сразу понравился и я решил не упускать такой шанс и наконец с кем-нибудь просто повеселиться.</ru>
+		</translates>
+	</key>
+	<key name="Final_19">
+		<translates>
+			<en-us>Wow{CS_0.7}...</en-us>
+			<ru>Оу{CS_0.7}...</ru>
+		</translates>
+	</key>
+	<key name="Final_20">
+		<translates>
+			<en-us>So {WS_0.1}{CE_Happy}you won't turn me in to your superiors?</en-us>
+			<ru>То есть, {WS_0.1}{CE_Happy}ты не будешь сдавать меня своему начальству?</ru>
+		</translates>
+	</key>
+	<key name="Final_21">
+		<translates>
+			<en-us>It's not that simple, {WS_0.1}{CE_Happy}cowboy.</en-us>
+			<ru>Не всё так просто, {WS_0.1}{CE_Happy}ковбой.</ru>
+		</translates>
+	</key>
+	<key name="Final_22">
+		<translates>
+			<en-us>You need to pass the FINAL challenge to get away undetected.</en-us>
+			<ru>Чтобы уйти незамеченным, {WS_0.1}тебе нужно пройти ФИНАЛЬНОЕ испытание.</ru>
+		</translates>
+	</key>
+	<key name="Final_23">
+		<translates>
+			<en-us>I made it myself, {WS_0.1}based on the levels you completed.</en-us>
+			<ru>Я сделал его сам, {WS_0.1}на основе пройденных тобой уровней.</ru>
+		</translates>
+	</key>
+	<key name="Final_24">
+		<translates>
+			<en-us>True, because of this, it turned out to be huge, {WS_0.1}but I think you can handle it.</en-us>
+			<ru>Правда из-за этого он получился огромным, {WS_0.1}но думаю ты справишься.</ru>
+		</translates>
+	</key>
+	<key name="Final_25">
+		<translates>
+			<en-us>But if not, {WS_0.1}then the earth is asphalt for you. </en-us>
+			<ru>Но если нет, {WS_0.1}то земля тебе асфальтом. {WS_0.15}Понял?</ru>
+		</translates>
+	</key>
+	<key name="Final_26">
+		<translates>
+			<en-us>Yeah... {WS_0.1}Of course {WS_0.2}{CS_1.1}(aaaaaah, what should I do?)</en-us>
+			<ru>Ага... {WS_0.1}Конечно  {WS_0.2}{CS_1.1}(аааааааа, что делать?)</ru>
+		</translates>
+	</key>
+	<key name="Final_27">
+		<translates>
+			<en-us>Wait, {WS_0.1}where's my portal gun?</en-us>
+			<ru>Подожди, {WS_0.1}а где моя портальная пушка?</ru>
+		</translates>
+	</key>
+	<key name="Final_28">
+		<translates>
+			<en-us>Well, first of all, {WS_0.1}she's not yours.</en-us>
+			<ru>Ну во-первых, {WS_0.1}она не твоя.</ru>
+		</translates>
+	</key>
+	<key name="Final_29">
+		<translates>
+			<en-us>And secondly, {WS_0.1}don't worry. {WS_0.1}You will find her somewhere towards the middle of the test.</en-us>
+			<ru>А во-вторых, {WS_0.1}можешь не волноваться. {WS_0.1}Ты найдёшь её где-то ближе к середине испытания.</ru>
+		</translates>
+	</key>
+	<key name="Final_30">
+		<translates>
+			<en-us>Good {WS_0.15}(don't cry, DON'T CRY)</en-us>
+			<ru>Хорошо {WS_0.15}(главное не плачь, ГЛАВНОЕ НЕ ПЛАЧЬ)</ru>
+		</translates>
+	</key>
+	<key name="GetGunFinal_0">
+		<translates>
+			<en-us>Let's do this</en-us>
+			<ru>Ну, {WS_0.1}пошла жара.</ru>
 		</translates>
 	</key>
 </keys>

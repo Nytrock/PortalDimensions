@@ -9,7 +9,7 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager levelManager;
-    private bool timeFixing;
+    private bool timeFixing = true;
     private KeyCode restartButton;
     private bool completeAnimations;
     private int oldCoins;
@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     [Header("Тестирование уровней")]
     [SerializeField] private int levelId;
     [SerializeField] private bool hidingBlocks;
+    [SerializeField] private bool useCameraBorder;
 
     [Header("Настройка уровня")]
     public CinemachineVirtualCamera mainVirtualCamera;
@@ -26,8 +27,8 @@ public class LevelManager : MonoBehaviour
     private Level levelMain;
 
     [Header("Переменные для счёта")]
-    private int numShoots;
-    private int numTeleports;
+    [SerializeField] private int numShoots;
+    [SerializeField] private int numTeleports;
     private int restartsCoef;
     private int deathsCoef;
     [SerializeField] private float timeCoef;
@@ -139,6 +140,8 @@ public class LevelManager : MonoBehaviour
     {
         levelMain = levels[id].levelMain;
         var level = levels[id];
+        if (id == 19)
+            DialogueChoiceManager.dialogueChoice.SetCoolMusic();
 
         restartsCoef = LevelInfoHolder.restartsCount;
         deathsCoef = LevelInfoHolder.deathsCount;
@@ -155,7 +158,8 @@ public class LevelManager : MonoBehaviour
 
         mainVirtualCamera.Follow = player.transform;
         CinemachineConfiner confiner = mainVirtualCamera.gameObject.AddComponent<CinemachineConfiner>();
-        confiner.m_BoundingShape2D = level.borderCollider;
+        if (useCameraBorder)
+            confiner.m_BoundingShape2D = level.borderCollider;
         mainVirtualCamera.m_Lens.OrthographicSize = levelMain.cameraZoom;
         foreach (Camera camera in othersVirtualCameras)
             camera.orthographicSize = levelMain.cameraZoom;
