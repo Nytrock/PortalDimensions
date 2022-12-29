@@ -59,7 +59,7 @@ Material:
     - _TestFloat: 0.0051677
     - _Threshold: 0.357
     - _Transparency: 1
-    - _UnscaledTime: 0.0170472
+    - _UnscaledTime: 0.0161845
     - _WaveNoiseIntensity: 0.5
     - _WhiteNoiseIntensity: 0.5
     m_Colors:

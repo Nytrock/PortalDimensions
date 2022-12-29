@@ -60,6 +60,8 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetBool("IsJump", !player.onGround);
         animator.SetBool("IsCalm", player.onGround && player.moveVector.x == 0 && !player.shoot);
         animator.SetBool("IsWalk", player.onGround && player.moveVector.x != 0);
+        foreach (AudioSource walk in walkSounds)
+            walk.gameObject.SetActive(player.onGround);
     }
 
     public void SetCalm()
@@ -94,8 +96,10 @@ public class AnimationPlayer : MonoBehaviour
 
     public void PlayWalk()
     {
-        ChangeWalkPitch();
-        walkSounds[0].Play();
+        if (walkSounds[0].gameObject.activeSelf) {
+            ChangeWalkPitch();
+            walkSounds[0].Play();
+        }
     }
 
     public IEnumerator PlayFall(int number)
@@ -105,6 +109,7 @@ public class AnimationPlayer : MonoBehaviour
             walk.volume = Mathf.Max(number / 35f, walk.volume);
         ChangeWalkPitch(0);
         ChangeWalkPitch(1);
+        yield return new WaitForSeconds(Time.deltaTime);
         walkSounds[0].Play();
         yield return new WaitForSeconds(Time.deltaTime);
         walkSounds[1].Play();
