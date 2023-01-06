@@ -76,6 +76,9 @@ public class Save : MonoBehaviour
     private class LevelsSave
     {
         public int numMoney;
+        public List<bool> completed = new();
+        public List<int> bestScores = new();
+        public int numUnlocked;
     }
 
 
@@ -84,8 +87,8 @@ public class Save : MonoBehaviour
         Application.targetFrameRate = 60;
         Time.fixedDeltaTime = 0.02f;
         save = this;
-        LoadSave();
         LoadLists();
+        LoadSave();
     }
 
     public void SaveAll()
@@ -119,6 +122,11 @@ public class Save : MonoBehaviour
         LevelsSave levels = new();
         if (moneyManager)
             levels.numMoney = moneyManager.GetCoins();
+        foreach (Level level in worlds[0].levels) {
+            levels.bestScores.Add(level.bestScore);
+            levels.completed.Add(level.wasCompleted);
+        }
+        levels.numUnlocked = worlds[0].completedLevels;
 
         if (!Directory.Exists(Application.dataPath + "/save"))
             Directory.CreateDirectory(Application.dataPath + "/save");
@@ -137,67 +145,74 @@ public class Save : MonoBehaviour
             FileStream stream = new(Application.dataPath + WayToSavefile, FileMode.Open);
             BinaryFormatter form = new();
 
-            try {
-                SettingsSave settings = (SettingsSave)form.Deserialize(stream);
-                localizationManager.SetLanguage(settings.languageId);
-                if (gameSettingsManager) {
-                    gameSettingsManager.cursorId = settings.cursorId;
-                    if (gameSettingsManager.lightVersion) {
-                        gameSettingsManager.SetFps(settings.FpsShowing);
-                        gameSettingsManager.SetGlitch(settings.shaderOn);
-                    } else {
-                        gameSettingsManager.autoManager.isOn = settings.AutoRestart;
-                        gameSettingsManager.fpsManager.isOn = settings.FpsShowing;
-                        gameSettingsManager.confirmManager.isOn = settings.ConfimToExitActive;
-                        gameSettingsManager.glitchManager.isOn = settings.shaderOn;
-                    }
+            SettingsSave settings = (SettingsSave)form.Deserialize(stream);
+            localizationManager.SetLanguage(settings.languageId);
+            if (gameSettingsManager)
+            {
+                gameSettingsManager.cursorId = settings.cursorId;
+                if (gameSettingsManager.lightVersion)
+                {
+                    gameSettingsManager.SetFps(settings.FpsShowing);
+                    gameSettingsManager.SetGlitch(settings.shaderOn);
                 }
-
-                Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
-                if ((KeyCode)allKeyTypes.GetValue(settings.keyLeft) != KeyCode.None)
-                    leftKey = (KeyCode)allKeyTypes.GetValue(settings.keyLeft);
-                if ((KeyCode)allKeyTypes.GetValue(settings.keyRight) != KeyCode.None)
-                    rightKey = (KeyCode)allKeyTypes.GetValue(settings.keyRight);
-                if ((KeyCode)allKeyTypes.GetValue(settings.keyJump) != KeyCode.None)
-                    jumpKey = (KeyCode)allKeyTypes.GetValue(settings.keyJump);
-                if ((KeyCode)allKeyTypes.GetValue(settings.keyLeftPortal) != KeyCode.None)
-                    portalGunLeftKey = (KeyCode)allKeyTypes.GetValue(settings.keyLeftPortal);
-                if ((KeyCode)allKeyTypes.GetValue(settings.keyRightPortal) != KeyCode.None)
-                    portalGunRightKey = (KeyCode)allKeyTypes.GetValue(settings.keyRightPortal);
-                if ((KeyCode)allKeyTypes.GetValue(settings.keyDialogue) != KeyCode.None)
-                    dialogueStartKey = (KeyCode)allKeyTypes.GetValue(settings.keyDialogue);
-                if ((KeyCode)allKeyTypes.GetValue(settings.keyRestart) != KeyCode.None)
-                    fastRestartKey = (KeyCode)allKeyTypes.GetValue(settings.keyRestart);
-                
-                if (audioSettingsManager) {
-                    audioSettingsManager.SetValues(settings.volumeMusic, settings.volumeEffects, settings.volumeUI);
+                else
+                {
+                    gameSettingsManager.autoManager.isOn = settings.AutoRestart;
+                    gameSettingsManager.fpsManager.isOn = settings.FpsShowing;
+                    gameSettingsManager.confirmManager.isOn = settings.ConfimToExitActive;
+                    gameSettingsManager.glitchManager.isOn = settings.shaderOn;
                 }
-
-                if (videoSettingsManager) {
-                    videoSettingsManager.resolutionId = settings.screenResolutionId;
-                    videoSettingsManager.modId = settings.screenModId;
-                }
-
-                DialoguesSave dialogues = (DialoguesSave)form.Deserialize(stream);
-                if (dialogues.existingChoices != null)
-                    Array.Copy(dialogues.existingChoices, 0, existingChoiceIdList, 0, Mathf.Min(dialogues.existingChoices.Length, existingChoiceIdList.Length));
-                if (dialogues.doingChoices != null)
-                    Array.Copy(dialogues.doingChoices, 0, DoChoiceIdList, 0, Mathf.Min(dialogues.doingChoices.Length, DoChoiceIdList.Length));
-                if (dialogueChoiceManager){
-                    for (int i = 0; i < DoChoiceIdList.Length; i++) {
-                        if (DoChoiceIdList[i])
-                            dialogueChoiceManager.DoSomethingFromId(i);
-                    }
-                }
-
-                LevelsSave levels = (LevelsSave)form.Deserialize(stream);
-                if (moneyManager)
-                    moneyManager.SetCoins(levels.numMoney);
-            } catch {
-                stream.Close();
-            } finally {
-                stream.Close();
             }
+
+            Array allKeyTypes = Enum.GetValues(typeof(KeyCode));
+            if ((KeyCode)allKeyTypes.GetValue(settings.keyLeft) != KeyCode.None)
+                leftKey = (KeyCode)allKeyTypes.GetValue(settings.keyLeft);
+            if ((KeyCode)allKeyTypes.GetValue(settings.keyRight) != KeyCode.None)
+                rightKey = (KeyCode)allKeyTypes.GetValue(settings.keyRight);
+            if ((KeyCode)allKeyTypes.GetValue(settings.keyJump) != KeyCode.None)
+                jumpKey = (KeyCode)allKeyTypes.GetValue(settings.keyJump);
+            if ((KeyCode)allKeyTypes.GetValue(settings.keyLeftPortal) != KeyCode.None)
+                portalGunLeftKey = (KeyCode)allKeyTypes.GetValue(settings.keyLeftPortal);
+            if ((KeyCode)allKeyTypes.GetValue(settings.keyRightPortal) != KeyCode.None)
+                portalGunRightKey = (KeyCode)allKeyTypes.GetValue(settings.keyRightPortal);
+            if ((KeyCode)allKeyTypes.GetValue(settings.keyDialogue) != KeyCode.None)
+                dialogueStartKey = (KeyCode)allKeyTypes.GetValue(settings.keyDialogue);
+            if ((KeyCode)allKeyTypes.GetValue(settings.keyRestart) != KeyCode.None)
+                fastRestartKey = (KeyCode)allKeyTypes.GetValue(settings.keyRestart);
+
+            if (audioSettingsManager)
+            {
+                audioSettingsManager.SetValues(settings.volumeMusic, settings.volumeEffects, settings.volumeUI);
+            }
+
+            if (videoSettingsManager)
+            {
+                videoSettingsManager.resolutionId = settings.screenResolutionId;
+                videoSettingsManager.modId = settings.screenModId;
+            }
+
+            DialoguesSave dialogues = (DialoguesSave)form.Deserialize(stream);
+            if (dialogues.existingChoices != null)
+                Array.Copy(dialogues.existingChoices, 0, existingChoiceIdList, 0, Mathf.Min(dialogues.existingChoices.Length, existingChoiceIdList.Length));
+            if (dialogues.doingChoices != null)
+                Array.Copy(dialogues.doingChoices, 0, DoChoiceIdList, 0, Mathf.Min(dialogues.doingChoices.Length, DoChoiceIdList.Length));
+            if (dialogueChoiceManager)
+            {
+                for (int i = 0; i < DoChoiceIdList.Length; i++)
+                {
+                    if (DoChoiceIdList[i] && i > 1)
+                        dialogueChoiceManager.DoSomethingFromId(i);
+                }
+            }
+
+            LevelsSave levels = (LevelsSave)form.Deserialize(stream);
+            if (moneyManager)
+                moneyManager.SetCoins(levels.numMoney);
+            foreach (Level level in worlds[0].levels) {
+                level.bestScore = levels.bestScores[level.id];
+                level.wasCompleted = levels.completed[level.id];
+            }
+            worlds[0].completedLevels = levels.numUnlocked;
         } else {
             audioSettingsManager.SetValues(0.5f, 0.5f, 0.5f);
             gameSettingsManager.autoManager.isOn = false;

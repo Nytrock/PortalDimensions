@@ -123,7 +123,6 @@ public class LevelManager : MonoBehaviour
     public void NextLevel()
     {
         var world = levelMain.world;
-        world.completedLevels = levelMain.id + 1;
         LevelInfoHolder.levelId = (levelMain.id + 1) % world.countLevels;
         LevelInfoHolder.deathsCount = 0;
         LevelInfoHolder.restartsCount = 0;
@@ -190,6 +189,8 @@ public class LevelManager : MonoBehaviour
     public void StartParticles()
     {
         completeAnimations = true;
+        var world = levelMain.world;
+        world.completedLevels = levelMain.id + 2;
         if (!levelMain.wasCompleted) {
             coinsStart.Play();
             coinsBound.SetActive(true);
@@ -370,7 +371,8 @@ public class LevelManager : MonoBehaviour
             newRecordSound.Play();
             levelMain.bestScore = needScore;
         }
-
+        var world = levelMain.world;
+        world.completedLevels = levelMain.id + 2;
         Save.save.SaveAll();
         levelMain.wasCompleted = true;
     }

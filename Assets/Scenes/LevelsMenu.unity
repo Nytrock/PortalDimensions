@@ -8831,8 +8831,8 @@ MonoBehaviour:
   dialogueChoiceManager: {fileID: 0}
   moneyManager: {fileID: 0}
   dialogueProfiles: []
-  ExistingChoiceIdList: 
-  DoChoiceIdList: 
+  existingChoiceIdList: 010101010101010101010101010101
+  DoChoiceIdList: 000000000000000000000000000000
   leftKey: 97
   rightKey: 100
   jumpKey: 32

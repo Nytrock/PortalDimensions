@@ -163,6 +163,7 @@ public class ButtonFunctional : MonoBehaviour
     public void ExitToMenu()
     {
         Time.timeScale = 1;
+        isGamePaused = false;
         SceneManager.LoadScene(2);
     }
 

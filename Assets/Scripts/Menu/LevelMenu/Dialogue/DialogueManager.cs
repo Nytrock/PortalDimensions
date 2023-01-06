@@ -40,7 +40,7 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI MainText;
     public GameObject VisualChoiceButtonPrefab;
     public GameObject WorkingChoiceButtonPrefab;
-    private Dictionary<GameObject, GameObject> viewChoices;
+    private Dictionary<GameObject, GameObject> viewChoices = new();
 
     private static Dictionary<string, Dictionary<string, string>> dialogues;
     private static Dictionary<string, Dictionary<string, Dictionary<string, string>>> choices;
@@ -313,7 +313,6 @@ public class DialogueManager : MonoBehaviour
     {
         dialogues = new Dictionary<string, Dictionary<string, string>>();
         choices = new Dictionary<string, Dictionary<string, Dictionary<string, string>>>();
-        viewChoices = new Dictionary<GameObject, GameObject>();
         XmlDocument xmlDocument = new();
         xmlDocument.LoadXml(textFile.text);
 

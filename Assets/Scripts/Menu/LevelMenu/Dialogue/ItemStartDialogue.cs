@@ -8,6 +8,12 @@ public class ItemStartDialogue : MonoBehaviour
 
     private KeyCode startKey;
 
+    private void OnDestroy()
+    {
+        LocalizationManager.OnLanguageChange -= AddKeyToText;
+        ControllSettingsManager.OnButtonChange -= SetControll;
+    }
+
     private void Start()
     {
         SetControll();

@@ -22987,7 +22987,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1836978187745789173, guid: 46f25fa23ad23954c948cecd4d502a66, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b396fda2d689a0d4da837e0b2c618421, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 507bc4b04b331744d899e768aead4b44, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.45
   m_Pitch: 1
@@ -37553,8 +37553,8 @@ MonoBehaviour:
   dialogueChoiceManager: {fileID: 0}
   moneyManager: {fileID: 0}
   dialogueProfiles: []
-  ExistingChoiceIdList: 
-  DoChoiceIdList: 
+  existingChoiceIdList: 010101010101010101010101010101
+  DoChoiceIdList: 000000000000000000000000000000
   leftKey: 97
   rightKey: 100
   jumpKey: 32
