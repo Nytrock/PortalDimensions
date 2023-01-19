@@ -274,11 +274,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1240
-        width: 290
-        height: 290
+        y: 2970
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,12 +294,12 @@ TextureImporter:
       name: Panel_1
       rect:
         serializedVersion: 2
-        x: 310
-        y: 1240
-        width: 290
-        height: 290
+        x: 330
+        y: 2970
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,12 +315,12 @@ TextureImporter:
       name: Panel_2
       rect:
         serializedVersion: 2
-        x: 620
-        y: 1240
-        width: 290
-        height: 290
+        x: 660
+        y: 2970
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -336,12 +336,12 @@ TextureImporter:
       name: Panel_3
       rect:
         serializedVersion: 2
-        x: 930
-        y: 1240
-        width: 290
-        height: 290
+        x: 990
+        y: 2970
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,12 +357,12 @@ TextureImporter:
       name: Panel_4
       rect:
         serializedVersion: 2
-        x: 1240
-        y: 1240
-        width: 290
-        height: 290
+        x: 0
+        y: 2640
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -378,12 +378,12 @@ TextureImporter:
       name: Panel_5
       rect:
         serializedVersion: 2
-        x: 1550
-        y: 1240
-        width: 290
-        height: 290
+        x: 330
+        y: 2640
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -399,12 +399,12 @@ TextureImporter:
       name: Panel_6
       rect:
         serializedVersion: 2
-        x: 1860
-        y: 1240
-        width: 290
-        height: 290
+        x: 660
+        y: 2640
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -420,12 +420,12 @@ TextureImporter:
       name: Panel_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 930
-        width: 290
-        height: 290
+        x: 990
+        y: 2640
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -441,12 +441,12 @@ TextureImporter:
       name: Panel_8
       rect:
         serializedVersion: 2
-        x: 310
-        y: 930
-        width: 290
-        height: 290
+        x: 0
+        y: 2310
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -462,12 +462,12 @@ TextureImporter:
       name: Panel_9
       rect:
         serializedVersion: 2
-        x: 620
-        y: 930
-        width: 290
-        height: 290
+        x: 330
+        y: 2310
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -483,12 +483,12 @@ TextureImporter:
       name: Panel_10
       rect:
         serializedVersion: 2
-        x: 930
-        y: 930
-        width: 290
-        height: 290
+        x: 660
+        y: 2310
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -504,12 +504,12 @@ TextureImporter:
       name: Panel_11
       rect:
         serializedVersion: 2
-        x: 1240
-        y: 930
-        width: 290
-        height: 290
+        x: 990
+        y: 2310
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -525,12 +525,12 @@ TextureImporter:
       name: Panel_12
       rect:
         serializedVersion: 2
-        x: 1550
-        y: 930
-        width: 290
-        height: 290
+        x: 0
+        y: 1980
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -546,12 +546,12 @@ TextureImporter:
       name: Panel_13
       rect:
         serializedVersion: 2
-        x: 1860
-        y: 930
-        width: 290
-        height: 290
+        x: 330
+        y: 1980
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -567,12 +567,12 @@ TextureImporter:
       name: Panel_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 620
-        width: 290
-        height: 290
+        x: 660
+        y: 1980
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -588,12 +588,12 @@ TextureImporter:
       name: Panel_15
       rect:
         serializedVersion: 2
-        x: 310
-        y: 620
-        width: 290
-        height: 290
+        x: 990
+        y: 1980
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -609,12 +609,12 @@ TextureImporter:
       name: Panel_16
       rect:
         serializedVersion: 2
-        x: 620
-        y: 620
-        width: 290
-        height: 290
+        x: 0
+        y: 1650
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -630,12 +630,12 @@ TextureImporter:
       name: Panel_17
       rect:
         serializedVersion: 2
-        x: 930
-        y: 620
-        width: 290
-        height: 290
+        x: 330
+        y: 1650
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -651,12 +651,12 @@ TextureImporter:
       name: Panel_18
       rect:
         serializedVersion: 2
-        x: 1240
-        y: 620
-        width: 290
-        height: 290
+        x: 660
+        y: 1650
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -672,12 +672,12 @@ TextureImporter:
       name: Panel_19
       rect:
         serializedVersion: 2
-        x: 1550
-        y: 620
-        width: 290
-        height: 290
+        x: 990
+        y: 1650
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -693,12 +693,12 @@ TextureImporter:
       name: Panel_20
       rect:
         serializedVersion: 2
-        x: 1860
-        y: 620
-        width: 290
-        height: 290
+        x: 0
+        y: 1320
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -714,12 +714,12 @@ TextureImporter:
       name: Panel_21
       rect:
         serializedVersion: 2
-        x: 0
-        y: 310
-        width: 290
-        height: 290
+        x: 330
+        y: 1320
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -735,12 +735,12 @@ TextureImporter:
       name: Panel_22
       rect:
         serializedVersion: 2
-        x: 310
-        y: 310
-        width: 290
-        height: 290
+        x: 660
+        y: 1320
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -756,12 +756,12 @@ TextureImporter:
       name: Panel_23
       rect:
         serializedVersion: 2
-        x: 620
-        y: 310
-        width: 290
-        height: 290
+        x: 990
+        y: 1320
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -777,12 +777,12 @@ TextureImporter:
       name: Panel_24
       rect:
         serializedVersion: 2
-        x: 930
-        y: 310
-        width: 290
-        height: 290
+        x: 0
+        y: 990
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -798,12 +798,12 @@ TextureImporter:
       name: Panel_25
       rect:
         serializedVersion: 2
-        x: 1240
-        y: 310
-        width: 290
-        height: 290
+        x: 330
+        y: 990
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -819,12 +819,12 @@ TextureImporter:
       name: Panel_26
       rect:
         serializedVersion: 2
-        x: 1550
-        y: 310
-        width: 290
-        height: 290
+        x: 660
+        y: 990
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -840,12 +840,12 @@ TextureImporter:
       name: Panel_27
       rect:
         serializedVersion: 2
-        x: 1857
-        y: 310
-        width: 290
-        height: 290
+        x: 990
+        y: 990
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -861,12 +861,12 @@ TextureImporter:
       name: Panel_30
       rect:
         serializedVersion: 2
-        x: 620
-        y: 0
-        width: 290
-        height: 290
+        x: 660
+        y: 660
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -882,12 +882,12 @@ TextureImporter:
       name: Panel_31
       rect:
         serializedVersion: 2
-        x: 930
-        y: 0
-        width: 290
-        height: 290
+        x: 990
+        y: 660
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -903,12 +903,12 @@ TextureImporter:
       name: Panel_32
       rect:
         serializedVersion: 2
-        x: 1240
-        y: 0
-        width: 290
-        height: 290
+        x: 0
+        y: 330
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -924,12 +924,12 @@ TextureImporter:
       name: Panel_33
       rect:
         serializedVersion: 2
-        x: 1550
-        y: 0
-        width: 290
-        height: 290
+        x: 330
+        y: 330
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -945,12 +945,12 @@ TextureImporter:
       name: Panel_34
       rect:
         serializedVersion: 2
-        x: 1860
-        y: 0
-        width: 290
-        height: 290
+        x: 660
+        y: 330
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -966,12 +966,12 @@ TextureImporter:
       name: Panel_28
       rect:
         serializedVersion: 2
-        x: 2170
-        y: 1240
-        width: 290
-        height: 290
+        x: 0
+        y: 660
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -987,12 +987,12 @@ TextureImporter:
       name: Panel_29
       rect:
         serializedVersion: 2
-        x: 2170
-        y: 930
-        width: 290
-        height: 290
+        x: 330
+        y: 660
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1008,12 +1008,12 @@ TextureImporter:
       name: Panel_35
       rect:
         serializedVersion: 2
-        x: 2170
-        y: 620
-        width: 290
-        height: 290
+        x: 990
+        y: 330
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1029,12 +1029,12 @@ TextureImporter:
       name: Panel_36
       rect:
         serializedVersion: 2
-        x: 2170
-        y: 310
-        width: 290
-        height: 290
+        x: 0
+        y: 0
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1050,12 +1050,12 @@ TextureImporter:
       name: Panel_37
       rect:
         serializedVersion: 2
-        x: 2480
-        y: 1240
-        width: 290
-        height: 290
+        x: 330
+        y: 0
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1071,12 +1071,12 @@ TextureImporter:
       name: Panel_38
       rect:
         serializedVersion: 2
-        x: 2480
-        y: 930
-        width: 290
-        height: 290
+        x: 660
+        y: 0
+        width: 320
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1092,10 +1092,10 @@ TextureImporter:
       name: Panel_39
       rect:
         serializedVersion: 2
-        x: 2480
-        y: 616
-        width: 290
-        height: 290
+        x: 990
+        y: 0
+        width: 320
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1105,27 +1105,6 @@ TextureImporter:
       bones: []
       spriteID: 4145b55c9a22effc0800000000000000
       internalID: -3459289351218047980
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Panel_40
-      rect:
-        serializedVersion: 2
-        x: 2480
-        y: 310
-        width: 290
-        height: 290
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a25d1e1cfc6192080800000000000000
-      internalID: -9211806481242794710
       vertices: []
       indices: 
       edges: []
@@ -1141,7 +1120,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Panel_40: -9211806481242794710
       Panel_29: 4193487558167594210
       Panel_22: 2990981879221443544
       Panel_37: -7107181096898598427
