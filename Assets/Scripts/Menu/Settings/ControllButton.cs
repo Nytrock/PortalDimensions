@@ -46,10 +46,10 @@ public class ControllButton : MonoBehaviour
 
     private void SetBlur(int leght) {
         smallBlur.transform.localPosition = new Vector2(smallBlurPos, smallBlur.transform.localPosition.y);
-        hugeBlur.color = new Color(1f, 1f, 1f, 0);
-        bigBlur.color = new Color(1f, 1f, 1f, 0);
-        smallBlur.color = new Color(1f, 1f, 1f, 0);
-        mediumBlur.color = new Color(1f, 1f, 1f, 0);
+        hugeBlur.color = new Color(hugeBlur.color.r, hugeBlur.color.g, hugeBlur.color.b, 0);
+        bigBlur.color = new Color(bigBlur.color.r, bigBlur.color.g, bigBlur.color.b, 0);
+        smallBlur.color = new Color(smallBlur.color.r, smallBlur.color.g, smallBlur.color.b, 0);
+        mediumBlur.color = new Color(mediumBlur.color.r, mediumBlur.color.g, mediumBlur.color.b, 0);
 
         if (leght == 2) {
             smallBlur.transform.localPosition = new Vector2(smallBlurPos - 12f, smallBlur.transform.localPosition.y);

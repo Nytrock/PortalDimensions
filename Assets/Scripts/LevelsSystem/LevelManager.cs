@@ -139,8 +139,6 @@ public class LevelManager : MonoBehaviour
     {
         levelMain = levels[id].levelMain;
         var level = levels[id];
-        if (id == 19)
-            DialogueChoiceManager.dialogueChoice.SetCoolMusic();
 
         restartsCoef = LevelInfoHolder.restartsCount;
         deathsCoef = LevelInfoHolder.deathsCount;

@@ -69,7 +69,7 @@ public class LevelsSwitchManager : MonoBehaviour
                 visualCell.lockImage.gameObject.SetActive(number >= showingWorld.completedLevels);
                 visualCell.number.gameObject.SetActive(number < showingWorld.completedLevels);
                 visualCell.number.text = (number + 1).ToString();
-                visualCell.blur.color = new Color(1f, 1f, 1f, 0f);
+                visualCell.blur.color = new Color(visualCell.blur.color.r, visualCell.blur.color.g, visualCell.blur.color.b, 0f);
                 if (countCompleted > number && !visualCell.lockImage.gameObject.activeSelf) {
                     var level = showingWorld.levels[number];
                     if (level.bestScore >= level.scoreForOneStar)

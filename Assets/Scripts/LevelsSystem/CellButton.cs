@@ -7,13 +7,12 @@ public class CellButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public Button button;
     public Image blur;
-
     private bool mouseDown;
     private bool pointerDown;
 
     private void Start()
     {
-        blur.color = new Color(1f, 1f, 1f, 0f);
+        blur.color = new Color(blur.color.r, blur.color.g, blur.color.b, 0f);
     }
 
     private void Update()
@@ -42,15 +41,15 @@ public class CellButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     IEnumerator BlurVisible()
     {
-        for (int i=1; i <= 8; i++) {
-            blur.color = new Color(1f, 1f, 1f, 1f / 10f * i);
+        for (int i=1; i <= 10; i++) {
+            blur.color = new Color(blur.color.r, blur.color.g, blur.color.b, 1f / 10f * i);
             yield return new WaitForSecondsRealtime(0.01f);
         }
     }
     IEnumerator BlurNonVisible()
     {
-        for (int i = 8; i >= 0; i--) {
-            blur.color = new Color(1f, 1f, 1f, 1f / 10f * i);
+        for (int i = 10; i >= 0; i--) {
+            blur.color = new Color(blur.color.r, blur.color.g, blur.color.b, 1f / 10f * i);
             yield return new WaitForSecondsRealtime(0.01f);
         }
     }

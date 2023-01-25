@@ -387,7 +387,7 @@ public class GameSettingsManager : MonoBehaviour
     {
         if (Save.save.dialogueChoiceManager == null) {
             foreach (Image blur in buttonBlurs)
-                blur.color = new Color(1f, 1f, 1f, 0);
+                blur.color = new Color(blur.color.r, blur.color.b, blur.color.b, 0);
             buttonReset.blur = buttonBlurs[LocalizationManager.SelectedLanguage];
         }
     }

@@ -17,10 +17,6 @@ public class DialogueChoiceManager : MonoBehaviour
     public GameObject finalLevel;
     public GameObject gunGetFinalDialogueTrigger;
 
-    [Header("Музыка")]
-    public GameObject standard;
-    public GameObject final;
-
     private void Awake()
     {
         dialogueChoice = this;
@@ -52,11 +48,5 @@ public class DialogueChoiceManager : MonoBehaviour
                 nowOffset += step;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-    }
-
-    public void SetCoolMusic()
-    {
-        standard.SetActive(false);
-        final.SetActive(true);
     }
 }
