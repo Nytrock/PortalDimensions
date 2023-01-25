@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: "\u041C\u0430\u0442\u0440\u0438\u0446\u0430"
-  _image: {fileID: 21300000, guid: 7d43db76d9d0ced4d9fb63ba56c293a8, type: 3}
+  _icon: {fileID: 21300000, guid: 60e825a7ced26254cbdc85b851c58d74, type: 3}
+  _menuImage: {fileID: 1754847180, guid: 7806821710690cb41b4e2bd4081bb35c, type: 3}
   _levelsCount: 20
   _levelsCompleted: 1
   _levels:

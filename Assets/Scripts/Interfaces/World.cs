@@ -5,7 +5,8 @@ public class World : ScriptableObject, WorldInterface
 {
     public int id => _id;
     public string header => _name;
-    public Sprite image => _image;
+    public Sprite icon => _icon;
+    public Sprite menuImage => _menuImage;
     public int countLevels => _levelsCount;
     public int completedLevels
     {
@@ -16,7 +17,8 @@ public class World : ScriptableObject, WorldInterface
 
     [SerializeField] private int _id;
     [SerializeField] private string _name;
-    [SerializeField] private Sprite _image;
+    [SerializeField] private Sprite _icon;
+    [SerializeField] private Sprite _menuImage;
     [SerializeField] private int _levelsCount;
     [SerializeField] private int _levelsCompleted;
     [SerializeField] private Level[] _levels;

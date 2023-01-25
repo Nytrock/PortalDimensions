@@ -28,6 +28,11 @@ public class Portal : MonoBehaviour
 
         int layer = LayerMask.NameToLayer("PortalWall");
         Collider.gameObject.layer = layer;
+
+        foreach (SpriteMask mask in masks.GetComponentsInChildren<SpriteMask>())
+        {
+            Debug.Log(mask.isCustomRangeActive);
+        }
     }
 
     public void SetPortal(bool right, PortalGun newGun)

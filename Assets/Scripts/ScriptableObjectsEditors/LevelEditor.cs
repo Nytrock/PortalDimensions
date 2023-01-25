@@ -14,8 +14,8 @@ public class LevelEditor : Editor
 
     public override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
     {
-        Texture2D texture = new(item.world.image.texture.width, item.world.image.texture.height);
-        texture.SetPixels(item.world.image.texture.GetPixels());
+        Texture2D texture = new(item.world.icon.texture.width, item.world.icon.texture.height);
+        texture.SetPixels(item.world.icon.texture.GetPixels());
         texture.Apply();
 
         List<Texture2D> settingTextures = new();
@@ -33,11 +33,12 @@ public class LevelEditor : Editor
         foreach (Texture2D addingTexture in settingTextures) {
             for (int x = 0; x < addingTexture.width; x++) {
                 for (int y = 0; y < addingTexture.height; y++) {
-                    if (addingTexture.GetPixel(x, y).a != 0)
+                    if (addingTexture.GetPixel(x, y).a != 0) {
                         texture.SetPixel(x + offset, y + 10, Color.white);
+                    }
                 }
             }
-            offset += 60;
+            offset += 32;
         }
         texture.Apply();
 
