@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public GameObject Orange;
-    public GameObject Blue;
+    public GameObject orange;
+    public GameObject blue;
 
     public PolygonCollider2D Collider;
     public GameObject masks;
@@ -32,18 +32,21 @@ public class Portal : MonoBehaviour
         foreach (SpriteMask mask in masks.GetComponentsInChildren<SpriteMask>()) {
             Debug.Log(mask.isCustomRangeActive);
         }
+
+        orange.GetComponent<SpriteRenderer>().sprite = gun.player.leftPortal;
+        blue.GetComponent<SpriteRenderer>().sprite = gun.player.rightPortal;
     }
 
     public void SetPortal(bool right, PortalGun newGun)
     {
-        Orange.SetActive(!right);
-        Blue.SetActive(right);
+        orange.SetActive(!right);
+        blue.SetActive(right);
         gun = newGun;
     }
 
     public void ActivatePortal(Collider2D itemToTeleport)
     {
-        if (Blue.activeSelf)
+        if (blue.activeSelf)
             gun.Move_To_Portal(gun.OrangePortal, gun.BluePortal, itemToTeleport);
         else
             gun.Move_To_Portal(gun.BluePortal, gun.OrangePortal, itemToTeleport);
@@ -52,7 +55,7 @@ public class Portal : MonoBehaviour
     public void SetPortalLayer()
     {
         string endLayer = "Orange";
-        if (gun.BluePortal.Collider == gun.OrangePortal.Collider && Blue.activeSelf)
+        if (gun.BluePortal.Collider == gun.OrangePortal.Collider && blue.activeSelf)
             endLayer = "Blue";
         int layer = LayerMask.NameToLayer("Portal" + endLayer);
         Collider1.gameObject.layer = layer;

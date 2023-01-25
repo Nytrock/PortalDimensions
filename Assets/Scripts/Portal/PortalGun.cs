@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PortalGun : MonoBehaviour
 {
@@ -7,13 +8,13 @@ public class PortalGun : MonoBehaviour
     public float offset;
     public Player player;
 
-    public Transform Hand;
-    public Transform Head;
+    public Transform hand;
+    public Transform head;
     public Transform NewPosition;
     public bool RightButton;
     public bool InWall;
     public static bool menuActive;
-    public Transform Shoot_parent;
+    public Transform ShootParent;
     public PortalShoot PrefabShoot;
     public PortalShoot ShootOrange;
     public PortalShoot ShootBlue;
@@ -26,12 +27,16 @@ public class PortalGun : MonoBehaviour
 
     private bool cooldown;
 
-    public GameObject BlueLight;
-    public GameObject OrangeLight;
+    [SerializeField] private Light2D[] gunLights;
 
     [Header("Бинды кнопок")]
     private KeyCode leftPortalKey;
     private KeyCode rightPortalKey;
+
+    [Header("Основные цвета")]
+    private Color leftColor;
+    private Color rightColor;
+
 
     [Header("Звуки")]
     [SerializeField] private AudioSource leftGunSound;
@@ -41,6 +46,8 @@ public class PortalGun : MonoBehaviour
     {
         SetControll();
         ControllSettingsManager.OnButtonChange += SetControll;
+        leftColor = player.leftColor;
+        rightColor = player.rightColor;
     }
     
     private void Update()
@@ -135,36 +142,43 @@ public class PortalGun : MonoBehaviour
     public void Shoot()
     {
         RightButton = Input.GetKeyDown(rightPortalKey);
-        BlueLight.SetActive(false);
-        OrangeLight.SetActive(false);
 
-        if (RightButton) {
-            rightGunSound.Play();
-            if (ShootBlue) {
-                ShootBlue.GetComponent<Animator>().enabled = true;
-                ShootBlue = null;
-            }
-            if (!InWall) {
-                ShootBlue = Instantiate(PrefabShoot, null);
-                ShootBlue.gun = this;
-                ShootBlue.right = RightButton;
-                ShootBlue.isUsed = ShootOrange != null && cooldown;
+        foreach (Light2D light2D in gunLights)
+            light2D.intensity = 1.4f;
+        gunLights[4].intensity = 0.86f;
 
-            }
-            BlueLight.SetActive(true);
-        } else {
+        if (!RightButton) {
             leftGunSound.Play();
+            foreach (Light2D light2D in gunLights)
+                light2D.color = leftColor;
             if (ShootOrange) {
                 ShootOrange.GetComponent<Animator>().enabled = true;
                 ShootOrange = null;
             }
-            if (!InWall) {
-                ShootOrange = Instantiate(PrefabShoot, null);
-                ShootOrange.gun = this;
-                ShootOrange.right = RightButton;
-                ShootOrange.isUsed = ShootBlue != null && cooldown;
+        } else {
+            rightGunSound.Play();
+            foreach (Light2D light2D in gunLights)
+                light2D.color = rightColor;
+            if (ShootBlue) {
+                ShootBlue.GetComponent<Animator>().enabled = true;
+                ShootBlue = null;
             }
-            OrangeLight.SetActive(true);
+        }
+
+        if (!InWall) {
+            var shoot = Instantiate(PrefabShoot, null);
+            shoot.gun = this;
+            shoot.right = RightButton;
+
+            if (!RightButton) {
+                shoot.SetColor(leftColor);
+                shoot.isUsed = ShootBlue != null && cooldown;
+                ShootOrange = shoot;
+            } else {
+                shoot.SetColor(rightColor);
+                shoot.isUsed = ShootOrange != null && cooldown;
+                ShootBlue = shoot;
+            }
         }
 
         if (ShootOrange && ShootBlue) {
@@ -182,28 +196,28 @@ public class PortalGun : MonoBehaviour
 
     public void HandRotation()
     {
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Hand.position;
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - hand.position;
         rotateZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         float off = offset;
-        Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
+        hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
 
         if (player.right) {
             if (rotateZ + off + 5f < 0 || rotateZ + off - 5f > 180) {
                 player.Flip();
-                Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
+                hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
             }
         } else {
             if (!((rotateZ + off >= 175f && rotateZ + off <= 275) || (rotateZ + off <= 5 && rotateZ + off >= -95))) {
                 player.Flip();
-                Hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
+                hand.rotation = Quaternion.Euler(0f, 0f, rotateZ + off);
             }
         }
 
         if (!InWall) {
             if (RightButton)
-                ShootBlue.transform.rotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z);
+                ShootBlue.transform.rotation = Quaternion.Euler(0f, 0f, hand.rotation.eulerAngles.z);
             else
-                ShootOrange.transform.rotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z);
+                ShootOrange.transform.rotation = Quaternion.Euler(0f, 0f, hand.rotation.eulerAngles.z);
         }
     }
 
@@ -215,19 +229,19 @@ public class PortalGun : MonoBehaviour
         }
 
         if (player.right) {
-            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 + 3 >= 3)
-                Head.localRotation = Quaternion.Euler(0f, 0f, 3f);
-            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z + off) % 90 - 3 <= -2)
-                Head.localRotation = Quaternion.Euler(0f, 0f, -2f);
+            if (Mathf.RoundToInt(hand.rotation.eulerAngles.z + off) % 90 + 3 >= 3)
+                head.localRotation = Quaternion.Euler(0f, 0f, 3f);
+            else if (Mathf.RoundToInt(hand.rotation.eulerAngles.z + off) % 90 - 3 <= -2)
+                head.localRotation = Quaternion.Euler(0f, 0f, -2f);
             else
-                Head.localRotation = Quaternion.Euler(0f, 0f, Hand.rotation.eulerAngles.z + off);
+                head.localRotation = Quaternion.Euler(0f, 0f, hand.rotation.eulerAngles.z + off);
         } else {
-            if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 180 + 3 <= 87)
-                Head.localRotation = Quaternion.Euler(0f, 0f, 3f);
-            else if (Mathf.RoundToInt(Hand.rotation.eulerAngles.z) % 180 + 3 >= 92)
-                Head.localRotation = Quaternion.Euler(0f, 0f, -2f);
+            if (Mathf.RoundToInt(hand.rotation.eulerAngles.z) % 180 + 3 <= 87)
+                head.localRotation = Quaternion.Euler(0f, 0f, 3f);
+            else if (Mathf.RoundToInt(hand.rotation.eulerAngles.z) % 180 + 3 >= 92)
+                head.localRotation = Quaternion.Euler(0f, 0f, -2f);
             else
-                Head.localRotation = Quaternion.Euler(0f, 0f, -(Hand.rotation.eulerAngles.z + off));
+                head.localRotation = Quaternion.Euler(0f, 0f, -(hand.rotation.eulerAngles.z + off));
         }
     }
 
@@ -237,7 +251,7 @@ public class PortalGun : MonoBehaviour
         Exit.PlayTeleport();
         if (Exit.Collider == Enter.Collider) {
             string layerEnd = "Orange";
-            if (Exit.Blue.activeSelf == true)
+            if (Exit.blue.activeSelf == true)
                 layerEnd = "Blue";
             item.GetComponent<ItemToteleport>().SetLayerEnd(layerEnd);
             item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd);
@@ -298,7 +312,7 @@ public class PortalGun : MonoBehaviour
         }
 
         if (item.TryGetComponent(out Player player))
-            player.animations.From_Portal(Exit.Blue.activeSelf);
+            player.animations.From_Portal(Exit.blue.activeSelf);
         else
             item.transform.rotation = Quaternion.Euler(0f, 0f, Exit.transform.rotation.eulerAngles.z);
         LevelManager.levelManager.AddToScore("Teleport");
@@ -319,5 +333,15 @@ public class PortalGun : MonoBehaviour
     public void SetLevelSettings(bool working)
     {
         gameObject.SetActive(working);
+    }
+
+    public void SetCalm()
+    {
+        foreach (Light2D light2D in gunLights)
+            light2D.intensity = 0;
+        hand.rotation = Quaternion.Euler(0f, 0f, 0f);
+        hand.rotation *= Quaternion.Euler(0f, 0f, 0f);
+        head.rotation = Quaternion.Euler(0f, 0f, 0f);
+        head.rotation *= Quaternion.Euler(0f, 0f, 0f);
     }
 }

@@ -14,8 +14,7 @@ public class PortalShoot : MonoBehaviour
 
     public PortalGun gun;
 
-    public Color FirstColor;
-    public Color SecondColor;
+    private Color mainColor;
     public float destroyTime;
 
     public bool isUsed = false;
@@ -26,13 +25,8 @@ public class PortalShoot : MonoBehaviour
         Invoke(nameof(DestroyAmmo), destroyTime);
 
         var main = shootParticle.main;
-        if (right) {
-            shootLight.color = SecondColor;
-            main.startColor = SecondColor;
-        } else {
-            shootLight.color = FirstColor;
-            main.startColor = FirstColor;
-        }
+        shootLight.color = mainColor;
+        main.startColor = mainColor;
     }
 
     public void Update()
@@ -94,10 +88,7 @@ public class PortalShoot : MonoBehaviour
 
         portal.transform.parent = other.gameObject.transform;
         ParticleSystem.MainModule main = portal.Particles.main;
-        if (right)
-            main.startColor = SecondColor;
-        else
-            main.startColor = FirstColor;
+        main.startColor = mainColor;
         gun.CheckPortals(right);
     }
 
@@ -210,17 +201,17 @@ public class PortalShoot : MonoBehaviour
                         portal.Collider = other;
                         if (gun.OrangePortal && gun.BluePortal) {
                             if (gun.OrangePortal.Collider == gun.BluePortal.Collider) {
-                                Vector2[] Points1 = portal.Blue.GetComponent<PolygonCollider2D>().points;
-                                Vector2[] Points2 = gun.BluePortal.Blue.GetComponent<PolygonCollider2D>().points;
+                                Vector2[] Points1 = portal.blue.GetComponent<PolygonCollider2D>().points;
+                                Vector2[] Points2 = gun.BluePortal.blue.GetComponent<PolygonCollider2D>().points;
                                 if (right)
-                                    Points2 = gun.OrangePortal.Blue.GetComponent<PolygonCollider2D>().points;
+                                    Points2 = gun.OrangePortal.blue.GetComponent<PolygonCollider2D>().points;
                                 for (int j = 0; j < Points1.Length; j++)
-                                    Points1[j] = portal.Blue.transform.TransformPoint(Points1[j]);
+                                    Points1[j] = portal.blue.transform.TransformPoint(Points1[j]);
                                 for (int j = 0; j < Points2.Length; j++) {
                                     if (right)
-                                        Points2[j] = gun.OrangePortal.Blue.transform.TransformPoint(Points2[j]);
+                                        Points2[j] = gun.OrangePortal.blue.transform.TransformPoint(Points2[j]);
                                     else
-                                        Points2[j] = gun.BluePortal.Blue.transform.TransformPoint(Points2[j]);
+                                        Points2[j] = gun.BluePortal.blue.transform.TransformPoint(Points2[j]);
                                 }
                                 Vector3 center1 = portal.transform.position;
 
@@ -244,9 +235,9 @@ public class PortalShoot : MonoBehaviour
                                 }
                             }
                         }
-                        Vector2[] portals = portal.Blue.GetComponent<PolygonCollider2D>().points;
+                        Vector2[] portals = portal.blue.GetComponent<PolygonCollider2D>().points;
                         for (int j = 0; j < portals.Length; j++)
-                            portals[j] = portal.Blue.transform.TransformPoint(portals[j]);
+                            portals[j] = portal.blue.transform.TransformPoint(portals[j]);
                         switch (i) {
                             case 0:
                                 Vertical_Alignment(portals[0], portals[1], points[i], points[i + 1], portal);
@@ -263,17 +254,17 @@ public class PortalShoot : MonoBehaviour
                         }
                         if (gun.OrangePortal && gun.BluePortal) {
                             if (gun.OrangePortal.Collider == gun.BluePortal.Collider) {
-                                Vector2[] Points1 = portal.Blue.GetComponent<PolygonCollider2D>().points;
-                                Vector2[] Points2 = gun.BluePortal.Blue.GetComponent<PolygonCollider2D>().points;
+                                Vector2[] Points1 = portal.blue.GetComponent<PolygonCollider2D>().points;
+                                Vector2[] Points2 = gun.BluePortal.blue.GetComponent<PolygonCollider2D>().points;
                                 if (right)
-                                    Points2 = gun.OrangePortal.Blue.GetComponent<PolygonCollider2D>().points;
+                                    Points2 = gun.OrangePortal.blue.GetComponent<PolygonCollider2D>().points;
                                 for (int j = 0; j < Points1.Length; j++)
-                                    Points1[j] = portal.Blue.transform.TransformPoint(Points1[j]);
+                                    Points1[j] = portal.blue.transform.TransformPoint(Points1[j]);
                                 for (int j = 0; j < Points2.Length; j++) {
                                     if (right)
-                                        Points2[j] = gun.OrangePortal.Blue.transform.TransformPoint(Points2[j]);
+                                        Points2[j] = gun.OrangePortal.blue.transform.TransformPoint(Points2[j]);
                                     else
-                                        Points2[j] = gun.BluePortal.Blue.transform.TransformPoint(Points2[j]);
+                                        Points2[j] = gun.BluePortal.blue.transform.TransformPoint(Points2[j]);
                                 }
                                 Vector3 center1 = portal.transform.position;
 
@@ -313,5 +304,10 @@ public class PortalShoot : MonoBehaviour
             }
             GetComponent<CircleCollider2D>().radius += 0.1f;
         }
+    }
+
+    public void SetColor(Color newColor)
+    {
+        mainColor = newColor;
     }
 }

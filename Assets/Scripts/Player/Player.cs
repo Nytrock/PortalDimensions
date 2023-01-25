@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
 
     private float velocityAdd;
     private bool velocityWork;
-    [SerializeField] private PhysicsMaterial2D slime;
-    [SerializeField] private PhysicsMaterial2D normal;
 
     private bool jumping;
     public bool shoot;
@@ -32,14 +30,23 @@ public class Player : MonoBehaviour
     private readonly List<JumpCrystall> jumpCrystalls = new();
     private readonly List<JumpBonus> bonusDoubleJumps = new();
     private readonly List<JumpBonus> bonusTripleJumps = new();
+
     [Header("—мена внешнего вида при повороте")]
     public SpriteRenderer[] changingObj;
     public Sprite[] leftSprites;
     public Sprite[] rightSprites;
+
     [Header("Ѕинды кнопок")]
     private KeyCode walkLeftKey;
     private KeyCode walkRightKey;
     private KeyCode jumpKey;
+
+    [Header("÷вета порталов и их спрайты")]
+    public Color leftColor;
+    public Color rightColor;
+    public Sprite leftPortal;
+    public Sprite rightPortal;
+
 
     private void Awake()
     {
