@@ -245,30 +245,28 @@ public class PortalGun : MonoBehaviour
         }
     }
 
-    public void Move_To_Portal(Portal Exit, Portal Enter, Collider2D item)
+    public void Move_To_Portal(Portal exit, Portal Enter, Collider2D item)
     {
-        Exit.AnimatorPortal();
-        Exit.PlayTeleport();
-        if (Exit.Collider == Enter.Collider) {
-            string layerEnd = "Orange";
-            if (Exit.blue.activeSelf == true)
-                layerEnd = "Blue";
-            item.GetComponent<ItemToteleport>().SetLayerEnd(layerEnd);
-            item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd);
-        }
-        item.GetComponent<ItemToteleport>().portal = Exit;
+        exit.AnimatorPortal();
+        exit.PlayTeleport();
+        string layerEnd = "Orange";
+        if (exit.blue.activeSelf == true && exit.Collider == Enter.Collider)
+            layerEnd = "Blue";
+        item.GetComponent<ItemToteleport>().SetLayerEnd(layerEnd);
+        item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd, true, exit.blue.activeSelf);
+        item.GetComponent<ItemToteleport>().portal = exit;
 
         float x = item.bounds.extents.x;
         float y = item.bounds.extents.y;
         float yAdd = 0f;
         if (item.TryGetComponent(out Player _))
             yAdd = 0.5f;
-        switch (Exit.side)
+        switch (exit.side)
         {
-            case "Left": item.transform.position = new Vector2(Exit.transform.position.x + x + 1f, Exit.transform.position.y + yAdd); break;
-            case "Down": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y + y + 1f); break;
-            case "Right": item.transform.position = new Vector2(Exit.transform.position.x - x - 1f, Exit.transform.position.y + yAdd); break;
-            case "Up": item.transform.position = new Vector2(Exit.transform.position.x, Exit.transform.position.y - y - 1f); break;
+            case "Left": item.transform.position = new Vector2(exit.transform.position.x + x + 1f, exit.transform.position.y + yAdd); break;
+            case "Down": item.transform.position = new Vector2(exit.transform.position.x, exit.transform.position.y + y + 1f); break;
+            case "Right": item.transform.position = new Vector2(exit.transform.position.x - x - 1f, exit.transform.position.y + yAdd); break;
+            case "Up": item.transform.position = new Vector2(exit.transform.position.x, exit.transform.position.y - y - 1f); break;
         }
 
         var rb = item.GetComponent<Rigidbody2D>();
@@ -279,7 +277,7 @@ public class PortalGun : MonoBehaviour
         if (Mathf.Abs(rb.velocity.x) >= 20f)
             upCoefX = 1.075f;
 
-        switch (Exit.side) {
+        switch (exit.side) {
             case "Left":
                 float force = -Mathf.Max(7f, Mathf.Abs(rb.velocity.y) * upCoefY, Mathf.Abs(rb.velocity.x) * upCoefX);
                 if (item.TryGetComponent(out Player charachter))
@@ -312,9 +310,9 @@ public class PortalGun : MonoBehaviour
         }
 
         if (item.TryGetComponent(out Player player))
-            player.animations.From_Portal(Exit.blue.activeSelf);
+            player.animations.From_Portal(exit.blue.activeSelf);
         else
-            item.transform.rotation = Quaternion.Euler(0f, 0f, Exit.transform.rotation.eulerAngles.z);
+            item.transform.rotation = Quaternion.Euler(0f, 0f, exit.transform.rotation.eulerAngles.z);
         LevelManager.levelManager.AddToScore("Teleport");
     }
 

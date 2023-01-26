@@ -8,35 +8,21 @@ public class ItemToteleport : MonoBehaviour
 
     private void Start()
     {
-        var list = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer spriteRenderer in list)
-            spriteRenderer.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
-        SetLayer("ItemToTeleport" + layerEnd);
-        if (TryGetComponent(out Player player)) {
-            player.inPortal = true;
-            player.animations.powerParticle.GetComponent<ParticleSystemRenderer>().maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
-        }
+        SetLayer("ItemToTeleport" + layerEnd, true, portal.blue.activeSelf);
     }
 
     private void OnDestroy()
     {
-        var list = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer spriteRenderer in list)
-            spriteRenderer.maskInteraction = SpriteMaskInteraction.None;
-        SetLayer("Default");
-        if (TryGetComponent(out Player player)) {
-            player.inPortal = false;
-            player.animations.powerParticle.GetComponent<ParticleSystemRenderer>().maskInteraction = SpriteMaskInteraction.None;
-        }
+        SetLayer("Default", false, portal.blue.activeSelf, true);
     }
 
     public void ChangeTeleport(bool newValue)
     {
         teleport = newValue;
         if (teleport)
-            SetLayer("TeleportingItem" + layerEnd);
+            SetLayer("TeleportingItem" + layerEnd, true, portal.blue.activeSelf);
         else
-            SetLayer("ItemToTeleport" + layerEnd);
+            SetLayer("ItemToTeleport" + layerEnd, true, portal.blue.activeSelf);
     }
 
     public bool GetTeleport()
@@ -44,14 +30,37 @@ public class ItemToteleport : MonoBehaviour
         return teleport;
     }
 
-    public void SetLayer(string name)
+    public void SetLayer(string name, bool visible, bool right, bool destroy=false)
     {
+        var list = GetComponentsInChildren<SpriteRenderer>();
+
+        var inter = SpriteMaskInteraction.None;
+        if (visible)
+            inter = SpriteMaskInteraction.VisibleOutsideMask;
+
+        var newSorting = portal.orangeId;
+        if (right)
+            newSorting = portal.blueId;
+        if (destroy)
+            newSorting = portal.defaultId;
+
+        foreach (SpriteRenderer spriteRenderer in list) {
+            spriteRenderer.maskInteraction = inter;
+            spriteRenderer.sortingLayerID = newSorting;
+        }
+
         int layer = LayerMask.NameToLayer(name);
         gameObject.layer = layer;
         if (TryGetComponent(out Player player)) {
+            player.inPortal = !destroy;
+            player.animations.powerParticle.GetComponent<ParticleSystemRenderer>().maskInteraction = inter;
+            player.animations.powerParticle.GetComponent<ParticleSystemRenderer>().sortingLayerID = newSorting;
+            player.animations.teleport.GetComponent<ParticleSystemRenderer>().maskInteraction = inter;
+            player.animations.teleport.GetComponent<ParticleSystemRenderer>().sortingLayerID = newSorting;
             player.GetComponentInChildren<GroundTrigger>().gameObject.layer = layer;
             player.GetComponentInChildren<EdgeCollider2D>().gameObject.layer = layer;
         }
+
     }
 
     public void SetLayerEnd(string newValue)

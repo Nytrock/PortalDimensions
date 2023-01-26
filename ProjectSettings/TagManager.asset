@@ -48,9 +48,12 @@ TagManager:
   - name: Wall
     uniqueID: 2654925511
     locked: 0
-  - name: Gun
-    uniqueID: 660464177
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: PortalOrange
+    uniqueID: 3770607217
+    locked: 0
+  - name: PortalBlue
+    uniqueID: 2411950417
     locked: 0

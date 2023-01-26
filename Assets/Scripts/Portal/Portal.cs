@@ -18,6 +18,11 @@ public class Portal : MonoBehaviour
     public bool Active;
     private Animator animator;
 
+    [Header("Id слоёв сортировки")]
+    public int defaultId;
+    public int orangeId;
+    public int blueId;
+
     [Header("Звуки")]
     [SerializeField] private AudioSource teleportSound;
 
@@ -29,8 +34,12 @@ public class Portal : MonoBehaviour
         int layer = LayerMask.NameToLayer("PortalWall");
         Collider.gameObject.layer = layer;
 
+        int newId = orangeId;
+        if (blue.activeSelf)
+            newId = blueId;
         foreach (SpriteMask mask in masks.GetComponentsInChildren<SpriteMask>()) {
-            Debug.Log(mask.isCustomRangeActive);
+            mask.frontSortingLayerID = newId;
+            mask.backSortingLayerID = newId;
         }
 
         orange.GetComponent<SpriteRenderer>().sprite = gun.player.leftPortal;

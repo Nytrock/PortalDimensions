@@ -67,6 +67,9 @@ MonoBehaviour:
   Collider2: {fileID: 5969639728105565035}
   trigger: {fileID: 751984353816389780}
   Active: 0
+  defaultId: 0
+  orangeId: -524360079
+  blueId: -1883016879
   teleportSound: {fileID: 6284077450039077326}
 --- !u!60 &1223694256624817599
 PolygonCollider2D:
@@ -387,7 +390,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: e12de136c7f23e9e31e25d2700000000
+  m_ApplyToSortingLayers: e12de136c7f23e9e0000000071e6bee05171c38f
   m_LightCookieSprite: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_LightOrder: 0
@@ -630,9 +633,9 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 0
-  m_BackSortingOrder: 0
-  m_IsCustomRangeActive: 0
+  m_FrontSortingOrder: 100
+  m_BackSortingOrder: -100
+  m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
 --- !u!1 &2468158452730727496
 GameObject:
@@ -822,9 +825,9 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 0
-  m_BackSortingOrder: 0
-  m_IsCustomRangeActive: 0
+  m_FrontSortingOrder: 100
+  m_BackSortingOrder: -100
+  m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
 --- !u!1 &3470222829257080242
 GameObject:
@@ -1137,7 +1140,7 @@ MonoBehaviour:
   m_Intensity: 0.59
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 31e25d2700000000
+  m_ApplyToSortingLayers: 0000000071e6bee05171c38f
   m_LightCookieSprite: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_LightOrder: 0
@@ -1617,7 +1620,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: e12de136c7f23e9e31e25d2700000000
+  m_ApplyToSortingLayers: e12de136c7f23e9e0000000071e6bee05171c38f
   m_LightCookieSprite: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_LightOrder: 0
@@ -1855,7 +1858,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1640041785
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 10
   m_Sprite: {fileID: -2655743518466041805, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1970,7 +1973,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1640041785
-  m_SortingLayer: -2
+  m_SortingLayer: -1
   m_SortingOrder: 10
   m_Sprite: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2062,8 +2065,8 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 0
-  m_BackSortingOrder: 0
+  m_FrontSortingOrder: 100
+  m_BackSortingOrder: -100
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
 --- !u!1 &7631770614019599360
@@ -2118,7 +2121,7 @@ MonoBehaviour:
   m_Intensity: 0.59
   m_LightVolumeIntensity: 0
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 31e25d2700000000
+  m_ApplyToSortingLayers: 0000000071e6bee05171c38f
   m_LightCookieSprite: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   m_LightOrder: 0
