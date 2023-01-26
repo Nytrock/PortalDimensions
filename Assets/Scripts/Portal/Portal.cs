@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Portal : MonoBehaviour
 {
-    public GameObject orange;
-    public GameObject blue;
+    public SpriteRenderer portalSprite;
+    private bool right;
 
     public PolygonCollider2D Collider;
     public GameObject masks;
-    public ParticleSystem Particles;
+    public ParticleSystem particles;
 
     public PortalGun gun;
     public string side;
@@ -35,27 +36,36 @@ public class Portal : MonoBehaviour
         Collider.gameObject.layer = layer;
 
         int newId = orangeId;
-        if (blue.activeSelf)
+        if (right)
             newId = blueId;
         foreach (SpriteMask mask in masks.GetComponentsInChildren<SpriteMask>()) {
             mask.frontSortingLayerID = newId;
             mask.backSortingLayerID = newId;
         }
 
-        orange.GetComponent<SpriteRenderer>().sprite = gun.player.leftPortal;
-        blue.GetComponent<SpriteRenderer>().sprite = gun.player.rightPortal;
+        Color portalColor = gun.player.leftColor;
+        Sprite portalNewSprite = gun.player.leftPortal;
+        if (right)  {
+            portalNewSprite = gun.player.rightPortal;
+            portalColor = gun.player.rightColor;
+        }
+
+        ParticleSystem.MainModule main = particles.main;
+        portalSprite.sprite = portalNewSprite;
+        foreach (Light2D light in portalSprite.GetComponentsInChildren<Light2D>())
+            light.color = portalColor;
+        main.startColor = portalColor;
     }
 
-    public void SetPortal(bool right, PortalGun newGun)
+    public void SetPortal(bool side, PortalGun newGun)
     {
-        orange.SetActive(!right);
-        blue.SetActive(right);
         gun = newGun;
+        right = side;
     }
 
     public void ActivatePortal(Collider2D itemToTeleport)
     {
-        if (blue.activeSelf)
+        if (right)
             gun.Move_To_Portal(gun.OrangePortal, gun.BluePortal, itemToTeleport);
         else
             gun.Move_To_Portal(gun.BluePortal, gun.OrangePortal, itemToTeleport);
@@ -64,7 +74,7 @@ public class Portal : MonoBehaviour
     public void SetPortalLayer()
     {
         string endLayer = "Orange";
-        if (gun.BluePortal.Collider == gun.OrangePortal.Collider && blue.activeSelf)
+        if (gun.BluePortal.Collider == gun.OrangePortal.Collider && right)
             endLayer = "Blue";
         int layer = LayerMask.NameToLayer("Portal" + endLayer);
         Collider1.gameObject.layer = layer;
@@ -102,5 +112,10 @@ public class Portal : MonoBehaviour
     public void PlayTeleport()
     {
         teleportSound.Play();
+    }
+
+    public bool GetRight()
+    {
+        return right;
     }
 }

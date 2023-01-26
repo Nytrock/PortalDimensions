@@ -8,21 +8,21 @@ public class ItemToteleport : MonoBehaviour
 
     private void Start()
     {
-        SetLayer("ItemToTeleport" + layerEnd, true, portal.blue.activeSelf);
+        SetLayer("ItemToTeleport" + layerEnd, true, portal.GetRight());
     }
 
     private void OnDestroy()
     {
-        SetLayer("Default", false, portal.blue.activeSelf, true);
+        SetLayer("Default", false, portal.GetRight(), true);
     }
 
     public void ChangeTeleport(bool newValue)
     {
         teleport = newValue;
         if (teleport)
-            SetLayer("TeleportingItem" + layerEnd, true, portal.blue.activeSelf);
+            SetLayer("TeleportingItem" + layerEnd, true, portal.GetRight());
         else
-            SetLayer("ItemToTeleport" + layerEnd, true, portal.blue.activeSelf);
+            SetLayer("ItemToTeleport" + layerEnd, true, portal.GetRight());
     }
 
     public bool GetTeleport()

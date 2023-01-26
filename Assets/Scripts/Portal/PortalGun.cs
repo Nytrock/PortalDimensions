@@ -74,8 +74,8 @@ public class PortalGun : MonoBehaviour
         else
             ShootBlue = null;
         if (OrangePortal && BluePortal) {
-            OrangePortal.Particles.Play();
-            BluePortal.Particles.Play();
+            OrangePortal.particles.Play();
+            BluePortal.particles.Play();
             OrangePortal.trigger.gameObject.SetActive(true);
             BluePortal.trigger.gameObject.SetActive(true);
             OrangePortal.SetPortalLayer();
@@ -86,13 +86,13 @@ public class PortalGun : MonoBehaviour
             OrangePortal.Active = true;
         } else {
             if (OrangePortal) {
-                OrangePortal.Particles.Stop();
+                OrangePortal.particles.Stop();
                 OrangePortal.Active = false;
                 OrangePortal.trigger.gameObject.SetActive(false);
                 SliceColliders(OrangePortal);
             }
             if (BluePortal) {
-                BluePortal.Particles.Stop();
+                BluePortal.particles.Stop();
                 BluePortal.Active = false;
                 BluePortal.trigger.gameObject.SetActive(false);
                 SliceColliders(BluePortal);
@@ -250,10 +250,10 @@ public class PortalGun : MonoBehaviour
         exit.AnimatorPortal();
         exit.PlayTeleport();
         string layerEnd = "Orange";
-        if (exit.blue.activeSelf == true && exit.Collider == Enter.Collider)
+        if (exit.GetRight() == true && exit.Collider == Enter.Collider)
             layerEnd = "Blue";
         item.GetComponent<ItemToteleport>().SetLayerEnd(layerEnd);
-        item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd, true, exit.blue.activeSelf);
+        item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd, true, exit.GetRight());
         item.GetComponent<ItemToteleport>().portal = exit;
 
         float x = item.bounds.extents.x;
@@ -310,7 +310,7 @@ public class PortalGun : MonoBehaviour
         }
 
         if (item.TryGetComponent(out Player player))
-            player.animations.From_Portal(exit.blue.activeSelf);
+            player.animations.From_Portal(exit.GetRight());
         else
             item.transform.rotation = Quaternion.Euler(0f, 0f, exit.transform.rotation.eulerAngles.z);
         LevelManager.levelManager.AddToScore("Teleport");
