@@ -5609,8 +5609,8 @@ MonoBehaviour:
   - {fileID: 7365574002475698461, guid: 1d17c848a4160e74082ac11bdc63613f, type: 3}
   - {fileID: -5319882733741912588, guid: 1d17c848a4160e74082ac11bdc63613f, type: 3}
   - {fileID: 0}
-  leftColor: {r: 0.98039216, g: 0.5411765, b: 0, a: 1}
-  rightColor: {r: 0.003921569, g: 0.5294118, b: 0.99215686, a: 1}
+  leftColor: {r: 0.9882353, g: 0.54509807, b: 0, a: 1}
+  rightColor: {r: 0, g: 0.53333336, b: 1, a: 1}
   leftPortal: {fileID: 2189510010676529607, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
   rightPortal: {fileID: -2655743518466041805, guid: 2aeb085a36e89f64aac02959f0c8563e, type: 3}
 --- !u!114 &2613019772673950918
