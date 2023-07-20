@@ -51,7 +51,7 @@ public class ItemToteleport : MonoBehaviour
 
         int layer = LayerMask.NameToLayer(name);
         gameObject.layer = layer;
-        if (TryGetComponent(out Player player)) {
+        if (TryGetComponent(out PlayerStateManager player)) {
             player.inPortal = !destroy;
             player.animations.powerParticle.GetComponent<ParticleSystemRenderer>().maskInteraction = inter;
             player.animations.powerParticle.GetComponent<ParticleSystemRenderer>().sortingLayerID = newSorting;

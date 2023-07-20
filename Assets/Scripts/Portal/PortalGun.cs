@@ -6,7 +6,7 @@ public class PortalGun : MonoBehaviour
 {
     private float rotateZ;
     public float offset;
-    public Player player;
+    public PlayerStateManager player;
 
     public Transform hand;
     public Transform head;
@@ -37,7 +37,6 @@ public class PortalGun : MonoBehaviour
     private Color leftColor;
     private Color rightColor;
 
-
     [Header("Звуки")]
     [SerializeField] private AudioSource leftGunSound;
     [SerializeField] private AudioSource rightGunSound;
@@ -46,13 +45,14 @@ public class PortalGun : MonoBehaviour
     {
         SetControll();
         ControllSettingsManager.OnButtonChange += SetControll;
+
         leftColor = player.leftColor;
         rightColor = player.rightColor;
     }
     
     private void Update()
     {
-        if ((Input.GetKeyDown(leftPortalKey) || Input.GetKeyDown(rightPortalKey)) && !player.inPortal && !menuActive && !ButtonFunctional.isGamePaused)
+        if ((Input.GetKeyDown(leftPortalKey) || Input.GetKeyDown(rightPortalKey)) && !player.inPortal && !menuActive)
         {
             Shoot();
 
@@ -259,7 +259,7 @@ public class PortalGun : MonoBehaviour
         float x = item.bounds.extents.x;
         float y = item.bounds.extents.y;
         float yAdd = 0f;
-        if (item.TryGetComponent(out Player _))
+        if (item.TryGetComponent(out PlayerStateManager _))
             yAdd = 0.5f;
         switch (exit.side)
         {
@@ -280,7 +280,7 @@ public class PortalGun : MonoBehaviour
         switch (exit.side) {
             case "Left":
                 float force = -Mathf.Max(7f, Mathf.Abs(rb.velocity.y) * upCoefY, Mathf.Abs(rb.velocity.x) * upCoefX);
-                if (item.TryGetComponent(out Player charachter))
+                if (item.TryGetComponent(out PlayerStateManager charachter))
                     charachter.SetVelocityAdd(force);
                 else
                     rb.velocity = new Vector2(force, 0);
@@ -299,7 +299,7 @@ public class PortalGun : MonoBehaviour
                 break;
             case "Right":
                 force = Mathf.Max(7f, Mathf.Abs(rb.velocity.y) * upCoefY, Mathf.Abs(rb.velocity.x) * upCoefX);
-                if (item.TryGetComponent(out Player charachter1))
+                if (item.TryGetComponent(out PlayerStateManager charachter1))
                     charachter1.SetVelocityAdd(force);
                 else
                     rb.velocity = new Vector2(force, 0);
@@ -309,7 +309,7 @@ public class PortalGun : MonoBehaviour
                 break;
         }
 
-        if (item.TryGetComponent(out Player player))
+        if (item.TryGetComponent(out PlayerStateManager player))
             player.animations.From_Portal(exit.GetRight());
         else
             item.transform.rotation = Quaternion.Euler(0f, 0f, exit.transform.rotation.eulerAngles.z);

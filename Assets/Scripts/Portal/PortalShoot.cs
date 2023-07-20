@@ -27,6 +27,8 @@ public class PortalShoot : MonoBehaviour
         var main = shootParticle.main;
         shootLight.color = mainColor;
         main.startColor = mainColor;
+
+        shootParticle.Play();
     }
 
     public void Update()

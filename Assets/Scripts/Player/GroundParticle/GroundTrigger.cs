@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class GroundTrigger : MonoBehaviour
 {
-    private Player player;
+    private PlayerStateManager player;
     public List<Collider2D> nowColliders;
 
     private void Awake()
     {
-        player = GetComponentInParent<Player>();
+        player = GetComponentInParent<PlayerStateManager>();
     }
 
     private void Start()
@@ -27,7 +27,7 @@ public class GroundTrigger : MonoBehaviour
             if (!nowColliders.Contains(obj)) {
                 nowColliders.Add(obj);
                 Update_Ground();
-                player.Update_Ground(ground);
+                player.animations.Update_Ground(ground, player.GetRigidbody().velocity.y);
             }
         }
     }

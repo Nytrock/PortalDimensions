@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     private KeyCode restartButton;
     private bool completeAnimations;
     private int oldCoins;
-    private Player character;
+    private PlayerStateManager character;
 
     [Header("Тестирование уровней")]
     [SerializeField] private int levelId;
@@ -147,9 +147,9 @@ public class LevelManager : MonoBehaviour
             levels[i].gameObject.SetActive(false);
         level.gameObject.SetActive(true);
 
-        var player = Instantiate(Save.save.characters[0].prefab).GetComponent<Player>();
+        var player = Instantiate(Save.save.characters[0].prefab).GetComponent<PlayerStateManager>();
         player.transform.position = new Vector2(level.spawnPoint.position.x, level.spawnPoint.position.y);
-        player.animations.portalGun.gameObject.SetActive(levelMain.hasGun);
+        player.portalGun.gameObject.SetActive(levelMain.hasGun);
         Time.fixedDeltaTime = 0.002f;
         character = player;
 
@@ -386,6 +386,6 @@ public class LevelManager : MonoBehaviour
 
     public void GivePlayerGun()
     {
-        character.animations.portalGun.gameObject.SetActive(true);
+        character.portalGun.gameObject.SetActive(true);
     }
 }

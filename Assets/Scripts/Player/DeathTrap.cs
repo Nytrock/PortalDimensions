@@ -8,9 +8,9 @@ public class DeathTrap : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player player)) {
+        if (obj.TryGetComponent(out PlayerStateManager player)) {
             causeOfDeath.text = causeOfDeath.text + " " + LocalizationManager.GetTranslate(keyNameDeath);
-            player.Death();
+            player.SwitchState(player.deathState);
         }
     }
 }

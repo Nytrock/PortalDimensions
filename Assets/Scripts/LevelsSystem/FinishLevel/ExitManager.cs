@@ -6,9 +6,9 @@ public class ExitManager : MonoBehaviour
     private bool playerDown;
     private bool playerAlmostInside;
     private bool playerInside;
-    private Player charachter;
+    private PlayerStateManager charachter;
 
-    public void CheckColliders(string side, Player player, bool activating)
+    public void CheckColliders(string side, PlayerStateManager player, bool activating)
     {
         if (side == "Horizontal") {
             if (!playerAlmostInside && activating || playerInside && !activating) {
@@ -26,10 +26,10 @@ public class ExitManager : MonoBehaviour
         }
 
         if (!playerDown && playerInside)
-            player.StopWorking();
+            player.SwitchState(player.disabledState);
 
         if (playerDown && playerInside) {
-            player.StopWorking();
+            player.SwitchState(player.disabledState);
             canvas.GetComponent<ButtonFunctional>().TurnOffMainButtons();
             LevelManager.levelManager.NullResrtartButton();
             GetComponent<Animator>().SetBool("Exit", true);

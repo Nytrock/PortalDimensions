@@ -39,7 +39,7 @@ public class ItemStartDialogue : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player _))
+        if (obj.TryGetComponent(out PlayerStateManager _))
         {
             if (InstantStart) {
                 DialogueManager.dialogueManager.SetKey(KeyToDialogue);
@@ -52,7 +52,7 @@ public class ItemStartDialogue : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player _))
+        if (obj.TryGetComponent(out PlayerStateManager _))
         {
             if (!InstantStart)
                 GetComponent<Animator>().SetBool("isActive", false);

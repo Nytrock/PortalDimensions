@@ -7,9 +7,9 @@ public class GunGet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player player))
+        if (obj.TryGetComponent(out PlayerStateManager player))
         {
-            player.animations.portalGun.gameObject.SetActive(true);
+            player.portalGun.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }
     }

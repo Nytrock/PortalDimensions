@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager dialogueManager;
     public static bool isButton;
-    private Player player;
+    private PlayerStateManager player;
 
     [SerializeField] private TextAsset textFile;
     [SerializeField] private GameObject JustText;
@@ -105,7 +105,7 @@ public class DialogueManager : MonoBehaviour
         if (information.ContainsKey("do_id"))
             doId = int.Parse(information["do_id"]);
 
-        player.StopWorking();
+        player.SwitchState(player.disabledState);
         panelsController.SetBool("isDialogue", true);
         if (bool.Parse(information["instant"])) {
             panelsController.Play("StartDialogue", 0, 0f);
@@ -135,8 +135,7 @@ public class DialogueManager : MonoBehaviour
             } else {
                 StartCoroutine(ClearText(1.3f));
             }
-            player.enabled = true;
-            player.animations.portalGun.enabled = true;
+            player.SwitchState(player.calmState);
             viewChoices.Clear();
             choiceArrow.Buttons.Clear();
             numPanel = 0;
@@ -516,7 +515,7 @@ public class DialogueManager : MonoBehaviour
             SetImageAfterAnimation(information);
         }
     }
-    public void SetPlayer(Player newPlayer) {
+    public void SetPlayer(PlayerStateManager newPlayer) {
         player = newPlayer;
     }
 

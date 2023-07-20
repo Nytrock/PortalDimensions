@@ -9,12 +9,12 @@ public class ExitCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Player player))
+        if (collision.TryGetComponent(out PlayerStateManager player))
             exitManager.CheckColliders(side, player, true);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Player player))
+        if (collision.TryGetComponent(out PlayerStateManager player))
             exitManager.CheckColliders(side, player, false);
     }
 }

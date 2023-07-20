@@ -6,7 +6,7 @@ public class DestroyDialogueItem : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.TryGetComponent(out Player _)) {
+        if (obj.TryGetComponent(out PlayerStateManager _)) {
             Destroy(GetComponentInChildren<ItemStartDialogue>().gameObject);
             Destroy(this);
         }
