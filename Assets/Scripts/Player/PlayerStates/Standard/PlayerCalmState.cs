@@ -8,6 +8,7 @@ public class PlayerCalmState : PlayerBaseState
     {
         stateManager = player;
         stateManager.portalGun.enabled = true;
+        stateManager.GetRigidbody().velocity = Vector2.zero;
 
         stateManager.animations.SetAnimation("IsCalm", true);
     }

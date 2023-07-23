@@ -4,7 +4,8 @@ public class PlayerJumpState : PlayerBaseState
 {
     private Rigidbody2D rb;
     private bool jumping;
-    private int jumpIteration = 0;
+    private float jumpTime = 0;
+    private float jumpControlTime = 2f;
     private float jumpForce;
 
     private PlayerStateManager stateManager;
@@ -27,7 +28,7 @@ public class PlayerJumpState : PlayerBaseState
     {
         if (ButtonFunctional.isGamePaused)
             stateManager.SwitchState(stateManager.disabledState);
-        else if (stateManager.onGround && !Input.GetKey(stateManager.jumpKey))
+        else if (stateManager.onGround && !jumping)
             stateManager.SwitchState(stateManager.calmState);
 
         Jump();
@@ -42,11 +43,11 @@ public class PlayerJumpState : PlayerBaseState
 
     public void StartJump()
     {
-        jumping = true;
         if (stateManager.onGround) {
+            jumping = true;
             stateManager.animations.PlayJump();
             jumpForce = stateManager.normalForce;
-            jumpIteration = 60;
+            jumpTime = 0;
         }
     }
 
@@ -58,12 +59,11 @@ public class PlayerJumpState : PlayerBaseState
 
     public void JumpForce()
     {
-        if (jumpIteration > 0 && jumping)
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + jumpForce);
-
-        if (jumpIteration > 0)
-            jumpIteration -= 1;
-        else
-            jumpIteration = 0;
+        if (jumping) {
+            if ((jumpTime += Time.fixedDeltaTime) < jumpControlTime)
+                rb.AddForce(Vector2.up * jumpForce / (jumpTime * 10));
+            else
+                jumping = false;
+        }
     }
 }

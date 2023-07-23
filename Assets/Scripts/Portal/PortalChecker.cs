@@ -6,16 +6,14 @@ public class PortalChecker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet ground))
-        {
+        if (obj.gameObject.layer == 3) {
             gun.InWall = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.gameObject.layer == 3 && obj.TryGetComponent(out GroundGet ground))
-        {
+        if (obj.gameObject.layer == 3) {
             gun.InWall = false;
         }
     }

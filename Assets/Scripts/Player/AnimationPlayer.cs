@@ -261,12 +261,10 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetFloat("Speed", -1);
     }
 
-    public void SetWalkSound(AudioSource source)
+    public void SetWalkSound(AudioClip source)
     {
-        foreach (AudioSource walk in walkSounds) {
-            walk.clip = source.clip;
-            walk.volume = source.volume;
-        }
+        foreach (AudioSource walk in walkSounds)
+            walk.clip = source;
     }
 
     public void PlayJump()
@@ -301,12 +299,11 @@ public class AnimationPlayer : MonoBehaviour
         bonusJump.Play();
     }
 
-    public void Update_Ground(GroundGet ground, float y)
+    public void Update_Ground(Color color, AudioClip walkAudio, float y)
     {
-        colorGroundParticle = ground.color;
-        SetWalkSound(ground.walkAudio);
-        if (y < -10f && player.onGround)
-        {
+        colorGroundParticle = color;
+        SetWalkSound(walkAudio);
+        if (y < -10f && player.onGround) {
             ParticleSystem.MainModule main = fall.main;
             var num = Mathf.Min((int)(8 * (y * -1 - 10f)), 250);
             main.maxParticles = num;

@@ -17,7 +17,6 @@ public class LevelManager : MonoBehaviour
 
     [Header("Тестирование уровней")]
     [SerializeField] private int levelId;
-    [SerializeField] private bool hidingBlocks;
     [SerializeField] private bool useCameraBorder;
 
     [Header("Настройка уровня")]
@@ -161,8 +160,8 @@ public class LevelManager : MonoBehaviour
         foreach (Camera camera in othersVirtualCameras)
             camera.orthographicSize = levelMain.cameraZoom;
 
-        foreach (Transform square in level.collidersContainer)
-            square.GetComponent<SpriteRenderer>().enabled = !hidingBlocks;
+        MapManager.mapManager.SetMap(level.wallTilemap);
+
         numCoins = levelMain.coinsNumber;
     }
 

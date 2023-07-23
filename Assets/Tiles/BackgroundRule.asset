@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 2026545633, guid: df2ee71901fe70345aba58d618d416f7, type: 3}
   m_DefaultGameObject: {fileID: 0}
-  m_DefaultColliderType: 1
+  m_DefaultColliderType: 2
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
@@ -306,4 +306,3 @@ MonoBehaviour:
   customField: 0
   portalTile: {fileID: 11400000}
   protectTile: {fileID: 11400000, guid: da1bf4ff05ca68c4ebe0971fb7e0a7f7, type: 2}
-  backgroundTile: {fileID: 11400000}

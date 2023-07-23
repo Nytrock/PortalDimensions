@@ -3,15 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
+    public static MusicManager instance;
+
     [SerializeField] private AudioSource mainMenu;
     [SerializeField] private AudioSource testLevel;
 
+    private AudioSource currentTrack;
+
     private void Awake()
     {
-        GameObject[] musicsManagers = GameObject.FindGameObjectsWithTag("Music");
-        if (musicsManagers.Length > 1) {
+        if (instance != null) {
             Destroy(gameObject);
             return;
+        } else {
+            instance = this;
         }
         DontDestroyOnLoad(gameObject);
         SceneManager.activeSceneChanged += UpdateMusic;
@@ -19,12 +24,22 @@ public class MusicManager : MonoBehaviour
 
     public void UpdateMusic(Scene current, Scene next)
     {
-        if (next.buildIndex <= 2 && !mainMenu.isPlaying) {
-            mainMenu.Play();
-            testLevel.Stop();
-        } else if (next.buildIndex == 4 && !testLevel.isPlaying) {
-            mainMenu.Stop();
-            testLevel.Play();
+        AudioSource newTrack = new();
+        switch (next.buildIndex) {
+            case <= 2: newTrack = mainMenu; break; 
+            case 4: newTrack = testLevel; break;
+        }
+
+        if (currentTrack == null) {
+            currentTrack = newTrack;
+            currentTrack.Play();
+            return;
+        }
+
+        if (currentTrack != newTrack) {
+            currentTrack.Stop();
+            currentTrack = newTrack;
+            currentTrack.Play();
         }
     }
 }

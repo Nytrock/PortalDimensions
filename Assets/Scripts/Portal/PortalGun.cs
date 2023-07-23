@@ -127,10 +127,10 @@ public class PortalGun : MonoBehaviour
                 SetColliderAndMask(portal.Collider2, points[3], portals[1], points[0], points[1], portals[1]);
                 break;
         }
-        portal.Collider1.GetComponent<GroundGet>().color = portal.Collider.GetComponent<GroundGet>().color;
-        portal.Collider1.GetComponent<GroundGet>().walkAudio = portal.Collider.GetComponent<GroundGet>().walkAudio;
-        portal.Collider2.GetComponent<GroundGet>().color = portal.Collider.GetComponent<GroundGet>().color;
-        portal.Collider2.GetComponent<GroundGet>().walkAudio = portal.Collider.GetComponent<GroundGet>().walkAudio;
+        //portal.Collider1.GetComponent<GroundGet>().color = portal.Collider.GetComponent<GroundGet>().color;
+        //portal.Collider1.GetComponent<GroundGet>().walkAudio = portal.Collider.GetComponent<GroundGet>().walkAudio;
+        //portal.Collider2.GetComponent<GroundGet>().color = portal.Collider.GetComponent<GroundGet>().color;
+        //portal.Collider2.GetComponent<GroundGet>().walkAudio = portal.Collider.GetComponent<GroundGet>().walkAudio;
     }
 
     void SetColliderAndMask(BoxCollider2D collider, Vector2 x1, Vector2 x2, Vector2 y1, Vector2 y2, Vector2 center)

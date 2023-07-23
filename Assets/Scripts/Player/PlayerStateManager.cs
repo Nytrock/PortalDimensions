@@ -17,9 +17,9 @@ public class PlayerStateManager : MonoBehaviour
     public PortalGun portalGun;
     private Transform skin;
     private Rigidbody2D rb;
-    public bool right;
-    public bool shoot;
-    public bool inPortal;
+    [HideInInspector] public bool right;
+    [HideInInspector] public bool shoot;
+    [HideInInspector] public bool inPortal;
 
     [SerializeField] private float realSpeed;
     private float velocityAdd;
@@ -30,8 +30,8 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] private Material deathMaterial;
 
     [Header("Прыжок")]
-    public bool onGround;
     public float normalForce;
+    [HideInInspector] public bool onGround;
 
     [Header("Бинды кнопок")]
     [HideInInspector] public KeyCode walkLeftKey;

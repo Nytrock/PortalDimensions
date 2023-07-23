@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -47,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 375
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -757,39 +763,38 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NotPortalWall_14: 537877443
-      NotPortalWall_18: -2049250448
-      NotPortalWall_4: -2117413017
-      NotPortalWall_26: 64781172
-      NotPortalWall_29: -1798984983
-      NotPortalWall_15: -1718468333
-      NotPortalWall_5: 1693833062
-      NotPortalWall_2: 2010253752
       NotPortalWall_0: -224222201
-      NotPortalWall_6: 340570964
-      NotPortalWall_8: -1231166132
-      NotPortalWall_7: -1134644220
-      NotPortalWall_9: -587878906
-      NotPortalWall_23: -1223390040
-      NotPortalWall_12: -214217339
-      NotPortalWall_27: -1218438515
-      NotPortalWall_17: -1302544144
-      NotPortalWall_28: -1500680105
-      NotPortalWall_10: -1180805384
-      NotPortalWall_16: 1703993418
       NotPortalWall_1: 1313023006
-      NotPortalWall_22: -178607528
+      NotPortalWall_10: -1180805384
       NotPortalWall_11: -1053027339
+      NotPortalWall_12: -214217339
+      NotPortalWall_13: 34589132
+      NotPortalWall_14: 537877443
+      NotPortalWall_15: -1718468333
+      NotPortalWall_16: 1703993418
+      NotPortalWall_17: -1302544144
+      NotPortalWall_18: -2049250448
+      NotPortalWall_19: -538053962
+      NotPortalWall_2: 2010253752
+      NotPortalWall_20: -757348685
       NotPortalWall_21: 1403587452
+      NotPortalWall_22: -178607528
+      NotPortalWall_23: -1223390040
       NotPortalWall_24: -1118344089
       NotPortalWall_25: -857644279
+      NotPortalWall_26: 64781172
+      NotPortalWall_27: -1218438515
+      NotPortalWall_28: -1500680105
+      NotPortalWall_29: -1798984983
       NotPortalWall_3: 2067960183
-      NotPortalWall_19: -538053962
-      NotPortalWall_13: 34589132
-      NotPortalWall_20: -757348685
-  spritePackingTag: 
+      NotPortalWall_4: -2117413017
+      NotPortalWall_5: 1693833062
+      NotPortalWall_6: 340570964
+      NotPortalWall_7: -1134644220
+      NotPortalWall_8: -1231166132
+      NotPortalWall_9: -587878906
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
