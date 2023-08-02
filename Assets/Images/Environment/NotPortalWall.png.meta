@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 375
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3645
-        width: 375
-        height: 375
+        y: 243
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: NotPortalWall_1
       rect:
         serializedVersion: 2
-        x: 405
-        y: 3645
-        width: 375
-        height: 375
+        x: 27
+        y: 243
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: NotPortalWall_2
       rect:
         serializedVersion: 2
-        x: 810
-        y: 3645
-        width: 375
-        height: 375
+        x: 54
+        y: 243
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,9 +190,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3240
-        width: 375
-        height: 375
+        y: 216
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: NotPortalWall_4
       rect:
         serializedVersion: 2
-        x: 405
-        y: 3240
-        width: 375
-        height: 375
+        x: 27
+        y: 216
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +231,10 @@ TextureImporter:
       name: NotPortalWall_5
       rect:
         serializedVersion: 2
-        x: 810
-        y: 3240
-        width: 375
-        height: 375
+        x: 54
+        y: 216
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,9 +253,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2835
-        width: 375
-        height: 375
+        y: 189
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,10 +273,10 @@ TextureImporter:
       name: NotPortalWall_7
       rect:
         serializedVersion: 2
-        x: 405
-        y: 2835
-        width: 375
-        height: 375
+        x: 27
+        y: 189
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +294,10 @@ TextureImporter:
       name: NotPortalWall_8
       rect:
         serializedVersion: 2
-        x: 810
-        y: 2835
-        width: 375
-        height: 375
+        x: 54
+        y: 189
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,9 +316,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2430
-        width: 375
-        height: 375
+        y: 161
+        width: 25
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,10 +336,10 @@ TextureImporter:
       name: NotPortalWall_10
       rect:
         serializedVersion: 2
-        x: 405
-        y: 2430
-        width: 375
-        height: 375
+        x: 27
+        y: 162
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -357,10 +357,10 @@ TextureImporter:
       name: NotPortalWall_11
       rect:
         serializedVersion: 2
-        x: 810
-        y: 2430
-        width: 375
-        height: 375
+        x: 54
+        y: 162
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -379,9 +379,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2025
-        width: 375
-        height: 375
+        y: 135
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -399,10 +399,10 @@ TextureImporter:
       name: NotPortalWall_13
       rect:
         serializedVersion: 2
-        x: 405
-        y: 2025
-        width: 375
-        height: 375
+        x: 27
+        y: 135
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -420,10 +420,10 @@ TextureImporter:
       name: NotPortalWall_14
       rect:
         serializedVersion: 2
-        x: 810
-        y: 2025
-        width: 375
-        height: 375
+        x: 54
+        y: 135
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -441,10 +441,10 @@ TextureImporter:
       name: NotPortalWall_16
       rect:
         serializedVersion: 2
-        x: 405
-        y: 1620
-        width: 375
-        height: 375
+        x: 27
+        y: 108
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -463,9 +463,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1620
-        width: 375
-        height: 375
+        y: 108
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -483,10 +483,10 @@ TextureImporter:
       name: NotPortalWall_17
       rect:
         serializedVersion: 2
-        x: 810
-        y: 1620
-        width: 375
-        height: 375
+        x: 54
+        y: 108
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -505,9 +505,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1215
-        width: 375
-        height: 375
+        y: 81
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -525,10 +525,10 @@ TextureImporter:
       name: NotPortalWall_19
       rect:
         serializedVersion: 2
-        x: 405
-        y: 1215
-        width: 375
-        height: 375
+        x: 27
+        y: 81
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -546,10 +546,10 @@ TextureImporter:
       name: NotPortalWall_20
       rect:
         serializedVersion: 2
-        x: 810
-        y: 1215
-        width: 375
-        height: 375
+        x: 54
+        y: 81
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -568,9 +568,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 810
-        width: 375
-        height: 375
+        y: 54
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -588,10 +588,10 @@ TextureImporter:
       name: NotPortalWall_22
       rect:
         serializedVersion: 2
-        x: 405
-        y: 810
-        width: 375
-        height: 375
+        x: 27
+        y: 54
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -609,10 +609,10 @@ TextureImporter:
       name: NotPortalWall_23
       rect:
         serializedVersion: 2
-        x: 810
-        y: 810
-        width: 375
-        height: 375
+        x: 54
+        y: 54
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -631,9 +631,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 405
-        width: 375
-        height: 375
+        y: 27
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -651,10 +651,10 @@ TextureImporter:
       name: NotPortalWall_25
       rect:
         serializedVersion: 2
-        x: 405
-        y: 405
-        width: 375
-        height: 375
+        x: 27
+        y: 27
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -672,10 +672,10 @@ TextureImporter:
       name: NotPortalWall_26
       rect:
         serializedVersion: 2
-        x: 810
-        y: 405
-        width: 375
-        height: 375
+        x: 54
+        y: 27
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -695,8 +695,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 375
-        height: 375
+        width: 25
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -706,48 +706,6 @@ TextureImporter:
       bones: []
       spriteID: 084ff2a1a5f4a4e4085c4d717eab5ac4
       internalID: -1218438515
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NotPortalWall_28
-      rect:
-        serializedVersion: 2
-        x: 405
-        y: 0
-        width: 375
-        height: 375
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e43fff97cd29cd489c5c057d1dcebc1
-      internalID: -1500680105
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NotPortalWall_29
-      rect:
-        serializedVersion: 2
-        x: 810
-        y: 0
-        width: 375
-        height: 375
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0fc9700f918ae7c4996eec0032736926
-      internalID: -1798984983
       vertices: []
       indices: 
       edges: []
@@ -784,8 +742,6 @@ TextureImporter:
       NotPortalWall_25: -857644279
       NotPortalWall_26: 64781172
       NotPortalWall_27: -1218438515
-      NotPortalWall_28: -1500680105
-      NotPortalWall_29: -1798984983
       NotPortalWall_3: 2067960183
       NotPortalWall_4: -2117413017
       NotPortalWall_5: 1693833062

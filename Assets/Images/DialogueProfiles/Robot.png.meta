@@ -1,61 +1,7 @@
 fileFormatVersion: 2
 guid: f5fcdeaf0b34da74a8da4133732c7f34
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 17426746270384133
-    second: Robot_0
-  - first:
-      213: 5638259562752074330
-    second: Robot_1
-  - first:
-      213: -3378959473338303302
-    second: Robot_2
-  - first:
-      213: 5332947737335612695
-    second: Robot_3
-  - first:
-      213: 214248980452440492
-    second: Robot_4
-  - first:
-      213: -3727906849806164347
-    second: Robot_5
-  - first:
-      213: -5713122161831522535
-    second: Robot_6
-  - first:
-      213: -321252410884412435
-    second: Robot_7
-  - first:
-      213: 7287976494194388105
-    second: Robot_8
-  - first:
-      213: 704897558614422922
-    second: Robot_9
-  - first:
-      213: -7972684559215338029
-    second: Robot_10
-  - first:
-      213: -3350845546279357508
-    second: Robot_11
-  - first:
-      213: -7930363469129267341
-    second: Robot_12
-  - first:
-      213: -428846162874942557
-    second: Robot_13
-  - first:
-      213: 6007692011060089213
-    second: Robot_14
-  - first:
-      213: 5905603752547928858
-    second: Robot_15
-  - first:
-      213: -5032900677007144664
-    second: Robot_16
-  - first:
-      213: 3628441642913966593
-    second: Robot_17
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -74,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -87,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -101,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 5
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,18 +64,20 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  swizzle: 50462976
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -141,42 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -189,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -201,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -211,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1800
-        width: 340
-        height: 340
+        y: 90
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 500890d8889ed3000800000000000000
-      internalID: 17426746270384133
+      spriteID: 19a3231d9a425524b93ad4fc7d75bd64
+      internalID: -1711638236
       vertices: []
       indices: 
       edges: []
@@ -231,10 +147,10 @@ TextureImporter:
       name: Robot_1
       rect:
         serializedVersion: 2
-        x: 360
-        y: 1800
-        width: 340
-        height: 340
+        x: 18
+        y: 90
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a526945133f1f3e40800000000000000
-      internalID: 5638259562752074330
+      spriteID: addc297ae007f1b4db481b7931f41df3
+      internalID: -1377606386
       vertices: []
       indices: 
       edges: []
@@ -252,10 +168,10 @@ TextureImporter:
       name: Robot_2
       rect:
         serializedVersion: 2
-        x: 720
-        y: 1800
-        width: 340
-        height: 340
+        x: 36
+        y: 90
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abcba31f2468b11d0800000000000000
-      internalID: -3378959473338303302
+      spriteID: 4975aedbc8489ef43a309eec0613f99a
+      internalID: 1299169455
       vertices: []
       indices: 
       edges: []
@@ -274,9 +190,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1440
-        width: 340
-        height: 340
+        y: 72
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 715cc9146bf620a40800000000000000
-      internalID: 5332947737335612695
+      spriteID: f06b1890cef8e4644bf9c50023e7a4db
+      internalID: 2084670809
       vertices: []
       indices: 
       edges: []
@@ -294,10 +210,10 @@ TextureImporter:
       name: Robot_4
       rect:
         serializedVersion: 2
-        x: 360
-        y: 1440
-        width: 340
-        height: 340
+        x: 18
+        y: 72
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,8 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca97b55005a29f200800000000000000
-      internalID: 214248980452440492
+      spriteID: edd80bba71c30b540b476431feb4248b
+      internalID: 1650684966
       vertices: []
       indices: 
       edges: []
@@ -315,10 +231,10 @@ TextureImporter:
       name: Robot_5
       rect:
         serializedVersion: 2
-        x: 720
-        y: 1440
-        width: 340
-        height: 340
+        x: 36
+        y: 72
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58ede8da870d34cc0800000000000000
-      internalID: -3727906849806164347
+      spriteID: 7380350dd05342e4a893b06777b58d0d
+      internalID: -139307965
       vertices: []
       indices: 
       edges: []
@@ -337,9 +253,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1080
-        width: 340
-        height: 340
+        y: 54
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,8 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91fce99c9a9e6b0b0800000000000000
-      internalID: -5713122161831522535
+      spriteID: 0bc4397ec6bcada43a321d4b18fc15f2
+      internalID: 2058236418
       vertices: []
       indices: 
       edges: []
@@ -357,10 +273,10 @@ TextureImporter:
       name: Robot_7
       rect:
         serializedVersion: 2
-        x: 360
-        y: 1080
-        width: 340
-        height: 340
+        x: 18
+        y: 54
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: deb2ff562aeaa8bf0800000000000000
-      internalID: -321252410884412435
+      spriteID: bf1f4dd81e3d07b4c854df44c25d5ff9
+      internalID: 771701870
       vertices: []
       indices: 
       edges: []
@@ -378,10 +294,10 @@ TextureImporter:
       name: Robot_8
       rect:
         serializedVersion: 2
-        x: 720
-        y: 1080
-        width: 340
-        height: 340
+        x: 36
+        y: 54
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,8 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98c6ad31208142560800000000000000
-      internalID: 7287976494194388105
+      spriteID: a1afd739bf75c0641840aee70011747d
+      internalID: 399508868
       vertices: []
       indices: 
       edges: []
@@ -400,9 +316,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 720
-        width: 340
-        height: 340
+        y: 36
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -410,8 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a85b048489c48c900800000000000000
-      internalID: 704897558614422922
+      spriteID: ad030e6f637015045806f030861a9309
+      internalID: 561173749
       vertices: []
       indices: 
       edges: []
@@ -420,10 +336,10 @@ TextureImporter:
       name: Robot_10
       rect:
         serializedVersion: 2
-        x: 360
-        y: 720
-        width: 340
-        height: 340
+        x: 18
+        y: 36
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,8 +347,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dd5abd62a55b5190800000000000000
-      internalID: -7972684559215338029
+      spriteID: b0ed93d46cb7116449d416f4a255d956
+      internalID: -1596126201
       vertices: []
       indices: 
       edges: []
@@ -441,10 +357,10 @@ TextureImporter:
       name: Robot_11
       rect:
         serializedVersion: 2
-        x: 720
-        y: 720
-        width: 340
-        height: 340
+        x: 36
+        y: 36
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -452,8 +368,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb3b1dcaab76f71d0800000000000000
-      internalID: -3350845546279357508
+      spriteID: 85d36cfe3c38ea249a1c9a1f9d96481f
+      internalID: 1706376839
       vertices: []
       indices: 
       edges: []
@@ -463,9 +379,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 360
-        width: 340
-        height: 340
+        y: 18
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -473,8 +389,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 377c0d21170b1f190800000000000000
-      internalID: -7930363469129267341
+      spriteID: 6caf4c81c334b51449dadd7bb4a93645
+      internalID: -1689200947
       vertices: []
       indices: 
       edges: []
@@ -483,10 +399,10 @@ TextureImporter:
       name: Robot_13
       rect:
         serializedVersion: 2
-        x: 360
-        y: 360
-        width: 340
-        height: 340
+        x: 18
+        y: 18
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -494,8 +410,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3abbc8edfae6c0af0800000000000000
-      internalID: -428846162874942557
+      spriteID: 77b4b6d9ecfae724aa57537d932cf5ab
+      internalID: -251128554
       vertices: []
       indices: 
       edges: []
@@ -504,10 +420,10 @@ TextureImporter:
       name: Robot_14
       rect:
         serializedVersion: 2
-        x: 720
-        y: 360
-        width: 340
-        height: 340
+        x: 36
+        y: 18
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -515,8 +431,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d71503fcd0c9f5350800000000000000
-      internalID: 6007692011060089213
+      spriteID: 6f3fb4a06a8e3394a87452263550fad8
+      internalID: -1402721127
       vertices: []
       indices: 
       edges: []
@@ -527,8 +443,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 340
-        height: 340
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -536,8 +452,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1b45ded25be4f150800000000000000
-      internalID: 5905603752547928858
+      spriteID: 13b3c413ddf21984ca00d38749d16546
+      internalID: -148037368
       vertices: []
       indices: 
       edges: []
@@ -546,10 +462,10 @@ TextureImporter:
       name: Robot_16
       rect:
         serializedVersion: 2
-        x: 360
+        x: 18
         y: 0
-        width: 340
-        height: 340
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -557,8 +473,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8298a2def7b872ab0800000000000000
-      internalID: -5032900677007144664
+      spriteID: 634c74a39a55a244a820961b54cfad04
+      internalID: -1448244632
       vertices: []
       indices: 
       edges: []
@@ -567,10 +483,10 @@ TextureImporter:
       name: Robot_17
       rect:
         serializedVersion: 2
-        x: 720
+        x: 36
         y: 0
-        width: 340
-        height: 340
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -578,8 +494,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10a2f1e2370da5230800000000000000
-      internalID: 3628441642913966593
+      spriteID: fb8c3b13a61036f4792e92b0d663da63
+      internalID: 1071994119
       vertices: []
       indices: 
       edges: []
@@ -595,27 +511,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Robot_2: -3378959473338303302
-      Robot_1: 5638259562752074330
-      Robot_13: -428846162874942557
-      Robot_10: -7972684559215338029
-      Robot_0: 17426746270384133
-      Robot_4: 214248980452440492
-      Robot_5: -3727906849806164347
-      Robot_3: 5332947737335612695
-      Robot_8: 7287976494194388105
-      Robot_17: 3628441642913966593
-      Robot_6: -5713122161831522535
-      Robot_16: -5032900677007144664
-      Robot_7: -321252410884412435
-      Robot_11: -3350845546279357508
-      Robot_14: 6007692011060089213
-      Robot_15: 5905603752547928858
-      Robot_12: -7930363469129267341
-      Robot_9: 704897558614422922
-  spritePackingTag: 
+      Robot_0: -1711638236
+      Robot_1: -1377606386
+      Robot_10: -1596126201
+      Robot_11: 1706376839
+      Robot_12: -1689200947
+      Robot_13: -251128554
+      Robot_14: -1402721127
+      Robot_15: -148037368
+      Robot_16: -1448244632
+      Robot_17: 1071994119
+      Robot_2: 1299169455
+      Robot_3: 2084670809
+      Robot_4: 1650684966
+      Robot_5: -139307965
+      Robot_6: 2058236418
+      Robot_7: 771701870
+      Robot_8: 399508868
+      Robot_9: 561173749
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

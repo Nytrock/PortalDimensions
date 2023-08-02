@@ -71,11 +71,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -84,7 +85,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -98,7 +99,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 4
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,6 +115,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
@@ -121,11 +123,12 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -138,6 +141,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -150,6 +154,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -162,6 +167,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -174,6 +180,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -186,6 +193,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -198,6 +206,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -208,9 +217,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2323
-        width: 629
-        height: 552
+        y: 93
+        width: 25
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +237,10 @@ TextureImporter:
       name: Player_1
       rect:
         serializedVersion: 2
-        x: 697
-        y: 2323
-        width: 456
-        height: 429
+        x: 28
+        y: 93
+        width: 18
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,10 +258,10 @@ TextureImporter:
       name: Player_2
       rect:
         serializedVersion: 2
-        x: 1273
-        y: 2147
-        width: 505
-        height: 631
+        x: 51
+        y: 86
+        width: 20
+        height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,10 +279,10 @@ TextureImporter:
       name: Player_3
       rect:
         serializedVersion: 2
-        x: 1846
-        y: 2147
-        width: 258
-        height: 631
+        x: 74
+        y: 86
+        width: 10
+        height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,10 +300,10 @@ TextureImporter:
       name: Player_4
       rect:
         serializedVersion: 2
-        x: 2248
-        y: 2596
-        width: 804
-        height: 208
+        x: 90
+        y: 104
+        width: 32
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,10 +321,10 @@ TextureImporter:
       name: Player_5
       rect:
         serializedVersion: 2
-        x: 3199
-        y: 1347
-        width: 1400
-        height: 1506
+        x: 128
+        y: 58
+        width: 56
+        height: 52
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -333,10 +342,10 @@ TextureImporter:
       name: Player_6
       rect:
         serializedVersion: 2
-        x: 46
-        y: 1747
-        width: 407
-        height: 306
+        x: 2
+        y: 70
+        width: 16
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -354,10 +363,10 @@ TextureImporter:
       name: Player_7
       rect:
         serializedVersion: 2
-        x: 548
-        y: 1598
-        width: 404
-        height: 455
+        x: 22
+        y: 64
+        width: 16
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -375,10 +384,10 @@ TextureImporter:
       name: Player_8
       rect:
         serializedVersion: 2
-        x: 1022
-        y: 1897
-        width: 456
-        height: 156
+        x: 41
+        y: 76
+        width: 18
+        height: 6
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -396,10 +405,10 @@ TextureImporter:
       name: Player_9
       rect:
         serializedVersion: 2
-        x: 1573
-        y: 1598
-        width: 255
-        height: 455
+        x: 63
+        y: 64
+        width: 10
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -417,10 +426,10 @@ TextureImporter:
       name: Player_10
       rect:
         serializedVersion: 2
-        x: 1872
-        y: 1797
-        width: 256
-        height: 256
+        x: 75
+        y: 72
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -438,10 +447,10 @@ TextureImporter:
       name: Player_11
       rect:
         serializedVersion: 2
-        x: 2174
-        y: 1578
-        width: 875
-        height: 875
+        x: 87
+        y: 74
+        width: 35
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -459,10 +468,10 @@ TextureImporter:
       name: Player_12
       rect:
         serializedVersion: 2
-        x: 49
-        y: 22
-        width: 1400
-        height: 1506
+        x: 2
+        y: 1
+        width: 56
+        height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -480,10 +489,10 @@ TextureImporter:
       name: Player_13
       rect:
         serializedVersion: 2
-        x: 1524
-        y: 17
-        width: 1400
-        height: 1506
+        x: 61
+        y: 1
+        width: 56
+        height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -501,10 +510,10 @@ TextureImporter:
       name: Player_14
       rect:
         serializedVersion: 2
-        x: 2973
-        y: 46
-        width: 355
-        height: 1256
+        x: 119
+        y: 2
+        width: 14
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -514,48 +523,6 @@ TextureImporter:
       bones: []
       spriteID: 1c373e28dcb70bdd0800000000000000
       internalID: -2472340072831945791
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_15
-      rect:
-        serializedVersion: 2
-        x: 3921
-        y: 47
-        width: 258
-        height: 631
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55a4cdd5fa418f040800000000000000
-      internalID: 4681514556078180949
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_16
-      rect:
-        serializedVersion: 2
-        x: 4321
-        y: 47
-        width: 258
-        height: 631
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0df82750dcba00dd0800000000000000
-      internalID: -2521826894279438384
       vertices: []
       indices: 
       edges: []
@@ -573,26 +540,23 @@ TextureImporter:
     - texture: {instanceID: 0}
       name: _NormalMap
     nameFileIdTable:
-      Player_11: -5319882733741912588
-      Player_2: -6287787046888575383
-      Player_4: -4709456396536258026
-      Player_12: 7365574002475698461
-      Player_6: -7446026091647042388
-      Player_1: 7364682651488144517
-      Player_9: 2473453845335418800
-      Player_14: -2472340072831945791
       Player_0: -2311659948842064771
-      Player_7: 5938012242645255967
-      Player_16: -2521826894279438384
-      Player_3: -1182821291677670348
-      Player_8: -4245738604243887485
+      Player_1: 7364682651488144517
       Player_10: -3287367053296241113
-      Player_15: 4681514556078180949
+      Player_11: -5319882733741912588
+      Player_12: 7365574002475698461
       Player_13: 6472545519820947264
+      Player_14: -2472340072831945791
+      Player_2: -6287787046888575383
+      Player_3: -1182821291677670348
+      Player_4: -4709456396536258026
       Player_5: -4529042392078601758
-  spritePackingTag: 
+      Player_6: -7446026091647042388
+      Player_7: 5938012242645255967
+      Player_8: -4245738604243887485
+      Player_9: 2473453845335418800
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

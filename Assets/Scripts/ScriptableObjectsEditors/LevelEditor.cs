@@ -17,6 +17,7 @@ public class LevelEditor : Editor
         Texture2D texture = new(item.world.icon.texture.width, item.world.icon.texture.height);
         texture.SetPixels(item.world.icon.texture.GetPixels());
         texture.Apply();
+        texture = Resize(texture, (int)(texture.width * 1.6f), (int)(texture.height * 1.6f));
 
         List<Texture2D> settingTextures = new();
         int num = item.id + 1;
@@ -29,16 +30,16 @@ public class LevelEditor : Editor
         }
         settingTextures.Reverse();
 
-        int offset = 10;
+        int offset = 12;
         foreach (Texture2D addingTexture in settingTextures) {
             for (int x = 0; x < addingTexture.width; x++) {
                 for (int y = 0; y < addingTexture.height; y++) {
                     if (addingTexture.GetPixel(x, y).a != 0) {
-                        texture.SetPixel(x + offset, y + 10, Color.white);
+                        texture.SetPixel(x + offset, y + 1, Color.white);
                     }
                 }
             }
-            offset += 32;
+            offset += 31;
         }
         texture.Apply();
 
@@ -85,6 +86,17 @@ public class LevelEditor : Editor
             }
         }
         return null;
+    }
+
+    Texture2D Resize(Texture2D texture2D, int targetX, int targetY)
+    {
+        RenderTexture rt = new RenderTexture(targetX, targetY, 24);
+        RenderTexture.active = rt;
+        Graphics.Blit(texture2D, rt);
+        Texture2D result = new Texture2D(targetX, targetY);
+        result.ReadPixels(new Rect(0, 0, targetX, targetY), 0, 0);
+        result.Apply();
+        return result;
     }
 }
 #endif
