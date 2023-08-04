@@ -16,3 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57509cd28cb3edf4b885eeed681aaca0, type: 2}
   color: {r: 1, g: 1, b: 1, a: 1}
   walkAudio: {fileID: 8300000, guid: 6f4788be35527a045b296f1eda0c8dd2, type: 3}
+  forPortal: 1

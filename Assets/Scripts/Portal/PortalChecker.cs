@@ -6,15 +6,13 @@ public class PortalChecker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.gameObject.layer == 3) {
-            gun.InWall = true;
-        }
+        if (obj.gameObject.layer == 3)
+            gun.inWall = true;
     }
 
     private void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.gameObject.layer == 3) {
-            gun.InWall = false;
-        }
+        if (obj.gameObject.layer == 3)
+            gun.inWall = false;
     }
 }

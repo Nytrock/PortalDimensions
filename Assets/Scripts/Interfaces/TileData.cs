@@ -10,4 +10,5 @@ public class TileData : ScriptableObject
 
     public Color color;
     public AudioClip walkAudio;
+    public bool forPortal;
 }

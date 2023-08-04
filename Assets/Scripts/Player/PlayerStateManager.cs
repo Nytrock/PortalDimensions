@@ -31,7 +31,7 @@ public class PlayerStateManager : MonoBehaviour
 
     [Header("Прыжок")]
     public float normalForce;
-    [HideInInspector] public bool onGround;
+    public bool onGround;
 
     [Header("Бинды кнопок")]
     [HideInInspector] public KeyCode walkLeftKey;

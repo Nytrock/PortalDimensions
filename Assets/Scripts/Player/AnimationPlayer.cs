@@ -36,11 +36,6 @@ public class AnimationPlayer : MonoBehaviour
     public Gradient doubleGradient;
     public Gradient tripleGradient;
 
-    private Color firstPowerColor;
-    private Color secondPowerColor;
-    private Color addFirstPowerColor;
-    private Color addSecondPowerColor;
-
     [Header("Звуки")]
     [SerializeField] private AudioSource[] walkSounds;
     [SerializeField] private AudioSource jumpSound;
@@ -139,28 +134,11 @@ public class AnimationPlayer : MonoBehaviour
 
     public void StartShoot()
     {
-        shoot.Stop();
-        var main = shoot.main;
         animator.SetBool("RestartShooting", false);
-        if (portalGun.RightButton) {
+        if (portalGun.right)
             gunSprite.sprite = rightSprite;
-            main.startColor = secondColor;
-        } else {
+        else
             gunSprite.sprite = leftSprite;
-            main.startColor = firstColor;
-        }
-        shoot.Play();
-    }
-
-    public void FreeShoot()
-    {
-        if (portalGun.RightButton && portalGun.ShootBlue != null) {
-            portalGun.ShootBlue.transform.position = new Vector2(portalGun.ShootParent.position.x, portalGun.ShootParent.position.y);
-            portalGun.ShootBlue.gameObject.SetActive(true);
-        } else if (portalGun.ShootOrange != null) {
-            portalGun.ShootOrange.transform.position = new Vector2(portalGun.ShootParent.position.x, portalGun.ShootParent.position.y);
-            portalGun.ShootOrange.gameObject.SetActive(true);
-        }
     }
 
     public void From_Portal(bool Right)
@@ -172,76 +150,6 @@ public class AnimationPlayer : MonoBehaviour
             main.startColor = firstColor;
         teleport.Play();
     }
-
-    //public void UpdateJumpBonus()
-    //{
-    //    bool doubleJump = player.GetJump();
-    //    bool tripleJump = player.GetJump(true);
-
-    //    Color doubleColor = doubleGradient.colorKeys[0].color;
-    //    Color tripleColor = tripleGradient.colorKeys[0].color;
-
-    //    if (tripleJump) {
-    //        eye.sprite = tripleEye;
-    //        eyeLight.color = doubleColor;
-    //        eyeLight.intensity = 0.8f;
-    //    } else if (doubleJump) {
-    //        eye.sprite = doubleEye;
-    //        eyeLight.color = tripleColor;
-    //        eyeLight.intensity = 0.8f;
-    //    } else {
-    //        eye.sprite = normalEye;
-    //        eyeLight.intensity = 0;
-    //    }
-        
-    //    var main = powerParticle.main;
-    //    if (doubleJump || tripleJump) {
-    //        powerParticle.Play();
-    //    } else {
-    //        powerParticle.Stop();
-    //        main.startColor = Color.white;
-    //    }
-
-    //    animator.SetBool("TriplePower", tripleJump);
-    //    animator.SetBool("DoublePower", doubleJump);
-    //    animator.SetBool("StartPower", main.startColor.color == Color.white);
-
-    //    if (main.startColor.color == doubleColor && tripleJump) {
-    //        firstPowerColor = doubleGradient.colorKeys[0].color;
-    //        secondPowerColor = doubleGradient.colorKeys[1].color;
-    //        addFirstPowerColor = (tripleGradient.colorKeys[0].color - doubleGradient.colorKeys[0].color) / 15f;
-    //        addSecondPowerColor = (tripleGradient.colorKeys[1].color - doubleGradient.colorKeys[1].color) / 15f;
-    //    } else if (main.startColor.color == tripleColor && doubleJump) {
-    //        firstPowerColor = tripleGradient.colorKeys[0].color;
-    //        secondPowerColor = tripleGradient.colorKeys[1].color;
-    //        addFirstPowerColor = (doubleGradient.colorKeys[0].color - tripleGradient.colorKeys[0].color) / 15f;
-    //        addSecondPowerColor = (doubleGradient.colorKeys[1].color - tripleGradient.colorKeys[1].color) / 15f;
-    //    } else if (main.startColor.color == Color.white) {
-    //        var gradient = powerParticle.colorOverLifetime;
-    //        if (doubleJump)
-    //            gradient.color = doubleGradient;
-    //        else if (tripleJump)
-    //            gradient.color = tripleGradient;
-    //    }
-
-    //    if (doubleJump)
-    //        main.startColor = doubleColor;
-    //    else if (tripleJump)
-    //        main.startColor = tripleColor;
-    //    else
-    //        main.startColor = Color.white;
-    //}
-
-    //public void ChangePowerGradient()
-    //{
-    //    var gradient = powerParticle.colorOverLifetime;
-    //    firstPowerColor += addFirstPowerColor;
-    //    secondPowerColor += addSecondPowerColor;
-    //    Gradient grad = new();
-    //    grad.SetKeys(new GradientColorKey[] { new GradientColorKey(firstPowerColor, 0.0f), new GradientColorKey(secondPowerColor, 1.0f) }, 
-    //        new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 0.8f), new GradientAlphaKey(0.0f, 1.0f) });
-    //    gradient.color = grad;
-    //}
 
     public void RestartLevel()
     {

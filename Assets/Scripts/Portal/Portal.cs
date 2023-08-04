@@ -6,7 +6,6 @@ public class Portal : MonoBehaviour
     public SpriteRenderer portalSprite;
     private bool right;
 
-    public PolygonCollider2D Collider;
     public GameObject masks;
     public ParticleSystem particles;
 
@@ -33,7 +32,7 @@ public class Portal : MonoBehaviour
         animator.SetBool("Start", true);
 
         int layer = LayerMask.NameToLayer("PortalWall");
-        Collider.gameObject.layer = layer;
+        // Collider.gameObject.layer = layer;
 
         int newId = orangeId;
         if (right)
@@ -66,16 +65,14 @@ public class Portal : MonoBehaviour
     public void ActivatePortal(Collider2D itemToTeleport)
     {
         if (right)
-            gun.Move_To_Portal(gun.OrangePortal, gun.BluePortal, itemToTeleport);
+            gun.Move_To_Portal(gun.orangePortal, gun.bluePortal, itemToTeleport);
         else
-            gun.Move_To_Portal(gun.BluePortal, gun.OrangePortal, itemToTeleport);
+            gun.Move_To_Portal(gun.bluePortal, gun.orangePortal, itemToTeleport);
     }
 
     public void SetPortalLayer()
     {
-        string endLayer = "Orange";
-        if (gun.BluePortal.Collider == gun.OrangePortal.Collider && right)
-            endLayer = "Blue";
+        string endLayer = "Blue";
         int layer = LayerMask.NameToLayer("Portal" + endLayer);
         Collider1.gameObject.layer = layer;
         Collider2.gameObject.layer = layer;
@@ -93,15 +90,6 @@ public class Portal : MonoBehaviour
     public void DestroyPortalAnimation()
     {
         animator.SetBool("Death", true);
-        if (gun.BluePortal != null && gun.OrangePortal != null) {
-            if (gun.BluePortal.Collider != gun.OrangePortal.Collider) {
-                int layer = LayerMask.NameToLayer("Ground");
-                Collider.gameObject.layer = layer;
-            }
-        } else {
-            int layer = LayerMask.NameToLayer("Ground");
-            Collider.gameObject.layer = layer;
-        }
     }
 
     public void DestroyPortal()

@@ -38,8 +38,18 @@ public class MapManager : MonoBehaviour
         return dataFromTiles[tile];
     }
 
+    public TileBase GetTile(Vector2 worldPosition) {
+        Vector3Int gridPosition = map.WorldToCell(worldPosition);
+        TileBase tile = map.GetTile(gridPosition);
+        return tile;
+    }
+
     public void SetMap(Tilemap newMap)
     {
         map = newMap;
+    }
+    public Tilemap GetMap()
+    {
+        return map;
     }
 }

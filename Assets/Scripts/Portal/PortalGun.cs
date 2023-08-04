@@ -11,21 +11,19 @@ public class PortalGun : MonoBehaviour
     public Transform hand;
     public Transform head;
     public Transform NewPosition;
-    public bool RightButton;
-    public bool InWall;
+    public bool right;
+    public bool inWall;
     public static bool menuActive;
     public Transform ShootParent;
-    public PortalShoot PrefabShoot;
-    public PortalShoot ShootOrange;
-    public PortalShoot ShootBlue;
+    [SerializeField] private PortalShoot PrefabShoot;
+    public PortalShoot shootOrange;
+    public PortalShoot shootBlue;
 
-    public Portal OrangePortal;
-    public Portal BluePortal;
+    public Portal orangePortal;
+    public Portal bluePortal;
 
     public float ForceIteration;
     public float Force;
-
-    private bool cooldown;
 
     [SerializeField] private Light2D[] gunLights;
 
@@ -70,63 +68,63 @@ public class PortalGun : MonoBehaviour
     public void CheckPortals(bool Right)
     {
         if (!Right)
-            ShootOrange = null;
+            shootOrange = null;
         else
-            ShootBlue = null;
-        if (OrangePortal && BluePortal) {
-            OrangePortal.particles.Play();
-            BluePortal.particles.Play();
-            OrangePortal.trigger.gameObject.SetActive(true);
-            BluePortal.trigger.gameObject.SetActive(true);
-            OrangePortal.SetPortalLayer();
-            BluePortal.SetPortalLayer();
-            SliceColliders(BluePortal);
-            SliceColliders(OrangePortal);
-            BluePortal.Active = true;
-            OrangePortal.Active = true;
+            shootBlue = null;
+        if (orangePortal && bluePortal) {
+            orangePortal.particles.Play();
+            bluePortal.particles.Play();
+            orangePortal.trigger.gameObject.SetActive(true);
+            bluePortal.trigger.gameObject.SetActive(true);
+            orangePortal.SetPortalLayer();
+            bluePortal.SetPortalLayer();
+            SliceColliders(bluePortal);
+            SliceColliders(orangePortal);
+            bluePortal.Active = true;
+            orangePortal.Active = true;
         } else {
-            if (OrangePortal) {
-                OrangePortal.particles.Stop();
-                OrangePortal.Active = false;
-                OrangePortal.trigger.gameObject.SetActive(false);
-                SliceColliders(OrangePortal);
+            if (orangePortal) {
+                orangePortal.particles.Stop();
+                orangePortal.Active = false;
+                orangePortal.trigger.gameObject.SetActive(false);
+                SliceColliders(orangePortal);
             }
-            if (BluePortal) {
-                BluePortal.particles.Stop();
-                BluePortal.Active = false;
-                BluePortal.trigger.gameObject.SetActive(false);
-                SliceColliders(BluePortal);
+            if (bluePortal) {
+                bluePortal.particles.Stop();
+                bluePortal.Active = false;
+                bluePortal.trigger.gameObject.SetActive(false);
+                SliceColliders(bluePortal);
             }
         }
     }
 
     public void SliceColliders(Portal portal)
     {
-        Vector2[] points = portal.Collider.points;
-        Vector2[] portals = portal.GetComponent<PolygonCollider2D>().points;
-        for (int i = 0; i < points.Length; i++)
-            points[i] = portal.Collider.transform.TransformPoint(points[i]);
-        for (int i = 0; i < portals.Length; i++)
-            portals[i] = portal.transform.TransformPoint(portals[i]);
-        switch (portal.side)
-        {
-            case "Left":
-                SetColliderAndMask(portal.Collider1, points[0], portals[1], points[0], points[3], portals[1]);
-                SetColliderAndMask(portal.Collider2, portals[0], points[1], points[0], points[3], points[1]);
-                break;
-            case "Down":
-                SetColliderAndMask(portal.Collider1, portals[1], points[1], points[0], points[1], points[0]);
-                SetColliderAndMask(portal.Collider2, points[2], portals[0], points[1], points[0], portals[0]);
-                break;
-            case "Right":
-                SetColliderAndMask(portal.Collider1, points[3], portals[0], points[3], points[0], portals[0]);
-                SetColliderAndMask(portal.Collider2, portals[1], points[2], points[0], points[3], points[1]);
-                break;
-            case "Up":
-                SetColliderAndMask(portal.Collider1, portals[0], points[0], points[0], points[1], points[0]);
-                SetColliderAndMask(portal.Collider2, points[3], portals[1], points[0], points[1], portals[1]);
-                break;
-        }
+        //Vector2[] points = portal.Collider.points;
+        //Vector2[] portals = portal.GetComponent<PolygonCollider2D>().points;
+        //for (int i = 0; i < points.Length; i++)
+        //    points[i] = portal.Collider.transform.TransformPoint(points[i]);
+        //for (int i = 0; i < portals.Length; i++)
+        //    portals[i] = portal.transform.TransformPoint(portals[i]);
+        //switch (portal.side)
+        //{
+        //    case "Left":
+        //        SetColliderAndMask(portal.Collider1, points[0], portals[1], points[0], points[3], portals[1]);
+        //        SetColliderAndMask(portal.Collider2, portals[0], points[1], points[0], points[3], points[1]);
+        //        break;
+        //    case "Down":
+        //        SetColliderAndMask(portal.Collider1, portals[1], points[1], points[0], points[1], points[0]);
+        //        SetColliderAndMask(portal.Collider2, points[2], portals[0], points[1], points[0], portals[0]);
+        //        break;
+        //    case "Right":
+        //        SetColliderAndMask(portal.Collider1, points[3], portals[0], points[3], points[0], portals[0]);
+        //        SetColliderAndMask(portal.Collider2, portals[1], points[2], points[0], points[3], points[1]);
+        //        break;
+        //    case "Up":
+        //        SetColliderAndMask(portal.Collider1, portals[0], points[0], points[0], points[1], points[0]);
+        //        SetColliderAndMask(portal.Collider2, points[3], portals[1], points[0], points[1], portals[1]);
+        //        break;
+        //}
         //portal.Collider1.GetComponent<GroundGet>().color = portal.Collider.GetComponent<GroundGet>().color;
         //portal.Collider1.GetComponent<GroundGet>().walkAudio = portal.Collider.GetComponent<GroundGet>().walkAudio;
         //portal.Collider2.GetComponent<GroundGet>().color = portal.Collider.GetComponent<GroundGet>().color;
@@ -141,57 +139,55 @@ public class PortalGun : MonoBehaviour
 
     public void Shoot()
     {
-        RightButton = Input.GetKeyDown(rightPortalKey);
+        right = Input.GetKeyDown(rightPortalKey);
 
         foreach (Light2D light2D in gunLights)
             light2D.intensity = 1.4f;
         gunLights[4].intensity = 0.86f;
 
-        if (!RightButton) {
+        if (!right) {
             leftGunSound.Play();
             foreach (Light2D light2D in gunLights)
                 light2D.color = leftColor;
-            if (ShootOrange) {
-                ShootOrange.GetComponent<Animator>().enabled = true;
-                ShootOrange = null;
+            if (shootOrange) {
+                shootOrange.GetComponent<Animator>().enabled = true;
+                shootOrange = null;
             }
         } else {
             rightGunSound.Play();
             foreach (Light2D light2D in gunLights)
                 light2D.color = rightColor;
-            if (ShootBlue) {
-                ShootBlue.GetComponent<Animator>().enabled = true;
-                ShootBlue = null;
+            if (shootBlue) {
+                shootBlue.GetComponent<Animator>().enabled = true;
+                shootBlue = null;
             }
         }
 
-        if (!InWall) {
+        if (!inWall) {
             var shoot = Instantiate(PrefabShoot, null);
             shoot.gun = this;
-            shoot.right = RightButton;
+            shoot.right = right;
 
-            if (!RightButton) {
+            if (!right) {
                 shoot.SetColor(leftColor);
-                shoot.isUsed = ShootBlue != null && cooldown;
-                ShootOrange = shoot;
+                shootOrange = shoot;
             } else {
                 shoot.SetColor(rightColor);
-                shoot.isUsed = ShootOrange != null && cooldown;
-                ShootBlue = shoot;
+                shootBlue = shoot;
             }
+
+            shoot.gameObject.SetActive(false);
+            StartCoroutine(SetShootPos(shoot));
         }
 
-        if (ShootOrange && ShootBlue) {
-            if (ShootOrange.Speed == ShootBlue.Speed) {
-                if (RightButton)
-                    ShootBlue.GetComponent<Animator>().enabled = true;
+        if (shootOrange && shootBlue) {
+            if (shootOrange.Speed == shootBlue.Speed) {
+                if (right)
+                    shootBlue.GetComponent<Animator>().enabled = true;
                 else
-                    ShootOrange.GetComponent<Animator>().enabled = true;
+                    shootOrange.GetComponent<Animator>().enabled = true;
             }
         }
-
-        cooldown = true;
-        StartCoroutine(CooldownTime());
     }
 
     public void HandRotation()
@@ -213,11 +209,12 @@ public class PortalGun : MonoBehaviour
             }
         }
 
-        if (!InWall) {
-            if (RightButton)
-                ShootBlue.transform.rotation = Quaternion.Euler(0f, 0f, hand.rotation.eulerAngles.z);
+        rotateZ = (hand.rotation.eulerAngles.z - 90) * Mathf.Deg2Rad;
+        if (!inWall) {
+            if (right)
+                shootBlue.SetMoveVector(Mathf.Cos(rotateZ), Mathf.Sin(rotateZ));
             else
-                ShootOrange.transform.rotation = Quaternion.Euler(0f, 0f, hand.rotation.eulerAngles.z);
+                shootOrange.SetMoveVector(Mathf.Cos(rotateZ), Mathf.Sin(rotateZ));
         }
     }
 
@@ -249,9 +246,7 @@ public class PortalGun : MonoBehaviour
     {
         exit.AnimatorPortal();
         exit.PlayTeleport();
-        string layerEnd = "Orange";
-        if (exit.GetRight() == true && exit.Collider == Enter.Collider)
-            layerEnd = "Blue";
+        string layerEnd = "Blue";
         item.GetComponent<ItemToteleport>().SetLayerEnd(layerEnd);
         item.GetComponent<ItemToteleport>().SetLayer("TeleportingItem" + layerEnd, true, exit.GetRight());
         item.GetComponent<ItemToteleport>().portal = exit;
@@ -316,12 +311,6 @@ public class PortalGun : MonoBehaviour
         LevelManager.levelManager.AddToScore("Teleport");
     }
 
-    IEnumerator CooldownTime()
-    {
-        yield return new WaitForSeconds(0.5f);
-        cooldown = false;
-    }
-
     private void SetControll() 
     {
         leftPortalKey = Save.save.portalGunLeftKey;
@@ -341,5 +330,20 @@ public class PortalGun : MonoBehaviour
         hand.rotation *= Quaternion.Euler(0f, 0f, 0f);
         head.rotation = Quaternion.Euler(0f, 0f, 0f);
         head.rotation *= Quaternion.Euler(0f, 0f, 0f);
+    }
+
+    private IEnumerator SetShootPos(PortalShoot shoot)
+    {
+        yield return new WaitForSeconds(Time.deltaTime);
+        if (inWall) {
+            Destroy(shoot.gameObject);
+            if (shoot.right)
+                shootBlue = null;
+            else
+                shootOrange = null;
+        } else {
+            shoot.transform.position = new Vector2(ShootParent.position.x, ShootParent.position.y);
+            shoot.gameObject.SetActive(true);
+        }
     }
 }
