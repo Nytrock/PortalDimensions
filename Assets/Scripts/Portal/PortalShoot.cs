@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
-using static UnityEditor.Progress;
 
 public class PortalShoot : MonoBehaviour
 {
@@ -42,7 +40,7 @@ public class PortalShoot : MonoBehaviour
 
     public void Update()
     {
-        transform.Translate(Speed * Time.fixedDeltaTime * moveVector);
+        transform.Translate(Speed * Time.deltaTime * moveVector / 10);
     }
 
     private void DestroyAmmo()
@@ -59,7 +57,7 @@ public class PortalShoot : MonoBehaviour
         if (obj.TryGetComponent(out TilemapCollider2D _) && colliders.Count == 4) {
             TileData tile = mapManager.GetTileData(transform.position);
             moveVector = Vector2.zero;
-            if (tile != null && tile.forPortal)
+            if (tile && tile.forPortal)
                 SpawnPortal(transform.position);
             animator.enabled = true;
         }
@@ -79,31 +77,107 @@ public class PortalShoot : MonoBehaviour
         var grid = tilemap.GetComponentInParent<GridLayout>();
 
         Vector3Int gridPosition = tilemap.WorldToCell(shootPos);
-        TileBase tile = tilemap.GetTile(gridPosition);
-        Vector3 tilePos = tilemap.GetCellCenterWorld(gridPosition);
-        float tileSize = grid.transform.localScale.x;
-        print(tilePos);
+        Vector2 tilePos = tilemap.GetCellCenterWorld(gridPosition);
+        float tileSize = grid.transform.lossyScale.x;
 
         portal.side = colliders[3].side;
+
         if (right) {
-            if (gun.bluePortal != null)
+            if (gun.bluePortal)
                 gun.bluePortal.DestroyPortalAnimation();
             gun.bluePortal = portal;
         } else {
-            if (gun.orangePortal != null)
+            if (gun.orangePortal)
                 gun.orangePortal.DestroyPortalAnimation();
             gun.orangePortal = portal;
         }
 
-        SetPortalTransform(portal, shootPos, tilePos, tileSize);
+        SetPortalTransform(portal);
+
+        List<List<TileData>> neighbours;
+        Vector2 portalPosition = Vector2.zero;
+        switch (portal.side) {
+            case "Left":
+                neighbours = SetNeighbours(-1, 0, -2, 2, tilePos, tileSize);
+                portalPosition = new Vector2(tilePos.x - tileSize / 2, shootPos.y);
+                if (!(neighbours[3][1] && neighbours[3][1].forPortal) || neighbours[3][0]) {
+                    if (!(neighbours[1][1] && neighbours[1][1].forPortal) || neighbours[1][0] ||
+                        !(neighbours[0][1] && neighbours[0][1].forPortal) || neighbours[0][0])
+                        DestroyPortal(portal);
+                    else
+                        portalPosition = new Vector2(tilePos.x - tileSize / 2, tilePos.y - tileSize);
+                }else if (!(neighbours[1][1] && neighbours[1][1].forPortal) || neighbours[1][0]) {
+                    if (!(neighbours[3][1] && neighbours[3][1].forPortal) || neighbours[3][0] ||
+                        !(neighbours[4][1] && neighbours[4][1].forPortal) || neighbours[4][0])
+                        DestroyPortal(portal);
+                    else
+                        portalPosition = new Vector2(tilePos.x - tileSize / 2, tilePos.y + tileSize);
+                } else if (!(neighbours[4][1] && neighbours[4][1].forPortal && !neighbours[4][0]) && shootPos.y > tilePos.y) {
+                    portalPosition = new Vector2(tilePos.x - tileSize / 2, tilePos.y);
+                } else if (!(neighbours[0][1] && neighbours[0][1].forPortal && !neighbours[0][0]) && shootPos.y < tilePos.y) {
+                    portalPosition = new Vector2(tilePos.x - tileSize / 2, tilePos.y);
+                }
+                break;
+            case "Down":
+                neighbours = SetNeighbours(-1, 1, -1, 0, tilePos, tileSize);
+                portalPosition = new Vector2(shootPos.x, tilePos.y - tileSize / 2);
+                if (!(neighbours[1][0] && neighbours[1][0].forPortal && !neighbours[0][0]) && shootPos.x < tilePos.x)
+                    portalPosition = new Vector2(tilePos.x, tilePos.y - tileSize / 2);
+                else if (!(neighbours[1][2] && neighbours[1][2].forPortal && !neighbours[0][2]) && shootPos.x > tilePos.x)
+                    portalPosition = new Vector2(tilePos.x, tilePos.y - tileSize / 2);
+                break;
+            case "Right":
+                neighbours = SetNeighbours(0, 1, -2, 2, tilePos, tileSize);
+                portalPosition = new Vector2(tilePos.x + tileSize / 2, shootPos.y);
+                if (!(neighbours[3][0] && neighbours[3][0].forPortal) || neighbours[3][1]) {
+                    if (!(neighbours[1][0] && neighbours[1][0].forPortal) || neighbours[1][1] ||
+                        !(neighbours[0][0] && neighbours[0][0].forPortal) || neighbours[0][1])
+                        DestroyPortal(portal);
+                    else
+                        portalPosition = new Vector2(tilePos.x + tileSize / 2, tilePos.y - tileSize);
+                } else if (!(neighbours[1][0] && neighbours[1][0].forPortal) || neighbours[1][1]) {
+                    if (!(neighbours[3][0] && neighbours[3][0].forPortal) || neighbours[3][1] ||
+                        !(neighbours[4][0] && neighbours[4][0].forPortal) || neighbours[4][1])
+                        DestroyPortal(portal);
+                    else
+                        portalPosition = new Vector2(tilePos.x + tileSize / 2, tilePos.y + tileSize);
+                } else if (!(neighbours[4][0] && neighbours[4][0].forPortal && !neighbours[4][1]) && shootPos.y > tilePos.y) {
+                    portalPosition = new Vector2(tilePos.x + tileSize / 2, tilePos.y);
+                } else if (!(neighbours[0][0] && neighbours[0][0].forPortal && !neighbours[0][1]) && shootPos.y < tilePos.y) {
+                    portalPosition = new Vector2(tilePos.x + tileSize / 2, tilePos.y);
+                }
+                break;
+            case "Up":
+                neighbours = SetNeighbours(-1, 1, 0, 1, tilePos, tileSize);
+                portalPosition = new Vector2(shootPos.x, tilePos.y + tileSize / 2);
+                if (!(neighbours[0][0] && neighbours[0][0].forPortal && !neighbours[1][0]) && shootPos.x < tilePos.x)
+                    portalPosition = new Vector2(tilePos.x, tilePos.y + tileSize / 2);
+                else if (!(neighbours[0][2] && neighbours[0][2].forPortal && !neighbours[1][2]) && shootPos.x > tilePos.x) 
+                    portalPosition = new Vector2(tilePos.x, tilePos.y + tileSize / 2);
+                break;
+        }
+        portal.transform.position = portalPosition;
 
         gun.CheckPortals(right);
+    }
+
+    private List<List<TileData>> SetNeighbours(int xMin, int xMax, int yMin, int yMax, Vector2 origPos, float tileSize)
+    {
+        List<List<TileData>> result = new();
+        for (int y = yMin; y <= yMax; y++) {
+            List<TileData> row = new();
+            for (int x = xMin; x <= xMax; x++)
+                row.Add(mapManager.GetTileData(new Vector2(origPos.x + x * tileSize, origPos.y + y * tileSize)));
+
+            result.Add(row);
+        }
+        return result;
     }
 
     private void Horizontal_Alignment(Vector2 portal0, Vector2 portal1, Vector2 pointI, Vector2 pointII, Portal portal)
     {
         if (portal1.x > pointI.x && portal0.x < pointII.x)
-            Destroy_Portal(portal);
+            DestroyPortal(portal);
         else if (portal1.x > pointI.x)
             portal.transform.position = new Vector2(portal.transform.position.x - (portal1.x - pointI.x), portal.transform.position.y);
         else if (portal0.x < pointII.x)
@@ -113,7 +187,7 @@ public class PortalShoot : MonoBehaviour
     private void Vertical_Alignment(Vector2 portal0, Vector2 portal1, Vector2 pointI, Vector2 pointII, Portal portal)
     {
         if (portal1.y > pointI.y && portal0.y < pointII.y)
-            Destroy_Portal(portal);
+            DestroyPortal(portal);
         else if (portal1.y > pointI.y)
             portal.transform.position = new Vector2(portal.transform.position.x, portal.transform.position.y - (portal1.y - pointI.y));
         else if (portal0.y < pointII.y)
@@ -135,7 +209,7 @@ public class PortalShoot : MonoBehaviour
     private void VerticalPortalsAligment(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
     {
         if (center1.y >= Points2[num1].y && center1.y <= Points2[num2].y)
-            Destroy_Portal(portal);
+            DestroyPortal(portal);
         else if (center1.y < Points2[num1].y)
             portal.transform.position = new Vector2(center1.x - (Points1[num2].x - Points2[num1].x) * 1.1f, center1.y - (Points1[num2].y - Points2[num1].y) * 1.1f);
         else if (center1.y > Points2[num2].y)
@@ -145,14 +219,14 @@ public class PortalShoot : MonoBehaviour
     private void HorizontalPortalsAligment(Vector2 center1, Vector2[] Points1, Vector2[] Points2, Portal portal, int num1, int num2)
     {
         if (center1.x >= Points2[num2].x && center1.x <= Points2[num1].x)
-            Destroy_Portal(portal);
+            DestroyPortal(portal);
         else if (center1.x < Points2[num2].x)
             portal.transform.position = new Vector2(center1.x - (Points1[num1].x - Points2[num2].x) * 1.1f, center1.y + (Points2[num2].y - Points1[num1].y) * 1.1f);
         else if (center1.x > Points2[num1].x)
             portal.transform.position = new Vector2(center1.x + (Points2[num1].x - Points1[num2].x) * 1.1f, center1.y - (Points1[num2].y - Points2[num1].y) * 1.1f);
     }
 
-    private void Destroy_Portal(Portal portal)
+    private void DestroyPortal(Portal portal)
     {
         Destroy(portal.gameObject);
         if (right)
@@ -161,39 +235,31 @@ public class PortalShoot : MonoBehaviour
             gun.orangePortal = null;
     }
 
-    private void SetPortalTransform(Portal portal, Vector2 shootPos, Vector2 tilePos, float tileSize)
+    private void SetPortalTransform(Portal portal)
     {
         float portalRotation = 0;
         float portalScale = 1f;
-        Vector2 portalPosition = Vector2.zero;
-
 
         switch (portal.side) {
             case "Left": 
                 portalRotation = -90f; 
-                portalPosition = new Vector2(tilePos.x - tileSize, shootPos.y);
                 portalScale = 0.93f;
                 break;
             case "Down": 
                 portalRotation = 0f; 
-                portalPosition = new Vector2(shootPos.x, tilePos.y - tileSize);
                 portalScale = 0.28f;
                 break;
             case "Right": 
                 portalRotation = 90f; 
-                portalPosition = new Vector2(tilePos.x + tileSize, shootPos.y);
                 portalScale = 0.93f;
                 break;
             case "Up": 
                 portalRotation = 180f; 
-                portalPosition = new Vector2(shootPos.x, tilePos.y + tileSize);
                 portalScale = 0.28f;
                 break;
         }
 
         portal.transform.rotation = Quaternion.Euler(0f, 0f, portalRotation);
-        portal.transform.position = portalPosition;
-
         portal.transform.localScale = new Vector2(portal.transform.localScale.x * portalScale, portal.transform.localScale.y);
         portal.Collider1.transform.localScale = new Vector2(1f / portalScale, 1f);
         portal.Collider2.transform.localScale = new Vector2(1f / portalScale, 1f);
