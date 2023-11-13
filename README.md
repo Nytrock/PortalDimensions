@@ -6,9 +6,9 @@ source code (if you ever feel like it) below.
 # Social media and support
 - [YouTube](https://www.youtube.com/c/Nytrock)
 - [Vkontakte group](https://vk.com/nytrock)
-- [Vkontakte page](https://vk.com/everything_develoer)
+- [Vkontakte page](https://vk.com/csharpguy)
+- [Telegram](https://t.me/nytrock)
 - [DonationAlerts](https://www.donationalerts.com/r/nytrock)
-- [Twitter](https://twitter.com/Nytr0ck)
 - [Twitch](https://www.twitch.tv/nytrock)
 
 # How start the game
@@ -23,7 +23,7 @@ source code (if you ever feel like it) below.
 - Clone repository
 
 ```shell
-git clone https://github.com/Nytrock/Portal_Dimensions.git
+git clone https://github.com/Nytrock/PortalDimensions.git
 ```
 - Open Unity Hub, click on the `Add project` button, select the folder where the repository was cloned
 - Click on the created project and start studying the code
