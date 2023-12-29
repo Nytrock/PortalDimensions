@@ -1,3 +1,5 @@
+<p align="center"><img src="Assets/Images/Wrapper/Icon.png" alt="Logo" width="256"></p>
+
 # Portal  Dimensions
 Absolutely new game, created by me right now and given at the moment at the alpha stage. Suggestions for improvement in the form of pull requests are welcome.
 Full game versions will appear periodically, on this page this will also be reported. About where to follow the creation of the game and how to watch it
