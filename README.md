@@ -1,23 +1,7 @@
 <p align="center"><img src="Assets/Images/Wrapper/Icon.png" alt="Logo" width="256"></p>
 
 # Portal  Dimensions
-Absolutely new game, created by me right now and given at the moment at the alpha stage. Suggestions for improvement in the form of pull requests are welcome.
-Full game versions will appear periodically, on this page this will also be reported. About where to follow the creation of the game and how to watch it
-source code (if you ever feel like it) below.
-
-# Social media and support
-- [YouTube](https://www.youtube.com/c/Nytrock)
-- [Vkontakte group](https://vk.com/nytrock)
-- [Vkontakte page](https://vk.com/csharpguy)
-- [Telegram](https://t.me/nytrock)
-- [DonationAlerts](https://www.donationalerts.com/r/nytrock)
-- [Twitch](https://www.twitch.tv/nytrock)
-
-# How start the game
-
-- Download the latest release on Github
-- Unzip received archive
-- Run `Portal Dimensions PreAlpha.exe`
+A game closed at the alpha stage due to too much ambition with little resources (one unfortunate student). Even if work on it ever resumes, it will be a completely different game, written from scratch.
 
 # Run source code on local machine
 
